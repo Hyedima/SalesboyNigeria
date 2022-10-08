@@ -1,0 +1,66 @@
+﻿@model SalesboyNigeria.Models.UserAccount
+
+@{
+    ViewBag.Title = "VerifyEmail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <img src="~/Content/Images/banner3.jpg" />
+                <br />
+                <br />
+                <strong>
+                    You have registered successfully
+                </strong>
+                <br />
+                <br />
+                <h3>
+                    Welcome to Salesboy Nigeria
+                </h3>
+                <br />
+                <br />
+                <center>
+                    <img width="130" style="max-width: 130px; width: 100%; display: block; line-height: 0px; font-size: 0px; border: 0px;" src="http://www.stampready.net/dashboard/editor/user_uploads/zip_uploads/2020/03/22/9jhlVUzudcB8NtbnMg67SvA5/StampReady/img/ui-line-2.png">
+                </center>
+                <br />
+                <br />
+                <p>
+                    Thank you for registering, we are please to have you on the  world's best selling platform. Together lets make the world a better place.
+                </p>
+                <br />
+                <br />
+                <form action="" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="email" value="@Model.Email" />
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <button type="submit" class="ps-btn btn-block btn-primary">
+                        Click her to verify your email.
+                    </button>
+                </form>
+                <center>
+                    <br />
+                    <br />
+                    <img src="~/Content/Images/salesboylog.png" height="70" />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </center>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+
+</div>
+
+<br />
+<br />
+<br />
+<br />

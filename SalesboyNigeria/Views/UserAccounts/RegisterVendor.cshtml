@@ -1,0 +1,255 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    SalesboyNigeria.Models.salesboyEntities db = new SalesboyNigeria.Models.salesboyEntities();
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="ps-page--my-account">
+    @*<div class="ps-breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                <li>My account</li>
+            </ul>
+        </div>
+    </div>*@
+    <div class="ps-my-account">
+        <div class="container">
+            <div class="ps-form--account ps-tab-root">
+                @*<ul class="ps-tab-list">
+                    <li class="active"><a href="#sign-in">Vendor</a></li>
+                    <li><a href="#register">Service Provider</a></li>
+                </ul>*@
+                <div class="ps-tabs">
+                    <div class="ps-tab active card" id="sign-in">
+                        <div class="ps-post__content">
+                            @*<p class="text-center">
+            <a href="@Url.Action("Register","UserAccounts")" class="fw-medium text-primary badge badge-soft-warning">
+                Register as a user/buyer
+            </a> ||
+            <a href="@Url.Action("RegisterServiceProvider","UserAccounts")" class="fw-medium text-primary badge badge-soft-warning">
+                Register as a Service Provider
+            </a>
+        </p>*@
+                            <center>
+                                <img src="~/Content/Images/logo.png" alt="" height="80">
+                            </center>
+                            <hr />
+
+                            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up as a vendor</p>
+                            <hr />
+                            <form class="mx-1 mx-md-4" method="post" action="@Url.Action("RegisterVendor","UserAccounts")">
+                                @Html.AntiForgeryToken()
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="form3Example1c">First Name</label>
+                                        <input type="text" name="firstname" id="" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="form3Example1c">Last Name</label>
+                                        <input type="text" name="lastname" id="" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="form3Example3c">Phone</label>
+                                        <input type="text" name="phone" id="" class="form-control" />
+                                    </div>
+                                </div>
+                                @*<div class="d-flex flex-row align-items-center mb-4">
+                <div class="form-outline flex-fill mb-0">
+                    <label class="form-label" for="form3Example3c">State of Residence</label>
+                    <select class="form-control" name="state" required="">
+                        @foreach (var item in db.States.OrderBy(p => p.states).ToList())
+                        {
+                            <option value="@item.states">@item.states</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center mb-4">
+                <div class="form-outline flex-fill mb-0">
+                    <label class="form-label" for="form3Example1c">Business Name</label>
+                    <input type="text" name="businessname" id="" class="form-control" />
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <div class="form-outline flex-fill mb-0">
+                    <label class="form-label" for="form3Example1c">Category(Art, Grocery, Electronics, Clothings, Makeup, Mechanics, Fashion Design etc )</label>
+                    <input type="text" name="category" id="" class="form-control" />
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <div class="form-outline flex-fill mb-0">
+                    <label class="form-label" for="form3Example1c">Business Description</label>
+                    <textarea class="form-control" name="description"></textarea>
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <div class="form-outline flex-fill mb-0">
+                    <label class="form-label" for="form3Example1c">Business Address</label>
+                    <textarea class="form-control" name="address"></textarea>
+                </div>
+            </div>*@
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="form3Example3c">Your Email</label>
+                                        <input type="email" name="email" id="" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="form3Example4c">Password</label>
+                                        <input type="password" name="password" id="" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="form3Example4cd">Repeat your password</label>
+                                        <input type="password" name="cpassword" id="" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="ps-checkbox">
+                                    <input class="form-control" type="checkbox" id="save-next-time" placeholder="" name="accept">
+                                    <label for="save-next-time">I agree all statements in <a href="#!">Terms of service</a></label>
+                                </div>
+                                <hr />
+                                <div class="form-group submtit">
+                                    <button type="submit" class="ps-btn ps-btn--fullwidth">Register</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="ps-form__footer">
+                            <p>Connect with:</p>
+                            <ul class="ps-list--social">
+                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ps-tab" id="register">
+                        @*<p class="text-center">
+                            <a href="@Url.Action("Register","UserAccounts")" class="fw-medium text-primary badge badge-soft-warning">
+                                Register as a user/buyer
+                            </a> ||
+                            <a href="@Url.Action("RegisterVendor","UserAccounts")" class="fw-medium text-primary badge badge-soft-warning">
+                                Register as a vendor
+                            </a>
+                        </p>*@
+                        <hr />
+                        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up as a Service Provider</p>
+                        <hr />
+                        <form class="mx-1 mx-md-4" method="post" action="@Url.Action("RegisterServiceProvider","UserAccounts")">
+                            @Html.AntiForgeryToken()
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label" for="form3Example1c">First Name</label>
+                                    <input type="text" name="firstname" id="" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label" for="form3Example1c">Last Name</label>
+                                    <input type="text" name="lastname" id="" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label" for="form3Example3c">Phone</label>
+                                    <input type="text" name="phone" id="" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label" for="form3Example3c">State of Residence</label>
+                                    <select class="form-control" name="state" required="">
+                                        @foreach (var item in db.States.OrderBy(p => p.states).ToList())
+                                        {
+                                            <option value="@item.states">@item.states</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label" for="form3Example1c">Business Name</label>
+                                    <input type="text" name="brand" id="" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label" for="form3Example1c">Category(Art, Grocery, Electronics, Clothings, Makeup, Mechanics, Fashion Design etc )</label>
+                                    <input type="text" name="category" id="" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label" for="form3Example1c">Business Description</label>
+                                    <textarea class="form-control" name="description"></textarea>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label" for="form3Example1c">Business Address</label>
+                                    <textarea class="form-control" name="address"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label" for="form3Example3c">Your Email</label>
+                                    <input type="email" name="email" id="" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label" for="form3Example4c">Password</label>
+                                    <input type="password" name="password" id="" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label" for="form3Example4cd">Repeat your password</label>
+                                    <input type="password" name="cpassword" id="" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-check d-flex justify-content-center mb-5">
+                                <input class="form-check-input me-2" type="checkbox" value="" name="agree" id="form2Example3c" />
+                                <label class="form-check-label" for="form2Example3">
+                                    I agree all statements in <a href="#!">Terms of service</a>
+                                </label>
+                            </div>
+                            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                            </div>
+                        </form>
+                        <div class="ps-form__footer">
+                            <p>Connect with:</p>
+                            <ul class="ps-list--social">
+                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

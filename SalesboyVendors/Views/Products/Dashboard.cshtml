@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    SalesboyVendors.Models.salesboyEntities db = new SalesboyVendors.Models.salesboyEntities();
+    string userid = Session["userid"].ToString();
+    var user = db.Vendors.Find(userid);
+    int sn = 0;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>
+                                SN
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Category
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                            <th>
+                                Discount
+                            </th>
+                            <th>
+                                Qty
+                            </th>
+                            <th>
+                                Model No
+                            </th>
+                            <th>
+                                Brand Name
+                            </th>
+                            <th>
+                                Reg. Date
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in db.Products.Where(p=>p.vendorid == user.Id ).ToList())
+                        {
+                            sn++;
+                            <tr>
+                                <td>
+                                    @sn
+                                </td>
+                                <td>
+                                    @item.productname
+                                </td>
+                                <td>
+                                    @item.producttype
+                                </td>
+                                <td>
+                                    @item.category
+                                </td>
+                                <td>
+                                    @item.price
+                                </td>
+                                <td>
+                                    @item.discount
+                                </td>
+                                <td>
+                                    @item.qty
+                                </td>
+                                <td>
+                                    @item.modelno
+                                </td>
+                                <td>
+                                    @item.brandname
+                                </td>
+                                <td>
+                                    @item.inserdate
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "EditproductDetails", new { id = item.id }) |
+                                    @Html.ActionLink("Details", "productDetails", new { id = item.id }) |
+                                    @Html.ActionLink("Photo", "productPicture", new { id = item.id })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

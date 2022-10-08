@@ -1,0 +1,232 @@
+﻿@model SalesboyNigeria.Models.Product
+
+@{
+    ViewBag.Title = "productPicture";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2>
+            @Model.productname
+        </h2>
+        <p>
+            @Model.description
+        </p>
+    </div>
+    <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 col-xl-4">
+        <img src="@Model.photo1" class="img img-responsive" height="300px" width="300px" />
+        <button class="btn btn-sm btn-outline-warning" data-toggle="modal" data-target="#photo1">photo1</button>
+    </div>
+    <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 col-xl-4" >
+        <img src="@Model.photo2" class="img img-responsive"  height="300px" width="300px" />
+        <button class="btn btn-sm btn-outline-warning" data-target="#photo2" data-toggle="modal">photo2</button>
+    </div>
+    <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 col-xl-4">
+        <img src="@Model.photo3" class="img img-responsive"  height="300px" width="300px" />
+        <button class="btn btn-sm btn-outline-warning" data-target="#photo3" data-toggle="modal">photo3</button>
+    </div>
+    <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 col-xl-4">
+        <img src="@Model.photo4" class="img img-responsive"  height="300px" width="300px" />
+        <button class="btn btn-sm btn-outline-warning" data-target="#photo4" data-toggle="modal">photo3</button>
+    </div>
+    <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 col-xl-4">
+        <img src="@Model.photo5" class="img img-responsive"  height="300px" width="300px" />
+        <button class="btn btn-sm btn-outline-warning" data-target="#photo5" data-toggle="modal">photo4</button>
+    </div>
+    <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 col-xl-4">
+        <img src="@Model.bgphoto" class="img img-responsive"  height="300px" width="300px" />
+        <button class="btn btn-sm btn-outline-warning" data-target="#bg" data-toggle="modal">Bg Photo</button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="photo1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabels" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload Product Photo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form method="post" enctype="multipart/form-data">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="name" value="1" />
+                            <input type="hidden" name="id" value="@Model.id" />
+                            <label>Select Photo</label>
+                            <input type="file" name="file" required="" />
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="photo2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeld" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload Product Photo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form method="post" enctype="multipart/form-data">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="name" value="2" />
+                            <input type="hidden" name="id" value="@Model.id" />
+                            <label>Select Photo</label>
+                            <input type="file" name="file" required="" />
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="photo3" tabindex="-1" role="dialog" aria-bs-labelledby="exampleModalLabele" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload Product Photo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form method="post" enctype="multipart/form-data">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="name" value="3" />
+                            <input type="hidden" name="id" value="@Model.id" />
+                            <label>Select Photo</label>
+                            <input type="file" name="file" required="" />
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="photo4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelef" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload Product Photo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form method="post" enctype="multipart/form-data">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="name" value="4" />
+                            <input type="hidden" name="id" value="@Model.id" />
+                            <label>Select Photo</label>
+                            <input type="file" name="file" required="" />
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="photo5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeldf" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload Product Photo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form method="post" enctype="multipart/form-data">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="name" value="5" />
+                            <input type="hidden" name="id" value="@Model.id" />
+                            <label>Select Photo</label>
+                            <input type="file" name="file" required="" />
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="bg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeldfg" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload Product Photo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form method="post" enctype="multipart/form-data">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="name" value="bg" />
+                            <input type="hidden" name="id" value="@Model.id" />
+                            <label>Select Photo</label>
+                            <input type="file" name="file" required="" />
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

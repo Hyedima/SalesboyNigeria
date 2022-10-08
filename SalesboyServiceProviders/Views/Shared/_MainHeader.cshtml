@@ -1,0 +1,180 @@
+﻿@{
+    SalesboyServiceProviders.Models.salesboyEntities db = new SalesboyServiceProviders.Models.salesboyEntities();
+    string email = Session["email"] as string;
+ 
+    var user = db.ServiceProviders.FirstOrDefault(p => p.Email == email);
+}
+<header class="header header--1" data-sticky="true">
+    <div class="header__top">
+        <div class="ps-container">
+            <div class="header__left">
+                @*<div class="menu--product-categories">
+                    <div class="menu__toggle">
+                        <i class="icon-menu"></i>
+                        <span> Shop by Categories</span>
+                    </div>
+                    <div class="menu__content">
+                        <ul class="menu--dropdown">
+                            <li>
+                                <a href="#">Hot Promotions</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>*@
+                <a class="ps-logo" href="@Url.Action("Index", "Home")"><img src="~/Content/Home/img/logo.png" alt="" /></a>
+            </div>
+            <div class="header__center">
+                <!--Center of top header-->
+            </div>
+            <div class="header__right">
+                <div class="header__actions">
+                    @*<a class="header__extra" href="#"><i class="icon-chart-bars"></i><span><i>0</i></span></a><a class="header__extra" href="#"><i class="icon-heart"></i><span><i>0</i></span></a>*@
+                    @*<div class="ps-cart--mini">
+                        <a class="header__extra" href="#">
+                            <i class="icon-bag2"></i>
+                            <span>
+                                <i id="cart">
+                                    @db.Carts.Where(p => p.useremail == email).Count()
+                                </i>
+                            </span>
+                        </a>
+                        <div class="ps-cart__content">
+                            <div class="ps-cart__items">
+                                @{
+                                    decimal total = 0;
+                                }
+                                @foreach (var item in db.Carts.Where(p => p.useremail == email).ToList())
+                                {
+                                    total += Convert.ToDecimal(item.qty * item.Product.price);
+                                    <div class="ps-product--cart-mobile">
+                                        <div class="ps-product__thumbnail">
+                                            <a href="#"><img src="@item.Product.photo1" alt="" /></a>
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <a class="ps-product__remove" href="#"><i class="icon-cross"></i></a>
+                                            <a href="@Url.Action("","")">@item.Product.productname</a>
+                                            <p>
+                                                <strong>Sold by:</strong> @item.Product.Vendor.brandname
+                                            </p>
+                                            <small>@item.qty X @item.Product.price</small>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="ps-cart__footer">
+                                <h3>
+                                    Sub Total:
+                                    <strong>N @total</strong>
+                                </h3>
+                                <figure><a class="ps-btn" href="@Url.Action("Checkout","Products")">View Cart</a><a class="ps-btn" href="@Url.Action("Checkout","products")">Checkout</a></figure>
+                            </div>
+                        </div>
+                    </div>*@
+                    @if (string.IsNullOrEmpty(email))
+                    {
+                        <div class="ps-block--user-header">
+                            <div class="ps-block__left">
+                                <i class="icon-user"></i>
+                            </div>
+                            <div class="ps-block__right">
+                                <a href="@Url.Action("Login","ServiceProviders")">Login</a>
+                                <a href="@Url.Action("Register","ServiceProviders")">Register</a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="ps-block--user-header">
+                            <div class="ps-block__left">
+                                <img class="img img-circle img-responsive" src="@user.photo" height="30" width="30" />
+                            </div>
+                            <div class="ps-block__right">
+                                <a href="@Url.Action("myprofile","ServiceProviders")">Welcome @email</a>
+                                <a href="@Url.Action("Logout","ServiceProviders")"> Logout</a>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navigation">
+        <div class="ps-container">
+            <div class="navigation__left">
+                <div class="menu--product-categories">
+                    <div class="menu__toggle">
+                        <i class="icon-menu"></i>
+                        <span> SP DASHBOARD</span>
+                    </div>
+                    <div class="menu__content">
+                        <ul class="menu--dropdown">
+                            <li>
+                                <a href="@Url.Action("","")">My Profile</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Services","ServiceProviders")">Services</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Order</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Support</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation__right">
+                <ul class="menu">
+                    <li class="manu-item-has-children has-mega-menu">
+                        <a href="@Url.Action("Index","Home")">Home</a>
+                    </li>
+                    <li class="manu-item-has-children has-mega-menu">
+                        <a href="@Url.Action("Products","Products")">Services</a>
+                    </li>
+                    <li class="manu-item-has-children has-mega-menu">
+                        <a href="@Url.Action("","")">Orders</a>
+                    </li>
+                    <li class="manu-item-has-children has-mega-menu">
+                        <a href="@Url.Action("","")">Payments</a>
+                    </li>
+                </ul>
+                <ul class="navigation__extra">
+                    <li>
+                        <a href="@Url.Action("Dashboard","ServiceProviders")">MY SHOP</a>
+                    </li>
+                    <li>
+                        <a href="#">Manage Orders</a>
+                    </li>
+                    <li>
+                        <div class="ps-dropdown">
+                            <a href="#">NGN</a>
+                            <ul class="ps-dropdown-menu">
+                                <li>
+                                    <a href="#">Us Dollar</a>
+                                </li>
+                                <li>
+                                    <a href="#">Euro</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ps-dropdown language">
+                            <a href="#"><img src="~/Content/Home/img/flag/en.png" alt="" />English</a>
+                            <ul class="ps-dropdown-menu">
+                                <li>
+                                    <a href="#"><img src="~/Content/Home/img/flag/germany.png" alt="" /> Germany</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="~/Content/Home/img/flag/fr.png" alt="" /> France</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

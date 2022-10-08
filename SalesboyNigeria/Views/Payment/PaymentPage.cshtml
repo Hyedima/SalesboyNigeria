@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "PaymentPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="@Url.Action("InitializePayment", "Payment")" method="post">
+    <input type="text" name="firstname" placeholder="firstname" class="form-control" />
+    <input type="text" name="lastname" placeholder="lastname" class="form-control" />
+    <input type="text" name="email" placeholder="email" class="form-control" />
+    <input type="text" name="amount" placeholder="amount" class="form-control" />
+    <button class="btn ps-btn" type="submit">Submit</button>
+</form>

@@ -1,0 +1,94 @@
+﻿@model IEnumerable<SalesboyVendors.Models.Product>
+
+@{
+    ViewBag.Title = "products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int sn = 0;
+    string email = Session["email"].ToString();
+}
+
+<h2>My Products</h2>
+@if (Model.Where(p => p.Vendor.Email == email).ToList().Count() <= 20)
+{
+    <p>
+        @Html.ActionLink("Create New", "newProduct")
+    </p>
+}
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            SN
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Type
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Discount
+        </th>
+        <th>
+            Qty
+        </th>
+        <th>
+            Model No
+        </th>
+        <th>
+            Brand Name
+        </th>
+        <th>
+            Reg. Date
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        sn++;
+        <tr>
+            <td>
+                @sn
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.producttype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modelno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.brandname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.inserdate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditproductDetails", new { id = item.id }) |
+                @Html.ActionLink("Details", "productDetails", new { id = item.id }) |
+                @Html.ActionLink("Photo", "productPicture", new { id = item.id })
+            </td>
+        </tr>
+    }
+</table>

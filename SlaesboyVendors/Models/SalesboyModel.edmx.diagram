@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="03f6a43e23a9458ba793df41323f17db" Name="Diagram1">
+        <EntityTypeShape EntityType="salesboyModel.Cart" Width="1.5" PointX="6" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salesboyModel.Category" Width="1.5" PointX="5.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="salesboyModel.categorysub" Width="1.5" PointX="5.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="salesboyModel.LGA" Width="1.5" PointX="8" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="salesboyModel.Order" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="salesboyModel.Payment" Width="1.5" PointX="3" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="salesboyModel.Product" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salesboyModel.Sale" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="salesboyModel.ServiceProvider" Width="1.5" PointX="8.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="salesboyModel.Shipper" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salesboyModel.ShippingPayment" Width="1.5" PointX="5.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="salesboyModel.State" Width="1.5" PointX="5.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="salesboyModel.sysdiagram" Width="1.5" PointX="10.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="salesboyModel.UserAccount" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salesboyModel.Vendor" Width="1.5" PointX="1.5" PointY="27.125" IsExpanded="true" />
+        <AssociationConnector Association="salesboyModel.FK_cart_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="salesboyModel.FK_dbo_cart_dbo_product_productid" ManuallyRouted="false" />
+        <AssociationConnector Association="salesboyModel.FK_LGAs_State" ManuallyRouted="false" />
+        <AssociationConnector Association="salesboyModel.FK_Orders_UserAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="salesboyModel.FK_ShippingPayments_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="salesboyModel.FK_payments_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="salesboyModel.FK_dbo_sale_dbo_product_productid" ManuallyRouted="false" />
+        <AssociationConnector Association="salesboyModel.FK_Product_Vendors" ManuallyRouted="false" />
+        <AssociationConnector Association="salesboyModel.FK_sale_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="salesboyModel.FK_ShippingPayments_Shippers" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

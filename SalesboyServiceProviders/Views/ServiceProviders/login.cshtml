@@ -1,0 +1,155 @@
+﻿
+
+@{
+    ViewBag.Title = "login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="ps-page--my-account">
+
+    <div class="ps-my-account">
+        <div class="container">
+            <div class="ps-form--account ps-tab-root">
+                @*<ul class="ps-tab-list">
+                        <li class="active"><a href="#sign-in">Login</a></li>
+                        <li><a href="#register">Register</a></li>
+                    </ul>*@
+                <div class="ps-tabs">
+                    <div class="ps-tab active" id="sign-in">
+                        <form action="" method="post">
+                            <div class="ps-form__content">
+                                <center>
+                                    <img src="~/Content/Images/logo.png" alt="" height="80">
+                                </center>
+                                <hr />
+                                <h5>Service Provider Login</h5>
+                                <strong class="text-danger text-center">
+                                    @TempData["message"]
+                                </strong>
+                                <div class="form-group">
+                                    <input class="form-control" type="email" required="" name="email" placeholder="Username or email address">
+                                </div>
+                                <div class="form-group form-forgot">
+                                    <input class="form-control" type="password" name="password" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <div class="ps-checkbox">
+                                        <input class="form-control" type="checkbox" id="remember-me" name="remember-me" />
+                                        <label for="remember-me">Rememeber me</label> || <a href="#">Forgot password? </a>
+                                    </div>
+                                </div>
+                                <div class="form-group submtit">
+                                    <button class="ps-btn ps-btn--fullwidth">Login</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="ps-form__footer">
+                            <div class="mt-5 text-center">
+                                <p>
+                                    Don't have an account ? <a href="@Url.Action("Register", "Serviceprovider")" class="fw-medium text-primary"> Signup now </a>
+                                </p>
+                            </div>
+                            @*<p>Connect with:</p>
+                                <ul class="ps-list--social">
+                                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                                </ul>*@
+                        </div>
+                    </div>
+                    @*<div class="ps-tab" id="register">
+                            <form class="mx-1 mx-md-4" method="post" action="@Url.Action("Register","Useraccounts")">
+                                @Html.AntiForgeryToken()
+                                <strong class="text-danger">
+                                    @TempData["message"]
+                                </strong>
+                                <hr />
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="form3Example1c">First Name</label>
+                                        <input type="text" name="firstname" id="" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="form3Example1c">Last Name</label>
+                                        <input type="text" name="lastname" id="" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="form3Example3c">Phone</label>
+                                        <input type="text" name="phone" id="" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="form3Example3c">State of Residence</label>
+                                        <select class="form-control" name="state" required="">
+                                            @foreach (var item in db.States.OrderBy(p => p.states).ToList())
+                                            {
+                                                <option value="@item.states">@item.states</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="form3Example3c">Your Email</label>
+                                        <input type="email" name="email" id="" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="">Password</label>
+                                        <input type="password" name="password" id="" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="form3Example4cd">Repeat your password</label>
+                                        <input type="password" name="cpassword" id="" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-check d-flex justify-content-center mb-5">
+                                    <input class="form-check-input me-2" type="checkbox" value="" name="agree" id="form2Example3c" />
+                                    <label class="form-check-label" for="form2Example3">
+                                        I agree all statements in <a href="#!">Terms of service</a>
+                                    </label>
+                                </div>
+
+                                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                    <button class="ps-btn ps-btn--fullwidth">Register</button>
+                                </div>
+
+                            </form>
+                            <div class="ps-form__footer">
+                                <p>Connect with:</p>
+                                <ul class="ps-list--social">
+                                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="mt-5 text-center">
+        <p>
+            Don't have an account ? <a href="@Url.Action("Register", "UserAccounts")" class="fw-medium text-primary"> Signup now </a>
+        </p>
+        <p>
+            ©
+            <script>document.write(new Date().getFullYear())</script> Salesboy Nigeria <i class="mdi mdi-heart text-danger"></i> by Codeicon Technologies
+        </p>
+    </div>*@

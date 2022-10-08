@@ -1,0 +1,78 @@
+﻿@model Salesboy.Models.UserAccount
+
+@{
+    ViewBag.Title = "Vendor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <center>
+                        <h3>
+                            Vendor Details
+                        </h3>
+                    </center>
+                    <img src="@Model.photo" width="100%" height="350px" />
+                    <hr />
+                </div>
+                <div class="col-md-2">
+                    <img src="@Model.photo" width="100%" height="150px" />
+
+                </div>
+                <div class="col-md-2">
+                    <img src="@Model.photo" width="100%" height="150px" />
+
+                </div>
+                <div class="col-md-2">
+                    <img src="@Model.photo" width="100%" height="150px" />
+
+                </div>
+                <div class="col-md-2">
+                    <img src="@Model.photo" width="100%" height="150px" />
+
+                </div>
+                <div class="col-md-2">
+                    <img src="@Model.photo" width="100%" height="150px" />
+                </div>
+                <div class="col-md-2">
+                    <img src="@Model.photo" width="100%" height="150px" />
+                </div>
+                <div class="col-md-12">
+                    <hr />
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Provider</th>
+                            <td>@Model.firstname @Model.lastname</td>
+                        </tr>
+                        <tr>
+                            <th>Phone</th>
+                            <td>@Model.phone</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>@Model.Email</td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td>@Model.address</td>
+                        </tr>
+                        <tr>
+                            <th>City</th>
+                            <td>@Model.city</td>
+                        </tr>
+                        <tr>
+                            <th>State</th>
+                            <td>@Model.state</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

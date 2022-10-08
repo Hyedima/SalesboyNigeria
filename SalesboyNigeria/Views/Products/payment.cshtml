@@ -1,0 +1,72 @@
+﻿@model SalesboyNigeria.Models.Payments
+@{
+    ViewBag.Title = "payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Paymnet</h2>
+<center>
+    <form>
+        <button type="button" class="btn btn-info" onClick="makePayment()">
+            <i class="fa fa-10x fa-money"></i>
+            Pay Now
+        </button>
+    </form>
+    }
+</center>
+<script>
+                     function makePayment() {
+                        FlutterwaveCheckout({
+                            public_key: "FLWPUBK_TEST-8d049f5bf0756776e6392f6cfd90b024-X",
+                            tx_ref: "@Guid.NewGuid().ToString()",
+                            amount: 4250,
+                            currency: "NGN",
+                                country: "NG",
+                            payment_options: " ",
+                            redirect_url: "@Url.Action("invoice/"+Model.id,"Vendors")", // specified redirect URL
+                               // "http://localhost:3474/Admissions/AdmissionStatus",
+                            customer: {
+                                email: "@Model.email",
+                                phone_number: "@Model.phone",
+                                name: "@Model.name",
+                                },
+                                callback: function (data) { // specified callback function
+                                    console.log(data);
+                                    /* Get from elements values */
+                                    var values =
+                                    {
+                                        id: "@Model.id-@Salesboy.setup.GenerateID.GetID()",
+                                        trnxid: data.tx_ref,
+                                        amountpaid: data.amount,
+                                        trnxid: data.transaction_id,
+                                        paid_by: data.customer.name,
+                                        pay_email: data.customer.email,
+                                        pay_phone: data.customer.phone_number,
+                                        pay_status: data.status,
+                                        ref_no: data.tx_ref,
+                                        gateway_ref: data.flw_ref,
+                                        currency: data.currency
+                                    }; //$(this).serialize();
+
+                                     $.ajax({
+                                            url: "@Url.Action("payment","Vandors")",
+                                            type: "post",
+                                            data: values ,
+                                            success: function (response) {
+                                                // You will get response from your PHP page (what you echo or print)
+                                                alert(response.responseText);
+                                            },
+                                            error: function(jqXHR, textStatus, errorThrown) {
+                                               console.log(textStatus, errorThrown);
+                                            }
+                                        });
+                            },
+                                customizations: {
+                            title: "Fees Payment",
+                                    description: "Fee Payment",
+                                    logo: "",
+                                },
+                            });
+                        }
+</script>
+<script src="https://checkout.flutterwave.com/v3.js"></script>

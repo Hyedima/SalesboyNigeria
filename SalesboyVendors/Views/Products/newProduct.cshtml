@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "newProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- vendor-registration-area -->
+        <section class="vendor-registration-area pt-90 pb-90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="vr-form-box">
+                            <h3 class="title">Add New Product</h3>
+                            <form action="#" method="post">
+                                @Html.AntiForgeryToken()
+                                <div class="form-grp">
+                                    <label for="productname">Product Name </label>
+                                    <input type="text" id="productname" name="productname" class="form-control" />
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <label for="">Description </label>
+                                            <textarea class="form-control" rows="10" id="summernote" name="description" required=""></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-grp">
+                                            <label for="">Product Type</label>
+                                            <input type="text" name="producttype" class="form-control">
+                                        </div>
+                                        <div class="form-grp">
+                                            <label for="">Model</label>
+                                            <input type="text" name="modelno" class="form-control">
+                                        </div>
+                                        <div class="form-grp">
+                                            <label for="">brand Name</label>
+                                            <input type="text" name="brandname" class="form-control">
+                                        </div>
+                                        <!--<div class="form-grp">
+                                            <label for="">other Featues</label>
+                                            <input type="text" name="otherdeatures" class="form-control">
+                                        </div>-->
+                                    </div>
+                                </div>
+                                <div class="form-grp select-grp">
+                                    <label for="shortBy">Product Category *</label>
+                                    <select id="shortBy" name="productcategory" class="form-control" aria-label="Select Category">
+                                        <option value="Accessories & Parts">Accessories & Parts</option>
+                                        <option value="Electronics">Electronics</option>
+                                        <option value="Clothings">Clothings </option>
+                                        <option value="Auto-mobile">Auto-mobile</option>
+                                        <option value="Kitchen">Kitchen</option>
+                                        <option value="Phones">Phones</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-grp">
+                                            <label for="">Price </label>
+                                            <input type="text" name="price" value="0" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-grp">
+                                            <label for="">qty</label>
+                                            <input type="text" name="qty" value="0" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-grp">
+                                            <label for="">% Discount</label>
+                                            <input type="text" name="discount" value="0" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="form-grp checkbox-grp">
+                                    <input type="checkbox" id="checkbox">
+                                    <label for="checkbox">Your personal data will be used to support your experience throughout this website</label>
+                                </div>-->
+                                <button type="submit" class="ps-btn btn-warning">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- vendor-registration-area-end -->
+    </div>
+</div>
