@@ -272,7 +272,7 @@ namespace SalesboyServiceProviders.Controllers
         }
         public ActionResult Verify(string id)
         {
-            return View(db.Vendors.Find(id));
+            return View(db.ServiceProviders.Find(id));
         }
         [ValidateAntiForgeryToken]
         [HttpPost]

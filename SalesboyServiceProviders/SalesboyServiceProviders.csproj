@@ -1094,6 +1094,7 @@
     <Content Include="Content\Home\plugins\lightGallery-master\dist\fonts\lgd641.eot" />
     <Content Include="Content\Home\plugins\lightGallery-master\dist\fonts\lgd641.ttf" />
     <Content Include="Content\Home\plugins\lightGallery-master\dist\fonts\lgd641.woff" />
+    <None Include="Properties\PublishProfiles\sp.salesboynigeria.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1130,6 +1131,7 @@
     <Content Include="Views\ServiceProviders\Index.cshtml" />
     <Content Include="Views\ServiceProviders\Register.cshtml" />
     <Content Include="Views\ServiceProviders\login.cshtml" />
+    <Content Include="Views\ServiceProviders\Verify.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

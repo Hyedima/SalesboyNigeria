@@ -1095,6 +1095,7 @@
     <Content Include="Models\SalesboyModel.edmx.diagram">
       <DependentUpon>SalesboyModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\vendors.salesboynigeria.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
