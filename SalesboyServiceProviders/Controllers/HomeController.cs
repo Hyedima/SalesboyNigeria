@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SalesboyServiceProviders.Setup;
 
 namespace SalesboyServiceProviders.Controllers
 {
     public class HomeController : Controller
     {
+        [CheckAuthentication]
         public ActionResult Index()
         {
             return View();

@@ -13,7 +13,7 @@ namespace SalesboyServiceProviders.Setup
         {
             if (filterContext.HttpContext.Request.Cookies["login"] == null)
             {
-                filterContext.Result = new RedirectResult("/Vendors/login");
+                filterContext.Result = new RedirectResult("/ServiceProviders/login");
             }
             else
             {

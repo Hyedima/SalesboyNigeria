@@ -378,19 +378,26 @@
                             <h3 class="text-center">Please make payment to access your dashboard </h3>
                             <center>
                                 <form>
-                                    <button type="button" class="btn btn-info" onClick="makePayment()">
+                                    <button type="button" class="btn btn-info" onClick="makePayment(20000)">
                                         <i class="fa fa-10x fa-money"></i>
-                                        Pay Now
+                                        Pay Now (50,000)
+                                    </button>
+                                </form>
+                                <form>
+                                    <button type="button" class="btn btn-info" onClick="makePayment(20000)">
+                                        <i class="fa fa-10x fa-money"></i>
+                                        Pay Now (20,000)
                                     </button>
                                 </form>
 
+
                             </center>
                             <script>
-                     function makePayment() {
+                     function makePayment(amount) {
                         FlutterwaveCheckout({
                             public_key: "FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X", //"FLWPUBK_TEST-8d049f5bf0756776e6392f6cfd90b024-X",
                             tx_ref: "@Guid.NewGuid().ToString()",
-                            amount: 20000,
+                            amount: amount,
                             currency: "NGN",
                                 country: "NG",
                             payment_options: " ",
