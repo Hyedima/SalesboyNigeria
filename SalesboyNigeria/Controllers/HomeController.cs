@@ -55,5 +55,11 @@ namespace SalesboyNigeria.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult search(string searchString)
+        {
+            Session["search"] = searchString;
+            return View();
+        }
     }
 }

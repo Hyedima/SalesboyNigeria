@@ -1244,6 +1244,7 @@
     <Content Include="Views\UserAccounts\ServiceProviderDashboard.cshtml" />
     <Content Include="Views\UserAccounts\BussinessDetails.cshtml" />
     <Content Include="Views\Payment\PaymentPage.cshtml" />
+    <Content Include="Views\Home\search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

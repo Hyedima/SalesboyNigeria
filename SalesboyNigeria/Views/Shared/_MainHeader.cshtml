@@ -156,7 +156,7 @@
                 <a class="ps-logo" href="@Url.Action("Index", "Home")"><img src="~/Content/Home/img/logo.png" alt="" /></a>
             </div>
             <div class="header__center">
-                <form class="ps-form--quick-search" action="#" method="get">
+                <form class="ps-form--quick-search" action="@Url.Action("search","Home")" method="get">
                     @*<div class="form-group--icon">
                             <i class="icon-chevron-down"></i>
                             <select class="form-control">
@@ -215,7 +215,7 @@
                                 <option class="level-0" value="health-beauty">Health & Beauty</option>
                                 <option class="level-1" value="equipments">Equipments</option>
                                 <option class="level-1" value="hair-care">Hair Care</option>
-                                <option class="level-1" value="perfumer">Perfumer</option>
+                                <option class="level-1" value="perfumer">Perfumer</option>f
                                 <option class="level-1" value="skin-care">Skin Care</option>
                                 <option class="level-0" value="jewelry-watches">Jewelry & Watches</option>
                                 <option class="level-1" value="gemstone-jewelry">Gemstone Jewelry</option>
@@ -232,11 +232,11 @@
                                 <option class="level-1" value="wine-cabinets">Wine Cabinets</option>
                             </select>
                         </div>*@
-                    <input class="form-control" type="text" placeholder="Search for goods or services" id="input-search" />
+                    <input class="form-control" type="text" name="searchString" placeholder="Search for goods or services" id="input-search" />
                     <button>Search</button>
                     <div class="ps-panel--search-result">
                         <div class="ps-panel__content">
-                            <div class="ps-product ps-product--wide ps-product--search-result">
+                            @*<div class="ps-product ps-product--wide ps-product--search-result">
                                 <div class="ps-product__thumbnail">
                                     <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/1.jpg" alt="" /></a>
                                 </div>
@@ -393,7 +393,7 @@
                                         <del>N62.39 </del>
                                     </p>
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
                         <div class="ps-panel__footer text-center">
                             <a href="@Url.Action("", "")">See all results</a>
