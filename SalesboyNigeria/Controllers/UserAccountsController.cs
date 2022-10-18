@@ -306,18 +306,7 @@ namespace Salesboy.Controllers
                         //{
                         //    return Redirect(ReturnUrl);
                         //}
-                        if(User.usertype == "VENDOR")
-                        {
-                            return RedirectToAction("VendorDashboard", "Useraccounts");
-                        }
-                        else if (User.usertype == "SERVICE PROVIDER")
-                        {
-                            return RedirectToAction("ServiceProviderDashboard", "Useraccounts");
-                        }
-                        else
-                        {
-                            return RedirectToAction("Index", "Home");
-                        }
+                            return RedirectToAction("myprofile", "UserAccounts");
                     }
                     else
                     {
