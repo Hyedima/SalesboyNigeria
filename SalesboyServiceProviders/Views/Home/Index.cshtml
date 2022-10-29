@@ -350,7 +350,7 @@
                             currency: "NGN",
                                 country: "NG",
                             payment_options: " ",
-                            redirect_url: "@Url.Action("VendorDashboard","UserAccounts")", // specified redirect URL
+                            redirect_url: "@Url.Action("Index","Home")", // specified redirect URL
                                // "http://localhost:3474/Admissions/AdmissionStatus",
                             customer: {
                                 email: "@user.Email",
@@ -376,7 +376,7 @@
                                     }; //$(this).serialize();
 
                                      $.ajax({
-                                            url: "@Url.Action("payment","ServiceProviders")",
+                                            url: "@Url.Action("payment", "ServiceProviders")",
                                             type: "post",
                                             data: values ,
                                             success: function (response) {

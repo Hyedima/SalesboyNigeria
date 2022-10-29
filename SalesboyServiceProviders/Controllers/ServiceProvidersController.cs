@@ -315,6 +315,34 @@ namespace SalesboyServiceProviders.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult payment(string id, decimal amountpaid, string trnxid, string paid_by, string pay_email, string pay_phone, string pay_status, string ref_no, string gateway_ref, string currency) //paid, pay_date
+        {
+            string userid = Session["userid"].ToString().ToLower();
+            var user = db.ServiceProviders.Find(userid);
+            user.paymentstatus = "PAID";
+            user.paymentdate = DateTime.Now;
+            user.duedate = DateTime.Now.AddDays(365);
+            user.amountpaid = amountpaid;
+
+            db.Payments.Add(new SalesboyServiceProviders.Models.Payment
+            {
+                id = id,
+                name = paid_by,
+                trnxid = trnxid,
+                email = pay_email,
+                phone = pay_phone,
+                status = "PAID",
+                userid = user.Id,
+                amount = amountpaid,
+                trnxdate = DateTime.Now,
+                notes = "Ref No: " + ref_no + " Gateway_ref: " + gateway_ref + " currency: " + currency,
+                gatewayref = gateway_ref,
+            });
+
+            db.SaveChanges();
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
