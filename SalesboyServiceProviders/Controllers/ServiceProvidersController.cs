@@ -343,6 +343,49 @@ namespace SalesboyServiceProviders.Controllers
             db.SaveChanges();
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
+        
+             [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult ServicePicture(HttpPostedFileBase file, string id, string name)
+        {
+            try
+            {
+                int rand = new Random().Next(1, 40000);
+                string userid = Session["userid"].ToString();
+                var user = db.ServiceProviders.FirstOrDefault(p => p.Id == userid);
+                if (file.ContentLength > 0)
+                {
+                    string extension = Path.GetExtension(file.FileName);
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string folder = Server.MapPath("~/Content/Images/services");
+
+                    //check if directory exists
+                    if (!Directory.Exists(folder))
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
+                    string _path = Path.Combine(folder, id+"-"+rand + extension);
+                    file.SaveAs(_path);
+                    string pic = "/Content/Images/services/" + id + extension;
+                    user.photo = pic;
+                }
+
+                db.SaveChanges();
+                TempData["success"] = "true";
+                TempData["message"] = "Servivices picture uploaded successfully!!";
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception err)
+            {
+                TempData["success"] = "false";
+                TempData["message"] = "Upload failed!!, please try again. " + err.Message;
+
+                string userid = Session["userid"].ToString();
+                var user = db.ServiceProviders.FirstOrDefault(p => p.Id == userid);
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
