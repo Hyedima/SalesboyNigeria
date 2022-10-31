@@ -265,9 +265,9 @@
         </div>
     </div>
     <div class="ps-search--mobile">
-        <form class="ps-form--search-mobile" action="#" method="get">
+        <form class="ps-form--search-mobile" action="@Url.Action("search","Home")" method="post">
             <div class="form-group--nest">
-                <input class="form-control" type="text" placeholder="Search something..." />
+                <input class="form-control" type="text" name="searchString" placeholder="Search for goods or services" />
                 <button><i class="icon-magnifier"></i></button>
             </div>
         </form>

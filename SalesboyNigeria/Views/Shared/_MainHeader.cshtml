@@ -156,7 +156,7 @@
                 <a class="ps-logo" href="@Url.Action("Index", "Home")"><img src="~/Content/Home/img/logo.png" alt="" /></a>
             </div>
             <div class="header__center">
-                <form class="ps-form--quick-search" action="@Url.Action("search","Home")" method="get">
+                <form class="ps-form--quick-search" action="@Url.Action("search","Home")" method="post">
                     @*<div class="form-group--icon">
                             <i class="icon-chevron-down"></i>
                             <select class="form-control">
@@ -686,10 +686,10 @@
                                 </h4>
                                 <ul class="mega-menu__list">
                                     <li>
-                                        <a href="@Url.Action("RegisterVendor","Useraccounts")">Become a Vendor</a>
+                                        <a target="_blank" href="http://vendors.salesboynigeria.com/Vendors/login">Become a Vendor</a>
                                     </li>
                                     <li>
-                                        <a href="@Url.Action("RegisterServiceProvider","Useraccounts")">Become a Service Provider</a>
+                                        <a target="_blank" href="http://sp.salesboynigeria.com/ServiceProviders/login">Become a Service Provider</a>
                                     </li>
                                 </ul>
                             </div>
@@ -700,10 +700,7 @@
                                 </h4>
                                 <ul class="mega-menu__list">
                                     <li>
-                                        <a href="@Url.Action("","")">Market Place</a>
-                                    </li>
-                                    <li>
-                                        <a href="@Url.Action("","")">About</a>
+                                        <a href="@Url.Action("About","Home")">About</a>
                                     </li>
                                     <li>
                                         <a href="@Url.Action("","")">FAQ</a>
@@ -717,7 +714,6 @@
                                     <li>
                                         <a href="@Url.Action("","")">Blog</a>
                                     </li>
-
                                 </ul>
                             </div>
                             @*

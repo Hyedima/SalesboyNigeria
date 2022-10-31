@@ -313,7 +313,7 @@ namespace Salesboy.Controllers
             //Remove items from cart
             foreach(var item in db.Carts.Where(p=>p.useremail == user.Email).ToList())
             {
-                //ad cart items 
+                //cart items 
                 db.Sales.Add(new Sale
                 {
                     id = GenerateID.GetID(),
@@ -336,6 +336,7 @@ namespace Salesboy.Controllers
             db.SaveChanges();
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
+        [CheckAuthentication]
         public JsonResult AddCart(string email, string productname, string productid, string qty, string ip, string price)
         {
             string id = GenerateID.GetID();

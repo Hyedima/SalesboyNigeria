@@ -315,6 +315,77 @@ namespace SalesboyServiceProviders.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult payment(string id, decimal amountpaid, string trnxid, string paid_by, string pay_email, string pay_phone, string pay_status, string ref_no, string gateway_ref, string currency) //paid, pay_date
+        {
+            string userid = Session["userid"].ToString().ToLower();
+            var user = db.ServiceProviders.Find(userid);
+            user.paymentstatus = "PAID";
+            user.paymentdate = DateTime.Now;
+            user.duedate = DateTime.Now.AddDays(365);
+            user.amountpaid = amountpaid;
+
+            db.Payments.Add(new SalesboyServiceProviders.Models.Payment
+            {
+                id = id,
+                name = paid_by,
+                trnxid = trnxid,
+                email = pay_email,
+                phone = pay_phone,
+                status = "PAID",
+                userid = user.Id,
+                amount = amountpaid,
+                trnxdate = DateTime.Now,
+                notes = "Ref No: " + ref_no + " Gateway_ref: " + gateway_ref + " currency: " + currency,
+                gatewayref = gateway_ref,
+            });
+
+            db.SaveChanges();
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
+        
+             [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult ServicePicture(HttpPostedFileBase file, string id, string name)
+        {
+            try
+            {
+                int rand = new Random().Next(1, 40000);
+                string userid = Session["userid"].ToString();
+                var user = db.ServiceProviders.FirstOrDefault(p => p.Id == userid);
+                if (file.ContentLength > 0)
+                {
+                    string extension = Path.GetExtension(file.FileName);
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string folder = Server.MapPath("~/Content/Images/services");
+
+                    //check if directory exists
+                    if (!Directory.Exists(folder))
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
+                    string _path = Path.Combine(folder, id+"-"+rand + extension);
+                    file.SaveAs(_path);
+                    string pic = "/Content/Images/services/" + id + extension;
+                    user.photo = pic;
+                }
+
+                db.SaveChanges();
+                TempData["success"] = "true";
+                TempData["message"] = "Servivices picture uploaded successfully!!";
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception err)
+            {
+                TempData["success"] = "false";
+                TempData["message"] = "Upload failed!!, please try again. " + err.Message;
+
+                string userid = Session["userid"].ToString();
+                var user = db.ServiceProviders.FirstOrDefault(p => p.Id == userid);
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
