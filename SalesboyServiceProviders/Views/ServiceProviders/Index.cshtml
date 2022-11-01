@@ -3,11 +3,88 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int sn = 0;
 }
 
-<h2>Index</h2>
+<div class="container">
+    <div class="row my-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
 
-<p>
+                    <h2 class="card-title">Index</h2>
+
+                    <p class="card-title-desc">
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+                    @*<h4 class="card-title">Table Edits</h4>
+                        <p class="card-title-desc">Table Edits is a lightweight jQuery plugin for making table rows editable.</p>*@
+
+                    <div class="table-responsive">
+                        <table class="table table-editable table-nowrap align-middle table-edits">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th>
+                                        SN
+                                    </th>
+                                    <th>
+                                        Firstname
+                                    </th>
+                                    <th>
+                                        Lastname
+                                    </th>
+                                    <th>
+                                        Phone
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    sn++;
+
+                                    <tr data-id="1">
+                                        <td>
+                                            @sn
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.firstname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.lastname)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.phone)
+                                        </td>
+
+                                        <td style="width: 100px">
+                                            <a class="btn btn-outline-secondary btn-sm edit" href="@Url.Action("Edit","ServiceProviders", new {id = item.Id})" title="Edit">
+                                                <i class="fas fa-pencil"></i>
+                                            </a> <a class="btn btn-outline-secondary btn-sm edit" href="@Url.Action("Details","ServiceProviders", new {id = item.Id})" title="Details">
+                                                <i class="fas fa-info-circle"></i>
+                                            </a> <a class="btn btn-outline-secondary btn-sm edit" href="@Url.Action("Delete","ServiceProviders", new {id = item.Id})" title="Delete">
+                                                <i class="fas fa-trash-o"></i>
+                                            </a>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end col -->
+    </div>
+</div>
+@*<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -43,4 +120,4 @@
     </tr>
 }
 
-</table>
+</table>*@
