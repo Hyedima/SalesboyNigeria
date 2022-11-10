@@ -33,8 +33,8 @@
                                     <p class="text-body mt-1 mb-1">
                                         @user.usertype
                                     </p>
-                                    <a href="#" class="badge bg-success" data-toggle="modal" data-target="#myModal">Change Picture</a>
-                                    <a href="" class="badge bg-danger">Edit Profile</a>
+                                    <a href="#" class="btn btn-lg btn-outline-warning" data-toggle="modal" data-target="#myModal">Change Picture</a>
+                                    <a href="" class="btn btn-lg btn-outline-warning">Edit Profile</a>
                                 </div>
 
                                 <div class="row mt-4 border border-start-0 border-end-0 p-3">
@@ -200,7 +200,6 @@
                                     <div class="col-8">
                                         <p class="mb-2">Total Revenue</p>
                                         <h4 class="mb-0">N0.00</h4>
-                                        <h4 class="mb-0">N0.00</h4>
                                     </div>
                                     <div class="col-4">
                                         <div class="text-end">
@@ -226,19 +225,23 @@
                     <div class="card-body">
                         <h4 class="card-title mb-4">Services Rendered</h4>
                         <div class="table-responsive">
-                            <a href="#" data-toggle="modal" data-target="#svc" class="btn yellow shadow btn-warning">Post photos of services rendered</a>
+                            <a href="#" data-toggle="modal" data-target="#svc" class="btn btn-lg btn-warning p-3 m-3 text-white">Upload Pictures</a>
                             <div class="row">
-                                @{
-                                    DirectoryInfo d = new DirectoryInfo(Server.MapPath("~/Content/Images/services"));
-                                    FileInfo[] Files = d.GetFiles();
-                                }
+                                    @{
+                                        DirectoryInfo d = new DirectoryInfo(Server.MapPath("~/Content/Images/services"));
+                                        FileInfo[] Files = d.GetFiles();
+                                    }
 
-                                @foreach (FileInfo file in Files)
-                                {
-                                    <div class="col-md-4">
-                                        <img class="img img-thumbnail" src="~/Content/Images/services/@file.Name" height="300" width="300" />
-                                    </div>
-                                }
+                                    @foreach (FileInfo file in Files)
+                                    {
+                                        <div class="col-md-4">
+                                            <div class="thumbnail">
+                                                <a href="/w3images/fjords.jpg" target="_blank">
+                                                    <img class="img img-fluid w-75 p-3" src="~/Content/Images/services/@file.Name" width="100" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    }
                             </div>
                         </div>
                         @*<div class="mt-3">
@@ -351,23 +354,132 @@
                             <h1 class="form-text text-center">
                                 Payment / Subscription
                             </h1>
-                            <hr />
-                            <h3 class="text-center">Please make payment to access your dashboard </h3>
-                            <center>
-                                <form>
-                                    <button type="button" class="btn btn-info" onClick="makePayment(20000)">
-                                        <i class="fa fa-10x fa-money"></i>
-                                        Pay Now (20,000)
-                                    </button>
-                                </form>
-                                <form>
-                                    <button type="button" class="btn btn-info" onClick="makePayment(10000)">
-                                        <i class="fa fa-10x fa-money"></i>
-                                        Pay Now (10,000)
-                                    </button>
-                                </form>
+                            <h4 class="text-center card-header text-center text-muted">Please make payment to access your dashboard </h4>
+                            <div class="row m-3">
+                                <div class="col-sm-6 mb-3 mt-3">
+                                    <div class="card text-center">
+                                        <div class="card-header display-4"><span>&#8358;</span>20,000</div>
+                                        <div class="card-body mt-5">
+                                            @*<h5 class="card-title">Special title treatment</h5>*@
+                                            <p class="card-text">
+                                                Gets you to upload <br />
+                                                share and sell for <br/>
+                                                a whole year with <br />
+                                                ease at your convenience!!!<br />
+                                            </p>
+                                        </div>
+                                        <div class="m-5">
+                                            <a href="#" class="btn btn-lg btn-outline-warning P-5" onclick="makePayment(20000)">Pay Now</a>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            </center>
+                                <div class="col-sm-6 mb-3 mt-3">
+                                    <div class="card text-center">
+                                        <div class="card-header display-4"><span>&#8358;</span>10,000</div>
+                                        <div class="card-body mt-5">
+                                            @*<h5 class="card-title">Special title treatment</h5>*@
+                                            <p class="card-text">
+                                                Stand a chance to regular <br />
+                                                adverts of you goods and services <br />
+                                                while you sell at your comfort !!! <br/>
+                                                +Salesboy full package and lots more <br />
+                                            </p>
+                                        </div>
+                                        <div class="m-5">
+                                            <a href="#" class="btn btn-lg btn-outline-warning P-5" onclick="makePayment(10000)">Pay Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                @*<center>
+                <form>
+                    <button type="button" class="btn btn-info" onClick="makePayment(20000)">
+                        <i class="fa fa-10x fa-money"></i>
+                        Pay Now (20,000)
+                    </button>
+                </form>
+                <form>
+                    <button type="button" class="btn btn-info" onClick="makePayment(10000)">
+                        <i class="fa fa-10x fa-money"></i>
+                        Pay Now (10,000)
+                    </button>
+                </form>
+
+            </center>*@
+                                <script>
+                     function makePayment(amount) {
+                        FlutterwaveCheckout({
+                            public_key: "FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X", //"FLWPUBK_TEST-8d049f5bf0756776e6392f6cfd90b024-X",
+                            tx_ref: "@Guid.NewGuid().ToString()",
+                            amount: amount,
+                            currency: "NGN",
+                                country: "NG",
+                            payment_options: " ",
+                            redirect_url: "@Url.Action("Index","Home")", // specified redirect URL
+                               // "http://localhost:3474/Admissions/AdmissionStatus",
+                            customer: {
+                                email: "@user.Email",
+                                phone_number: "@user.phone",
+                                name: "@user.firstname @user.lastname",
+                                },
+                                callback: function (data) { // specified callback function
+                                    console.log(data);
+                                    /* Get from elements  values */
+                                    var values =
+                                    {
+                                        id: "@user.Id-@SalesboyServiceProviders.Setup.GenerateID.GetID()",
+                                        trnxid: data.tx_ref,
+                                        amountpaid: data.amount,
+                                        trnxid: data.transaction_id,
+                                        paid_by: data.customer.name,
+                                        pay_email: data.customer.email,
+                                        pay_phone: data.customer.phone_number,
+                                        pay_status: data.status,
+                                        ref_no: data.tx_ref,
+                                        gateway_ref: data.flw_ref,
+                                        currency: data.currency
+                                    }; //$(this).serialize();
+
+                                     $.ajax({
+                                            url: "@Url.Action("payment", "ServiceProviders")",
+                                            type: "post",
+                                            data: values ,
+                                            success: function (response) {
+                                                // You will get response from your PHP page (what you echo or print)
+                                                //alert(response.responseText);
+                                                console.log(response);
+                                            },
+                                            error: function(jqXHR, textStatus, errorThrown) {
+                                               console.log(textStatus, errorThrown);
+                                            }
+                                        });
+                            },
+                                customizations: {
+                            title: "Salesboy Nigeria Payment",
+                                    description: "Fee Payment",
+                                    logo: "https://salesboynigeria.com/Content/Images/logo.png",
+                                },
+                            });
+                        }
+                                </script>
+                                <script src="https://checkout.flutterwave.com/v3.js"></script>
+                            </div>
+                            @*<center>
+            <form>
+                <button type="button" class="btn btn-info" onClick="makePayment(20000)">
+                    <i class="fa fa-10x fa-money"></i>
+                    Pay Now (20,000)
+                </button>
+            </form>
+            <form>
+                <button type="button" class="btn btn-info" onClick="makePayment(10000)">
+                    <i class="fa fa-10x fa-money"></i>
+                    Pay Now (10,000)
+                </button>
+            </form>
+
+        </center>*@
                             <script>
                      function makePayment(amount) {
                         FlutterwaveCheckout({
@@ -429,7 +541,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     }
     <hr />
 </div>

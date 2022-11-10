@@ -1061,7 +1061,7 @@
     <Content Include="Content\Images\salesboyy.jpg" />
     <Content Include="Content\Images\salesboyy.png" />
     <Content Include="Content\Images\salesboyyy.jpg" />
-    <Content Include="favicon.ico" />
+    <Content Include="Views\favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
