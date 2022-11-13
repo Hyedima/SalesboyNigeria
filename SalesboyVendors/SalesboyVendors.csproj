@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SalesboyVendors</RootNamespace>
     <AssemblyName>SalesboyVendors</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -1148,6 +1148,10 @@
     <Content Include="Views\Products\productPicture.cshtml" />
     <Content Include="Views\Products\products.cshtml" />
     <Content Include="Views\Products\ShoppingCart.cshtml" />
+    <Content Include="Views\Home\DisputeResolutionPolicy.cshtml" />
+    <Content Include="Views\Home\ListServiceProviders.cshtml" />
+    <Content Include="Views\Home\ServiceProviders.cshtml" />
+    <Content Include="Views\Home\TermsandConditions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

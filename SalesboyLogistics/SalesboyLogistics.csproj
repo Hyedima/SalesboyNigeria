@@ -1131,6 +1131,10 @@
     <Content Include="Views\Shared\_MobileMenu.cshtml" />
     <Content Include="Views\Shared\_Modals.cshtml" />
     <Content Include="Views\Shippers\login.cshtml" />
+    <Content Include="Views\Home\DisputeResolutionPolicy.cshtml" />
+    <Content Include="Views\Home\ListServiceProviders.cshtml" />
+    <Content Include="Views\Home\ServiceProviders.cshtml" />
+    <Content Include="Views\Home\TermsandConditions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
