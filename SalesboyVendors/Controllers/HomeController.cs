@@ -28,5 +28,21 @@ namespace SalesboyVendors.Controllers
 
             return View();
         }
+        public ActionResult Privacy()
+        {
+            return View();
+        }
+        public ActionResult TermsandConditions()
+        {
+            return View();
+        }
+        public ActionResult ListServiceProviders()
+        {
+            return View();
+        }
+        public ActionResult DisputeResolutionPolicy()
+        {
+            return View();
+        }
     }
 }
