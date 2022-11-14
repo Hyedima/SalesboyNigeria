@@ -45,13 +45,5 @@ namespace SalesboyNigeria.Controllers
         {
             return View();
         }
-<<<<<<< HEAD
-        public ActionResult locations()
-        {
-            return View();
-        }
-=======
->>>>>>> f288585cd6230cf4030c510c49bfda255c2228c2
-
     }
 }
