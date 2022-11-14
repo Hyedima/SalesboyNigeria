@@ -33,7 +33,10 @@ namespace SalesboyNigeria.Controllers
         {
             return View();
         }
-
+        public ActionResult locations()
+        {
+            return View();
+        }
 
     }
 }
