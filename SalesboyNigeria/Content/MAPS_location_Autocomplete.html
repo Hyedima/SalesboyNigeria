@@ -9,7 +9,6 @@
     <input type="hidden" id="city2" name="city2" />
     <input type="hidden" id="cityLat" name="cityLat" />
     <input type="hidden" id="cityLng" name="cityLng" />
-
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA581LnUYcMLqdesa9Jz60Y5HLUIxhN82A&libraries=places"></script>
     <script>
         function initialize() {
@@ -17,6 +16,7 @@
             var autocomplete = new google.maps.places.Autocomplete(input);
             google.maps.event.addListener(autocomplete, 'place_changed', function () {
                 var place = autocomplete.getPlace();
+                console.log(place);
                 document.getElementById('city2').value = place.name;
                 document.getElementById('cityLat').value = place.geometry.location.lat();
                 document.getElementById('cityLng').value = place.geometry.location.lng();
