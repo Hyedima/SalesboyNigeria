@@ -45,6 +45,5 @@ namespace SalesboyNigeria.Controllers
         {
             return View();
         }
-
     }
 }

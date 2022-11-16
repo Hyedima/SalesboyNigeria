@@ -1121,6 +1121,9 @@
     <Content Include="Content\Images\salesboyy.jpg" />
     <Content Include="Content\Images\salesboyy.png" />
     <Content Include="Content\Images\salesboyyy.jpg" />
+    <Content Include="Content\MapLocations.html" />
+    <Content Include="Content\MAPS_location.html" />
+    <Content Include="Content\MAPS_location_Autocomplete.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1244,6 +1247,7 @@
     <Content Include="Views\Home\TermsandConditions.cshtml" />
     <Content Include="Views\Home\ListServiceProviders.cshtml" />
     <Content Include="Views\Home\DisputeResolutionPolicy.cshtml" />
+    <Content Include="Views\Home\locations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
