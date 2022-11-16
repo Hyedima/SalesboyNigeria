@@ -30,6 +30,10 @@
         <AssociationConnector Association="salesboyModel.FK_sale_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="salesboyModel.FK_ShippingPayments_Shippers" ManuallyRouted="false" />
         <AssociationConnector Association="salesboyModel.FK_Orders_UserAccount" />
+        <EntityTypeShape EntityType="salesboyModel.EasyOrder" Width="1.5" PointX="11.375" PointY="10" />
+        <EntityTypeShape EntityType="salesboyModel.EasyOrdersItem_temp" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="salesboyModel.EasyOrdersItem" Width="1.5" PointX="13.625" PointY="10.125" />
+        <AssociationConnector Association="salesboyModel.FK_EasyOrdersItems_EasyOrders" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

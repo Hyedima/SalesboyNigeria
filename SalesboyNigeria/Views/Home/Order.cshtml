@@ -1,0 +1,186 @@
+﻿
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    SalesboyNigeria.Models.salesboyEntities db = new SalesboyNigeria.Models.salesboyEntities();
+    string userid = Session["userid"] as String;
+    int sn = 0;
+    decimal totalAmount = 0;
+    var user = db.UserAccounts.Find(userid);
+}
+<div class="row">
+
+    <div class="col-md-12">
+        <hr />
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" action="">
+                    <input type="hidden" value="@Session["email"]" />
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <form action="">
+                                    <div class="col-md-8">
+                                        <label>Item</label>
+                                        <input type="text" required="" class="form-control" name="item" placeholder="Enter name of item you want to order." />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Amount(N)</label>
+                                        <input type="number" required="" class="form-control" name="amount" />
+                                    </div>
+                                    <div class="col-md-1">
+                                        <br />
+                                        <br />
+                                        <button class="btn btn-success btn-lg" title="Add item to list">
+                                            +
+                                        </button>
+                                    </div>
+                                </form>
+                                <div class="col-md-12">
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                          
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        Order Item
+                                    </th>
+                                    <th>Amount(N)</th>
+                                </tr>
+                                @foreach (var item in db.EasyOrdersItem_temp.Where(p => p.insertuser == userid).ToList())
+                                {
+                                    sn++;
+                                    totalAmount += Convert.ToDecimal(item.amount);
+                                    <tr>
+                                        <td>@sn</td>
+                                        <td>@item.item</td>
+                                        <td>
+                                            @item.amount
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <th></th>
+                                    <th>TOTAL(N)</th>
+                                    <th>
+                                        @totalAmount
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <hr />
+                            <form action="">
+                                <input id="searchTextField" class="form-control" type="text" size="50" placeholder="Enter a delivery location" autocomplete="on" runat="server" />
+                                <input type="hidden" id="city2" name="city2" />
+                                <input type="hidden" id="cityLat" name="cityLat" />
+                                <input type="hidden" id="cityLng" name="cityLng" />
+                                <textarea class="form-control" rows="4" placeholder="Order Description"></textarea>
+
+                            </form>
+                            <button class="btn btn-primary" onclick="makePayment()">Order Now</button>
+                            <hr />
+                        </div>
+                    </div>
+                </form>
+                
+                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA581LnUYcMLqdesa9Jz60Y5HLUIxhN82A&libraries=places"></script>
+                <script>
+                    function initialize() {
+                        var input = document.getElementById('searchTextField');
+                        var autocomplete = new google.maps.places.Autocomplete(input);
+                        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                            var place = autocomplete.getPlace();
+                            console.log(place);
+                            document.getElementById('city2').value = place.name;
+                            document.getElementById('cityLat').value = place.geometry.location.lat();
+                            document.getElementById('cityLng').value = place.geometry.location.lng();
+                        });
+                    }
+                    google.maps.event.addDomListener(window, 'load', initialize);
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-12">
+        <hr />
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <script>
+                     function makePayment(){
+                        FlutterwaveCheckout({
+                            public_key:
+                            //"FLWPUBK_TEST-8d049f5bf0756776e6392f6cfd90b024-X",
+                            "FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X",
+                            tx_ref: "@Guid.NewGuid().ToString()",
+                            amount: @totalAmount,
+                            currency: "NGN",
+                                country: "NG",
+                            //payment_options: " ",
+                            //redirect_url: "@Url.Action("myprofile","Products")", // specified redirect URL
+                               // "http://localhost:3474/Admissions/AdmissionStatus",
+                            customer: {
+                                email: "@user.Email",
+                                phone_number: "@user.phone",
+                                name: "@user.firstname @user.lastname",
+                                },
+                                callback: function (data) { // specified callback function
+                                    console.log(data);
+                                    /* Get from elements values */
+                                    var values =
+                                    {
+                                        id: "@user.Id-@SalesboyNigeria.setup.GenerateID.GetID()",
+                                        trnxid: data.tx_ref,
+                                        amountpaid: data.amount,
+                                        trnxid: data.transaction_id,
+                                        paid_by: data.customer.name,
+                                        pay_email: data.customer.email,
+                                        pay_phone: data.customer.phone_number,
+                                        pay_status: data.status,
+                                        ref_no: data.tx_ref,
+                                        gateway_ref: data.flw_ref,
+                                        currency: data.currency
+                                    }; //$(this).serialize();
+
+                                     $.ajax({
+                                            url: "@Url.Action("payment","UserAccounts")",
+                                            type: "post",
+                                            data: values ,
+                                            success: function (response) {
+                                                // You will get response from your PHP page (what you echo or print)
+                                                //alert(response.responseText);
+                                                console.log(response);
+                                            },
+                                            error: function(jqXHR, textStatus, errorThrown) {
+                                               console.log(textStatus, errorThrown);
+                                            }
+                                        });
+                            },
+                                customizations: {
+                                    title: "Salesboy Nigeria Payment",
+                                    description: "Fee Payment",
+                                    logo: "https://salesboynigeria.com/Content/Images/logo.png",
+                                },
+                            });
+                        }
+        </script>
+        <script src="https://checkout.flutterwave.com/v3.js"></script>
+    </div>
+</div>

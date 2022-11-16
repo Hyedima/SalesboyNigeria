@@ -173,6 +173,15 @@
     <Compile Include="Models\categorysub.cs">
       <DependentUpon>SalesboyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EasyOrder.cs">
+      <DependentUpon>SalesboyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EasyOrdersItem.cs">
+      <DependentUpon>SalesboyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EasyOrdersItem_temp.cs">
+      <DependentUpon>SalesboyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LGA.cs">
       <DependentUpon>SalesboyModel.tt</DependentUpon>
     </Compile>
@@ -1248,6 +1257,7 @@
     <Content Include="Views\Home\ListServiceProviders.cshtml" />
     <Content Include="Views\Home\DisputeResolutionPolicy.cshtml" />
     <Content Include="Views\Home\locations.cshtml" />
+    <Content Include="Views\Home\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
