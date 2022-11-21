@@ -84,50 +84,47 @@
             <div class="ps-carousel--nav owl-slider row" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="3" data-owl-item-md="4" data-owl-item-lg="5" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
                 @foreach (var item in db.Products.ToList())
                 {
-                <div class="ps-container mt-5 mb-5 ps-product ps-product--inner col-12">
-                    <div class="ps-product__thumbnail">
-                        <a href="@Url.Action("","")"><img class="img-fluid img-responsive" src="@item.photo1" alt=""></a>
-                        <div class="ps-product__badge">-16%</div>
-                        <ul class="ps-product__actions">
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')" title="add cart"><i class="icon-bag2"></i></a></li>
-                            <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="ps-product__container">
-                        <p class="ps-product__price sale">
-                            N @item.price <del></del><small>18% off</small>
-                            ||
-                            <button class="btn btn-warning yellow" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')" title="">add cart<i class="icon-bag2"></i></button>
-                        </p>
-                        <div class="ps-product__content">
-                            <a class="ps-product__title" href="@Url.Action("","")">@item.productname</a>
-                            <div class="ps-product__rating">
-                                <select class="dropdown dropdown-item col-lg-2 ps-rating" data-read-only="true">
-                                    <option value="1">1</option>
-                                    <option value="1">2</option>
-                                    <option value="1">3</option>
-                                    <option value="1">4</option>
-                                    <option value="2">5</option>
-                                </select>
-                                <span>01</span>
-                            </div>
-                            <div class="col-lg-4 mt-2 mb-2 ps-product__progress-bar ps-progress" data-value="82">
-                                <div class="ps-progress__value ms-0"><span></span></div>
-                                <p>
-                                    Sold:39
-                                </p>
-                            </div>
-                            <div class="">
-                                <p class="ps-product__price sale">
-                                    N @item.price @*<del></del><small>18% off</small>*@
-                                </p>
-                                <button class="btn btn-warning btn-lg" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')" title="">add cart<i class="icon-bag2 p-2"></i></button>
+                    <div class="ps-product ps-product--inner">
+                        <div class="ps-product__thumbnail">
+                            <a href="@Url.Action("", "")"><img src="@item.photo1" alt=""></a>
+                            <div class="ps-product__badge">-16%</div>
+                            <ul class="ps-product__actions">
+                                <li><a href="#" data-toggle="tooltip" data-placement="top" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')" title="add cart"><i class="icon-bag2"></i></a></li>
+                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="ps-product__container">
+                            <p class="ps-product__price sale">
+                                N @item.price <del>$670.00 </del><small>18% off</small>
+                                <button class="btn btn-warning yellow" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')" title="">add cart<i class="icon-bag2"></i></button>
+                            </p>
+                            <div class="ps-product__content">
+                                <a class="ps-product__title" href="@Url.Action("", "")">@item.productname</a>
+                                <div class="ps-product__rating">
+                                    <select class="dropdown dropdown-item col-lg-2 ps-rating" data-read-only="true">
+                                        <option value="1">1</option>
+                                        <option value="1">2</option>
+                                        <option value="1">3</option>
+                                        <option value="1">4</option>
+                                        <option value="2">5</option>
+                                    </select>
+                                    <span>01</span>
+                                </div>
+                                <div class="ps-product__progress-bar ps-progress" data-value="82">
+                                    <div class="ps-progress__value"><span></span></div>
+                                    <p>Sold:39</p>
+                                </div>
+                                <div class="">
+                                    <p class="ps-product__price sale">
+                                        N @item.price @*<del></del><small>18% off</small>*@
+                                    </p>
+                                    <button class="btn btn-warning btn-lg" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')" title="">add cart<i class="icon-bag2 p-2"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                     @*<div class="container col-4 mt-5 mb-5 ps-product ps-product--inner">
                 <div class="ps-product__thumbnail">
                     <a href="@Url.Action("","")"><img class="img-fluid img-responsive col-lg-6" src="@item.photo1" alt=""></a>
@@ -167,39 +164,30 @@
                 </div>
             </div>*@
                 }
-                
-              <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-xs-12 p-xl-2 p-lg-2 p-md-2 p-sm-2 p-xs-2 ps-product ps-product--inner">
+
+                <div class= "ps-product ps-product--inner">
                     <div class="ps-product__thumbnail card">
                         <a href="@Url.Action("","")"><img class="img-fluid img-responsive" src="~/Content/Home/img/products/home/2.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <span class="ps-product__badge">-16%</span>
-                            </h4>
-                            <ul class="ps-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                            <div class="card-text">
-                                <a class="ps-product__title" href="@Url.Action("","")"><span class="badge badge-secondary display-4 p-2">Aroma Rice Cooker</span></a>
-                                <div class="ps-product__rating">
-                                    <select class="dropdown dropdown-item col-lg-2 ps-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select>
-                                    <span>01</span>
-                                </div>
-                                <div class="col-lg-4 mt-2 mb-2 ps-product__progress-bar ps-progress" data-value="10">
-                                    <div class="ps-progress__value"><span></span></div>
-                                    <p>Sold:20</p>
+                           <div class="">
+                            <div class="ps-product__container">
+                                <p class="ps-product__price">$101.99<small>18% off</small></p>
+                                <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Aroma Rice Cooker</a>
+                                    <div class="ps-product__rating">
+                                        <select class="ps-rating" data-read-only="true">
+                                            <option value="1">1</option>
+                                            <option value="1">2</option>
+                                            <option value="1">3</option>
+                                            <option value="1">4</option>
+                                            <option value="2">5</option>
+                                        </select><span>01</span>
+                                    </div>
+                                    <div class="ps-product__progress-bar ps-progress" data-value="10">
+                                        <div class="ps-progress__value"><span></span></div>
+                                        <p>Sold:20</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-footer">
+                        <div class="">
                             <p class="ps-product__price sale">
                                 N42.00 <del>N60.00 </del><small>18% off</small>
                             </p>
@@ -250,10 +238,10 @@
                     </div>
                 </div>*@
 
-              <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-xs-12 p-xl-2 p-lg-2 p-md-2 p-sm-2 p-xs-2 ps-product ps-product--inner">
-                    <div class="ps-product__thumbnail card">
+                <div class= "ps-product ps-product--inner">
+                    <div class="ps-product__thumbnail">
                         <a href="@Url.Action("","")"><img class="img-fluid img-responsive" src="~/Content/Home/img/products/home/3.jpg" alt=""></a>
-                        <div class="card-body">
+                                                <div class="">
                             <h4 class="card-title">
                                 <span class="ps-product__badge">-25%</span>
                             </h4>
@@ -281,7 +269,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer">
+                        <div class="">
                             <p class="ps-product__price sale">
                                 N42.00 <del>N60.00 </del><small>18% off</small>
                             </p>
@@ -322,10 +310,10 @@
             </div>
         </div>*@
 
-              <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-xs-12 p-xl-2 p-lg-2 p-md-2 p-sm-2 p-xs-2 ps-product ps-product--inner">
-                    <div class="ps-product__thumbnail card">
+                <div class= "ps-product ps-product--inner">
+                    <div class="ps-product__thumbnail">
                         <a href="@Url.Action("","")"><img class="img-fluid img-responsive" src="~/Content/Home/img/products/home/4.jpg" alt=""></a>
-                        <div class="card-body">
+                                                <div class="">
                             <h4 class="card-title">
                                 <span class="ps-product__badge">-25%</span>
                             </h4>
@@ -353,7 +341,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer">
+                        <div class="card">
                             <p class="ps-product__price sale">
                                 N42.00 <del>N60.00 </del><small>18% off</small>
                             </p>
@@ -393,10 +381,10 @@
             </div>
         </div>*@
 
-              <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-xs-12 p-xl-2 p-lg-2 p-md-2 p-sm-2 p-xs-2 ps-product ps-product--inner">
-                    <div class="ps-product__thumbnail card">
+                <div class= "ps-product ps-product--inner">
+                    <div class="ps-product__thumbnail">
                         <a href="@Url.Action("","")"><img class="img-fluid img-responsive" src="~/Content/Home/img/products/home/5.jpg" alt=""></a>
-                        <div class="card-body">
+                                                <div class="">
                             <h4 class="card-title">
                                 <span class="ps-product__badge">-25%</span>
                             </h4>
@@ -424,7 +412,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer">
+                        <div class="card">
                             <p class="ps-product__price sale">
                                 N42.00 <del>N60.00 </del><small>18% off</small>
                             </p>
@@ -464,10 +452,10 @@
             </div>
         </div>*@
 
-              <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-xs-12 p-xl-2 p-lg-2 p-md-2 p-sm-2 p-xs-2 ps-product ps-product--inner">
-                    <div class="ps-product__thumbnail card">
+                <div class= "ps-product ps-product--inner">
+                    <div class="ps-product__thumbnail">
                         <a href="@Url.Action("","")"><img class="img-fluid img-responsive" src="~/Content/Home/img/products/home/6.jpg" alt=""></a>
-                        <div class="card-body">
+                                                <div class="">
                             <h4 class="card-title">
                                 <span class="ps-product__badge">-25%</span>
                             </h4>
@@ -495,7 +483,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer">
+                        <div class="">
                             <p class="ps-product__price sale">
                                 N42.00 <del>N60.00 </del><small>18% off</small>
                             </p>
@@ -535,10 +523,10 @@
             </div>
         </div>*@
 
-              <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-xs-12 p-xl-2 p-lg-2 p-md-2 p-sm-2 p-xs-2 ps-product ps-product--inner">
-                    <div class="ps-product__thumbnail card">
+                <div class= "ps-product ps-product--inner">
+                    <div class="ps-product__thumbnail">
                         <a href="@Url.Action("","")"><img class="img-fluid img-responsive" src="~/Content/Home/img/products/home/7.jpg" alt=""></a>
-                        <div class="card-body">
+                                                <div class="">
                             <h4 class="card-title">
                                 <span class="ps-product__badge">-25%</span>
                             </h4>
@@ -566,7 +554,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer">
+                        <div class="">
                             <p class="ps-product__price sale">
                                 N42.00 <del>N60.00 </del><small>18% off</small>
                             </p>
