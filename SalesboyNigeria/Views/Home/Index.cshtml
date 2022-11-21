@@ -84,9 +84,9 @@
             <div class="ps-carousel--nav owl-slider row" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="3" data-owl-item-md="4" data-owl-item-lg="5" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
                 @foreach (var item in db.Products.ToList())
                 {
-                <div class="container mt-5 mb-5 ps-product ps-product--inner">
+                <div class="ps-container mt-5 mb-5 ps-product ps-product--inner col-12">
                     <div class="ps-product__thumbnail">
-                        <a href="@Url.Action("","")"><img class="img-fluid img-responsive col-lg-6" src="@item.photo1" alt=""></a>
+                        <a href="@Url.Action("","")"><img class="img-fluid img-responsive" src="@item.photo1" alt=""></a>
                         <div class="ps-product__badge">-16%</div>
                         <ul class="ps-product__actions">
                             <li><a href="#" data-toggle="tooltip" data-placement="top" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')" title="add cart"><i class="icon-bag2"></i></a></li>
