@@ -1221,7 +1221,7 @@
     <Content Include="Views\UserAccounts\RegisterVendor.cshtml" />
     <Content Include="Views\UserAccounts\ResetPassword.cshtml" />
     <Content Include="Views\UserAccounts\Verify.cshtml" />
-    <Content Include="Views\UserAccounts\VerifyEmail.cshtml" />
+    <Content Include="Views\Products\VerifyEmail.cshtml" />
     <Content Include="Views\Vendors\Create.cshtml" />
     <Content Include="Views\Vendors\Delete.cshtml" />
     <Content Include="Views\Vendors\Details.cshtml" />
