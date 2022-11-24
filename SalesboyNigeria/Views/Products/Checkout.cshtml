@@ -105,13 +105,13 @@
                                             @foreach (var item in db.Carts.Where(p => p.useremail == email).ToList())
                                             {
                                                 int amt = Convert.ToInt32(item.Product.price * item.qty);
-                                                total += amt; //adds to the total sum
-                                                <a href="#">
-                                                    <strong>@item.Product.productname</strong><span>@item.qty</span><small>N @amt</small>
-                                                    <strong class="text-danger">X</strong>
-                                                </a>
+                                                total += amt; //adds to the total sum 
+                                            <div>
+                                                <strong>@item.Product.productname</strong><span>@item.qty</span><small>N @amt</small>
+                                                    <span class="text-danger btn" onclick="deleteItem(@(item.id))">X</span>
+                                            </div>
                                             }
-                                        </figure>
+                                            </figure>
                                         <figure>
                                             <figcaption><strong>Subtotal</strong><strong>N @total</strong></figcaption>
                                         </figure>
@@ -209,6 +209,13 @@
                                 },
                             });
                         }
+        </script>
+        <script type="text/javascript">
+            function deleteItem(id) {
+                var ipt = $("[name=removefromcart][value=" + id.toString() + "]");
+                ipt.attr('checked', true);
+            }
+
         </script>
         <script src="https://checkout.flutterwave.com/v3.js"></script>
     </div>
