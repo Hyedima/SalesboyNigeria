@@ -63,7 +63,6 @@ namespace Salesboy.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(userAccount);
         }
 
