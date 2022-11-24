@@ -80,11 +80,11 @@
             </div><a href="@Url.Action("ProductList","Products")">View all</a>
         </div>
 
-        <div class="container ps-section__content">
-            <div class="ps-carousel--nav owl-slider row" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="3" data-owl-item-md="4" data-owl-item-lg="5" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
+        <div class="ps-section__content ps-container">
+            <div class="ps-carousel--nav owl-slider" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="3" data-owl-item-md="4" data-owl-item-lg="5" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
                 @foreach (var item in db.Products.ToList())
                 {
-                    <div class="ps-product ps-product--inner">
+                      <div class="ps-product ps-product--inner">
                         <div class="ps-product__thumbnail">
                             <a href="@Url.Action("", "")"><img src="@item.photo1" alt=""></a>
                             <div class="ps-product__badge">-16%</div>
@@ -123,516 +123,196 @@
                                     <button class="btn btn-warning btn-lg" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')" title="">add cart<i class="icon-bag2 p-2"></i></button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    @*<div class="container col-4 mt-5 mb-5 ps-product ps-product--inner">
-                <div class="ps-product__thumbnail">
-                    <a href="@Url.Action("","")"><img class="img-fluid img-responsive col-lg-6" src="@item.photo1" alt=""></a>
-                    <div class="ps-product__badge">-16%</div>
-                    <ul class="ps-product__actions">
-                        <li><a href="#" data-toggle="tooltip" data-placement="top" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')" title="add cart"><i class="icon-bag2"></i></a></li>
-                        <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                    </ul>
-                </div>
-                <div class="ps-product__container">
-                    <p class="ps-product__price sale">
-                        N @item.price <del></del><small>18% off</small>
-                        ||
-                        <button class="btn btn-warning yellow" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')" title="">add cart<i class="icon-bag2"></i></button>
-                    </p>
-                    <div class="ps-product__content">
-                        <a class="ps-product__title" href="@Url.Action("","")">@item.productname</a>
-                        <div class="ps-product__rating">
-                            <select class="dropdown dropdown-item col-lg-2 ps-rating" data-read-only="true">
-                                <option value="1">1</option>
-                                <option value="1">2</option>
-                                <option value="1">3</option>
-                                <option value="1">4</option>
-                                <option value="2">5</option>
-                            </select>
-                            <span>01</span>
-                        </div>
-                        <div class="col-lg-4 mt-2 mb-2 ps-product__progress-bar ps-progress" data-value="82">
-                            <div class="ps-progress__value ms-0"><span></span></div>
-                            <p>
-                                Sold:39
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
-                }
-
-                <div class= "ps-product ps-product--inner">
-                    <div class="ps-product__thumbnail card">
-                        <a href="@Url.Action("","")"><img class="img-fluid img-responsive" src="~/Content/Home/img/products/home/2.jpg" alt=""></a>
-                           <div class="">
-                            <div class="ps-product__container">
-                                <p class="ps-product__price">$101.99<small>18% off</small></p>
-                                <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Aroma Rice Cooker</a>
-                                    <div class="ps-product__rating">
-                                        <select class="ps-rating" data-read-only="true">
-                                            <option value="1">1</option>
-                                            <option value="1">2</option>
-                                            <option value="1">3</option>
-                                            <option value="1">4</option>
-                                            <option value="2">5</option>
-                                        </select><span>01</span>
+                          </div>
+                      </div>
+                 }
+                                <div class="ps-product ps-product--inner">
+                                    <div class="ps-product__thumbnail">
+                                        <a href="product-default.html"><img src="img/products/home/3.jpg" alt=""></a>
+                                        <div class="ps-product__badge">-25%</div>
+                                        <ul class="ps-product__actions">
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                            <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                        </ul>
                                     </div>
-                                    <div class="ps-product__progress-bar ps-progress" data-value="10">
-                                        <div class="ps-progress__value"><span></span></div>
-                                        <p>Sold:20</p>
+                                    <div class="ps-product__container">
+                                        <p class="ps-product__price sale">$42.00 <del>$60.00 </del><small>18% off</small></p>
+                                        <div class="ps-product__content">
+                                            <a class="ps-product__title" href="product-default.html">Simple Plastice Chair In White Color</a>
+                                            <div class="ps-product__rating">
+                                                <select class="ps-rating" data-read-only="true">
+                                                    <option value="1">1</option>
+                                                    <option value="1">2</option>
+                                                    <option value="1">3</option>
+                                                    <option value="1">4</option>
+                                                    <option value="2">5</option>
+                                                </select><span>02</span>
+                                            </div>
+                                            <div class="ps-product__progress-bar ps-progress" data-value="36">
+                                                <div class="ps-progress__value"><span></span></div>
+                                                <p>Sold:62</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        <div class="">
-                            <p class="ps-product__price sale">
-                                N42.00 <del>N60.00 </del><small>18% off</small>
-                            </p>
-                            <button class="btn btn-warning btn-lg" onclick="Addcart" title="">add cart<i class="icon-bag2 p-2"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                @*<div class="container col-4 ps-product ps-product--inner">
-        <<<<<<< HEAD
-                    <div class="ps-product__thumbnail">
-                        <a href="@Url.Action("","")"><img class="img-fluid img-responsive col-lg-6" src="~/Content/Home/img/products/home/2.jpg" alt=""></a>
-                        <ul class="ps-product__actions">
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                            <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="ps-product__container">
-                        <p class="ps-product__price">N101.99<small>18% off</small></p>
-                        <div class="ps-product__content">
-                            <a class="ps-product__title" href="@Url.Action("","")">Aroma Rice Cooker</a>
-                            <div class="ps-product__rating">
-                                <select class="ps-rating" data-read-only="true">
-                                    <option value="1">1</option>
-                                    <option value="1">2</option>
-                                    <option value="1">3</option>
-                                    <option value="1">4</option>
-                                    <option value="2">5</option>
-                                </select><span>01</span>
-        =======
-                            <div class="ps-product__thumbnail">
-                                <a href="@Url.Action("","")"><img class="img-fluid img-responsive col-lg-6" src="~/Content/Home/img/products/home/2.jpg" alt=""></a>
-                                <ul class="ps-product__actions">
-                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                    <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                                </ul>
-        >>>>>>> fc1a468585d407740a15683d8f70b14ca22caa41
-                            </div>
-                            <div class="col-lg-4 ps-product__progress-bar ps-progress" data-value="10">
-                                <div class="ps-progress__value"><span></span></div>
-                                <p>Sold:20</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
-
-                <div class= "ps-product ps-product--inner">
-                    <div class="ps-product__thumbnail">
-                        <a href="@Url.Action("","")"><img class="img-fluid img-responsive" src="~/Content/Home/img/products/home/3.jpg" alt=""></a>
-                                                <div class="">
-                            <h4 class="card-title">
-                                <span class="ps-product__badge">-25%</span>
-                            </h4>
-                            <ul class="ps-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                            <div class="card-text">
-                                <a class="ps-product__title" href="@Url.Action("","")"><span class="badge badge-secondary display-4 p-2">Simple Plastic Chair</span></a>
-                                <div class="ps-product__rating">
-                                    <select class="dropdown dropdown-item col-lg-2 ps-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select>
-                                    <span>01</span>
-                                </div>
-                                <div class="col-lg-4 ps-product__progress-bar ps-progress" data-value="36">
-                                    <div class="ps-progress__value"><span></span></div>
-                                    <p>Sold:62</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <p class="ps-product__price sale">
-                                N42.00 <del>N60.00 </del><small>18% off</small>
-                            </p>
-                            <button class="btn btn-warning btn-lg" onclick="Addcart" title="">add cart<i class="icon-bag2 p-2"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                @*<div class="container col-4 ps-product ps-product--inner">
-            <div class="ps-product__thumbnail">
-                <a href="@Url.Action("","")"><img class="img-fluid img-responsive col-lg-6" src="~/Content/Home/img/products/home/3.jpg" alt=""></a>
-                <div class="ps-product__badge">-25%</div>
-                <ul class="ps-product__actions">
-                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                    <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                </ul>
-            </div>
-            <div class="container col-4 ps-product__container">
-                <p class="ps-product__price sale">N42.00 <del>N60.00 </del><small>18% off</small></p>
-                <div class="ps-product__content">
-                    <a class="ps-product__title" href="@Url.Action("","")">Simple Plastic Chair</a>
-                    <div class="ps-product__rating">
-                        <select class="ps-rating" data-read-only="true">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="2">5</option>
-                        </select><span>02</span>
-                    </div>
-                    <div class="col-lg-4 ps-product__progress-bar ps-progress" data-value="36">
-                        <div class="ps-progress__value"><span></span></div>
-                        <p>Sold:62</p>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
-                <div class= "ps-product ps-product--inner">
-                    <div class="ps-product__thumbnail">
-                        <a href="@Url.Action("","")"><img class="img-fluid img-responsive" src="~/Content/Home/img/products/home/4.jpg" alt=""></a>
-                                                <div class="">
-                            <h4 class="card-title">
-                                <span class="ps-product__badge">-25%</span>
-                            </h4>
-                            <ul class="ps-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                            <div class="card-text">
-                                <a class="ps-product__title" href="@Url.Action("","")"><span class="badge badge-secondary display-4 p-2">Korea Fabric Chair</span></a>
-                                <div class="ps-product__rating">
-                                    <select class="dropdown dropdown-item col-lg-2 ps-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select>
-                                    <span>01</span>
-                                </div>
-                                <div class="col-lg-4 ps-product__progress-bar ps-progress" data-value="36">
-                                    <div class="ps-progress__value"><span></span></div>
-                                    <p>Sold:62</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <p class="ps-product__price sale">
-                                N42.00 <del>N60.00 </del><small>18% off</small>
-                            </p>
-                            <button class="btn btn-warning btn-lg" onclick="Addcart" title="">add cart<i class="icon-bag2 p-2"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                @*<div class="container col-4 ps-product ps-product--inner">
-            <div class="ps-product__thumbnail">
-                <a href="@Url.Action("","")"><img class="img-fluid img-responsive col-lg-6" src="~/Content/Home/img/products/home/4.jpg" alt=""></a>
-                <ul class="ps-product__actions">
-                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                    <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                </ul>
-            </div>
-            <div class="ps-product__container">
-                <p class="ps-product__price">N320.00<small>18% off</small></p>
-                <div class="ps-product__content">
-                    <a class="ps-product__title" href="@Url.Action("","")">Korea Fabric Chair In Brown Colorr</a>
-                    <div class="ps-product__rating">
-                        <select class="ps-rating" data-read-only="true">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="2">5</option>
-                        </select><span>01</span>
-                    </div>
-                    <div class="col-lg-4 ps-product__progress-bar ps-progress" data-value="19">
-                        <div class="ps-progress__value"><span></span></div>
-                        <p>Sold:54</p>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
-                <div class= "ps-product ps-product--inner">
-                    <div class="ps-product__thumbnail">
-                        <a href="@Url.Action("","")"><img class="img-fluid img-responsive" src="~/Content/Home/img/products/home/5.jpg" alt=""></a>
-                                                <div class="">
-                            <h4 class="card-title">
-                                <span class="ps-product__badge">-25%</span>
-                            </h4>
-                            <ul class="ps-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                            <div class="card-text">
-                                <a class="ps-product__title" href="@Url.Action("","")"><span class="badge badge-secondary display-4 p-2">Set 14-Piece Knife</span></a>
-                                <div class="ps-product__rating">
-                                    <select class="dropdown dropdown-item col-lg-2 ps-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select>
-                                    <span>01</span>
-                                </div>
-                                <div class="col-lg-4 ps-product__progress-bar ps-progress" data-value="36">
-                                    <div class="ps-progress__value"><span></span></div>
-                                    <p>Sold:62</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <p class="ps-product__price sale">
-                                N42.00 <del>N60.00 </del><small>18% off</small>
-                            </p>
-                            <button class="btn btn-warning btn-lg" onclick="Addcart" title="">add cart<i class="icon-bag2 p-2"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                @*<div class="container col-4 ps-product ps-product--inner">
-            <div class="ps-product__thumbnail">
-                <a href="@Url.Action("","")"><img class="img-fluid img-responsive col-lg-6" src="~/Content/Home/img/products/home/5.jpg" alt=""></a>
-                <ul class="ps-product__actions">
-                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                    <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                </ul>
-            </div>
-            <div class="ps-product__container">
-                <p class="ps-product__price">N85.00<small>18% off</small></p>
-                <div class="ps-product__content">
-                    <a class="ps-product__title" href="@Url.Action("","")">Set 14-Piece Knife From KichiKit</a>
-                    <div class="ps-product__rating">
-                        <select class="ps-rating" data-read-only="true">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="2">5</option>
-                        </select><span>01</span>
-                    </div>
-                    <div class="col-lg-4 ps-product__progress-bar ps-progress" data-value="4">
-                        <div class="ps-progress__value"><span></span></div>
-                        <p>Sold:1</p>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
-                <div class= "ps-product ps-product--inner">
-                    <div class="ps-product__thumbnail">
-                        <a href="@Url.Action("","")"><img class="img-fluid img-responsive" src="~/Content/Home/img/products/home/6.jpg" alt=""></a>
-                                                <div class="">
-                            <h4 class="card-title">
-                                <span class="ps-product__badge">-25%</span>
-                            </h4>
-                            <ul class="ps-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                            <div class="card-text">
-                                <a class="ps-product__title" href="@Url.Action("","")"><span class="badge badge-secondary display-4 p-2">Magic Bullet NutriBullet <br />Pro 900 Series Blender</span></a>
-                                <div class="ps-product__rating">
-                                    <select class="dropdown dropdown-item col-lg-2 ps-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select>
-                                    <span>01</span>
-                                </div>
-                                <div class="col-lg-4 ps-product__progress-bar ps-progress" data-value="36">
-                                    <div class="ps-progress__value"><span></span></div>
-                                    <p>Sold:62</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <p class="ps-product__price sale">
-                                N42.00 <del>N60.00 </del><small>18% off</small>
-                            </p>
-                            <button class="btn btn-warning btn-lg" onclick="Addcart" title="">add cart<i class="icon-bag2 p-2"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                @*<div class="container col-4 ps-product ps-product--inner">
-            <div class="ps-product__thumbnail">
-                <a href="@Url.Action("","")"><img class="img-fluid img-responsive col-lg-6" src="~/Content/Home/img/products/home/6.jpg" alt=""></a>
-                <ul class="ps-product__actions">
-                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                    <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                </ul>
-            </div>
-            <div class="ps-product__container">
-                <p class="ps-product__price">N92.00<small>18% off</small></p>
-                <div class="ps-product__content">
-                    <a class="ps-product__title" href="@Url.Action("","")">Magic Bullet NutriBullet Pro 900 Series Blender</a>
-                    <div class="ps-product__rating">
-                        <select class="ps-rating" data-read-only="true">
-                            <option value="1">1</option>
-                            <option value="1">2</option>
-                            <option value="1">3</option>
-                            <option value="1">4</option>
-                            <option value="2">5</option>
-                        </select><span>01</span>
-                    </div>
-                    <div class="col-lg-4 ps-product__progress-bar ps-progress" data-value="68">
-                        <div class="ps-progress__value"><span></span></div>
-                        <p>Sold:49</p>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
-                <div class= "ps-product ps-product--inner">
-                    <div class="ps-product__thumbnail">
-                        <a href="@Url.Action("","")"><img class="img-fluid img-responsive" src="~/Content/Home/img/products/home/7.jpg" alt=""></a>
-                                                <div class="">
-                            <h4 class="card-title">
-                                <span class="ps-product__badge">-25%</span>
-                            </h4>
-                            <ul class="ps-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                            <div class="card-text">
-                                <a class="ps-product__title" href="@Url.Action("","")"><span class="badge badge-secondary display-4 p-2">Letter Printed<br />Cushion Cover Cotton</span></a>
-                                <div class="ps-product__rating">
-                                    <select class="dropdown dropdown-item col-lg-2 ps-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select>
-                                    <span>01</span>
-                                </div>
-                                <div class="col-lg-4 ps-product__progress-bar ps-progress" data-value="36">
-                                    <div class="ps-progress__value"><span></span></div>
-                                    <p>Sold:62</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <p class="ps-product__price sale">
-                                N42.00 <del>N60.00 </del><small>18% off</small>
-                            </p>
-                            <button class="btn btn-warning btn-lg" onclick="Addcart" title="">add cart<i class="icon-bag2 p-2"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                @*<div class="container col-4 ps-product ps-product--inner">
-                            <div class="ps-product__thumbnail">
-                                <a href="@Url.Action("","")"><img class="img-fluid img-responsive col-lg-6" src="~/Content/Home/img/products/home/7.jpg" alt=""></a>
-                                <div class="ps-product__badge">-46%</div>
-                                <ul class="ps-product__actions">
-                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                    <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="ps-product__container">
-                                <p class="ps-product__price sale">N42.00 <del>N60.00 </del><small>18% off</small></p>
-                                <div class="ps-product__content">
-                                    <a class="ps-product__title" href="@Url.Action("","")">Letter Printed Cushion Cover Cotton</a>
-                                    <div class="ps-product__rating">
-                                        <select class="ps-rating" data-read-only="true">
-                                            <option value="1">1</option>
-                                            <option value="1">2</option>
-                                            <option value="1">3</option>
-                                            <option value="1">4</option>
-                                            <option value="2">5</option>
-                                        </select><span>02</span>
+                                <div class="ps-product ps-product--inner">
+                                    <div class="ps-product__thumbnail">
+                                        <a href="product-default.html"><img src="img/products/home/4.jpg" alt=""></a>
+                                        <ul class="ps-product__actions">
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                            <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                        </ul>
                                     </div>
-                                    <div class="col-lg-4 ps-product__progress-bar ps-progress" data-value="22">
-                                        <div class="ps-progress__value"><span></span></div>
-                                        <p>Sold:70</p>
+                                    <div class="ps-product__container">
+                                        <p class="ps-product__price">$320.00<small>18% off</small></p>
+                                        <div class="ps-product__content">
+                                            <a class="ps-product__title" href="product-default.html">Korea Fabric Chair In Brown Colorr</a>
+                                            <div class="ps-product__rating">
+                                                <select class="ps-rating" data-read-only="true">
+                                                    <option value="1">1</option>
+                                                    <option value="1">2</option>
+                                                    <option value="1">3</option>
+                                                    <option value="1">4</option>
+                                                    <option value="2">5</option>
+                                                </select><span>01</span>
+                                            </div>
+                                            <div class="ps-product__progress-bar ps-progress" data-value="19">
+                                                <div class="ps-progress__value"><span></span></div>
+                                                <p>Sold:54</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-product ps-product--inner">
+                                    <div class="ps-product__thumbnail">
+                                        <a href="product-default.html"><img src="img/products/home/5.jpg" alt=""></a>
+                                        <ul class="ps-product__actions">
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                            <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ps-product__container">
+                                        <p class="ps-product__price">$85.00<small>18% off</small></p>
+                                        <div class="ps-product__content">
+                                            <a class="ps-product__title" href="product-default.html">Set 14-Piece Knife From KichiKit</a>
+                                            <div class="ps-product__rating">
+                                                <select class="ps-rating" data-read-only="true">
+                                                    <option value="1">1</option>
+                                                    <option value="1">2</option>
+                                                    <option value="1">3</option>
+                                                    <option value="1">4</option>
+                                                    <option value="2">5</option>
+                                                </select><span>01</span>
+                                            </div>
+                                            <div class="ps-product__progress-bar ps-progress" data-value="4">
+                                                <div class="ps-progress__value"><span></span></div>
+                                                <p>Sold:1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-product ps-product--inner">
+                                    <div class="ps-product__thumbnail">
+                                        <a href="product-default.html"><img src="img/products/home/6.jpg" alt=""></a>
+                                        <ul class="ps-product__actions">
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                            <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ps-product__container">
+                                        <p class="ps-product__price">$92.00<small>18% off</small></p>
+                                        <div class="ps-product__content">
+                                            <a class="ps-product__title" href="product-default.html">Magic Bullet NutriBullet Pro 900 Series Blender</a>
+                                            <div class="ps-product__rating">
+                                                <select class="ps-rating" data-read-only="true">
+                                                    <option value="1">1</option>
+                                                    <option value="1">2</option>
+                                                    <option value="1">3</option>
+                                                    <option value="1">4</option>
+                                                    <option value="2">5</option>
+                                                </select><span>01</span>
+                                            </div>
+                                            <div class="ps-product__progress-bar ps-progress" data-value="68">
+                                                <div class="ps-progress__value"><span></span></div>
+                                                <p>Sold:49</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-product ps-product--inner">
+                                    <div class="ps-product__thumbnail">
+                                        <a href="product-default.html"><img src="img/products/home/7.jpg" alt=""></a>
+                                        <div class="ps-product__badge">-46%</div>
+                                        <ul class="ps-product__actions">
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                            <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ps-product__container">
+                                        <p class="ps-product__price sale">$42.00 <del>$60.00 </del><small>18% off</small></p>
+                                        <div class="ps-product__content">
+                                            <a class="ps-product__title" href="product-default.html">Letter Printed Cushion Cover Cotton</a>
+                                            <div class="ps-product__rating">
+                                                <select class="ps-rating" data-read-only="true">
+                                                    <option value="1">1</option>
+                                                    <option value="1">2</option>
+                                                    <option value="1">3</option>
+                                                    <option value="1">4</option>
+                                                    <option value="2">5</option>
+                                                </select><span>02</span>
+                                            </div>
+                                            <div class="ps-product__progress-bar ps-progress" data-value="22">
+                                                <div class="ps-progress__value"><span></span></div>
+                                                <p>Sold:70</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ps-product ps-product--inner">
+                                    <div class="ps-product__thumbnail">
+                                        <a href="product-default.html"><img src="img/products/home/7.jpg" alt=""></a>
+                                        <div class="ps-product__badge">-46%</div>
+                                        <ul class="ps-product__actions">
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                            <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ps-product__container">
+                                        <p class="ps-product__price sale">$42.00 <del>$60.00 </del><small>18% off</small></p>
+                                        <div class="ps-product__content">
+                                            <a class="ps-product__title" href="product-default.html">Letter Printed Cushion Cover Cotton</a>
+                                            <div class="ps-product__rating">
+                                                <select class="ps-rating" data-read-only="true">
+                                                    <option value="1">1</option>
+                                                    <option value="1">2</option>
+                                                    <option value="1">3</option>
+                                                    <option value="1">4</option>
+                                                    <option value="2">5</option>
+                                                </select><span>02</span>
+                                            </div>
+                                            <div class="ps-product__progress-bar ps-progress" data-value="87">
+                                                <div class="ps-progress__value"><span></span></div>
+                                                <p>Sold:95</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-        <<<<<<< HEAD
-        =======
                         </div>
-                        <div class="container col-4 ps-product ps-product--inner">
-                            <div class="ps-product__thumbnail">
-                                <a href="@Url.Action("","")"><img class="img-fluid img-responsive col-lg-6" src="~/Content/Home/img/products/home/7.jpg" alt=""></a>
-                                <div class="ps-product__badge">-46%</div>
-                                <ul class="ps-product__actions">
-                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                    <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="ps-product__container">
-                                <p class="ps-product__price sale">N42.00 <del>N60.00 </del><small>18% off</small></p>
-                                <div class="ps-product__content">
-                                    <a class="ps-product__title" href="@Url.Action("","")">Letter Printed Cushion Cover Cotton</a>
-                                    <div class="ps-product__rating">
-                                        <select class="ps-rating" data-read-only="true">
-                                            <option value="1">1</option>
-                                            <option value="1">2</option>
-                                            <option value="1">3</option>
-                                            <option value="1">4</option>
-                                            <option value="2">5</option>
-                                        </select>
-                                        <span>02</span>
-                                    </div>
-                                    <div class="col-lg-4 ps-product__progress-bar ps-progress" data-value="87">
-                                        <div class="ps-progress__value"><span></span></div>
-                                        <p>Sold:95</p>
-                                    </div>
-                                </div>
-                            </div>
-        >>>>>>> fc1a468585d407740a15683d8f70b14ca22caa41
-                        </div>*@
-            </div>
         </div>
     </div>
-</div>
 <div class="ps-home-ads">
     <div class="container ps-container">
         <div class="row">
@@ -1395,7 +1075,7 @@
                     </div>
                 }
 
-                @*<div class="ps-product">
+                <div class="ps-product">
                     <div class="ps-product__thumbnail">
                         <a href="@Url.Action("","")"><img src="~/Content/Home/img/products/home/1.jpg" alt="" /></a>
                         <div class="ps-product__badge">-16%</div>
@@ -1647,7 +1327,7 @@
                             <p class="ps-product__price sale">N42.00 <del>N60.00 </del></p>
                         </div>
                     </div>
-                </div>*@
+                </div>
             </div>
         </div>
     </div>
