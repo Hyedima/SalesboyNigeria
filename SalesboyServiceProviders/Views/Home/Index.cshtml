@@ -235,10 +235,13 @@
                                     @foreach (FileInfo file in Files)
                                     {
                                         <div class="col-md-4">
-                                            <div class="thumbnail">
-                                                <a href="/w3images/fjords.jpg" target="_blank">
-                                                    <img class="img img-fluid w-75 p-3" src="~/Content/Images/services/@file.Name" width="100" />
-                                                </a>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <a href="#" target="_blank">
+                                                        <img class="img img-fluid w-75 p-3" src="~/Content/Images/services/@file.Name" width="100" />
+                                                    </a>
+                                                </div>
+                                                
                                             </div>
                                         </div>
                                     }

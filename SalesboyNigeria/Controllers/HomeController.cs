@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PayStack.Net;
 using SalesboyNigeria.setup;
 
 namespace SalesboyNigeria.Controllers
@@ -43,6 +44,27 @@ namespace SalesboyNigeria.Controllers
         }
         public ActionResult DisputeResolutionPolicy()
         {
+            return View();
+        }
+        [CheckAuthentication]
+        public ActionResult Order()
+        {
+            return View();
+        }
+        [CheckAuthentication]
+        [HttpPost]
+        public ActionResult Order(string item, string amount, string userid)
+        {
+            db.EasyOrdersItem_temp.Add(new Models.EasyOrdersItem_temp
+            {
+                id = Guid.NewGuid().ToString(),
+                item = item,
+                amount = amount,
+                insertuser = Session["userid"].ToString(),
+                insertdate = DateTime.Now,
+                status = "PENDING"
+            });
+            db.SaveChanges();
             return View();
         }
     }
