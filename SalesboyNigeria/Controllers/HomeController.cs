@@ -67,5 +67,9 @@ namespace SalesboyNigeria.Controllers
             db.SaveChanges();
             return View();
         }
+        public ActionResult findStores()
+        {
+            return View();
+        }
     }
 }

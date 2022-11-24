@@ -120,7 +120,102 @@
                                 @user.address
                             </h6>
                         </div>
+                        <div class="mt-3">
+                            <p class="font-size-12 text-muted mb-1">Office Address</p>
 
+                            @if (string.IsNullOrEmpty(user.longi) || string.IsNullOrEmpty(user.lat))
+                            {
+                                <center>
+                                    <button type="button" onclick="getLocation()" class="btn btn-lg btn-primary">
+                                        Update Location
+                                    </button>
+                                    @*<h1 id="demo" onclick="getLocation()">Testing </h1>*@
+                                    <script>
+                                //var x = document.getElementById("demo");
+                                function getLocation() {
+                                    if (navigator.geolocation) {
+                                        navigator.geolocation.getCurrentPosition(showPosition);
+                                    } else {
+                                        //x.innerHTML = "Geolocation is not supported by this browser.";
+                                        alert("Geolocation is not supported by this browser.");
+                                    }
+                                }
+
+                                function showPosition(position) {
+                                    //x.innerHTML = "Latitude: " + position.coords.latitude +  "<br>Longitude: " + position.coords.longitude;
+                                     var values =
+                                    {
+                                        id: "@user.Id",
+                                        longi: position.coords.longitude,
+                                        lat: position.coords.latitude
+                                    };
+
+                                        $.ajax({
+                                            url: "@Url.Action("updatelocation", "Vendors")",
+                                            type: "post",
+                                            data: values,
+                                            success: function (response) {
+                                                // You will get response from your PHP page (what you echo or print)
+                                                //alert(response.responseText);
+                                                console.log(response);
+                                                window.location.replace("@Url.Action("index", "Home")");
+                                            },
+                                            error: function(jqXHR, textStatus, errorThrown) {
+                                                console.log(textStatus, errorThrown);
+                                            }
+                                        });
+                                }
+                                    </script>
+                                </center>
+                            }
+                            else
+                            {
+                                <h6>
+                                    Longitude:  @user.longi <br />
+                                    Latitude:   @user.lat
+                                </h6>
+                            }
+
+                            
+                            @*<script>
+            //var x = document.getElementById("demo");
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                //x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+                console.log("Latitude: " + position.coords.latitude +  "<br>Longitude: " + position.coords.longitude);
+
+                    var values =
+                    {
+                        id: "@user.Id",
+                        longi: position.coords.longitude,
+                        lat: position.coords.latitude
+                    };
+
+                        $.ajax({
+                            url: "@Url.Action("updatelocation", "Vendors")",
+                            type: "post",
+                            data: values,
+                            success: function (response) {
+                                // You will get response from your PHP page (what you echo or print)
+                                //alert(response.responseText);
+                                console.log(response);
+                                window.location.replace("@Url.Action("index", "Home")");
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                console.log(textStatus, errorThrown);
+                            }
+                        });
+        }
+
+        </script>*@
+                        </div>
                     </div>
                 </div>
 

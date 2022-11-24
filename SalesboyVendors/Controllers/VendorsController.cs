@@ -313,6 +313,19 @@ namespace SalesboyVendors.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+        public ActionResult updatelocation(string id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult updatelocation(string id, string lat, string longi)
+        {
+            var user = db.Vendors.FirstOrDefault(p => p.Id == id);
+            user.lat = lat;
+            user.longi = longi;
+            db.SaveChanges();
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
 
         protected override void Dispose(bool disposing)
         {
