@@ -371,12 +371,12 @@ namespace Salesboy.Controllers
         //    db.Carts.Remove(db.Carts.FirstOrDefault(c => c.id == id));
         //    return Json("Success", JsonRequestBehavior.AllowGet);
         //}
-        public ActionResult deleteCart(string id)
-        {
-            db.Carts.Remove(db.Carts.FirstOrDefault(c => c.id == id));
-            db.SaveChanges();
-            return View("Checkout");
-        }
+        //public ActionResult deleteCart(string id)
+        //{
+        //    db.Carts.Remove(db.Carts.FirstOrDefault(c => c.id == id));
+        //    db.SaveChanges();
+        //    return View("Checkout");
+        //}
         public ActionResult ShoppingCart()
         {
             return View();
@@ -388,6 +388,12 @@ namespace Salesboy.Controllers
         public ActionResult Search(string text)
         {
             return View(db.Products.Where(p=>p.productname.Contains(text)).ToList());
+        }
+        public JsonResult deletecart(string id)
+        {
+            db.Carts.Remove(db.Carts.Find(id));
+            db.SaveChanges();
+            return Json("Succes", JsonRequestBehavior.AllowGet);
         }
         protected override void Dispose(bool disposing)
         {

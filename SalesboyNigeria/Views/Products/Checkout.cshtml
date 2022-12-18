@@ -106,10 +106,12 @@
                                             {
                                                 int amt = Convert.ToInt32(item.Product.price * item.qty);
                                                 total += amt; //adds to the total sum 
-                                            <div>
-                                                <strong>@item.Product.productname</strong><span>@item.qty</span><small>N @amt</small>
-                                                    <span class="text-danger btn" onclick="deleteItem(@(item.id))">X</span>
-                                            </div>
+                                                <div>
+                                                    <strong>@item.Product.productname</strong>
+                                                    <span>@item.qty</span>
+                                                    <small>N @amt</small>
+                                                    <span class="text-danger btn" onclick="deleteItem('@item.id')">X</span>
+                                                </div>
                                             }
                                             </figure>
                                         <figure>
@@ -212,8 +214,23 @@
         </script>
         <script type="text/javascript">
             function deleteItem(id) {
-                var ipt = $("[name=removefromcart][value=" + id.toString() + "]");
-                ipt.attr('checked', true);
+                var values = {
+                    id: id
+                };
+
+                $.ajax({
+                    url: "@Url.Action("deletecart","products")",
+                    type: "post",
+                    data: values ,
+                    success: function (response) {
+                        //alert(response.responseText);
+                        console.log(response);
+                        window.location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    }
+                });
             }
 
         </script>

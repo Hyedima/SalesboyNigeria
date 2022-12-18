@@ -330,9 +330,18 @@ namespace Salesboy.Controllers
         }
         public ActionResult Logout()
         {
+            HttpCookie loginCookie = new HttpCookie("login");
+            loginCookie.Values["userid"] = null;
+            loginCookie.Values["email"] = null;
+            loginCookie.Values["usertype"] = null;
+            loginCookie.Path = Request.ApplicationPath;
+            //Set the Expiry date.
+            loginCookie.Expires = DateTime.Now.AddDays(-1);
+            //Add the Cookie to Browser.
+            Response.Cookies.Add(loginCookie);
 
             Session.Abandon();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login");
         }
         public ActionResult Verify(string id)
         {
