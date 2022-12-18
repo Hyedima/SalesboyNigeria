@@ -15,7 +15,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SalesboyVendors</RootNamespace>
     <AssemblyName>SalesboyVendors</AssemblyName>
+<<<<<<< HEAD
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+=======
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+>>>>>>> 92bb9bd1b9f1a93ad19456360d23f007b8965f52
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
