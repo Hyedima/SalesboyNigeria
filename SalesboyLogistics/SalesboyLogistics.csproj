@@ -1075,6 +1075,7 @@
       <DependentUpon>SalesboyModel.edmx</DependentUpon>
       <LastGenOutput>SalesboyModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Salaboy DB.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Home\fonts\Linearicons\Linearicons\Font\Linearicons.ttf" />
