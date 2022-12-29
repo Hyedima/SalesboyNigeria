@@ -1,0 +1,1770 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="salesboyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="userid" Type="varchar" MaxLength="200" />
+          <Property Name="useremail" Type="nvarchar" MaxLength="200" />
+          <Property Name="userip" Type="nvarchar" MaxLength="200" />
+          <Property Name="usermacaddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="productid" Type="varchar" MaxLength="200" />
+          <Property Name="qty" Type="int" />
+          <Property Name="size" Type="nvarchar" MaxLength="200" />
+          <Property Name="discount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="insertdate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="cat" Type="varchar" MaxLength="200" />
+          <Property Name="name" Type="varchar" MaxLength="200" />
+          <Property Name="description" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="categorysub">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="cat" Type="varchar" MaxLength="200" />
+          <Property Name="name" Type="varchar" MaxLength="200" />
+          <Property Name="description" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="EasyOrders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="200" />
+          <Property Name="address" Type="varchar" MaxLength="200" />
+          <Property Name="loc_long" Type="varchar" MaxLength="200" />
+          <Property Name="loc_lat" Type="varchar" MaxLength="200" />
+          <Property Name="location" Type="varchar" MaxLength="200" />
+          <Property Name="insertdate" Type="datetime" />
+          <Property Name="insertuser" Type="varchar" MaxLength="200" />
+          <Property Name="status" Type="varchar" MaxLength="200" />
+          <Property Name="notes" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="EasyOrdersItem_temp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="orderid" Type="varchar" MaxLength="200" />
+          <Property Name="item" Type="varchar" MaxLength="200" />
+          <Property Name="amount" Type="varchar" MaxLength="200" />
+          <Property Name="description" Type="varchar" MaxLength="200" />
+          <Property Name="insertdate" Type="datetime" />
+          <Property Name="insertuser" Type="varchar" MaxLength="200" />
+          <Property Name="status" Type="varchar" MaxLength="200" />
+          <Property Name="notes" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="EasyOrdersItems">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="orderid" Type="varchar" MaxLength="200" />
+          <Property Name="item" Type="varchar" MaxLength="200" />
+          <Property Name="amount" Type="varchar" MaxLength="200" />
+          <Property Name="description" Type="varchar" MaxLength="200" />
+          <Property Name="insertdate" Type="datetime" />
+          <Property Name="insertuser" Type="varchar" MaxLength="200" />
+          <Property Name="status" Type="varchar" MaxLength="200" />
+          <Property Name="notes" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="LGAs">
+          <Key>
+            <PropertyRef Name="lgaid" />
+          </Key>
+          <Property Name="lga_name" Type="varchar" MaxLength="100" />
+          <Property Name="lgaid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="stateid" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="batchid" Type="varchar" MaxLength="200" />
+          <Property Name="useremail" Type="varchar" MaxLength="200" />
+          <Property Name="paymentid" Type="varchar" MaxLength="200" />
+          <Property Name="orderdate" Type="datetime" />
+          <Property Name="shipmentdate" Type="datetime" />
+          <Property Name="IsShipping" Type="varchar" MaxLength="200" />
+          <Property Name="shipperid" Type="varchar" MaxLength="200" />
+          <Property Name="frieght" Type="varchar" MaxLength="200" />
+          <Property Name="insertdate" Type="varchar" MaxLength="200" />
+          <Property Name="customerid" Type="varchar" MaxLength="200" />
+          <Property Name="status" Type="varchar" MaxLength="200" />
+          <Property Name="notes" Type="varchar" MaxLength="200" />
+          <Property Name="customeremail" Type="varchar" MaxLength="200" />
+          <Property Name="paymentstatus" Type="varchar" MaxLength="200" />
+          <Property Name="shipmentaddress" Type="varchar" MaxLength="200" />
+          <Property Name="Country" Type="varchar" MaxLength="200" />
+          <Property Name="city" Type="varchar" MaxLength="200" />
+          <Property Name="zip" Type="varchar" MaxLength="200" />
+          <Property Name="phone" Type="varchar" MaxLength="200" />
+          <Property Name="landmark" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" />
+          <Property Name="trnxid" Type="varchar" MaxLength="200" />
+          <Property Name="email" Type="varchar" MaxLength="200" />
+          <Property Name="userid" Type="varchar" MaxLength="200" />
+          <Property Name="phone" Type="varchar" MaxLength="200" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="trnxdate" Type="datetime" />
+          <Property Name="status" Type="varchar" MaxLength="200" />
+          <Property Name="notes" Type="varchar" MaxLength="200" />
+          <Property Name="gatewayref" Type="varchar" MaxLength="200" />
+          <Property Name="paymenttype" Type="varchar" MaxLength="200" />
+          <Property Name="category" Type="varchar" MaxLength="200" />
+          <Property Name="title" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="vendorid" Type="varchar" MaxLength="200" />
+          <Property Name="productname" Type="varchar(max)" />
+          <Property Name="producttype" Type="varchar" MaxLength="200" />
+          <Property Name="description" Type="varchar(max)" />
+          <Property Name="bgphoto" Type="varchar(max)" />
+          <Property Name="photo1" Type="varchar(max)" />
+          <Property Name="photo2" Type="varchar(max)" />
+          <Property Name="photo3" Type="varchar(max)" />
+          <Property Name="photo4" Type="varchar(max)" />
+          <Property Name="photo5" Type="varchar(max)" />
+          <Property Name="photo6" Type="varchar(max)" />
+          <Property Name="category" Type="varchar(max)" />
+          <Property Name="tags" Type="varchar(max)" />
+          <Property Name="size1" Type="varchar(max)" />
+          <Property Name="size2" Type="varchar(max)" />
+          <Property Name="size3" Type="varchar(max)" />
+          <Property Name="size4" Type="varchar(max)" />
+          <Property Name="color1" Type="varchar(max)" />
+          <Property Name="color2" Type="varchar(max)" />
+          <Property Name="color3" Type="varchar(max)" />
+          <Property Name="color4" Type="varchar(max)" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="discount" Type="int" />
+          <Property Name="status" Type="varchar(max)" />
+          <Property Name="qty" Type="int" Nullable="false" />
+          <Property Name="inserdate" Type="datetime2" Precision="7" />
+          <Property Name="modelno" Type="varchar(max)" />
+          <Property Name="brandname" Type="varchar(max)" />
+          <Property Name="otherfeatures" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="userid" Type="varchar" MaxLength="200" />
+          <Property Name="email" Type="varchar" MaxLength="200" />
+          <Property Name="productid" Type="varchar" MaxLength="200" />
+          <Property Name="productname" Type="varchar" MaxLength="200" />
+          <Property Name="description" Type="varchar" MaxLength="200" />
+          <Property Name="amountpaid" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="qty" Type="int" Nullable="false" />
+          <Property Name="unitprice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="totalcost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="discountperc" Type="int" Nullable="false" />
+          <Property Name="discountamount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="insertdate" Type="datetime" />
+          <Property Name="orderid" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ServiceProvider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="usertype" Type="varchar" MaxLength="200" />
+          <Property Name="address" Type="varchar" MaxLength="200" />
+          <Property Name="active" Type="bit" />
+          <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="bit" />
+          <Property Name="PasswordSalt" Type="varchar(max)" />
+          <Property Name="PasswordHash" Type="varchar(max)" />
+          <Property Name="SecurityStamp" Type="varchar(max)" />
+          <Property Name="PhoneNumber" Type="varchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" />
+          <Property Name="TwoFactorEnabled" Type="bit" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" />
+          <Property Name="AccessFailedCount" Type="int" />
+          <Property Name="UserName" Type="varchar(max)" />
+          <Property Name="country" Type="varchar" MaxLength="200" />
+          <Property Name="state" Type="varchar" MaxLength="200" />
+          <Property Name="city" Type="varchar" MaxLength="200" />
+          <Property Name="lat" Type="varchar" MaxLength="200" />
+          <Property Name="longi" Type="varchar" MaxLength="200" />
+          <Property Name="regdate" Type="datetime" />
+          <Property Name="brandname" Type="varchar(max)" />
+          <Property Name="category" Type="varchar(max)" />
+          <Property Name="about" Type="varchar(max)" />
+          <Property Name="logo" Type="varchar(max)" />
+          <Property Name="tags" Type="varchar(max)" />
+          <Property Name="insertdate" Type="datetime" />
+          <Property Name="status" Type="varchar(max)" />
+          <Property Name="notes" Type="varchar(max)" />
+          <Property Name="amountpaid" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="paymentdate" Type="datetime" />
+          <Property Name="duedate" Type="datetime" />
+          <Property Name="paymentstatus" Type="varchar(max)" />
+          <Property Name="SPtype" Type="varchar(max)" />
+          <Property Name="bg" Type="varchar(max)" />
+          <Property Name="photo" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Shippers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="usertype" Type="varchar" MaxLength="200" />
+          <Property Name="address" Type="varchar" MaxLength="200" />
+          <Property Name="active" Type="bit" />
+          <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="bit" />
+          <Property Name="PasswordSalt" Type="varchar(max)" />
+          <Property Name="PasswordHash" Type="varchar(max)" />
+          <Property Name="SecurityStamp" Type="varchar(max)" />
+          <Property Name="PhoneNumber" Type="varchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" />
+          <Property Name="TwoFactorEnabled" Type="bit" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" />
+          <Property Name="AccessFailedCount" Type="int" />
+          <Property Name="UserName" Type="varchar(max)" />
+          <Property Name="country" Type="varchar" MaxLength="200" />
+          <Property Name="state" Type="varchar" MaxLength="200" />
+          <Property Name="city" Type="varchar" MaxLength="200" />
+          <Property Name="lat" Type="varchar" MaxLength="200" />
+          <Property Name="longi" Type="varchar" MaxLength="200" />
+          <Property Name="regdate" Type="datetime" />
+          <Property Name="brandname" Type="varchar(max)" />
+          <Property Name="category" Type="varchar(max)" />
+          <Property Name="about" Type="varchar(max)" />
+          <Property Name="logo" Type="varchar(max)" />
+          <Property Name="tags" Type="varchar(max)" />
+          <Property Name="insertdate" Type="datetime" />
+          <Property Name="status" Type="varchar(max)" />
+          <Property Name="notes" Type="varchar(max)" />
+          <Property Name="amountpaid" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="paymentdate" Type="datetime" />
+          <Property Name="duedate" Type="datetime" />
+          <Property Name="paymentstatus" Type="varchar(max)" />
+          <Property Name="shippertype" Type="varchar(max)" />
+          <Property Name="bg" Type="varchar(max)" />
+          <Property Name="photo" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ShippingPayments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" />
+          <Property Name="orderid" Type="varchar" MaxLength="200" />
+          <Property Name="shipperemail" Type="varchar" MaxLength="200" />
+          <Property Name="customerid" Type="varchar" MaxLength="200" />
+          <Property Name="shipperid" Type="varchar" MaxLength="200" />
+          <Property Name="phone" Type="varchar" MaxLength="200" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="trnxdate" Type="datetime" />
+          <Property Name="status" Type="varchar" MaxLength="200" />
+          <Property Name="notes" Type="varchar" MaxLength="200" />
+          <Property Name="gatewayref" Type="varchar" MaxLength="200" />
+          <Property Name="paymenttype" Type="varchar" MaxLength="200" />
+          <Property Name="category" Type="varchar" MaxLength="200" />
+          <Property Name="title" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="stateid" />
+          </Key>
+          <Property Name="states" Type="varchar" MaxLength="100" />
+          <Property Name="stateid" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="usertype" Type="varchar" MaxLength="200" />
+          <Property Name="address" Type="varchar" MaxLength="200" />
+          <Property Name="active" Type="bit" />
+          <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="bit" />
+          <Property Name="PasswordSalt" Type="varchar(max)" />
+          <Property Name="PasswordHash" Type="varchar(max)" />
+          <Property Name="SecurityStamp" Type="varchar(max)" />
+          <Property Name="PhoneNumber" Type="varchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" />
+          <Property Name="TwoFactorEnabled" Type="bit" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" />
+          <Property Name="AccessFailedCount" Type="int" />
+          <Property Name="UserName" Type="varchar(max)" />
+          <Property Name="country" Type="varchar" MaxLength="200" />
+          <Property Name="state" Type="varchar" MaxLength="200" />
+          <Property Name="city" Type="varchar" MaxLength="200" />
+          <Property Name="lat" Type="varchar" MaxLength="200" />
+          <Property Name="longi" Type="varchar" MaxLength="200" />
+          <Property Name="regdate" Type="datetime" />
+          <Property Name="brandname" Type="varchar(max)" />
+          <Property Name="category" Type="varchar(max)" />
+          <Property Name="about" Type="varchar(max)" />
+          <Property Name="logo" Type="varchar(max)" />
+          <Property Name="tags" Type="varchar(max)" />
+          <Property Name="insertdate" Type="datetime" />
+          <Property Name="status" Type="varchar(max)" />
+          <Property Name="notes" Type="varchar(max)" />
+          <Property Name="amountpaid" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="paymentdate" Type="datetime" />
+          <Property Name="duedate" Type="datetime" />
+          <Property Name="paymentstatus" Type="varchar(max)" />
+          <Property Name="vendortype" Type="varchar(max)" />
+          <Property Name="bg" Type="varchar(max)" />
+          <Property Name="photo" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Vendors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="usertype" Type="varchar" MaxLength="200" />
+          <Property Name="address" Type="varchar" MaxLength="200" />
+          <Property Name="active" Type="bit" />
+          <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="bit" />
+          <Property Name="PasswordSalt" Type="varchar(max)" />
+          <Property Name="PasswordHash" Type="varchar(max)" />
+          <Property Name="SecurityStamp" Type="varchar(max)" />
+          <Property Name="PhoneNumber" Type="varchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" />
+          <Property Name="TwoFactorEnabled" Type="bit" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" />
+          <Property Name="AccessFailedCount" Type="int" />
+          <Property Name="UserName" Type="varchar(max)" />
+          <Property Name="country" Type="varchar" MaxLength="200" />
+          <Property Name="state" Type="varchar" MaxLength="200" />
+          <Property Name="city" Type="varchar" MaxLength="200" />
+          <Property Name="lat" Type="varchar" MaxLength="200" />
+          <Property Name="longi" Type="varchar" MaxLength="200" />
+          <Property Name="regdate" Type="datetime" />
+          <Property Name="brandname" Type="varchar(max)" />
+          <Property Name="category" Type="varchar(max)" />
+          <Property Name="about" Type="varchar(max)" />
+          <Property Name="logo" Type="varchar(max)" />
+          <Property Name="tags" Type="varchar(max)" />
+          <Property Name="insertdate" Type="datetime" />
+          <Property Name="status" Type="varchar(max)" />
+          <Property Name="notes" Type="varchar(max)" />
+          <Property Name="amountpaid" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="paymentdate" Type="datetime" />
+          <Property Name="duedate" Type="datetime" />
+          <Property Name="paymentstatus" Type="varchar(max)" />
+          <Property Name="vendortype" Type="varchar(max)" />
+          <Property Name="bg" Type="varchar(max)" />
+          <Property Name="photo" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_cart_AspNetUsers">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_cart_dbo_product_productid">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_sale_dbo_product_productid">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EasyOrdersItems_EasyOrders">
+          <End Role="EasyOrders" Type="Self.EasyOrders" Multiplicity="0..1" />
+          <End Role="EasyOrdersItems" Type="Self.EasyOrdersItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EasyOrders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EasyOrdersItems">
+              <PropertyRef Name="orderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LGAs_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="LGAs" Type="Self.LGAs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="stateid" />
+            </Principal>
+            <Dependent Role="LGAs">
+              <PropertyRef Name="stateid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_UserAccount">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="customerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_payments_AspNetUsers">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Vendors">
+          <End Role="Vendors" Type="Self.Vendors" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="vendorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sale_AspNetUsers">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingPayments_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="ShippingPayments" Type="Self.ShippingPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ShippingPayments">
+              <PropertyRef Name="orderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingPayments_Shippers">
+          <End Role="Shippers" Type="Self.Shippers" Multiplicity="0..1" />
+          <End Role="ShippingPayments" Type="Self.ShippingPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shippers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShippingPayments">
+              <PropertyRef Name="shipperid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="salesboyModelStoreContainer">
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categorysub" EntityType="Self.categorysub" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EasyOrders" EntityType="Self.EasyOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EasyOrdersItem_temp" EntityType="Self.EasyOrdersItem_temp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EasyOrdersItems" EntityType="Self.EasyOrdersItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LGAs" EntityType="Self.LGAs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceProvider" EntityType="Self.ServiceProvider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shippers" EntityType="Self.Shippers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShippingPayments" EntityType="Self.ShippingPayments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_cart_AspNetUsers" Association="Self.FK_cart_AspNetUsers">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_cart_dbo_product_productid" Association="Self.FK_dbo_cart_dbo_product_productid">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_sale_dbo_product_productid" Association="Self.FK_dbo_sale_dbo_product_productid">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EasyOrdersItems_EasyOrders" Association="Self.FK_EasyOrdersItems_EasyOrders">
+            <End Role="EasyOrders" EntitySet="EasyOrders" />
+            <End Role="EasyOrdersItems" EntitySet="EasyOrdersItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LGAs_State" Association="Self.FK_LGAs_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="LGAs" EntitySet="LGAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_UserAccount" Association="Self.FK_Orders_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_payments_AspNetUsers" Association="Self.FK_payments_AspNetUsers">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Vendors" Association="Self.FK_Product_Vendors">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sale_AspNetUsers" Association="Self.FK_sale_AspNetUsers">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingPayments_Orders" Association="Self.FK_ShippingPayments_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="ShippingPayments" EntitySet="ShippingPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingPayments_Shippers" Association="Self.FK_ShippingPayments_Shippers">
+            <End Role="Shippers" EntitySet="Shippers" />
+            <End Role="ShippingPayments" EntitySet="ShippingPayments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="salesboyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="useremail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="userip" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="usermacaddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="productid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="qty" Type="Int32" />
+          <Property Name="size" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="discount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="insertdate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK_cart_AspNetUsers" FromRole="Cart" ToRole="UserAccount" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_dbo_cart_dbo_product_productid" FromRole="Cart" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cat" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="categorysub">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cat" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EasyOrder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="loc_long" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="loc_lat" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="location" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="insertdate" Type="DateTime" Precision="3" />
+          <Property Name="insertuser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EasyOrdersItems" Relationship="Self.FK_EasyOrdersItems_EasyOrders" FromRole="EasyOrders" ToRole="EasyOrdersItems" />
+        </EntityType>
+        <EntityType Name="EasyOrdersItem_temp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="orderid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="item" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="insertdate" Type="DateTime" Precision="3" />
+          <Property Name="insertuser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EasyOrdersItem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="orderid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="item" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="insertdate" Type="DateTime" Precision="3" />
+          <Property Name="insertuser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EasyOrder" Relationship="Self.FK_EasyOrdersItems_EasyOrders" FromRole="EasyOrdersItems" ToRole="EasyOrders" />
+        </EntityType>
+        <EntityType Name="LGA">
+          <Key>
+            <PropertyRef Name="lgaid" />
+          </Key>
+          <Property Name="lga_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="lgaid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="stateid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="State" Relationship="Self.FK_LGAs_State" FromRole="LGAs" ToRole="State" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="batchid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="useremail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="paymentid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="orderdate" Type="DateTime" Precision="3" />
+          <Property Name="shipmentdate" Type="DateTime" Precision="3" />
+          <Property Name="IsShipping" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="shipperid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="frieght" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="customerid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="customeremail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="paymentstatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="shipmentaddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="zip" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="landmark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK_Orders_UserAccount" FromRole="Orders" ToRole="UserAccount" />
+          <NavigationProperty Name="ShippingPayments" Relationship="Self.FK_ShippingPayments_Orders" FromRole="Orders" ToRole="ShippingPayments" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="trnxid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="userid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="trnxdate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="gatewayref" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="paymenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK_payments_AspNetUsers" FromRole="Payments" ToRole="UserAccount" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vendorid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="productname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="producttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bgphoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="photo1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="photo2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="photo3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="photo4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="photo5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="photo6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="size1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="size2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="size3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="size4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="color1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="color2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="color3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="color4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="discount" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="qty" Type="Int32" Nullable="false" />
+          <Property Name="inserdate" Type="DateTime" Precision="7" />
+          <Property Name="modelno" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="brandname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="otherfeatures" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Carts" Relationship="Self.FK_dbo_cart_dbo_product_productid" FromRole="Product" ToRole="Cart" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_dbo_sale_dbo_product_productid" FromRole="Product" ToRole="Sale" />
+          <NavigationProperty Name="Vendor" Relationship="Self.FK_Product_Vendors" FromRole="Product" ToRole="Vendors" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="productid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="productname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="amountpaid" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="qty" Type="Int32" Nullable="false" />
+          <Property Name="unitprice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="totalcost" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="discountperc" Type="Int32" Nullable="false" />
+          <Property Name="discountamount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="insertdate" Type="DateTime" Precision="3" />
+          <Property Name="orderid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_dbo_sale_dbo_product_productid" FromRole="Sale" ToRole="Product" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK_sale_AspNetUsers" FromRole="Sale" ToRole="UserAccount" />
+        </EntityType>
+        <EntityType Name="ServiceProvider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usertype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" />
+          <Property Name="AccessFailedCount" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="lat" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="longi" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="regdate" Type="DateTime" Precision="3" />
+          <Property Name="brandname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="about" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="insertdate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="amountpaid" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="paymentdate" Type="DateTime" Precision="3" />
+          <Property Name="duedate" Type="DateTime" Precision="3" />
+          <Property Name="paymentstatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SPtype" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Shipper">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usertype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" />
+          <Property Name="AccessFailedCount" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="lat" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="longi" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="regdate" Type="DateTime" Precision="3" />
+          <Property Name="brandname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="about" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="insertdate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="amountpaid" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="paymentdate" Type="DateTime" Precision="3" />
+          <Property Name="duedate" Type="DateTime" Precision="3" />
+          <Property Name="paymentstatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="shippertype" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ShippingPayments" Relationship="Self.FK_ShippingPayments_Shippers" FromRole="Shippers" ToRole="ShippingPayments" />
+        </EntityType>
+        <EntityType Name="ShippingPayment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="orderid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="shipperemail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="customerid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="shipperid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="trnxdate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="gatewayref" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="paymenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_ShippingPayments_Orders" FromRole="ShippingPayments" ToRole="Orders" />
+          <NavigationProperty Name="Shipper" Relationship="Self.FK_ShippingPayments_Shippers" FromRole="ShippingPayments" ToRole="Shippers" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="stateid" />
+          </Key>
+          <Property Name="states" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="stateid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LGAs" Relationship="Self.FK_LGAs_State" FromRole="State" ToRole="LGAs" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usertype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" />
+          <Property Name="AccessFailedCount" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="lat" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="longi" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="regdate" Type="DateTime" Precision="3" />
+          <Property Name="brandname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="about" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="insertdate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="amountpaid" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="paymentdate" Type="DateTime" Precision="3" />
+          <Property Name="duedate" Type="DateTime" Precision="3" />
+          <Property Name="paymentstatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="vendortype" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Carts" Relationship="Self.FK_cart_AspNetUsers" FromRole="UserAccount" ToRole="Cart" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_UserAccount" FromRole="UserAccount" ToRole="Orders" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_payments_AspNetUsers" FromRole="UserAccount" ToRole="Payments" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_sale_AspNetUsers" FromRole="UserAccount" ToRole="Sale" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usertype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" />
+          <Property Name="AccessFailedCount" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="lat" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="longi" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="regdate" Type="DateTime" Precision="3" />
+          <Property Name="brandname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="about" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="insertdate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="amountpaid" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="paymentdate" Type="DateTime" Precision="3" />
+          <Property Name="duedate" Type="DateTime" Precision="3" />
+          <Property Name="paymentstatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="vendortype" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Vendors" FromRole="Vendors" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_cart_AspNetUsers">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_cart_dbo_product_productid">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EasyOrdersItems_EasyOrders">
+          <End Role="EasyOrders" Type="Self.EasyOrder" Multiplicity="0..1" />
+          <End Role="EasyOrdersItems" Type="Self.EasyOrdersItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EasyOrders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EasyOrdersItems">
+              <PropertyRef Name="orderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LGAs_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="LGAs" Type="Self.LGA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="stateid" />
+            </Principal>
+            <Dependent Role="LGAs">
+              <PropertyRef Name="stateid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_UserAccount">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="customerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingPayments_Orders">
+          <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="ShippingPayments" Type="Self.ShippingPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ShippingPayments">
+              <PropertyRef Name="orderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_payments_AspNetUsers">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Payments" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_sale_dbo_product_productid">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Vendors">
+          <End Role="Vendors" Type="Self.Vendor" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="vendorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sale_AspNetUsers">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingPayments_Shippers">
+          <End Role="Shippers" Type="Self.Shipper" Multiplicity="0..1" />
+          <End Role="ShippingPayments" Type="Self.ShippingPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shippers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShippingPayments">
+              <PropertyRef Name="shipperid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="salesboyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carts" EntityType="Self.Cart" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="categorysubs" EntityType="Self.categorysub" />
+          <EntitySet Name="EasyOrders" EntityType="Self.EasyOrder" />
+          <EntitySet Name="EasyOrdersItem_temp" EntityType="Self.EasyOrdersItem_temp" />
+          <EntitySet Name="EasyOrdersItems" EntityType="Self.EasyOrdersItem" />
+          <EntitySet Name="LGAs" EntityType="Self.LGA" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Sales" EntityType="Self.Sale" />
+          <EntitySet Name="ServiceProviders" EntityType="Self.ServiceProvider" />
+          <EntitySet Name="Shippers" EntityType="Self.Shipper" />
+          <EntitySet Name="ShippingPayments" EntityType="Self.ShippingPayment" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendor" />
+          <AssociationSet Name="FK_cart_AspNetUsers" Association="Self.FK_cart_AspNetUsers">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_cart_dbo_product_productid" Association="Self.FK_dbo_cart_dbo_product_productid">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EasyOrdersItems_EasyOrders" Association="Self.FK_EasyOrdersItems_EasyOrders">
+            <End Role="EasyOrders" EntitySet="EasyOrders" />
+            <End Role="EasyOrdersItems" EntitySet="EasyOrdersItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LGAs_State" Association="Self.FK_LGAs_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="LGAs" EntitySet="LGAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_UserAccount" Association="Self.FK_Orders_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingPayments_Orders" Association="Self.FK_ShippingPayments_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="ShippingPayments" EntitySet="ShippingPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_payments_AspNetUsers" Association="Self.FK_payments_AspNetUsers">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_sale_dbo_product_productid" Association="Self.FK_dbo_sale_dbo_product_productid">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Vendors" Association="Self.FK_Product_Vendors">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sale_AspNetUsers" Association="Self.FK_sale_AspNetUsers">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingPayments_Shippers" Association="Self.FK_ShippingPayments_Shippers">
+            <End Role="Shippers" EntitySet="Shippers" />
+            <End Role="ShippingPayments" EntitySet="ShippingPayments" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(salesboyModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(salesboyModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="salesboyModelStoreContainer" CdmEntityContainer="salesboyEntities">
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="salesboyModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="useremail" ColumnName="useremail" />
+                <ScalarProperty Name="userip" ColumnName="userip" />
+                <ScalarProperty Name="usermacaddress" ColumnName="usermacaddress" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="salesboyModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cat" ColumnName="cat" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categorysubs">
+            <EntityTypeMapping TypeName="salesboyModel.categorysub">
+              <MappingFragment StoreEntitySet="categorysub">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cat" ColumnName="cat" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EasyOrders">
+            <EntityTypeMapping TypeName="salesboyModel.EasyOrder">
+              <MappingFragment StoreEntitySet="EasyOrders">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="loc_long" ColumnName="loc_long" />
+                <ScalarProperty Name="loc_lat" ColumnName="loc_lat" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+                <ScalarProperty Name="insertuser" ColumnName="insertuser" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EasyOrdersItem_temp">
+            <EntityTypeMapping TypeName="salesboyModel.EasyOrdersItem_temp">
+              <MappingFragment StoreEntitySet="EasyOrdersItem_temp">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="item" ColumnName="item" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+                <ScalarProperty Name="insertuser" ColumnName="insertuser" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EasyOrdersItems">
+            <EntityTypeMapping TypeName="salesboyModel.EasyOrdersItem">
+              <MappingFragment StoreEntitySet="EasyOrdersItems">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="item" ColumnName="item" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+                <ScalarProperty Name="insertuser" ColumnName="insertuser" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LGAs">
+            <EntityTypeMapping TypeName="salesboyModel.LGA">
+              <MappingFragment StoreEntitySet="LGAs">
+                <ScalarProperty Name="lga_name" ColumnName="lga_name" />
+                <ScalarProperty Name="lgaid" ColumnName="lgaid" />
+                <ScalarProperty Name="stateid" ColumnName="stateid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="salesboyModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="batchid" ColumnName="batchid" />
+                <ScalarProperty Name="useremail" ColumnName="useremail" />
+                <ScalarProperty Name="paymentid" ColumnName="paymentid" />
+                <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+                <ScalarProperty Name="shipmentdate" ColumnName="shipmentdate" />
+                <ScalarProperty Name="IsShipping" ColumnName="IsShipping" />
+                <ScalarProperty Name="shipperid" ColumnName="shipperid" />
+                <ScalarProperty Name="frieght" ColumnName="frieght" />
+                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="customeremail" ColumnName="customeremail" />
+                <ScalarProperty Name="paymentstatus" ColumnName="paymentstatus" />
+                <ScalarProperty Name="shipmentaddress" ColumnName="shipmentaddress" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="landmark" ColumnName="landmark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="salesboyModel.Payment">
+              <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="trnxid" ColumnName="trnxid" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="trnxdate" ColumnName="trnxdate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="gatewayref" ColumnName="gatewayref" />
+                <ScalarProperty Name="paymenttype" ColumnName="paymenttype" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="salesboyModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="vendorid" ColumnName="vendorid" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="producttype" ColumnName="producttype" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="bgphoto" ColumnName="bgphoto" />
+                <ScalarProperty Name="photo1" ColumnName="photo1" />
+                <ScalarProperty Name="photo2" ColumnName="photo2" />
+                <ScalarProperty Name="photo3" ColumnName="photo3" />
+                <ScalarProperty Name="photo4" ColumnName="photo4" />
+                <ScalarProperty Name="photo5" ColumnName="photo5" />
+                <ScalarProperty Name="photo6" ColumnName="photo6" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="size1" ColumnName="size1" />
+                <ScalarProperty Name="size2" ColumnName="size2" />
+                <ScalarProperty Name="size3" ColumnName="size3" />
+                <ScalarProperty Name="size4" ColumnName="size4" />
+                <ScalarProperty Name="color1" ColumnName="color1" />
+                <ScalarProperty Name="color2" ColumnName="color2" />
+                <ScalarProperty Name="color3" ColumnName="color3" />
+                <ScalarProperty Name="color4" ColumnName="color4" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="inserdate" ColumnName="inserdate" />
+                <ScalarProperty Name="modelno" ColumnName="modelno" />
+                <ScalarProperty Name="brandname" ColumnName="brandname" />
+                <ScalarProperty Name="otherfeatures" ColumnName="otherfeatures" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="salesboyModel.Sale">
+              <MappingFragment StoreEntitySet="Sale">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="amountpaid" ColumnName="amountpaid" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="unitprice" ColumnName="unitprice" />
+                <ScalarProperty Name="totalcost" ColumnName="totalcost" />
+                <ScalarProperty Name="discountperc" ColumnName="discountperc" />
+                <ScalarProperty Name="discountamount" ColumnName="discountamount" />
+                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceProviders">
+            <EntityTypeMapping TypeName="salesboyModel.ServiceProvider">
+              <MappingFragment StoreEntitySet="ServiceProvider">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="usertype" ColumnName="usertype" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="longi" ColumnName="longi" />
+                <ScalarProperty Name="regdate" ColumnName="regdate" />
+                <ScalarProperty Name="brandname" ColumnName="brandname" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="about" ColumnName="about" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="amountpaid" ColumnName="amountpaid" />
+                <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
+                <ScalarProperty Name="duedate" ColumnName="duedate" />
+                <ScalarProperty Name="paymentstatus" ColumnName="paymentstatus" />
+                <ScalarProperty Name="SPtype" ColumnName="SPtype" />
+                <ScalarProperty Name="bg" ColumnName="bg" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shippers">
+            <EntityTypeMapping TypeName="salesboyModel.Shipper">
+              <MappingFragment StoreEntitySet="Shippers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="usertype" ColumnName="usertype" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="longi" ColumnName="longi" />
+                <ScalarProperty Name="regdate" ColumnName="regdate" />
+                <ScalarProperty Name="brandname" ColumnName="brandname" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="about" ColumnName="about" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="amountpaid" ColumnName="amountpaid" />
+                <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
+                <ScalarProperty Name="duedate" ColumnName="duedate" />
+                <ScalarProperty Name="paymentstatus" ColumnName="paymentstatus" />
+                <ScalarProperty Name="shippertype" ColumnName="shippertype" />
+                <ScalarProperty Name="bg" ColumnName="bg" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShippingPayments">
+            <EntityTypeMapping TypeName="salesboyModel.ShippingPayment">
+              <MappingFragment StoreEntitySet="ShippingPayments">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="shipperemail" ColumnName="shipperemail" />
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+                <ScalarProperty Name="shipperid" ColumnName="shipperid" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="trnxdate" ColumnName="trnxdate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="gatewayref" ColumnName="gatewayref" />
+                <ScalarProperty Name="paymenttype" ColumnName="paymenttype" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="salesboyModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="states" ColumnName="states" />
+                <ScalarProperty Name="stateid" ColumnName="stateid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="salesboyModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccounts">
+            <EntityTypeMapping TypeName="salesboyModel.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="usertype" ColumnName="usertype" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="longi" ColumnName="longi" />
+                <ScalarProperty Name="regdate" ColumnName="regdate" />
+                <ScalarProperty Name="brandname" ColumnName="brandname" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="about" ColumnName="about" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="amountpaid" ColumnName="amountpaid" />
+                <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
+                <ScalarProperty Name="duedate" ColumnName="duedate" />
+                <ScalarProperty Name="paymentstatus" ColumnName="paymentstatus" />
+                <ScalarProperty Name="vendortype" ColumnName="vendortype" />
+                <ScalarProperty Name="bg" ColumnName="bg" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="salesboyModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendors">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="usertype" ColumnName="usertype" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="longi" ColumnName="longi" />
+                <ScalarProperty Name="regdate" ColumnName="regdate" />
+                <ScalarProperty Name="brandname" ColumnName="brandname" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="about" ColumnName="about" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="amountpaid" ColumnName="amountpaid" />
+                <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
+                <ScalarProperty Name="duedate" ColumnName="duedate" />
+                <ScalarProperty Name="paymentstatus" ColumnName="paymentstatus" />
+                <ScalarProperty Name="vendortype" ColumnName="vendortype" />
+                <ScalarProperty Name="bg" ColumnName="bg" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="salesboyModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="salesboyModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="salesboyModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="salesboyModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="salesboyModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="salesboyModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="salesboyModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="salesboyModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="salesboyModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
