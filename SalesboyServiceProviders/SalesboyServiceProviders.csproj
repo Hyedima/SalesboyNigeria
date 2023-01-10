@@ -1094,7 +1094,9 @@
     <Content Include="Content\Home\plugins\lightGallery-master\dist\fonts\lgd641.eot" />
     <Content Include="Content\Home\plugins\lightGallery-master\dist\fonts\lgd641.ttf" />
     <Content Include="Content\Home\plugins\lightGallery-master\dist\fonts\lgd641.woff" />
+    <None Include="Properties\PublishProfiles\services.salesboynigeria.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\sp.salesboynigeria.com - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\sp.salesboynigeria.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
