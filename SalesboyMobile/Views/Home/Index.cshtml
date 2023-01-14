@@ -39,48 +39,255 @@
         </div>
     </div>
     <div class="col align-self-center ps-0">
-        <h4 class="text-color-theme"><span class="fw-normal">Hi</span>, Adamu Hassan</h4>
+        <h4 class="text-color-theme"><span class="fw-normal">Hi</span>, @Session["email"]</h4>
         <p class="text-muted">Welcome</p>
     </div>
 </div>
 
 <!-- money request received -->
-<div class="row mb-4 hideonprogress">
-    <div class="col-12">
+@*<div class="row mb-4 hideonprogress">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-auto">
+                            <div class="avatar avatar-44 shadow-sm rounded-10">
+                                <img src="~/Content/web/assets/img/user3.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col align-self-center ps-0">
+                            <p class="small mb-1">
+                                <a href="profile.html" class="fw-medium">Shelvey</a> <span class="text-muted">requested money</span>
+                            </p>
+                            <p>
+                                150 <span class="text-muted">$</span> <small class="text-muted">1 min ago</small>
+                            </p>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-44 btn-default shadow-sm">
+                                <i class="bi bi-arrow-up-right-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mx-0">
+                    <div class="col-12">
+                        <div class="progress bg-none h-2 hideonprogressbar" data-target="hideonprogress">
+                            <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="25"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<!-- Dark mode switch -->
+<div class="row mb-4">
+    <div class="col-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="darkmodeswitch">
+                    <label class="form-check-label text-muted px-2 " for="darkmodeswitch">
+                        Activate Dark
+                        Mode
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- connection -->
+<div class="row mb-3">
+    <div class="col">
+        <h6 class="title">Products</h6>
+    </div>
+    <div class="col-auto">
+        <a href="#" class="small">View all</a>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-12 px-0">
+        <!-- swiper users connections -->
+        <div class="swiper-container connectionwiper">
+            <div class="swiper-wrapper">
+                @foreach (var item in db.Products.ToList())
+                {
+                    <div class="swiper-slide">
+                        <a href="profile.html" class="card text-center">
+                            <div class="card-body">
+                                <figure class="avatar avatar-50 shadow-sm mb-1 rounded-10">
+                                    <img src="@item.photo1" alt="">
+                                </figure>
+                                <p class="text-color-theme size-12 small">@item.productname</p>
+                                <strong>@item.price</strong>
+                            </div>
+                        </a>
+                    </div>
+                }
+
+
+                @*<div class="swiper-slide">
+                        <a href="profile.html" class="card text-center">
+                            <div class="card-body">
+                                <figure class="avatar avatar-50 shadow-sm mb-1 rounded-10">
+                                    <img src="~/Content/web/assets/img/user2.jpg" alt="">
+                                </figure>
+                                <p class="text-color-theme size-12 small">Shelvey</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="profile.html" class="card text-center">
+                            <div class="card-body">
+                                <figure class="avatar avatar-50 shadow-sm mb-1 rounded-10">
+                                    <img src="~/Content/web/assets/img/user3.jpg" alt="">
+                                </figure>
+                                <p class="text-color-theme size-12 small">Amenda</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="profile.html" class="card text-center">
+                            <div class="card-body">
+                                <figure class="avatar avatar-50 shadow-sm mb-1 rounded-10">
+                                    <img src="~/Content/web/assets/img/user1.jpg" alt="">
+                                </figure>
+                                <p class="text-color-theme size-12 small">RXL15</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="profile.html" class="card text-center">
+                            <div class="card-body">
+                                <figure class="avatar avatar-50 shadow-sm mb-1 rounded-10">
+                                    <img src="~/Content/web/assets/img/user4.jpg" alt="">
+                                </figure>
+                                <p class="text-color-theme size-12 small">Nicolas</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="profile.html" class="card text-center">
+                            <div class="card-body">
+                                <figure class="avatar avatar-50 shadow-sm mb-1 rounded-10">
+                                    <img src="~/Content/web/assets/img/user2.jpg" alt="">
+                                </figure>
+                                <p class="text-color-theme size-12 small">Shelvey</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="profile.html" class="card text-center">
+                            <div class="card-body">
+                                <figure class="avatar avatar-50 shadow-sm mb-1 rounded-10">
+                                    <img src="~/Content/web/assets/img/user3.jpg" alt="">
+                                </figure>
+                                <p class="text-color-theme size-12 small">Amenda</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <a href="profile.html" class="card text-center">
+                            <div class="card-body">
+                                <figure class="avatar avatar-50 shadow-sm mb-1 rounded-10">
+                                    <img src="~/Content/web/assets/img/user1.jpg" alt="">
+                                </figure>
+                                <p class="text-color-theme size-12 small">RXL15</p>
+                            </div>
+                        </a>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Saving targets -->
+@*<div class="row mb-3">
+    <div class="col">
+        <h6 class="title">Saving Targets</h6>
+    </div>
+    <div class="col-auto">
+
+    </div>
+</div>*@
+<div class="row mb-4">
+    <div class="col-6 col-md-4 col-lg-3">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-auto">
+                        <div class="circle-small">
+                            <div id="circleprogressone"></div>
+                            <div class="avatar avatar-30 alert-primary text-primary rounded-circle">
+                                <i class="bi bi-globe"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto align-self-center ps-0">
+                        <p class="small mb-1 text-muted">USA Trip</p>
+                        <p>60<span class="small">%</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-auto">
+                        <div class="circle-small">
+                            <div id="circleprogresstwo"></div>
+                            <div class="avatar avatar-30 alert-success text-success rounded-circle">
+                                <i class="bi bi-cash-stack"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto align-self-center ps-0">
+                        <p class="small mb-1 text-muted">Car loan</p>
+                        <p>85<span class="small">%</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-4 col-lg-6">
         <div class="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-auto">
-                        <div class="avatar avatar-44 shadow-sm rounded-10">
-                            <img src="~/Content/web/assets/img/user3.jpg" alt="">
+                        <div class="avatar avatar-40 alert-danger text-danger rounded-circle">
+                            <i class="bi bi-house"></i>
                         </div>
                     </div>
                     <div class="col align-self-center ps-0">
-                        <p class="small mb-1">
-                            <a href="profile.html" class="fw-medium">Shelvey</a> <span class="text-muted">requested money</span>
-                        </p>
-                        <p>
-                            150 <span class="text-muted">$</span> <small class="text-muted">1 min ago</small>
-                        </p>
-                    </div>
-                    <div class="col-auto">
-                        <button class="btn btn-44 btn-default shadow-sm">
-                            <i class="bi bi-arrow-up-right-circle"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="row mx-0">
-                <div class="col-12">
-                    <div class="progress bg-none h-2 hideonprogressbar" data-target="hideonprogress">
-                        <div class="progress-bar bg-theme" role="progressbar" aria-valuenow="25"
-                             aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <p class="small text-muted mb-0">Home Loan</p>
+                                <p>3510.00 $</p>
+                            </div>
+                            <div class="col-auto text-end">
+                                <p class="small text-muted mb-0">Next EMI</p>
+                                <p class="small">1 Aug 2024</p>
+                            </div>
+                        </div>
+
+                        <div class="progress alert-danger h-4">
+                            <div class="progress-bar bg-danger w-50" role="progressbar" aria-valuenow="25"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <!-- swiper credit cards -->
 <div class="row mb-3">
     <div class="col-12 px-0">
@@ -215,7 +422,7 @@
         <h6 class="title">Connections</h6>
     </div>
     <div class="col-auto">
-        <a href="userlist.html" class="small">View all</a>
+        <a href="#" class="small">View all</a>
     </div>
 </div>
 <div class="row mb-3">
@@ -343,104 +550,7 @@
     </div>
 </div>
 
-<!-- Dark mode switch -->
-<div class="row mb-4">
-    <div class="col-12">
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="darkmodeswitch">
-                    <label class="form-check-label text-muted px-2 " for="darkmodeswitch">
-                        Activate Dark
-                        Mode
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Saving targets -->
-<div class="row mb-3">
-    <div class="col">
-        <h6 class="title">Saving Targets</h6>
-    </div>
-    <div class="col-auto">
-
-    </div>
-</div>
-<div class="row mb-4">
-    <div class="col-6 col-md-4 col-lg-3">
-        <div class="card mb-3">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto">
-                        <div class="circle-small">
-                            <div id="circleprogressone"></div>
-                            <div class="avatar avatar-30 alert-primary text-primary rounded-circle">
-                                <i class="bi bi-globe"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-auto align-self-center ps-0">
-                        <p class="small mb-1 text-muted">USA Trip</p>
-                        <p>60<span class="small">%</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-6 col-md-4 col-lg-3">
-        <div class="card mb-3">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto">
-                        <div class="circle-small">
-                            <div id="circleprogresstwo"></div>
-                            <div class="avatar avatar-30 alert-success text-success rounded-circle">
-                                <i class="bi bi-cash-stack"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-auto align-self-center ps-0">
-                        <p class="small mb-1 text-muted">Car loan</p>
-                        <p>85<span class="small">%</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-md-4 col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-auto">
-                        <div class="avatar avatar-40 alert-danger text-danger rounded-circle">
-                            <i class="bi bi-house"></i>
-                        </div>
-                    </div>
-                    <div class="col align-self-center ps-0">
-                        <div class="row mb-2">
-                            <div class="col">
-                                <p class="small text-muted mb-0">Home Loan</p>
-                                <p>3510.00 $</p>
-                            </div>
-                            <div class="col-auto text-end">
-                                <p class="small text-muted mb-0">Next EMI</p>
-                                <p class="small">1 Aug 2024</p>
-                            </div>
-                        </div>
-
-                        <div class="progress alert-danger h-4">
-                            <div class="progress-bar bg-danger w-50" role="progressbar" aria-valuenow="25"
-                                 aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Transactions -->
 <div class="row mb-3">

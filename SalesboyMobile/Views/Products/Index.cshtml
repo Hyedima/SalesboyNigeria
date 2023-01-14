@@ -1,0 +1,202 @@
+﻿@model IEnumerable<SalesboyMobile.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.productname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.producttype)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bgphoto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.photo1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.photo2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.photo3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.photo4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.photo5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.photo6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tags)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.size1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.size2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.size3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.size4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.color1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.color2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.color3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.color4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.inserdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modelno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.brandname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.otherfeatures)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vendor.firstname)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.productname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.producttype)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bgphoto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.photo1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.photo2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.photo3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.photo4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.photo5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.photo6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tags)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.size1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.size2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.size3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.size4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.color1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.color2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.color3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.color4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.discount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.inserdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modelno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.brandname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.otherfeatures)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vendor.firstname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

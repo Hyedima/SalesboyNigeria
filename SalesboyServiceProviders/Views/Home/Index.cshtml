@@ -227,23 +227,23 @@
                         <div class="table-responsive">
                             <a href="#" data-toggle="modal" data-target="#svc" class="btn btn-lg btn-warning p-3 m-3 text-white">Upload Pictures</a>
                             <div class="row">
-                                    @{
-                                        DirectoryInfo d = new DirectoryInfo(Server.MapPath("~/Content/Images/services"));
-                                        FileInfo[] Files = d.GetFiles();
-                                    }
+                                @{
+                                    DirectoryInfo d = new DirectoryInfo(Server.MapPath("~/Content/Images/services"));
+                                    FileInfo[] Files = d.GetFiles();
+                                }
 
-                                    @foreach (FileInfo file in Files)
-                                    {
-                                        <div class="m-3 p-3">
-                                            <div class="card">
-                                                <a href="#" target="_blank">
-                                                    <img class="img img-fluid card-img-top" src="~/Content/Images/services/@file.Name" style="width: 18rem" />
-                                                </a>
-                                                <div class="card-body">
-                                                </div>
+                                @foreach (FileInfo file in Files)
+                                {
+                                    <div class="m-3 p-3">
+                                        <div class="card">
+                                            <a href="#" target="_blank">
+                                                <img class="img img-fluid card-img-top" src="~/Content/Images/services/@file.Name" style="width: 18rem" />
+                                            </a>
+                                            <div class="card-body">
                                             </div>
                                         </div>
-                                    }
+                                    </div>
+                                }
                             </div>
                         </div>
                         @*<div class="mt-3">
@@ -365,7 +365,7 @@
                                             @*<h5 class="card-title">Special title treatment</h5>*@
                                             <p class="card-text">
                                                 Gets you to upload <br />
-                                                share and sell for <br/>
+                                                share and sell for <br />
                                                 a whole year with <br />
                                                 ease at your convenience!!!<br />
                                             </p>
@@ -384,7 +384,7 @@
                                             <p class="card-text">
                                                 Stand a chance to regular <br />
                                                 adverts of you goods and services <br />
-                                                while you sell at your comfort !!! <br/>
+                                                while you sell at your comfort !!! <br />
                                                 +Salesboy full package and lots more <br />
                                             </p>
                                         </div>
@@ -394,94 +394,21 @@
                                     </div>
                                 </div>
                             </div>
-                                @*<center>
-                <form>
-                    <button type="button" class="btn btn-info" onClick="makePayment(20000)">
-                        <i class="fa fa-10x fa-money"></i>
-                        Pay Now (20,000)
-                    </button>
-                </form>
-                <form>
-                    <button type="button" class="btn btn-info" onClick="makePayment(10000)">
-                        <i class="fa fa-10x fa-money"></i>
-                        Pay Now (10,000)
-                    </button>
-                </form>
-
-            </center>*@
-                                <script>
-                     function makePayment(amount) {
-                        FlutterwaveCheckout({
-                            public_key: "FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X", //"FLWPUBK_TEST-8d049f5bf0756776e6392f6cfd90b024-X",
-                            tx_ref: "@Guid.NewGuid().ToString()",
-                            amount: amount,
-                            currency: "NGN",
-                                country: "NG",
-                            payment_options: " ",
-                            redirect_url: "@Url.Action("Index","Home")", // specified redirect URL
-                               // "http://localhost:3474/Admissions/AdmissionStatus",
-                            customer: {
-                                email: "@user.Email",
-                                phone_number: "@user.phone",
-                                name: "@user.firstname @user.lastname",
-                                },
-                                callback: function (data) { // specified callback function
-                                    console.log(data);
-                                    /* Get from elements  values */
-                                    var values =
-                                    {
-                                        id: "@user.Id-@SalesboyServiceProviders.Setup.GenerateID.GetID()",
-                                        trnxid: data.tx_ref,
-                                        amountpaid: data.amount,
-                                        trnxid: data.transaction_id,
-                                        paid_by: data.customer.name,
-                                        pay_email: data.customer.email,
-                                        pay_phone: data.customer.phone_number,
-                                        pay_status: data.status,
-                                        ref_no: data.tx_ref,
-                                        gateway_ref: data.flw_ref,
-                                        currency: data.currency
-                                    }; //$(this).serialize();
-
-                                     $.ajax({
-                                            url: "@Url.Action("payment", "ServiceProviders")",
-                                            type: "post",
-                                            data: values ,
-                                            success: function (response) {
-                                                // You will get response from your PHP page (what you echo or print)
-                                                //alert(response.responseText);
-                                                console.log(response);
-                                            },
-                                            error: function(jqXHR, textStatus, errorThrown) {
-                                               console.log(textStatus, errorThrown);
-                                            }
-                                        });
-                            },
-                                customizations: {
-                            title: "Salesboy Nigeria Payment",
-                                    description: "Fee Payment",
-                                    logo: "https://salesboynigeria.com/Content/Images/logo.png",
-                                },
-                            });
-                        }
-                                </script>
-                                <script src="https://checkout.flutterwave.com/v3.js"></script>
-                            </div>
                             @*<center>
-            <form>
-                <button type="button" class="btn btn-info" onClick="makePayment(20000)">
-                    <i class="fa fa-10x fa-money"></i>
-                    Pay Now (20,000)
-                </button>
-            </form>
-            <form>
-                <button type="button" class="btn btn-info" onClick="makePayment(10000)">
-                    <i class="fa fa-10x fa-money"></i>
-                    Pay Now (10,000)
-                </button>
-            </form>
+                                    <form>
+                                        <button type="button" class="btn btn-info" onClick="makePayment(20000)">
+                                            <i class="fa fa-10x fa-money"></i>
+                                            Pay Now (20,000)
+                                        </button>
+                                    </form>
+                                    <form>
+                                        <button type="button" class="btn btn-info" onClick="makePayment(10000)">
+                                            <i class="fa fa-10x fa-money"></i>
+                                            Pay Now (10,000)
+                                        </button>
+                                    </form>
 
-        </center>*@
+                                </center>*@
                             <script>
                      function makePayment(amount) {
                         FlutterwaveCheckout({
@@ -540,9 +467,82 @@
                             </script>
                             <script src="https://checkout.flutterwave.com/v3.js"></script>
                         </div>
+                        @*<center>
+                                <form>
+                                    <button type="button" class="btn btn-info" onClick="makePayment(20000)">
+                                        <i class="fa fa-10x fa-money"></i>
+                                        Pay Now (20,000)
+                                    </button>
+                                </form>
+                                <form>
+                                    <button type="button" class="btn btn-info" onClick="makePayment(10000)">
+                                        <i class="fa fa-10x fa-money"></i>
+                                        Pay Now (10,000)
+                                    </button>
+                                </form>
+
+                            </center>*@
+                        <script>
+                     function makePayment(amount) {
+                        FlutterwaveCheckout({
+                            public_key: "FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X", //"FLWPUBK_TEST-8d049f5bf0756776e6392f6cfd90b024-X",
+                            tx_ref: "@Guid.NewGuid().ToString()",
+                            amount: amount,
+                            currency: "NGN",
+                                country: "NG",
+                            payment_options: " ",
+                            redirect_url: "@Url.Action("Index","Home")", // specified redirect URL
+                               // "http://localhost:3474/Admissions/AdmissionStatus",
+                            customer: {
+                                email: "@user.Email",
+                                phone_number: "@user.phone",
+                                name: "@user.firstname @user.lastname",
+                                },
+                                callback: function (data) { // specified callback function
+                                    console.log(data);
+                                    /* Get from elements  values */
+                                    var values =
+                                    {
+                                        id: "@user.Id-@SalesboyServiceProviders.Setup.GenerateID.GetID()",
+                                        trnxid: data.tx_ref,
+                                        amountpaid: data.amount,
+                                        trnxid: data.transaction_id,
+                                        paid_by: data.customer.name,
+                                        pay_email: data.customer.email,
+                                        pay_phone: data.customer.phone_number,
+                                        pay_status: data.status,
+                                        ref_no: data.tx_ref,
+                                        gateway_ref: data.flw_ref,
+                                        currency: data.currency
+                                    }; //$(this).serialize();
+
+                                     $.ajax({
+                                            url: "@Url.Action("payment", "ServiceProviders")",
+                                            type: "post",
+                                            data: values ,
+                                            success: function (response) {
+                                                // You will get response from your PHP page (what you echo or print)
+                                                //alert(response.responseText);
+                                                console.log(response);
+                                            },
+                                            error: function(jqXHR, textStatus, errorThrown) {
+                                               console.log(textStatus, errorThrown);
+                                            }
+                                        });
+                            },
+                                customizations: {
+                            title: "Salesboy Nigeria Payment",
+                                    description: "Fee Payment",
+                                    logo: "https://salesboynigeria.com/Content/Images/logo.png",
+                                },
+                            });
+                        }
+                        </script>
+                        <script src="https://checkout.flutterwave.com/v3.js"></script>
                     </div>
                 </div>
             </div>
+        </div>
     }
     <hr />
 </div>

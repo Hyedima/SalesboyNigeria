@@ -123,7 +123,7 @@ namespace SalesboyMobile.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(string firstname, string lastname, string email, string phone, string password, string state, string agree)
         {
             //SendMail
@@ -177,8 +177,8 @@ namespace SalesboyMobile.Controllers
                     //var response = await client.SendEmailAsync(msg);
 
                     TempData["success"] = "true";
-                    TempData["message"] = "Registered Sucessfully.";
-                    return RedirectToAction("Verify", "Useraccounts", new { id = id });
+                    TempData["message"] = "Registered Sucessfully. Please login to continue.";
+                    return RedirectToAction("Login", "Useraccounts", new { id = id });
                 }
             }
             catch (Exception err)
@@ -232,7 +232,7 @@ namespace SalesboyMobile.Controllers
                         //{
                         //    return Redirect(ReturnUrl);
                         //}
-                        return RedirectToAction("myprofile", "UserAccounts");
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {
