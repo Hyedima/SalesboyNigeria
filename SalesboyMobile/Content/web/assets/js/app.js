@@ -7,7 +7,7 @@ $(window).on('load', function () {
     switch (body.attr('data-page')) {
         case "splash":
             setTimeout(function () {
-                window.location.replace("landing.html");
+                window.location.replace("landing");
             }, 4000)
             break;
 
@@ -100,7 +100,7 @@ $(window).on('load', function () {
             introswiper.on('reachEnd', function () {
                 introswiper.autoplay = false;
                 setTimeout(function () {
-                    window.location.replace("signin.html");
+                    window.location.replace("/Useraccounts/login");
                 }, 5000);
             });
             break;

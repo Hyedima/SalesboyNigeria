@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SalesboyMobile.Models;
+using SalesboyMobile.setup;
 
 namespace SalesboyMobile.Controllers
 {
+    [CheckAuthentication]
     public class ProductsController : Controller
     {
         private salesboyEntities db = new salesboyEntities();
@@ -118,6 +120,80 @@ namespace SalesboyMobile.Controllers
             db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        // GET: Products/Details/5
+        public ActionResult Viewproduct(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+        public ActionResult step1()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult step1(string name, string category,decimal amount, decimal discount, int qty)
+        {
+            return View();
+        }
+        public ActionResult step2(string id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult step2(string tags, string description)
+        {
+            return View();
+        }
+        public ActionResult step3(string id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult step3(string photo, string pic)
+        {
+            return View();
+        }
+        [CheckAuthentication]
+        public JsonResult AddCart(string email, string productname, string productid, string qty, string ip, string price)
+        {
+            string id = GenerateID.GetID();
+            var order = db.Carts.Where(c => c.useremail == email).Count();
+
+            var prod = db.Carts.Where(p => p.productid == productid && p.useremail == email).ToList();
+            if (prod.Count() > 0)
+            {
+                prod.FirstOrDefault().qty += Convert.ToInt32(qty);
+                db.SaveChanges();
+                return Json(order, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                db.Carts.Add(new Cart
+                {
+                    id = id,
+                    productid = productid,
+                    useremail = email,
+                    userip = ip,
+                    qty = Convert.ToInt32(qty),
+                    discount = 0,
+                    insertdate = DateTime.Now
+                });
+                db.SaveChanges();
+                return Json(order, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public ActionResult cart()
+        {
+            return View();
         }
 
         protected override void Dispose(bool disposing)

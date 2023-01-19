@@ -132,7 +132,7 @@ namespace SalesboyMobile.Controllers
                 int cnt = db.UserAccounts.Where(p => p.Email == email || p.phone == phone).Count();
 
                 string id = Guid.NewGuid().ToString();
-                //string newpass = SalesboyNigeria.setup.CryptoEngine.Encrypt(password);
+                string newpass = SalesboyMobile.setup.CryptoEngine.Encrypt(password);
 
                 //check if user exist 
                 if (cnt > 0)
@@ -151,7 +151,7 @@ namespace SalesboyMobile.Controllers
                         Email = email,
                         phone = phone,
                         state = state,
-                        PasswordHash = "", //newpass,
+                        PasswordHash = newpass,
                         usertype = "USER",
                         regdate = DateTime.Now,
                         country = "NIGERIA",

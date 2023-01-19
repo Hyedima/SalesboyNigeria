@@ -57,7 +57,7 @@
 
     <!-- manifest meta -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="~/Content/web/manifest.json" />
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="~/Content/web/assets/img/logo.png" sizes="180x180">
@@ -122,7 +122,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card bg-opac text-white border-0">
+                        @*<div class="card bg-opac text-white border-0">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">
@@ -138,7 +138,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             </div>
@@ -149,7 +149,7 @@
                     <ul class="nav nav-pills">
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index-2.html">
+                            <a class="nav-link active" aria-current="page" href="@Url.Action("Index","Home")">
                                 <div class="avatar avatar-40 rounded icon"><i class="bi bi-house-door"></i></div>
                                 <div class="col">Home</div>
                                 @*<div class="arrow"><i class="bi bi-chevron-right"></i></div>*@
@@ -157,7 +157,14 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="blog.html" tabindex="-1">
+                            <a class="nav-link" href="@Url.Action("Cart","Products")" tabindex="-1">
+                                <div class="avatar avatar-40 rounded icon"><i class="bi bi-newspaper"></i></div>
+                                <div class="col">Cart <span class="btn btn-warning" id="cart"></span> </div>
+                                @*<div class="arrow"><i class="bi bi-chevron-right"></i></div>*@
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Cart","Products")" tabindex="-1">
                                 <div class="avatar avatar-40 rounded icon"><i class="bi bi-newspaper"></i></div>
                                 <div class="col">Products</div>
                                 @*<div class="arrow"><i class="bi bi-chevron-right"></i></div>*@
@@ -165,7 +172,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="pages.html" tabindex="-1">
+                            <a class="nav-link" href="@Url.Action("Cart","Products")" tabindex="-1">
                                 <div class="avatar avatar-40 rounded icon"><i class="bi bi-file-earmark-text"></i></div>
                                 <div class="col">Services</div>
                                 @*<div class="arrow"><i class="bi bi-chevron-right"></i></div>*@
@@ -173,7 +180,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="notifications.html" tabindex="-1">
+                            <a class="nav-link" href="#" tabindex="-1">
                                 <div class="avatar avatar-40 rounded icon"><i class="bi bi-bell"></i></div>
                                 <div class="col">Order</div>
                                 @*<div class="arrow"><i class="bi bi-chevron-right"></i></div>*@
@@ -219,88 +226,98 @@
 
 
                         @*<li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index-2.html">
-                                    <div class="avatar avatar-40 rounded icon"><i class="bi bi-house-door"></i></div>
-                                    <div class="col">Dashboard</div>
-                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-                                </a>
-                            </li>
+            <a class="nav-link active" aria-current="page" href="index-2.html">
+                <div class="avatar avatar-40 rounded icon"><i class="bi bi-house-door"></i></div>
+                <div class="col">Dashboard</div>
+                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+            </a>
+        </li>
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                                   aria-expanded="false">
-                                    <div class="avatar avatar-40 rounded icon"><i class="bi bi-person"></i></div>
-                                    <div class="col">Account</div>
-                                    <div class="arrow">
-                                        <i class="bi bi-plus plus"></i> <i class="bi bi-dash minus"></i>
-                                    </div>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item nav-link" href="profile.html">
-                                            <div class="avatar avatar-40 rounded icon"><i class="bi bi-calendar2"></i></div>
-                                            <div class="col">Profile</div>
-                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item nav-link" href="settings.html">
-                                            <div class="avatar avatar-40 rounded icon">
-                                                <i class="bi bi-calendar-check"></i>
-                                            </div>
-                                            <div class="col">Settings</div>
-                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="chat.html" tabindex="-1">
-                                    <div class="avatar avatar-40 rounded icon"><i class="bi bi-chat-text"></i></div>
-                                    <div class="col">Messages</div>
-                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-                                </a>
-                            </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+               aria-expanded="false">
+                <div class="avatar avatar-40 rounded icon"><i class="bi bi-person"></i></div>
+                <div class="col">Account</div>
+                <div class="arrow">
+                    <i class="bi bi-plus plus"></i> <i class="bi bi-dash minus"></i>
+                </div>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item nav-link" href="profile.html">
+                        <div class="avatar avatar-40 rounded icon"><i class="bi bi-calendar2"></i></div>
+                        <div class="col">Profile</div>
+                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item nav-link" href="settings.html">
+                        <div class="avatar avatar-40 rounded icon">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        <div class="col">Settings</div>
+                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="chat.html" tabindex="-1">
+                <div class="avatar avatar-40 rounded icon"><i class="bi bi-chat-text"></i></div>
+                <div class="col">Messages</div>
+                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+            </a>
+        </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="notifications.html" tabindex="-1">
-                                    <div class="avatar avatar-40 rounded icon"><i class="bi bi-bell"></i></div>
-                                    <div class="col">Notification</div>
-                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-                                </a>
-                            </li>
+        <li class="nav-item">
+            <a class="nav-link" href="notifications.html" tabindex="-1">
+                <div class="avatar avatar-40 rounded icon"><i class="bi bi-bell"></i></div>
+                <div class="col">Notification</div>
+                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+            </a>
+        </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="blog.html" tabindex="-1">
-                                    <div class="avatar avatar-40 rounded icon"><i class="bi bi-newspaper"></i></div>
-                                    <div class="col">Blogs</div>
-                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-                                </a>
-                            </li>
+        <li class="nav-item">
+            <a class="nav-link" href="blog.html" tabindex="-1">
+                <div class="avatar avatar-40 rounded icon"><i class="bi bi-newspaper"></i></div>
+                <div class="col">Blogs</div>
+                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+            </a>
+        </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="style.html" tabindex="-1">
-                                    <div class="avatar avatar-40 rounded icon"><i class="bi bi-palette"></i></div>
-                                    <div class="col">Style <i class="bi bi-star-fill text-warning small"></i></div>
-                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-                                </a>
-                            </li>
+        <li class="nav-item">
+            <a class="nav-link" href="style.html" tabindex="-1">
+                <div class="avatar avatar-40 rounded icon"><i class="bi bi-palette"></i></div>
+                <div class="col">Style <i class="bi bi-star-fill text-warning small"></i></div>
+                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+            </a>
+        </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="pages.html" tabindex="-1">
-                                    <div class="avatar avatar-40 rounded icon"><i class="bi bi-file-earmark-text"></i></div>
-                                    <div class="col">Pages <span class="badge bg-info fw-light">new</span></div>
-                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-                                </a>
-                            </li>
+        <li class="nav-item">
+            <a class="nav-link" href="pages.html" tabindex="-1">
+                <div class="avatar avatar-40 rounded icon"><i class="bi bi-file-earmark-text"></i></div>
+                <div class="col">Pages <span class="badge bg-info fw-light">new</span></div>
+                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+            </a>
+        </li>
 
                         *@
+
                         <li class="nav-item">
-                            <a class="nav-link" href="signin.html" tabindex="-1">
+                            <a class="nav-link" href="@Url.Action("Settings","Home")" tabindex="-1">
                                 <div class="avatar avatar-40 rounded icon"><i class="bi bi-box-arrow-right"></i></div>
-                                <div class="col">Logout</div>
-                                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                <div class="col">Settings</div>
+                                <div class="arrow"><i class="fa ps-form--account-setting"></i></div>
                             </a>
+                        </li>
+                        <li class="nav-item">
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="darkmodeswitch">
+                                <label class="form-check-label text-muted px-2 " for="darkmodeswitch">
+                                    DARK MODE
+                                </label>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -326,9 +343,11 @@
                     </div>
                 </div>
                 <div class="col-auto">
-                    <a href="notifications.html" target="_self" class="btn btn-light btn-44">
+                    <a href="@Url.Action("","")" target="_self" class="btn btn-light btn-44">
                         <i class="bi bi-bell"></i>
-                        <span class="count-indicator"></span>
+                        <span class="count-indicator">
+                            
+                        </span>
                     </a>
                 </div>
             </div>
@@ -485,7 +504,45 @@
 
     <!-- page level custom script -->
     <script src="~/Content/web/assets/js/app.js"></script>
+    <script>
+        //Cart
+        /* Get from elements values */
+        function Addcart(productid, productname, email, ip, price, qty) {
+            let ClientDetails = {};
+            $.getJSON('https://api.db-ip.com/v2/free/self', function (data) {
+                console.log(JSON.stringify(data, null, 2));
+                ClientDetails = JSON.stringify(data, null, 2);
+            });
+            console.log(ClientDetails.ipAddress);
 
+              var values =
+              {
+                  productid: productid,
+                  productname: productname,
+                  email: email,
+                  ip: ClientDetails.ipAddress,
+                  price: price,
+                  qty: qty
+              }; //$(this).serialize();
+
+            $.ajax({
+                url: "@Url.Action("AddCart","Products")",
+                type: "post",
+                data: values,
+                success: function (response) {
+                    // You will get response from your PHP page (what you echo or print)
+                    //console.log(response.responseText);
+                    console.log(response);
+                    document.getElementById("cart").innerHTML = response;
+                    //window.location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        }
+
+    </script>
 </body>
 
 

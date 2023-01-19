@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SalesboyMobile.Models.ServiceProvider>
+
+@{
+    ViewBag.Title = "ViewServices";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    SalesboyMobile.Models.salesboyEntities db = new SalesboyMobile.Models.salesboyEntities();
+}
+<div class="row mb-3">
+    <div class="col-12 px-0">
+                
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <center>
+                                    <strong class="text-primary">
+                                        Service Providers
+                                    </strong>
+                                    <hr />
+                                </center>
+                                @foreach (var item in db.ServiceProviders.ToList())
+                                {
+                                    <div class="col-6 mb-6">
+                                        <div class="card">
+                                            <div class="card-body center-block">
+
+                                                <a href="" class="">
+                                                    <img src="@item.photo" class="img-thumbnail" />
+                                                    <strong>
+                                                        @item.brandname
+                                                    </strong>
+                                                    <hr />
+                                                    <small>
+                                                        @item.phone <br />
+                                                        @item.Email
+                                                    </small>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+        </div>
+    </div>
+</div>

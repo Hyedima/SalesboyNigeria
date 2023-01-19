@@ -109,7 +109,7 @@
                         </div>
                         <div class="ps-product__container">
                             <p class="ps-product__price sale">
-                                N @item.price <del>$670.00 </del><small>18% off</small>
+                                N @item.price <del>0.00 </del><small>18% off</small>
                                 <button class="btn btn-warning yellow" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')" title="">add cart<i class="icon-bag2"></i></button>
                             </p>
                             <div class="ps-product__content">
@@ -414,7 +414,7 @@
                 {
                     <div class="ps-product">
                         <div class="ps-product__thumbnail">
-                            <a href="@Url.Action("","")"><img src="@item.photo" alt="" /></a>
+                            <a href="@Url.Action("","")"><img src="https://services.salesboynigeria.com/@item.photo" alt="" /></a>
                             <div class="ps-product__badge"></div>
                             @*<ul class="ps-product__actions">
                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')"><i class="icon-bag2"></i></a></li>
@@ -424,10 +424,10 @@
                             </ul>*@
                         </div>
                         <div class="ps-product__container">
-                            <a class="ps-product__vendor" href="#">@item.brandname</a>
+                            <a class="ps-product__vendor" href="#">@item.lastname @item.firstname </a>
                             <div class="ps-product__content">
                                 <a class="ps-product__title" href="#">@item.brandname</a>
-                                <div class="ps-product__rating">
+                                @*<div class="ps-product__rating">
                                     <select class="ps-rating" data-read-only="true">
                                         <option value="1">1</option>
                                         <option value="1">2</option>
@@ -435,7 +435,7 @@
                                         <option value="1">4</option>
                                         <option value="2">5</option>
                                     </select><span>01</span>
-                                </div>
+                                </div>*@
                                 <p class="ps-product__price sale">@item.amountpaid <del> </del></p>
                             </div>
                             <div class="ps-product__content hover">

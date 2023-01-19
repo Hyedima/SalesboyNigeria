@@ -1,0 +1,36 @@
+﻿@model SalesboyMobile.Models.Product
+
+@{
+    ViewBag.Title = "Viewproduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <dic class="card">
+            <div class="card-body">
+                <img src="@Model.photo1" />
+                <strong>
+                    @Model.productname <br />
+                    <small>
+                        @Model.brandname
+                    </small>
+                </strong>
+                <br />
+                <a href="@Url.Action("","")" class="btn btn-sm btn-outline-warning" onclick="Addcart('@Model.id', '@Model.productname', '@Session["email"]','', '@Model.price', '1')">
+                    Add to cart 
+                </a>
+                <hr />
+                <strong>Product Details</strong>
+                <hr />
+                <p>
+                    @Model.description
+                </p>
+                <hr />
+                <a href="@Url.Action("","")" class="btn btn-sm btn-outline-warning">
+                    Add to cart
+                </a>
+            </div>
+        </dic>
+    </div>
+</div>

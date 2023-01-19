@@ -131,7 +131,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ServiceProvidersController.cs" />
     <Compile Include="Controllers\UserAccountsController.cs" />
+    <Compile Include="Controllers\VendorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1231,6 +1233,23 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\UserAccounts\Register.cshtml" />
     <Content Include="Views\UserAccounts\login.cshtml" />
+    <Content Include="Views\Home\splash.cshtml" />
+    <Content Include="Views\Products\Viewproduct.cshtml" />
+    <Content Include="Views\Home\landing.cshtml" />
+    <Content Include="Views\Home\settings.cshtml" />
+    <Content Include="Views\Products\cart.cshtml" />
+    <Content Include="Views\Vendors\Create.cshtml" />
+    <Content Include="Views\Vendors\Delete.cshtml" />
+    <Content Include="Views\Vendors\Details.cshtml" />
+    <Content Include="Views\Vendors\Edit.cshtml" />
+    <Content Include="Views\Vendors\Index.cshtml" />
+    <Content Include="Views\ServiceProviders\Create.cshtml" />
+    <Content Include="Views\ServiceProviders\Delete.cshtml" />
+    <Content Include="Views\ServiceProviders\Details.cshtml" />
+    <Content Include="Views\ServiceProviders\Edit.cshtml" />
+    <Content Include="Views\ServiceProviders\Index.cshtml" />
+    <Content Include="Views\ServiceProviders\ViewServices.cshtml" />
+    <Content Include="Views\ServiceProviders\ViewServiceProvider.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
