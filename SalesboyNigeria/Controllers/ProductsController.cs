@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using Microsoft.Ajax.Utilities;
 using SalesboyNigeria.Models;
 using SalesboyNigeria.setup;
+using SendGrid;
 
 namespace Salesboy.Controllers
 {
@@ -385,6 +386,94 @@ namespace Salesboy.Controllers
         {
             return View();
         }
+        //[HttpPost]
+        //public async ActionResult Checkout(string email, int amount, string name, string phone, string country, string city, string address, string zip, string landmark)
+        //{
+        //    try
+        //    {
+        //        string userid = Session["userid"].ToString();
+        //        string id = GenerateID.GetID();
+        //            var transaction = new Payment()
+        //            {
+        //                id = id,
+        //                name = name,
+        //                trnxid = id,
+        //                email = email,
+        //                userid = userid,
+        //                phone = phone,
+        //                amount = amount,
+        //                trnxdate = DateTime.Now,
+        //                status = "PENDING",
+        //                notes = "Payment for Products by " + name + " on " + DateTime.Now,
+        //                gatewayref = id,
+        //                paymenttype = "Online Payment",
+        //                category = "NGN",
+        //                title = "Payment for products",
+        //            };
+        //            db.Payments.Add(transaction);
+
+        //            //Remove items from cart
+        //            foreach (var item in db.Carts.Where(p => p.useremail == email).ToList())
+        //            {
+        //                //ad cart items 
+        //                db.Sales.Add(new Sale
+        //                {
+        //                    id = GenerateID.GetID(),
+        //                    userid = userid,
+        //                    email = email,
+        //                    productid = item.productid,
+        //                    productname = item.Product.productname,
+        //                    description = item.Product.description,
+        //                    amountpaid = amount, //total amount paid for all the items bought in this batch
+        //                    qty = Convert.ToInt32(item.qty),
+        //                    unitprice = Convert.ToDecimal(item.Product.price),
+        //                    totalcost = Convert.ToDecimal(item.Product.price * item.qty),
+        //                    discountperc = Convert.ToInt32(item.Product.discount),
+        //                    discountamount = Convert.ToDecimal(item.discount),
+        //                    insertdate = DateTime.Now,
+        //                    orderid = id
+        //                });
+        //                //delete item from cart
+        //                db.Carts.Remove(db.Carts.Find(item.id));
+        //            }
+        //            //Create order
+        //            db.Orders.Add(new Order
+        //            {
+        //                id = id,
+        //                batchid = id,
+        //                useremail = email,
+        //                paymentid = id,
+        //                orderdate = DateTime.Now,
+        //                IsShipping = "Fales",
+        //                frieght = null,
+        //                shipperid = null,
+        //                insertdate = DateTime.Now.ToString(),
+        //                customerid = userid,
+        //                status = "Ordered",
+        //                notes = "payment for items is don't, its now on the shipment process",
+        //                customeremail = email,
+        //                paymentstatus = "Pending",
+        //                Country = country,
+        //                city = city,
+        //                shipmentaddress = address,
+        //                zip = zip,
+        //                phone = phone,
+        //                landmark = landmark
+        //            });
+
+        //            db.SaveChanges();
+        //            TempData["success"] = "true";
+        //            TempData["message"] = "Payment done successfully!!";
+        //        return View();
+        //    }
+        //    catch(Exception err)
+        //    {
+        //        TempData["success"] = "false";
+        //        TempData["message"] = err.Message;
+        //        return View();
+
+        //    }
+        //}
         public ActionResult Search(string text)
         {
             return View(db.Products.Where(p=>p.productname.Contains(text)).ToList());
@@ -395,6 +484,7 @@ namespace Salesboy.Controllers
             db.SaveChanges();
             return Json("Succes", JsonRequestBehavior.AllowGet);
         }
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)

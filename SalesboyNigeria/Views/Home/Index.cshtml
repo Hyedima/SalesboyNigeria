@@ -96,7 +96,28 @@
             <div class="ps-carousel--nav owl-slider" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="3" data-owl-item-md="4" data-owl-item-lg="5" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
                 @foreach (var item in db.Products.ToList())
                 {
-                    <div class="ps-product ps-product--inner">
+                    <div class="col-ms-3">
+                        <div class="card" style="min-height:35vh;">
+                            <div class="card-body">
+                                <center>
+                                    <a href="@Url.Action("productDetails", "Products", new {id = item.id})">
+                                        <img class="card-img-top" src="@item.photo1" alt="" style="height:20vh;width:100%;" />
+                                        <p>
+                                            @item.productname
+                                            <strong class="text-warning">
+                                                @item.price
+                                            </strong>
+                                        </p>
+                                        
+                                    </a>
+                                </center>
+                                <center>
+                                    <button class="btn btn-sm btn-outline-warning" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')">Add to cart</button>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="ps-product ps-product--inner">
                         <div class="ps-product__thumbnail">
                             <a href="@Url.Action("", "")"><img src="@item.photo1" alt=""></a>
                             <div class="ps-product__badge">-16%</div>
@@ -130,13 +151,13 @@
                                 </div>
                                 <div class="">
                                     <p class="ps-product__price sale">
-                                        N @item.price @*<del></del><small>18% off</small>*@
-                                    </p>
+                                        N @item.price--> @*<del></del><small>18% off</small>*@
+                                    <!--</p>
                                     <button class="btn btn-warning btn-lg" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')" title="">add cart<i class="icon-bag2 p-2"></i></button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 }
                 @*<div class="ps-product ps-product--inner">
                         <div class="ps-product__thumbnail">

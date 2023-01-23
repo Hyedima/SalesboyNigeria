@@ -41,5 +41,13 @@ namespace SalesboyMobile.Controllers
         {
             return View();
         }
+        public ActionResult Servies()
+        {
+            return View();
+        }
+        public ActionResult vendors()
+        {
+            return View();
+        }
     }
 }

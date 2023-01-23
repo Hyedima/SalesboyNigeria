@@ -6,6 +6,7 @@
     string email = Session["email"].ToString();
     int sn = 0;
     decimal totaAmount = 0;
+    var user = db.UserAccounts.FirstOrDefault(p => p.Email == email);
 }
 <div class="row">
     <div class="col-md-12">
@@ -36,24 +37,109 @@
                             </th>
                             <th>@item.qty</th>
                             <th>
-                                @{ 
-                                    decimal amt = Convert.ToDecimal( item.qty * item.Product.price);
+                                @{
+                                    decimal amt = Convert.ToDecimal(item.qty * item.Product.price);
                                     totaAmount += amt;
                                 }
                                 @amt
                             </th>
                         </tr>
                     }
-                <tr>
-                    <th colspan="3">
-                        Total(N)
-                    </th>
-                    <th>
-                        @totaAmount
-                    </th>
-                </tr>
+                    <tr>
+                        <th colspan="3">
+                            Total(N)
+                        </th>
+                        <th>
+                            @totaAmount
+                        </th>
+                    </tr>
                 </table>
+            </div>
+            <div class="col-md-4">
+                <a href="#" onclick="makePayment()" class="btn btn-warning">Pay now...</a>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+                     function makePayment(){
+                        FlutterwaveCheckout({
+                            public_key:
+                            //"FLWPUBK_TEST-8d049f5bf0756776e6392f6cfd90b024-X",
+                            "FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X",
+                            tx_ref: "@Guid.NewGuid().ToString()",
+                            amount: @totaAmount,
+                            currency: "NGN",
+                                country: "NG",
+                            //payment_options: " ",
+                            //redirect_url: "@Url.Action("myprofile","Products")", // specified redirect URL
+                               // "http://localhost:3474/Admissions/AdmissionStatus",
+                            customer: {
+                                email: "@user.Email",
+                                phone_number: "@user.phone",
+                                name: "@user.firstname @user.lastname",
+                                },
+                                callback: function (data) { // specified callback function
+                                    console.log(data);
+                                    /* Get from elements values */
+                                    var values =
+                                    {
+                                        id: "@user.Id-@SalesboyMobile.setup.GenerateID.GetID()",
+                                        trnxid: data.tx_ref,
+                                        amountpaid: data.amount,
+                                        trnxid: data.transaction_id,
+                                        paid_by: data.customer.name,
+                                        pay_email: data.customer.email,
+                                        pay_phone: data.customer.phone_number,
+                                        pay_status: data.status,
+                                        ref_no: data.tx_ref,
+                                        gateway_ref: data.flw_ref,
+                                        currency: data.currency
+                                    }; //$(this).serialize();
+
+                                     $.ajax({
+                                            url: "@Url.Action("payment","UserAccounts")",
+                                            type: "post",
+                                            data: values ,
+                                            success: function (response) {
+                                                // You will get response from your PHP page (what you echo or print)
+                                                //alert(response.responseText);
+                                                console.log(response);
+                                            },
+                                            error: function(jqXHR, textStatus, errorThrown) {
+                                               console.log(textStatus, errorThrown);
+                                            }
+                                        });
+                            },
+                                customizations: {
+                                    title: "Salesboy Nigeria Payment",
+                                    description: "Fee Payment",
+                                    logo: "https://salesboynigeria.com/Content/Images/logo.png",
+                                },
+                            });
+                        }
+</script>
+<script type="text/javascript">
+            function deleteItem(id) {
+                var values = {
+                    id: id
+                };
+
+                $.ajax({
+                    url: "@Url.Action("deletecart","products")",
+                    type: "post",
+                    data: values ,
+                    success: function (response) {
+                        //alert(response.responseText);
+                        console.log(response);
+                        window.location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    }
+                });
+            }
+
+</script>
+<script src="https://checkout.flutterwave.com/v3.js"></script>

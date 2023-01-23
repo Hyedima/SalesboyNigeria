@@ -305,7 +305,8 @@ namespace Salesboy.Controllers
                         //{
                         //    return Redirect(ReturnUrl);
                         //}
-                            return RedirectToAction("myprofile", "UserAccounts");
+                        //return RedirectToAction("myprofile", "UserAccounts");
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {
@@ -512,6 +513,8 @@ namespace Salesboy.Controllers
                 phone = pay_phone,
                 landmark = ""
             });
+
+
             db.SaveChanges();
             return Json("Success", JsonRequestBehavior.AllowGet);
         }

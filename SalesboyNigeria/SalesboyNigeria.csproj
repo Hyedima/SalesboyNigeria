@@ -1259,6 +1259,7 @@
     <Content Include="Views\Home\locations.cshtml" />
     <Content Include="Views\Home\Order.cshtml" />
     <Content Include="Views\Home\findStores.cshtml" />
+    <Content Include="Views\Shared\_footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

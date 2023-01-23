@@ -44,8 +44,9 @@
 
 <!doctype html>
 <html lang="en">
-
-
+@{ 
+    SalesboyMobile.Models.salesboyEntities db = new SalesboyMobile.Models.salesboyEntities();
+}
 <!-- Mirrored from maxartkiller.com/website/fimobile2/HTML/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 Nov 2022 11:46:35 GMT -->
 <head>
     <meta charset="utf-8">
@@ -123,22 +124,22 @@
                             </div>
                         </div>
                         @*<div class="card bg-opac text-white border-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h1 class="display-4">100.00</h1>
-                                    </div>
-                                    <div class="col-auto">
-                                        <p class="text-muted">Wallet Balance</p>
-                                    </div>
-                                    <div class="col text-end">
-                                        <p class="text-muted">
-                                            <a href="addmoney.html">+ Top up</a>
-                                        </p>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h1 class="display-4">100.00</h1>
+                                        </div>
+                                        <div class="col-auto">
+                                            <p class="text-muted">Wallet Balance</p>
+                                        </div>
+                                        <div class="col text-end">
+                                            <p class="text-muted">
+                                                <a href="addmoney.html">+ Top up</a>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>*@
+                            </div>*@
                     </div>
                 </div>
             </div>
@@ -159,7 +160,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="@Url.Action("Cart","Products")" tabindex="-1">
                                 <div class="avatar avatar-40 rounded icon"><i class="bi bi-newspaper"></i></div>
-                                <div class="col">Cart <span class="btn btn-warning" id="cart"></span> </div>
+                                <div class="col">Cart <span class="btn btn-warning" id="">@db.Carts.Count()</span> </div>
                                 @*<div class="arrow"><i class="bi bi-chevron-right"></i></div>*@
                             </a>
                         </li>
@@ -226,80 +227,80 @@
 
 
                         @*<li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index-2.html">
-                <div class="avatar avatar-40 rounded icon"><i class="bi bi-house-door"></i></div>
-                <div class="col">Dashboard</div>
-                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-            </a>
-        </li>
+                                <a class="nav-link active" aria-current="page" href="index-2.html">
+                                    <div class="avatar avatar-40 rounded icon"><i class="bi bi-house-door"></i></div>
+                                    <div class="col">Dashboard</div>
+                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                </a>
+                            </li>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-               aria-expanded="false">
-                <div class="avatar avatar-40 rounded icon"><i class="bi bi-person"></i></div>
-                <div class="col">Account</div>
-                <div class="arrow">
-                    <i class="bi bi-plus plus"></i> <i class="bi bi-dash minus"></i>
-                </div>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                    <a class="dropdown-item nav-link" href="profile.html">
-                        <div class="avatar avatar-40 rounded icon"><i class="bi bi-calendar2"></i></div>
-                        <div class="col">Profile</div>
-                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-item nav-link" href="settings.html">
-                        <div class="avatar avatar-40 rounded icon">
-                            <i class="bi bi-calendar-check"></i>
-                        </div>
-                        <div class="col">Settings</div>
-                        <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="chat.html" tabindex="-1">
-                <div class="avatar avatar-40 rounded icon"><i class="bi bi-chat-text"></i></div>
-                <div class="col">Messages</div>
-                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-            </a>
-        </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                                   aria-expanded="false">
+                                    <div class="avatar avatar-40 rounded icon"><i class="bi bi-person"></i></div>
+                                    <div class="col">Account</div>
+                                    <div class="arrow">
+                                        <i class="bi bi-plus plus"></i> <i class="bi bi-dash minus"></i>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="profile.html">
+                                            <div class="avatar avatar-40 rounded icon"><i class="bi bi-calendar2"></i></div>
+                                            <div class="col">Profile</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item nav-link" href="settings.html">
+                                            <div class="avatar avatar-40 rounded icon">
+                                                <i class="bi bi-calendar-check"></i>
+                                            </div>
+                                            <div class="col">Settings</div>
+                                            <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="chat.html" tabindex="-1">
+                                    <div class="avatar avatar-40 rounded icon"><i class="bi bi-chat-text"></i></div>
+                                    <div class="col">Messages</div>
+                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                </a>
+                            </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="notifications.html" tabindex="-1">
-                <div class="avatar avatar-40 rounded icon"><i class="bi bi-bell"></i></div>
-                <div class="col">Notification</div>
-                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-            </a>
-        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="notifications.html" tabindex="-1">
+                                    <div class="avatar avatar-40 rounded icon"><i class="bi bi-bell"></i></div>
+                                    <div class="col">Notification</div>
+                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                </a>
+                            </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="blog.html" tabindex="-1">
-                <div class="avatar avatar-40 rounded icon"><i class="bi bi-newspaper"></i></div>
-                <div class="col">Blogs</div>
-                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-            </a>
-        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="blog.html" tabindex="-1">
+                                    <div class="avatar avatar-40 rounded icon"><i class="bi bi-newspaper"></i></div>
+                                    <div class="col">Blogs</div>
+                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                </a>
+                            </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="style.html" tabindex="-1">
-                <div class="avatar avatar-40 rounded icon"><i class="bi bi-palette"></i></div>
-                <div class="col">Style <i class="bi bi-star-fill text-warning small"></i></div>
-                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-            </a>
-        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="style.html" tabindex="-1">
+                                    <div class="avatar avatar-40 rounded icon"><i class="bi bi-palette"></i></div>
+                                    <div class="col">Style <i class="bi bi-star-fill text-warning small"></i></div>
+                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                </a>
+                            </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="pages.html" tabindex="-1">
-                <div class="avatar avatar-40 rounded icon"><i class="bi bi-file-earmark-text"></i></div>
-                <div class="col">Pages <span class="badge bg-info fw-light">new</span></div>
-                <div class="arrow"><i class="bi bi-chevron-right"></i></div>
-            </a>
-        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="pages.html" tabindex="-1">
+                                    <div class="avatar avatar-40 rounded icon"><i class="bi bi-file-earmark-text"></i></div>
+                                    <div class="col">Pages <span class="badge bg-info fw-light">new</span></div>
+                                    <div class="arrow"><i class="bi bi-chevron-right"></i></div>
+                                </a>
+                            </li>
 
                         *@
 
@@ -344,9 +345,11 @@
                 </div>
                 <div class="col-auto">
                     <a href="@Url.Action("","")" target="_self" class="btn btn-light btn-44">
-                        <i class="bi bi-bell"></i>
+                        @*<i class="fa icon-notification"></i>*@
                         <span class="count-indicator">
-                            
+                            <i id="cart">
+                                @db.Carts.Count()
+                            </i>
                         </span>
                     </a>
                 </div>
@@ -478,32 +481,7 @@
             </div>
         </div>*@
 
-    <!-- Required jquery and libraries -->
-    <script src="~/Content/web/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="~/Content/web/assets/js/popper.min.js"></script>
-    <script src="~/Content/web/assets/vendor/bootstrap-5/js/bootstrap.bundle.min.js"></script>
 
-    <!-- cookie js -->
-    <script src="~/Content/web/assets/js/jquery.cookie.js"></script>
-
-    <!-- Customized jquery file  -->
-    <script src="~/Content/web/assets/js/main.js"></script>
-    <script src="~/Content/web/assets/js/color-scheme.js"></script>
-
-    <!-- PWA app service registration and works -->
-    <script src="~/Content/web/assets/js/pwa-services.js"></script>
-
-    <!-- Chart js script -->
-    <script src="~/Content/web/assets/vendor/chart-js-3.3.1/chart.min.js"></script>
-
-    <!-- Progress circle js script -->
-    <script src="~/Content/web/assets/vendor/progressbar-js/progressbar.min.js"></script>
-
-    <!-- swiper js script -->
-    <script src="~/Content/web/assets/vendor/swiperjs-6.6.2/swiper-bundle.min.js"></script>
-
-    <!-- page level custom script -->
-    <script src="~/Content/web/assets/js/app.js"></script>
     <script>
         //Cart
         /* Get from elements values */
@@ -532,9 +510,10 @@
                 success: function (response) {
                     // You will get response from your PHP page (what you echo or print)
                     //console.log(response.responseText);
-                    console.log(response);
-                    document.getElementById("cart").innerHTML = response;
                     //window.location.reload();
+                    document.getElementById("cart").innerHTML = response;
+                    console.log(response);
+                    
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown);
@@ -543,6 +522,33 @@
         }
 
     </script>
+    <!-- Required jquery and libraries -->
+    <script src="~/Content/web/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/web/assets/js/popper.min.js"></script>
+    <script src="~/Content/web/assets/vendor/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+
+    <!-- cookie js -->
+    <script src="~/Content/web/assets/js/jquery.cookie.js"></script>
+
+    <!-- Customized jquery file  -->
+    <script src="~/Content/web/assets/js/main.js"></script>
+    <script src="~/Content/web/assets/js/color-scheme.js"></script>
+
+    <!-- PWA app service registration and works -->
+    <script src="~/Content/web/assets/js/pwa-services.js"></script>
+
+    <!-- Chart js script -->
+    <script src="~/Content/web/assets/vendor/chart-js-3.3.1/chart.min.js"></script>
+
+    <!-- Progress circle js script -->
+    <script src="~/Content/web/assets/vendor/progressbar-js/progressbar.min.js"></script>
+
+    <!-- swiper js script -->
+    <script src="~/Content/web/assets/vendor/swiperjs-6.6.2/swiper-bundle.min.js"></script>
+
+    <!-- page level custom script -->
+    <script src="~/Content/web/assets/js/app.js"></script>
+
 </body>
 
 

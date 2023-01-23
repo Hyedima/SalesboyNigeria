@@ -1250,6 +1250,12 @@
     <Content Include="Views\ServiceProviders\Index.cshtml" />
     <Content Include="Views\ServiceProviders\ViewServices.cshtml" />
     <Content Include="Views\ServiceProviders\ViewServiceProvider.cshtml" />
+    <Content Include="Views\Vendors\login.cshtml" />
+    <Content Include="Views\Vendors\Register.cshtml" />
+    <Content Include="Views\Vendors\updatelocation.cshtml" />
+    <Content Include="Views\Vendors\Verify.cshtml" />
+    <Content Include="Views\Home\Servies.cshtml" />
+    <Content Include="Views\Home\vendors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

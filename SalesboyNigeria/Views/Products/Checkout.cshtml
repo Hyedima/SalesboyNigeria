@@ -31,7 +31,7 @@
                 <form class="ps-form--checkout" action="@Url.Action("Pay","Payment")" method="post">
                     <div class="ps-form__content">
                         <div class="row">
-                            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 ">
+                            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
                                 <div class="ps-form__billing-info">
                                     <h3 class="ps-form__heading">Checkout Information</h3>
                                     <div class="form-group">
@@ -119,14 +119,15 @@
                                         </figure>
                                         <figure class="ps-block__shipping">
                                             <figure><a class="ps-btn" href="#" onclick="makePayment()">Pay With Flutterwave</a></figure>
-                                            <h3>Shipping</h3>
+                                            @*<h3>Shipping</h3>
                                             <p>Calculated at next step</p>
                                             <input type="text" name="amount" value="@total" />
 
                                             <button class="ps-btn">
                                                 Checkout
                                             </button>
-                                            <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
+                                                
+                                                <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
                                                 <div>
                                                     Your order is ₦3,400
                                                 </div>
@@ -139,7 +140,7 @@
                                                 <input type="hidden" name="meta[token]" value="54" />
                                                 <input type="hidden" name="redirect_url" value="https://salesboynigeria.com/products/Checkout/" />
                                                 <button type="submit" id="start-payment-button">Pay Now</button>
-                                            </form>
+                                            </form>*@
                                         </figure>
                                     </div>
                                 </div>
@@ -161,7 +162,7 @@
                             //"FLWPUBK_TEST-8d049f5bf0756776e6392f6cfd90b024-X",
                             "FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X",
                             tx_ref: "@Guid.NewGuid().ToString()",
-                            amount: 100,
+                            amount: @total,
                             currency: "NGN",
                                 country: "NG",
                             //payment_options: " ",
