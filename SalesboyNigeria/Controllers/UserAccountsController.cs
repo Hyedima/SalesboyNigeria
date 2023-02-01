@@ -16,6 +16,7 @@ using System.Web.Security;
 using System.IO;
 using SalesboyNigeria;
 using System.Web.Helpers;
+using System.Configuration;
 
 namespace Salesboy.Controllers
 {
@@ -128,12 +129,12 @@ namespace Salesboy.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(string firstname, string lastname,  string email, string phone,string password, string state, string agree)
+        public async Task<ActionResult> Register(  string email,string password, string cpassword)
         {
             //SendMail
             try
             {
-                int cnt = db.UserAccounts.Where(p => p.Email == email || p.phone == phone).Count();
+                int cnt = db.UserAccounts.Where(p => p.Email == email).Count();
 
                 string id = Guid.NewGuid().ToString();
                 string newpass = SalesboyNigeria.setup.CryptoEngine.Encrypt(password);
@@ -150,11 +151,11 @@ namespace Salesboy.Controllers
                     db.UserAccounts.Add(new UserAccount
                     {
                         Id = id,
-                        firstname = firstname,
-                        lastname = lastname,
+                        firstname = "",// firstname,
+                        lastname ="",// lastname,
                         Email = email,
-                        phone = phone,
-                        state = state,
+                        phone = "",//phone,
+                        state = "", //state,
                         PasswordHash = newpass,
                         usertype = "USER",
                         regdate = DateTime.Now,
@@ -169,25 +170,26 @@ namespace Salesboy.Controllers
                     db.SaveChanges();
                     //send verification email
                     // await EmailManager.SendMail(email, firstname + " " + lastname, "Salesboy Nigeria Verifcation Email", "Your registrations was successfull, please click on this lick to continue <a href=''>Click Here</a>");
-                    var apiKey = "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";//Environment.GetEnvironmentVariable("NAME_OF_THE_ENVIRONMENT_VARIABLE_FOR_YOUR_SENDGRID_KEY");
+                    var apiKey = ConfigurationManager.AppSettings["SendGridKey"];//Environment.GetEnvironmentVariable("NAME_OF_THE_ENVIRONMENT_VARIABLE_FOR_YOUR_SENDGRID_KEY");
                     var client = new SendGridClient(apiKey);
                     var from = new EmailAddress("Salesboynigeria@gmail.com", "Salesboy Nigeria");
                     var subject = "Registrations Successful";
-                    var to = new EmailAddress(email, firstname + " " + lastname);
+                    var to = new EmailAddress(email,email);
                     var plainTextContent = "Email Verification";
                     var htmlContent = "<strong>Your registration was successfull, please click on this link to continue <br /> <a class='btn btn-block btn-primary' href='https://salesboynigeria.com/useraccounts/verifyEmail/"+id+"'>Click Here</a></strong>";
                     var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
                     var response = await client.SendEmailAsync(msg);
 
                     TempData["success"] = "true";
-                    TempData["message"] = "Registered Sucessfully.";
-                    return RedirectToAction("Verify", "Useraccounts", new { id = id });
+                    TempData["message"] = "Registered Sucessfully.Please login to continue...";
+                    return RedirectToAction("Login", "Useraccounts");
+                    //return RedirectToAction("Verify", "Useraccounts", new { id = id });
                 }
             }
             catch (Exception err)
             {
                 TempData["success"] = "false";
-                TempData["message"] = "Registration Failed, please review the fields and try again." + err.Message;
+                TempData["message"] = "Registration Failed, please review the entry and try again.";// + err.Message;
                 return View();
             }
         }

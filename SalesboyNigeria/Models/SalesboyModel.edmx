@@ -94,6 +94,9 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="200" />
+          <Property Name="lastname" Type="varchar" MaxLength="200" />
+          <Property Name="address" Type="varchar" MaxLength="200" />
           <Property Name="batchid" Type="varchar" MaxLength="200" />
           <Property Name="useremail" Type="varchar" MaxLength="200" />
           <Property Name="paymentid" Type="varchar" MaxLength="200" />
@@ -707,6 +710,9 @@
           <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="landmark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="UserAccount" Relationship="salesboyModel.FK_Orders_UserAccount" FromRole="Order" ToRole="UserAccount" />
+          <Property Name="firstname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -1349,6 +1355,9 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="salesboyModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
                 <ScalarProperty Name="landmark" ColumnName="landmark" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="zip" ColumnName="zip" />

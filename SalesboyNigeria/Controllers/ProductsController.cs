@@ -474,6 +474,41 @@ namespace Salesboy.Controllers
 
         //    }
         //}
+        public ActionResult Order(string firstname, string lastname , string email, string phone, string address, string country, string city, string zip, string landmark)
+        {
+            string batchid = GenerateID.GetID();
+            //create new order
+            db.Orders.Add(new Order
+            {
+                id = GenerateID.GetID(),
+                firstname = firstname,
+                lastname = lastname,
+                address = address,
+                batchid = batchid,
+                useremail = Session["email"].ToString(),
+                paymentid = null,
+                orderdate = DateTime.Now,
+                shipmentdate = DateTime.Now,
+                IsShipping = "True",
+                shipperid = null,
+                frieght = "",
+                insertdate = DateTime.Now.ToString(),
+                customerid = Session["userid"].ToString(),
+                status = "PENDING",
+                notes = "PENDING ORDER",
+                customeremail = Session["email"].ToString(),
+                paymentstatus = "PENDING",
+                shipmentaddress = address,
+                Country = country,
+                city = city,
+                zip = zip,
+                landmark = landmark,
+                phone = phone
+            });
+            //Add batche id to items on cart
+            db.SaveChanges();
+            return View();
+        }
         public ActionResult Search(string text)
         {
             return View(db.Products.Where(p=>p.productname.Contains(text)).ToList());

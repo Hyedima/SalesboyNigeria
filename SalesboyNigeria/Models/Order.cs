@@ -41,6 +41,9 @@ namespace SalesboyNigeria.Models
         public string zip { get; set; }
         public string phone { get; set; }
         public string landmark { get; set; }
+        public string firstname { get; set; }
+        public string lastname { get; set; }
+        public string address { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShippingPayment> ShippingPayments { get; set; }
