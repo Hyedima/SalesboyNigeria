@@ -673,10 +673,10 @@
                         <a href="@Url.Action("ProductList","Products")">Products</a>
                     </li>
                     <li class="manu-item-has-children has-mega-menu">
-                        <a href="@Url.Action("ServiceProviders","Home")">Services</a>
+                        <a href="@Url.Action("Index","Home")">Services</a>
                     </li>
                     <li class="manu-item-has-children has-mega-menu">
-                        <a href="@Url.Action("Order","Home")">Order</a>
+                        <a href="@Url.Action("Checkout","Products")">Order</a>
                     </li>
                     <li class="menu-item-has-children has-mega-menu">
                         <a href="#">More</a>
@@ -692,7 +692,8 @@
                                         <a target="_blank" href="http://vendors.salesboynigeria.com/Vendors/login">Become a Vendor</a>
                                     </li>
                                     <li>
-                                        <a target="_blank" href="http://sp.salesboynigeria.com/ServiceProviders/login">Become a Service Provider</a>
+                                        @*<a target="_blank" href="http://sp.salesboynigeria.com/ServiceProviders/login">Become a Service Provider</a>*@
+                                        <a href="@Url.Action("Index","Home")">Become a Service Provider</a>
                                     </li>
                                 </ul>
                             </div>
