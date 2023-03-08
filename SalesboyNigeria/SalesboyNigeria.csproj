@@ -1111,11 +1111,14 @@
     <Content Include="Content\Images\4c05b61c-0cab-4c11-9559-5b096d7ee54f\photo4.JPG" />
     <Content Include="Content\Images\4c05b61c-0cab-4c11-9559-5b096d7ee54f\photo5.JPG" />
     <Content Include="Content\Images\4c05b61c-0cab-4c11-9559-5b096d7ee54f\photobg.png" />
+    <Content Include="Content\Images\4u.jpg" />
     <Content Include="Content\Images\aa8e0007-613e-42ab-a31a-1441efcb8ae5\photo1.jpg" />
     <Content Include="Content\Images\aa8e0007-613e-42ab-a31a-1441efcb8ae5\photo2.jpg" />
     <Content Include="Content\Images\aa8e0007-613e-42ab-a31a-1441efcb8ae5\photo3.jpg" />
     <Content Include="Content\Images\aa8e0007-613e-42ab-a31a-1441efcb8ae5\photo4.jpg" />
     <Content Include="Content\Images\banner3.jpg" />
+    <Content Include="Content\Images\exclusive.jpg" />
+    <Content Include="Content\Images\hmedix.jpg" />
     <Content Include="Content\Images\login.jpg" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\profile1d6385b5-e597-45a7-89bb-49e9907acb9d\photo1d6385b5-e597-45a7-89bb-49e9907acb9d.png" />
@@ -1123,6 +1126,7 @@
     <Content Include="Content\Images\profile\1d6385b5-e597-45a7-89bb-49e9907acb9d.jpg" />
     <Content Include="Content\Images\profile\1d6385b5-e597-45a7-89bb-49e9907acb9d.png" />
     <Content Include="Content\Images\profile\46c3164c-4c4c-48cc-80cc-59e295e55a72.JPG" />
+    <Content Include="Content\Images\sahad.jpg" />
     <Content Include="Content\Images\salesboy ns.jpg" />
     <Content Include="Content\Images\salesboy sn22.jpg" />
     <Content Include="Content\Images\salesboylog.png" />
