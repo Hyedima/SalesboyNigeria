@@ -477,10 +477,11 @@ namespace Salesboy.Controllers
         public ActionResult Order(string firstname, string lastname , string email, string phone, string address, string country, string city, string zip, string landmark)
         {
             string batchid = GenerateID.GetID();
+            string id = GenerateID.GetID();
             //create new order
             db.Orders.Add(new Order
             {
-                id = GenerateID.GetID(),
+                id = id,
                 firstname = firstname,
                 lastname = lastname,
                 address = address,
@@ -507,7 +508,11 @@ namespace Salesboy.Controllers
             });
             //Add batche id to items on cart
             db.SaveChanges();
-            return View();
+            return RedirectToAction("checkoutOrder", "Products", new {id = id});
+        }
+        public ActionResult checkoutOrder(string id)
+        {
+            return View(db.Orders.Find(id));
         }
         public ActionResult Search(string text)
         {

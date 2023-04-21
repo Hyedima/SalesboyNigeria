@@ -507,7 +507,7 @@ namespace Salesboy.Controllers
                 status = "Ordered",
                 notes = "payment for items is don't, its now on the shipment process",
                 customeremail = pay_email,
-                paymentstatus = "Pending",
+                paymentstatus = "PAID",
                 Country = "NIGERIA",
                 city = "ABUJA",
                 shipmentaddress = "My home",
@@ -515,8 +515,29 @@ namespace Salesboy.Controllers
                 phone = pay_phone,
                 landmark = ""
             });
-
-
+            //Remove items from cart
+            foreach (var item in db.Carts.Where(p => p.useremail == user.Email).ToList())
+            {
+                //cart items 
+                db.Sales.Add(new Sale
+                {
+                    id = GenerateID.GetID(),
+                    userid = userid,
+                    email = user.Email,
+                    productid = item.productid,
+                    productname = item.Product.productname,
+                    description = item.Product.description,
+                    amountpaid = amountpaid, //total amount paid for all the items bought in this batch
+                    qty = Convert.ToInt32(item.qty),
+                    unitprice = Convert.ToDecimal(item.Product.price),
+                    totalcost = Convert.ToDecimal(item.Product.price * item.qty),
+                    discountperc = Convert.ToInt32(item.Product.discount),
+                    discountamount = Convert.ToDecimal(item.discount),
+                    insertdate = DateTime.Now
+                });
+                //delete item from cart
+                db.Carts.Remove(db.Carts.Find(item.id));
+            }
             db.SaveChanges();
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
