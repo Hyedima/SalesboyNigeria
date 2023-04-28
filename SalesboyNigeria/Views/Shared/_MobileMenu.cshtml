@@ -1,11 +1,21 @@
-﻿<!--MENU START-->
+﻿@{
+    SalesboyNigeria.Models.salesboyEntities db = new SalesboyNigeria.Models.salesboyEntities();
+    string email = "";
+    if (Session["email"] != null)
+    {
+        email = Session["email"].ToString();
+    }
+    var user = db.UserAccounts.FirstOrDefault(p => p.Email == email);
+}
+
+<!--MENU START-->
 <div class="navigation--list">
     <div class="navigation__content">
         <a class="navigation__item ps-toggle--sidebar" href="#menu-mobile"><i class="icon-menu"></i><span> Menu</span></a>
         <a class="navigation__item ps-toggle--sidebar" href="#navigation-mobile"><i class="icon-list4"></i><span> Categories</span></a>
         <a class="navigation__item ps-toggle--sidebar" href="#search-sidebar"><i class="icon-magnifier"></i><span> Search</span></a>
         <a class="navigation__item ps-toggle--sidebar" href="#cart-mobile"><i class="icon-bag2"></i><span> Cart</span></a>
-        <a class="navigation__item ps-t" href="#" data-toggle="modal" data-target="#welcome"><i class="icon-bag2"></i><span> modal</span></a>
+        @*<a class="navigation__item ps-t" href="#" data-toggle="modal" data-target="#welcome"><i class="icon-bag2"></i><span> modal</span></a>*@
     </div>
 </div>
 <!--MENU END-->
@@ -47,7 +57,7 @@
     <div class="ps-panel__header">
         <h3>Categories</h3>
     </div>
-j<div class="ps-panel__content">
+    <div class="ps-panel__content">
         <div class="menu--product-categories">
             <div class="menu__toggle">
                 <i class="icon-menu"></i>
@@ -210,59 +220,111 @@ j<div class="ps-panel__content">
     </div>
     <div class="ps-panel__content">
         <ul class="menu--mobile">
-            <li class="menu-item-has-children">
+            <li class="manu-item-has-children has-mega-menu">
+                <center>
+                    <img src="~/Content/Images/logo.png" class="img img-circle" height="100" width="100" />
+                    @if (Session["email"] == null)
+                    {
+                        <a href="@Url.Action("Login","Useraccounts")">Login</a>
+                        <a href="@Url.Action("Register","Useraccounts")">Register</a>
+                    }
+                    else
+                    {
+                        <strong>
+                            <a href="@Url.Action("myprofile","Useraccounts")">Welcome @Session["email"]</a>
+                            @*<a href="@Url.Action("Logout","Useraccounts")"> Logout</a>*@
+                        </strong>
+                        @*<div class="ps-block--user-header">
+                        <div class="ps-block__left">
+                            <img class="img img-circle img-responsive" src="@user.photo" height="30" width="30" />
+                        </div>
+                        <div class="ps-block__right">
+
+                        </div>
+                    </div>*@
+                    }
+                </center>
+                @*<a href="@Url.Action("Index","Home")">Home</a>*@
+            </li>
+
+            <li>
+                <a href="@Url.Action("Index","Vendors")">HOME</a>
+            </li>
+            @*<li class="manu-item-has-children has-mega-menu">
+
+            <a href="@Url.Action("Index","Home")">Home</a>
+        </li>*@
+            <li class="manu-item-has-children has-mega-menu">
+                <a href="@Url.Action("Products","Products")">Products</a>
+            </li>
+            <li class="manu-item-has-children has-mega-menu">
+                <a href="@Url.Action("myOrders","Vendors", new {id = user.Id})">Orders</a>
+            </li>
+            <li class="manu-item-has-children has-mega-menu">
+                <a href="@Url.Action("myPayments","Vendors", new {id = user.Id})">Payments</a>
+            </li>
+            <li class="manu-item-has-children has-mega-menu">
+                <a href="@Url.Action("myprofile","Useraccounts")">
+                    My Profile
+                    <span class="fa fa-user float-right"></span>
+                </a>
+            </li>
+            <li class="manu-item-has-children has-mega-menu">
+                <a href="@Url.Action("Logout","Useraccounts")">Sign Out</a>
+            </li>
+            @*<li class="menu-item-has-children">
                 <a href="@Url.Action("","")">
                     Home
                     <span class="fa fa-home float-right"></span>
                 </a>
-                @*<ul class="sub-menu">
-                <li>
-                    <a href="@Url.Action("","")">Marketplace Full Width</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Auto Parts</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Technology</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Organic</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Marketplace V1</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Marketplace V2</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Marketplace V3</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Marketplace V4</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Electronic</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Furniture</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Kids</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home photo and picture</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Medical</a>
-                </li>
-            </ul>*@
+               <ul class="sub-menu">
+            <li>
+                <a href="@Url.Action("","")">Marketplace Full Width</a>
             </li>
+            <li>
+                <a href="@Url.Action("","")">Home Auto Parts</a>
+            </li>
+            <li>
+                <a href="@Url.Action("","")">Home Technology</a>
+            </li>
+            <li>
+                <a href="@Url.Action("","")">Home Organic</a>
+            </li>
+            <li>
+                <a href="@Url.Action("","")">Home Marketplace V1</a>
+            </li>
+            <li>
+                <a href="@Url.Action("","")">Home Marketplace V2</a>
+            </li>
+            <li>
+                <a href="@Url.Action("","")">Home Marketplace V3</a>
+            </li>
+            <li>
+                <a href="@Url.Action("","")">Home Marketplace V4</a>
+            </li>
+            <li>
+                <a href="@Url.Action("","")">Home Electronic</a>
+            </li>
+            <li>
+                <a href="@Url.Action("","")">Home Furniture</a>
+            </li>
+            <li>
+                <a href="@Url.Action("","")">Home Kids</a>
+            </li>
+            <li>
+                <a href="@Url.Action("","")">Home photo and picture</a>
+            </li>
+            <li>
+                <a href="@Url.Action("","")">Home Medical</a>
+            </li>
+        </ul>
+        </li>
             <li class="menu-item-has-children has-mega-menu">
                 <a href="@Url.Action("","")">
                     Shop
                     <span class="fa fa-shopping-cart float-right"></span>
                 </a>
-                @*<div class="mega-menu">
+                <div class="mega-menu">
             <div class="mega-menu__column">
                 <h4>
                     Catalog Pages
@@ -381,9 +443,9 @@ j<div class="ps-panel__content">
                             <a href="@Url.Action("","")">My Account</a>
                         </li>
                     </ul>
-                </div>*@
+                </div>
             </li>
-            @*<li class="menu-item-has-children has-mega-menu">
+            <li class="menu-item-has-children has-mega-menu">
             <a href="#">Pages</a>
            <div class="mega-menu">
             <div class="mega-menu__column">
@@ -479,7 +541,7 @@ j<div class="ps-panel__content">
                     </ul>
                 </div>
             </div>
-            </li>*@
+            </li>
 
             <li class="menu-item-has-children has-mega-menu">
                 <a href="@Url.Action("ProductList","Products")">
@@ -487,7 +549,7 @@ j<div class="ps-panel__content">
                     <span class="fa fa-shopping-bag float-right"></span>
                 </a>
 
-                @*<div class="mega-menu">
+                <div class="mega-menu">
                     <div class="mega-menu__column">
                         <h4>
                             Blog Layout
@@ -532,14 +594,14 @@ j<div class="ps-panel__content">
                         </ul>
                     </div>
                 </div>
-            </li>*@
+            </li>
 
             <li class="menu-item-has-children has-mega-menu">
                 <a href="@Url.Action("Index","Home")">
                     Services
                     <span class="fa fa-server float-right"></span>
                 </a>
-                @*<div class="mega-menu">
+                <div class="mega-menu">
                     <div class="mega-menu__column">
                         <h4>
                             Blog Layout
@@ -584,14 +646,14 @@ j<div class="ps-panel__content">
                         </ul>
                     </div>
                 </div>
-            </li>*@
+            </li>
 
             <li class="menu-item-has-children has-mega-menu">
                 <a href="@Url.Action("Checkout","Products")">
                     Order
                     <span class="fa fa-phone float-right"></span>
                 </a>
-                @*<div class="mega-menu">
+                <div class="mega-menu">
                     <div class="mega-menu__column">
                         <h4>
                             Blog Layout
@@ -636,14 +698,14 @@ j<div class="ps-panel__content">
                         </ul>
                     </div>
                 </div>
-            </li>*@
+            </li>
 
             <li class="menu-item-has-children has-mega-menu">
                 <a href="@Url.Action("myprofile","Useraccounts")">
                     My Profile
                     <span class="fa fa-user float-right"></span>
                 </a>
-                @*<div class="mega-menu">
+                <div class="mega-menu">
                     <div class="mega-menu__column">
                         <h4>
                             Blog Layout

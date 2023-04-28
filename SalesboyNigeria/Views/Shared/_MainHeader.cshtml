@@ -10,390 +10,393 @@
 <header class="header header--1" data-sticky="true">
     <div class="header__top">
         <div class="ps-container">
-            <div class="header__left">
-                <div class="menu--product-categories">
-                    <div class="menu__toggle">
-                        <i class="icon-menu"></i>
-                        <span> Shop by Categories</span>
-                    </div>
-                    <div class="menu__content">
-                        <ul class="menu--dropdown">
-                            <li>
-                                <a href="#">Hot Promotions</a>
-                            </li>
-                            <li class="menu-item-has-children has-mega-menu">
-                                <a href="#">Consumer Electronic</a>
-                                <span class="sub-toggle"></span>
-                                <div class="mega-menu">
-                                    <div class="mega-menu__column">
-                                        <h4>
-                                            Electronic
-                                            <span class="sub-toggle"></span>
-                                        </h4>
-                                        <ul class="mega-menu__list">
-                                            <li>
-                                                <a href="@Url.Action("", "")">Home Audio &amp; Theathers</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">TV &amp; Videos</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Camera, Photos &amp; Videos</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Cellphones &amp; Accessories</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Headphones</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Videosgames</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Wireless Speakers</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Office Electronic</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="mega-menu__column">
-                                        <h4>
-                                            Accessories &amp; Parts
-                                            <span class="sub-toggle"></span>
-                                        </h4>
-                                        <ul class="mega-menu__list">
-                                            <li>
-                                                <a href="@Url.Action("", "")">Digital Cables</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Audio &amp; Video Cables</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Batteries</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("", "")">Clothing &amp; Apparel</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("", "")">Home, Garden &amp; Kitchen</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("", "")">Health &amp; Beauty</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("", "")">Yewelry &amp; Watches</a>
-                            </li>
-                            <li class="menu-item-has-children has-mega-menu">
-                                <a href="#">Computer &amp; Technology</a>
-                                <span class="sub-toggle"></span>
-                                <div class="mega-menu">
-                                    <div class="mega-menu__column">
-                                        <h4>
-                                            Computer &amp; Technologies
-                                            <span class="sub-toggle"></span>
-                                        </h4>
-                                        <ul class="mega-menu__list">
-                                            <li>
-                                                <a href="@Url.Action("", "")">Computer &amp; Tablets</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Laptop</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Monitors</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Networking</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Drive &amp; Storages</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Computer Components</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Security &amp; Protection</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Gaming Laptop</a>
-                                            </li>
-                                            <li>
-                                                <a href="@Url.Action("", "")">Accessories</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("", "")">Babies &amp; Moms</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("", "")">Sport &amp; Outdoor</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("", "")">Phones &amp; Accessories</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("", "")">Books &amp; Office</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("", "")">Cars &amp; Motocycles</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("", "")">Home Improments</a>
-                            </li>
-                            @*<li>
-                                    <a href="@Url.Action("","")">Vouchers &amp; Services</a>
-                                </li>*@
-                        </ul>
-                    </div>
-                </div>
-                <a class="ps-logo" href="@Url.Action("Index", "Home")"><img src="~/Content/Home/img/logo.png" alt="" /></a>
+
+            <a class="ps-logo navigation__item ps-toggle--sidebar" href="#menu-mobile"><i class="icon-menu"></i><img src="~/Content/Home/img/logo.png" alt="" /></a>
+
+            <!--<div class="header__left">
+        <div class="menu--product-categories">
+            <div class="menu__toggle">
+                <i class="icon-menu"></i>
+                <span> Shop by Categories</span>
             </div>
+            <div class="menu__content">
+                <ul class="menu--dropdown">
+                    <li>
+                        <a href="#">Hot Promotions</a>
+                    </li>
+                    <li class="menu-item-has-children has-mega-menu">
+                        <a href="#">Consumer Electronic</a>
+                        <span class="sub-toggle"></span>
+                        <div class="mega-menu">
+                            <div class="mega-menu__column">
+                                <h4>
+                                    Electronic
+                                    <span class="sub-toggle"></span>
+                                </h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("", "")">Home Audio &amp; Theathers</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">TV &amp; Videos</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Camera, Photos &amp; Videos</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Cellphones &amp; Accessories</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Headphones</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Videosgames</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Wireless Speakers</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Office Electronic</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu__column">
+                                <h4>
+                                    Accessories &amp; Parts
+                                    <span class="sub-toggle"></span>
+                                </h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("", "")">Digital Cables</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Audio &amp; Video Cables</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Batteries</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("", "")">Clothing &amp; Apparel</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("", "")">Home, Garden &amp; Kitchen</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("", "")">Health &amp; Beauty</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("", "")">Yewelry &amp; Watches</a>
+                    </li>
+                    <li class="menu-item-has-children has-mega-menu">
+                        <a href="#">Computer &amp; Technology</a>
+                        <span class="sub-toggle"></span>
+                        <div class="mega-menu">
+                            <div class="mega-menu__column">
+                                <h4>
+                                    Computer &amp; Technologies
+                                    <span class="sub-toggle"></span>
+                                </h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("", "")">Computer &amp; Tablets</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Laptop</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Monitors</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Networking</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Drive &amp; Storages</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Computer Components</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Security &amp; Protection</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Gaming Laptop</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("", "")">Accessories</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("", "")">Babies &amp; Moms</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("", "")">Sport &amp; Outdoor</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("", "")">Phones &amp; Accessories</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("", "")">Books &amp; Office</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("", "")">Cars &amp; Motocycles</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("", "")">Home Improments</a>
+                    </li>-->
+            @*<li>
+            <a href="@Url.Action("","")">Vouchers &amp; Services</a>
+        </li>*@
+            <!--</ul>
+            </div>
+        </div>
+        <a class="ps-logo" href="@Url.Action("Index", "Home")"><img src="~/Content/Home/img/logo.png" alt="" /></a>
+    </div>-->
             <div class="header__center">
                 <form class="ps-form--quick-search" action="@Url.Action("search","Home")" method="post">
                     @*<div class="form-group--icon">
-                            <i class="icon-chevron-down"></i>
-                            <select class="form-control">
-                                <option value="0" selected="selected">All</option>
-                                <option class="level-0" value="babies-moms">Babies & Moms</option>
-                                <option class="level-0" value="books-office">Books & Office</option>
-                                <option class="level-0" value="cars-motocycles">Cars & Motocycles</option>
-                                <option class="level-0" value="clothing-apparel">Clothing & Apparel</option>
-                                <option class="level-1" value="accessories-clothing-apparel">Accessories</option>
-                                <option class="level-1" value="bags">Bags</option>
-                                <option class="level-1" value="kids-fashion">Kid’s Fashion</option>
-                                <option class="level-1" value="mens">Mens</option>
-                                <option class="level-1" value="shoes">Shoes</option>
-                                <option class="level-1" value="sunglasses">Sunglasses</option>
-                                <option class="level-1" value="womens">Womens</option>
-                                <option class="level-0" value="computers-technologies">Computers & Technologies</option>
-                                <option class="level-1" value="desktop-pc">Desktop PC</option>
-                                <option class="level-1" value="laptop">Laptop</option>
-                                <option class="level-1" value="smartphones">Smartphones</option>
-                                <option class="level-0" value="consumer-electrics">Consumer Electrics</option>
-                                <option class="level-1" value="air-conditioners">Air Conditioners</option>
-                                <option class="level-2" value="accessories">Accessories</option>
-                                <option class="level-2" value="type-hanging-cell">Type Hanging Cell</option>
-                                <option class="level-2" value="type-hanging-wall">Type Hanging Wall</option>
-                                <option class="level-1" value="audios-theaters">Audios & Theaters</option>
-                                <option class="level-2" value="headphone">Headphone</option>
-                                <option class="level-2" value="home-theater-system">Home Theater System</option>
-                                <option class="level-2" value="speakers">Speakers</option>
-                                <option class="level-1" value="car-electronics">Car Electronics</option>
-                                <option class="level-2" value="audio-video">Audio & Video</option>
-                                <option class="level-2" value="car-security">Car Security</option>
-                                <option class="level-2" value="radar-detector">Radar Detector</option>
-                                <option class="level-2" value="vehicle-gps">Vehicle GPS</option>
-                                <option class="level-1" value="office-electronics">Office Electronics</option>
-                                <option class="level-2" value="printers">Printers</option>
-                                <option class="level-2" value="projectors">Projectors</option>
-                                <option class="level-2" value="scanners">Scanners</option>
-                                <option class="level-2" value="store-business">Store & Business</option>
-                                <option class="level-1" value="refrigerators">Refrigerators</option>
-                                <option class="level-1" value="tv-televisions">TV Televisions</option>
-                                <option class="level-2" value="4k-ultra-hd-tvs">4K Ultra HD TVs</option>
-                                <option class="level-2" value="led-tvs">LED TVs</option>
-                                <option class="level-2" value="oled-tvs">OLED TVs</option>
-                                <option class="level-1" value="washing-machines">Washing Machines</option>
-                                <option class="level-2" value="type-drying-clothes">Type Drying Clothes</option>
-                                <option class="level-2" value="type-horizontal">Type Horizontal</option>
-                                <option class="level-2" value="type-vertical">Type Vertical</option>
-                                <option class="level-0" value="garden-kitchen">Garden & Kitchen</option>
-                                <option class="level-1" value="cookware">Cookware</option>
-                                <option class="level-1" value="decoration">Decoration</option>
-                                <option class="level-1" value="furniture">Furniture</option>
-                                <option class="level-1" value="garden-tools">Garden Tools</option>
-                                <option class="level-1" value="home-improvement">Home Improvement</option>
-                                <option class="level-1" value="powers-and-hand-tools">Powers And Hand Tools</option>
-                                <option class="level-1" value="utensil-gadget">Utensil & Gadget</option>
-                                <option class="level-0" value="health-beauty">Health & Beauty</option>
-                                <option class="level-1" value="equipments">Equipments</option>
-                                <option class="level-1" value="hair-care">Hair Care</option>
-                                <option class="level-1" value="perfumer">Perfumer</option>f
-                                <option class="level-1" value="skin-care">Skin Care</option>
-                                <option class="level-0" value="jewelry-watches">Jewelry & Watches</option>
-                                <option class="level-1" value="gemstone-jewelry">Gemstone Jewelry</option>
-                                <option class="level-1" value="mens-watches">Men’s Watches</option>
-                                <option class="level-1" value="womens-watches">Women’s Watches</option>
-                                <option class="level-0" value="phones-accessories">Phones & Accessories</option>
-                                <option class="level-1" value="iphone-8">Iphone 8</option>
-                                <option class="level-1" value="iphone-x">Iphone X</option>
-                                <option class="level-1" value="sam-sung-note-8">Sam Sung Note 8</option>
-                                <option class="level-1" value="sam-sung-s8">Sam Sung S8</option>
-                                <option class="level-0" value="sport-outdoor">Sport & Outdoor</option>
-                                <option class="level-1" value="freezer-burn">Freezer Burn</option>
-                                <option class="level-1" value="fridge-cooler">Fridge Cooler</option>
-                                <option class="level-1" value="wine-cabinets">Wine Cabinets</option>
-                            </select>
-                        </div>*@
+                    <i class="icon-chevron-down"></i>
+                    <select class="form-control">
+                        <option value="0" selected="selected">All</option>
+                        <option class="level-0" value="babies-moms">Babies & Moms</option>
+                        <option class="level-0" value="books-office">Books & Office</option>
+                        <option class="level-0" value="cars-motocycles">Cars & Motocycles</option>
+                        <option class="level-0" value="clothing-apparel">Clothing & Apparel</option>
+                        <option class="level-1" value="accessories-clothing-apparel">Accessories</option>
+                        <option class="level-1" value="bags">Bags</option>
+                        <option class="level-1" value="kids-fashion">Kid’s Fashion</option>
+                        <option class="level-1" value="mens">Mens</option>
+                        <option class="level-1" value="shoes">Shoes</option>
+                        <option class="level-1" value="sunglasses">Sunglasses</option>
+                        <option class="level-1" value="womens">Womens</option>
+                        <option class="level-0" value="computers-technologies">Computers & Technologies</option>
+                        <option class="level-1" value="desktop-pc">Desktop PC</option>
+                        <option class="level-1" value="laptop">Laptop</option>
+                        <option class="level-1" value="smartphones">Smartphones</option>
+                        <option class="level-0" value="consumer-electrics">Consumer Electrics</option>
+                        <option class="level-1" value="air-conditioners">Air Conditioners</option>
+                        <option class="level-2" value="accessories">Accessories</option>
+                        <option class="level-2" value="type-hanging-cell">Type Hanging Cell</option>
+                        <option class="level-2" value="type-hanging-wall">Type Hanging Wall</option>
+                        <option class="level-1" value="audios-theaters">Audios & Theaters</option>
+                        <option class="level-2" value="headphone">Headphone</option>
+                        <option class="level-2" value="home-theater-system">Home Theater System</option>
+                        <option class="level-2" value="speakers">Speakers</option>
+                        <option class="level-1" value="car-electronics">Car Electronics</option>
+                        <option class="level-2" value="audio-video">Audio & Video</option>
+                        <option class="level-2" value="car-security">Car Security</option>
+                        <option class="level-2" value="radar-detector">Radar Detector</option>
+                        <option class="level-2" value="vehicle-gps">Vehicle GPS</option>
+                        <option class="level-1" value="office-electronics">Office Electronics</option>
+                        <option class="level-2" value="printers">Printers</option>
+                        <option class="level-2" value="projectors">Projectors</option>
+                        <option class="level-2" value="scanners">Scanners</option>
+                        <option class="level-2" value="store-business">Store & Business</option>
+                        <option class="level-1" value="refrigerators">Refrigerators</option>
+                        <option class="level-1" value="tv-televisions">TV Televisions</option>
+                        <option class="level-2" value="4k-ultra-hd-tvs">4K Ultra HD TVs</option>
+                        <option class="level-2" value="led-tvs">LED TVs</option>
+                        <option class="level-2" value="oled-tvs">OLED TVs</option>
+                        <option class="level-1" value="washing-machines">Washing Machines</option>
+                        <option class="level-2" value="type-drying-clothes">Type Drying Clothes</option>
+                        <option class="level-2" value="type-horizontal">Type Horizontal</option>
+                        <option class="level-2" value="type-vertical">Type Vertical</option>
+                        <option class="level-0" value="garden-kitchen">Garden & Kitchen</option>
+                        <option class="level-1" value="cookware">Cookware</option>
+                        <option class="level-1" value="decoration">Decoration</option>
+                        <option class="level-1" value="furniture">Furniture</option>
+                        <option class="level-1" value="garden-tools">Garden Tools</option>
+                        <option class="level-1" value="home-improvement">Home Improvement</option>
+                        <option class="level-1" value="powers-and-hand-tools">Powers And Hand Tools</option>
+                        <option class="level-1" value="utensil-gadget">Utensil & Gadget</option>
+                        <option class="level-0" value="health-beauty">Health & Beauty</option>
+                        <option class="level-1" value="equipments">Equipments</option>
+                        <option class="level-1" value="hair-care">Hair Care</option>
+                        <option class="level-1" value="perfumer">Perfumer</option>f
+                        <option class="level-1" value="skin-care">Skin Care</option>
+                        <option class="level-0" value="jewelry-watches">Jewelry & Watches</option>
+                        <option class="level-1" value="gemstone-jewelry">Gemstone Jewelry</option>
+                        <option class="level-1" value="mens-watches">Men’s Watches</option>
+                        <option class="level-1" value="womens-watches">Women’s Watches</option>
+                        <option class="level-0" value="phones-accessories">Phones & Accessories</option>
+                        <option class="level-1" value="iphone-8">Iphone 8</option>
+                        <option class="level-1" value="iphone-x">Iphone X</option>
+                        <option class="level-1" value="sam-sung-note-8">Sam Sung Note 8</option>
+                        <option class="level-1" value="sam-sung-s8">Sam Sung S8</option>
+                        <option class="level-0" value="sport-outdoor">Sport & Outdoor</option>
+                        <option class="level-1" value="freezer-burn">Freezer Burn</option>
+                        <option class="level-1" value="fridge-cooler">Fridge Cooler</option>
+                        <option class="level-1" value="wine-cabinets">Wine Cabinets</option>
+                    </select>
+                </div>*@
                     <input class="form-control" type="text" name="searchString" placeholder="Search for goods or services" id="input-search" />
                     <button>Search</button>
                     <div class="ps-panel--search-result">
                         <div class="ps-panel__content">
                             @*<div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail">
-                                    <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/1.jpg" alt="" /></a>
-                                </div>
-                                <div class="ps-product__content">
-                                    <a class="ps-product__title" href="@Url.Action("", "")">Apple iPhone Retina 6s Plus 32GB</a>
-                                    <div class="ps-product__rating">
-                                        <select class="ps-rating" data-read-only="true">
-                                            <option value="1">1</option>
-                                            <option value="1">2</option>
-                                            <option value="1">3</option>
-                                            <option value="1">4</option>
-                                            <option value="2">5</option>
-                                        </select>
-                                        <span></span>
-                                    </div>
-                                    <p class="ps-product__price">N56,000.00</p>
-                                </div>
+                            <div class="ps-product__thumbnail">
+                                <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/1.jpg" alt="" /></a>
                             </div>
-                            <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail">
-                                    <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/1.jpg" alt="" /></a>
+                            <div class="ps-product__content">
+                                <a class="ps-product__title" href="@Url.Action("", "")">Apple iPhone Retina 6s Plus 32GB</a>
+                                <div class="ps-product__rating">
+                                    <select class="ps-rating" data-read-only="true">
+                                        <option value="1">1</option>
+                                        <option value="1">2</option>
+                                        <option value="1">3</option>
+                                        <option value="1">4</option>
+                                        <option value="2">5</option>
+                                    </select>
+                                    <span></span>
                                 </div>
-                                <div class="ps-product__content">
-                                    <a class="ps-product__title" href="@Url.Action("", "")">Apple iPhone Retina 6s Plus 64GB</a>
-                                    <div class="ps-product__rating">
-                                        <select class="ps-rating" data-read-only="true">
-                                            <option value="1">1</option>
-                                            <option value="1">2</option>
-                                            <option value="1">3</option>
-                                            <option value="1">4</option>
-                                            <option value="2">5</option>
-                                        </select>
-                                        <span></span>
-                                    </div>
-                                    <p class="ps-product__price">N75,000.00</p>
-                                </div>
+                                <p class="ps-product__price">N56,000.00</p>
                             </div>
-                            <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail">
-                                    <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/1.jpg" alt="" /></a>
-                                </div>
-                                <div class="ps-product__content">
-                                    <a class="ps-product__title" href="@Url.Action("", "")">Apple iPhone Retina 6s Plus 128GB</a>
-                                    <div class="ps-product__rating">
-                                        <select class="ps-rating" data-read-only="true">
-                                            <option value="1">1</option>
-                                            <option value="1">2</option>
-                                            <option value="1">3</option>
-                                            <option value="1">4</option>
-                                            <option value="2">5</option>
-                                        </select>
-                                        <span></span>
-                                    </div>
-                                    <p class="ps-product__price">N1220.50</p>
-                                </div>
+                        </div>
+                        <div class="ps-product ps-product--wide ps-product--search-result">
+                            <div class="ps-product__thumbnail">
+                                <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/1.jpg" alt="" /></a>
                             </div>
-                            <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail">
-                                    <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/2.jpg" alt="" /></a>
+                            <div class="ps-product__content">
+                                <a class="ps-product__title" href="@Url.Action("", "")">Apple iPhone Retina 6s Plus 64GB</a>
+                                <div class="ps-product__rating">
+                                    <select class="ps-rating" data-read-only="true">
+                                        <option value="1">1</option>
+                                        <option value="1">2</option>
+                                        <option value="1">3</option>
+                                        <option value="1">4</option>
+                                        <option value="2">5</option>
+                                    </select>
+                                    <span></span>
                                 </div>
-                                <div class="ps-product__content">
-                                    <a class="ps-product__title" href="@Url.Action("", "")">Marshall Kilburn Portable Wireless Speaker</a>
-                                    <div class="ps-product__rating">
-                                        <select class="ps-rating" data-read-only="true">
-                                            <option value="1">1</option>
-                                            <option value="1">2</option>
-                                            <option value="1">3</option>
-                                            <option value="1">4</option>
-                                            <option value="2">5</option>
-                                        </select>
-                                        <span>01</span>
-                                    </div>
-                                    <p class="ps-product__price">N36.78 – N56.99</p>
-                                </div>
+                                <p class="ps-product__price">N75,000.00</p>
                             </div>
-                            <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail">
-                                    <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/3.jpg" alt="" /></a>
-                                </div>
-                                <div class="ps-product__content">
-                                    <a class="ps-product__title" href="@Url.Action("", "")">Herschel Leather Duffle Bag In Brown Color</a>
-                                    <div class="ps-product__rating">
-                                        <select class="ps-rating" data-read-only="true">
-                                            <option value="1">1</option>
-                                            <option value="1">2</option>
-                                            <option value="1">3</option>
-                                            <option value="1">4</option>
-                                            <option value="2">5</option>
-                                        </select>
-                                        <span>02</span>
-                                    </div>
-                                    <p class="ps-product__price">N125.30</p>
-                                </div>
+                        </div>
+                        <div class="ps-product ps-product--wide ps-product--search-result">
+                            <div class="ps-product__thumbnail">
+                                <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/1.jpg" alt="" /></a>
                             </div>
-                            <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail">
-                                    <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/4.jpg" alt="" /></a>
+                            <div class="ps-product__content">
+                                <a class="ps-product__title" href="@Url.Action("", "")">Apple iPhone Retina 6s Plus 128GB</a>
+                                <div class="ps-product__rating">
+                                    <select class="ps-rating" data-read-only="true">
+                                        <option value="1">1</option>
+                                        <option value="1">2</option>
+                                        <option value="1">3</option>
+                                        <option value="1">4</option>
+                                        <option value="2">5</option>
+                                    </select>
+                                    <span></span>
                                 </div>
-                                <div class="ps-product__content">
-                                    <a class="ps-product__title" href="@Url.Action("", "")">Xbox One Wireless Controller Black Color</a>
-                                    <div class="ps-product__rating">
-                                        <select class="ps-rating" data-read-only="true">
-                                            <option value="1">1</option>
-                                            <option value="1">2</option>
-                                            <option value="1">3</option>
-                                            <option value="1">4</option>
-                                            <option value="2">5</option>
-                                        </select>
-                                        <span>02</span>
-                                    </div>
-                                    <p class="ps-product__price">N55.30</p>
-                                </div>
+                                <p class="ps-product__price">N1220.50</p>
                             </div>
-                            <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail">
-                                    <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/5.jpg" alt="" /></a>
-                                </div>
-                                <div class="ps-product__content">
-                                    <a class="ps-product__title" href="@Url.Action("", "")">Grand Slam Indoor Of Show Jumping Novel</a>
-                                    <div class="ps-product__rating">
-                                        <select class="ps-rating" data-read-only="true">
-                                            <option value="1">1</option>
-                                            <option value="1">2</option>
-                                            <option value="1">3</option>
-                                            <option value="1">4</option>
-                                            <option value="2">5</option>
-                                        </select>
-                                        <span>02</span>
-                                    </div>
-                                    <p class="ps-product__price sale">
-                                        N41.27
-                                        <del>N52.99 </del>
-                                    </p>
-                                </div>
+                        </div>
+                        <div class="ps-product ps-product--wide ps-product--search-result">
+                            <div class="ps-product__thumbnail">
+                                <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/2.jpg" alt="" /></a>
                             </div>
-                            <div class="ps-product ps-product--wide ps-product--search-result">
-                                <div class="ps-product__thumbnail">
-                                    <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/6.jpg" alt="" /></a>
+                            <div class="ps-product__content">
+                                <a class="ps-product__title" href="@Url.Action("", "")">Marshall Kilburn Portable Wireless Speaker</a>
+                                <div class="ps-product__rating">
+                                    <select class="ps-rating" data-read-only="true">
+                                        <option value="1">1</option>
+                                        <option value="1">2</option>
+                                        <option value="1">3</option>
+                                        <option value="1">4</option>
+                                        <option value="2">5</option>
+                                    </select>
+                                    <span>01</span>
                                 </div>
-                                <div class="ps-product__content">
-                                    <a class="ps-product__title" href="@Url.Action("", "")">Sound Intone I65 Earphone White Version</a>
-                                    <div class="ps-product__rating">
-                                        <select class="ps-rating" data-read-only="true">
-                                            <option value="1">1</option>
-                                            <option value="1">2</option>
-                                            <option value="1">3</option>
-                                            <option value="1">4</option>
-                                            <option value="2">5</option>
-                                        </select>
-                                        <span>01</span>
-                                    </div>
-                                    <p class="ps-product__price sale">
-                                        N41.27
-                                        <del>N62.39 </del>
-                                    </p>
+                                <p class="ps-product__price">N36.78 – N56.99</p>
+                            </div>
+                        </div>
+                        <div class="ps-product ps-product--wide ps-product--search-result">
+                            <div class="ps-product__thumbnail">
+                                <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/3.jpg" alt="" /></a>
+                            </div>
+                            <div class="ps-product__content">
+                                <a class="ps-product__title" href="@Url.Action("", "")">Herschel Leather Duffle Bag In Brown Color</a>
+                                <div class="ps-product__rating">
+                                    <select class="ps-rating" data-read-only="true">
+                                        <option value="1">1</option>
+                                        <option value="1">2</option>
+                                        <option value="1">3</option>
+                                        <option value="1">4</option>
+                                        <option value="2">5</option>
+                                    </select>
+                                    <span>02</span>
                                 </div>
-                            </div>*@
+                                <p class="ps-product__price">N125.30</p>
+                            </div>
+                        </div>
+                        <div class="ps-product ps-product--wide ps-product--search-result">
+                            <div class="ps-product__thumbnail">
+                                <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/4.jpg" alt="" /></a>
+                            </div>
+                            <div class="ps-product__content">
+                                <a class="ps-product__title" href="@Url.Action("", "")">Xbox One Wireless Controller Black Color</a>
+                                <div class="ps-product__rating">
+                                    <select class="ps-rating" data-read-only="true">
+                                        <option value="1">1</option>
+                                        <option value="1">2</option>
+                                        <option value="1">3</option>
+                                        <option value="1">4</option>
+                                        <option value="2">5</option>
+                                    </select>
+                                    <span>02</span>
+                                </div>
+                                <p class="ps-product__price">N55.30</p>
+                            </div>
+                        </div>
+                        <div class="ps-product ps-product--wide ps-product--search-result">
+                            <div class="ps-product__thumbnail">
+                                <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/5.jpg" alt="" /></a>
+                            </div>
+                            <div class="ps-product__content">
+                                <a class="ps-product__title" href="@Url.Action("", "")">Grand Slam Indoor Of Show Jumping Novel</a>
+                                <div class="ps-product__rating">
+                                    <select class="ps-rating" data-read-only="true">
+                                        <option value="1">1</option>
+                                        <option value="1">2</option>
+                                        <option value="1">3</option>
+                                        <option value="1">4</option>
+                                        <option value="2">5</option>
+                                    </select>
+                                    <span>02</span>
+                                </div>
+                                <p class="ps-product__price sale">
+                                    N41.27
+                                    <del>N52.99 </del>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ps-product ps-product--wide ps-product--search-result">
+                            <div class="ps-product__thumbnail">
+                                <a href="@Url.Action("", "")"><img src="~/Content/Home/img/products/arrivals/6.jpg" alt="" /></a>
+                            </div>
+                            <div class="ps-product__content">
+                                <a class="ps-product__title" href="@Url.Action("", "")">Sound Intone I65 Earphone White Version</a>
+                                <div class="ps-product__rating">
+                                    <select class="ps-rating" data-read-only="true">
+                                        <option value="1">1</option>
+                                        <option value="1">2</option>
+                                        <option value="1">3</option>
+                                        <option value="1">4</option>
+                                        <option value="2">5</option>
+                                    </select>
+                                    <span>01</span>
+                                </div>
+                                <p class="ps-product__price sale">
+                                    N41.27
+                                    <del>N62.39 </del>
+                                </p>
+                            </div>
+                        </div>*@
                         </div>
                         <div class="ps-panel__footer text-center">
                             <a href="@Url.Action("", "")">See all results</a>
@@ -402,79 +405,79 @@
                 </form>
             </div>
             <div class="header__right">
-                <div class="header__actions">
-                    @*<a class="header__extra" href="#"><i class="icon-chart-bars"></i><span><i>0</i></span></a><a class="header__extra" href="#"><i class="icon-heart"></i><span><i>0</i></span></a>*@
-                    <div class="ps-cart--mini">
-                        <a class="header__extra" href="#">
-                            <i class="icon-bag2"></i>
-                            <span>
-                                <i id="cart">
-                                    @db.Carts.Where(p => p.useremail == email).Count()
-                                </i>
-                            </span>
-                        </a>
-                        <div class="ps-cart__content">
-                            <div class="ps-cart__items">
-                                @{
-                                    decimal total = 0;
-                                }
-                                @foreach (var item in db.Carts.Where(p => p.useremail == email).ToList())
-                                {
-                                    total += Convert.ToDecimal(item.qty * item.Product.price);
-                                    <div class="ps-product--cart-mobile">
-                                        <div class="ps-product__thumbnail">
-                                            <a href="#"><img src="@item.Product.photo1" alt="" /></a>
-                                        </div>
-                                        <div class="ps-product__content">
-                                            <a class="ps-product__remove" href="#"><i class="icon-cross"></i></a>
-                                            <a href="@Url.Action("","")">@item.Product.productname</a>
-                                            <p>
-                                                <strong>Sold by:</strong> @item.Product.UserAccount.brandname
-                                            </p>
-                                            <small>@item.qty X @item.Product.price</small>
-                                        </div>
-                                    </div>
-                                }
+    <div class="header__actions">
+           @* <a class="header__extra" href="#"><i class="icon-chart-bars"></i><span><i>0</i></span></a><a class="header__extra" href="#"><i class="icon-heart"></i><span><i>0</i></span></a>*@
+            <div class="ps-cart--mini">
+                <a class="header__extra" href="#">
+                    <i class="icon-bag2"></i>
+                    <span>
+                        <i id="cart">
+                            @db.Carts.Where(p => p.useremail == email).Count()
+                        </i>
+                    </span>
+                </a>
+                <div class="ps-cart__content">
+                    <div class="ps-cart__items">
+                        @{
+                            decimal total = 0;
+                        }
+                        @foreach (var item in db.Carts.Where(p => p.useremail == email).ToList())
+                        {
+                            total += Convert.ToDecimal(item.qty * item.Product.price);
+                            <div class="ps-product--cart-mobile">
+                                <div class="ps-product__thumbnail">
+                                    <a href="#"><img src="@item.Product.photo1" alt="" /></a>
+                                </div>
+                                <div class="ps-product__content">
+                                    <a class="ps-product__remove" href="#"><i class="icon-cross"></i></a>
+                                    <a href="@Url.Action("","")">@item.Product.productname</a>
+                                    <p>
+                                        <strong>Sold by:</strong> @item.Product.UserAccount.brandname
+                                    </p>
+                                    <small>@item.qty X @item.Product.price</small>
+                                </div>
                             </div>
-                            <div class="ps-cart__footer">
-                                <h3>
-                                    Sub Total:
-                                    <strong>N @total</strong>
-                                </h3>
-                                <figure><a class="ps-btn" href="@Url.Action("Checkout","Products")">View Cart</a><a class="ps-btn" href="@Url.Action("Checkout","products")">Checkout</a></figure>
-                            </div>
-                        </div>
+                        }
                     </div>
-                    @if (Session["email"] == null)
-                    {
-                        <div class="ps-block--user-header">
-                            <div class="ps-block__left">
-                                <i class="icon-user"></i>
-                            </div>
-                            <div class="ps-block__right">
-                                <a href="@Url.Action("Login","Useraccounts")">Login</a>
-                                <a href="@Url.Action("Register","Useraccounts")">Register</a>
-                            </div>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="ps-block--user-header">
-                            <div class="ps-block__left">
-                                <img class="img img-circle img-responsive" src="@user.photo" height="30" width="30" />
-                            </div>
-                            <div class="ps-block__right">
-                                <a href="@Url.Action("myprofile","Useraccounts")">Welcome @Session["email"]</a>
-                                <a href="@Url.Action("Logout","Useraccounts")"> Logout</a>
-                            </div>
-                        </div>
-                    }
-
+                    <div class="ps-cart__footer">
+                        <h3>
+                            Sub Total:
+                            <strong>N @total</strong>
+                        </h3>
+                        <figure><a class="ps-btn" href="@Url.Action("Checkout","Products")">View Cart</a><a class="ps-btn" href="@Url.Action("Checkout","products")">Checkout</a></figure>
+                    </div>
                 </div>
             </div>
+            @if (Session["email"] == null)
+            {
+                <div class="ps-block--user-header">
+                    <div class="ps-block__left">
+                        <i class="icon-user"></i>
+                    </div>
+                    <div class="ps-block__right">
+                        <a href="@Url.Action("Login","Useraccounts")">Login</a>
+                        <a href="@Url.Action("Register","Useraccounts")">Register</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="ps-block--user-header">
+                    <div class="ps-block__left">
+                        <img class="img img-circle img-responsive" src="@user.photo" height="30" width="30" />
+                    </div>
+                    <div class="ps-block__right">
+                        <a href="@Url.Action("myprofile","Useraccounts")">Welcome @Session["email"]</a>
+                        <a href="@Url.Action("Logout","Useraccounts")"> Logout</a>
+                    </div>
+                </div>
+            }
+
         </div>
     </div>
-    <nav class="navigation">
+        </div>
+    </div>
+    <!--<nav class="navigation">
         <div class="ps-container">
             <div class="navigation__left">
                 <div class="menu--product-categories">
@@ -620,8 +623,7 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-            @if (user.usertype == "VENDOR")
+            @@if (user.usertype == "VENDOR")
             {
                 //// Vendor top Navigation menu
                 ///
@@ -642,8 +644,11 @@
                         <li>
                             <a href="@Url.Action("Index","Vendors")">MY SHOP</a>
                         </li>
+                        <li>
+                            <a class="navigation__item ps-toggle--sidebar" href="#menu-mobile"><i class="icon-menu"></i><span> Menu</span></a>
+                        </li>
                     </ul>
-                    <ul class="navigation__extra">
+                    <ul class="navigation__extra">-->
 
                         @*<li>
                              <a href="#">Manage Orders</a>
@@ -674,7 +679,7 @@
                                  </ul>
                              </div>
                          </li>*@
-                    </ul>
+                    <!--</ul>
                 </div>
 
             }
@@ -682,7 +687,7 @@
             {
                 //User  top Navigation menu
                 <div class="navigation__right">
-                    <ul class="menu">
+                    <ul class="menu">-->
                         @*<li class="menu-item-has-children">
                         <a href="@Url.Action("Index","Home")">Home</a><span class="sub-toggle"></span>
                         <ul class="sub-menu">
@@ -727,7 +732,7 @@
                             </li>
                         </ul>
                     </li>*@
-                        <li class="manu-item-has-children has-mega-menu">
+                        <!--<li class="manu-item-has-children has-mega-menu">
                             <a href="@Url.Action("Index","Home")">Home</a>
                         </li>
                         <li class="manu-item-has-children has-mega-menu">
@@ -774,12 +779,12 @@
                                         </li>
                                         <li>
                                             <a href="@Url.Action("Privacy","Home")">Policy</a>
-                                        </li>
+                                        </li>-->
                                         @*<li>
                                         <a href="@Url.Action("","")">Blog</a>
                                     </li>*@
-                                    </ul>
-                                </div>
+                                    <!--</ul>
+                                </div>-->
                                 @*
                             <div class="mega-menu__column">
                                 <h4>Product Types<span class="sub-toggle"></span></h4>
@@ -842,8 +847,8 @@
                                     </li>
                                 </ul>
                             </div>*@
-                            </div>
-                        </li>
+                            <!--</div>
+                        </li>-->
                         @*<li class="menu-item-has-children has-mega-menu">
                         <a href="#">Pages</a><span class="sub-toggle"></span>
 =======
@@ -893,7 +898,7 @@
                 </li>
             </ul>
         </li>*@
-                    <li class="manu-item-has-children has-mega-menu">
+                    <!--<li class="manu-item-has-children has-mega-menu">
                         <a href="@Url.Action("Index","Home")">Home</a>
                     </li>
                     <li class="manu-item-has-children has-mega-menu">
@@ -908,7 +913,6 @@
                     <li class="menu-item-has-children has-mega-menu">
                         <a href="#">More</a>
                         <span class="sub-toggle"></span>
->>>>>>> c5e557f034919c90f181efefd297448fce83910b
                         <div class="mega-menu">
                             <div class="mega-menu__column">
                                 <h4>Basic Page<span class="sub-toggle"></span></h4>
@@ -917,7 +921,6 @@
                                         <a href="@Url.Action("","")">About Us</a>
                                     </li>
                                     <li>
-<<<<<<< HEAD
                                         <a href="@Url.Action("","")">Contact</a>
                                     </li>
                                     <li>
@@ -927,11 +930,9 @@
                                         <a href="@Url.Action("","")">Comming Soon</a>
                                     </li>
                                     <li>
-                                        <a href="@Url.Action("","")">404 Page</a>
-=======
+                                        <a href="@Url.Action("","")">404 Page</a>-->
                                         @*<a target="_blank" href="http://sp.salesboynigeria.com/ServiceProviders/login">Become a Service Provider</a>*@
-                                        <a href="@Url.Action("Index","Home")">Become a Service Provider</a>
->>>>>>> c5e557f034919c90f181efefd297448fce83910b
+                                        <!--<a href="@Url.Action("Index","Home")">Become a Service Provider</a>
                                     </li>
                                 </ul>
                             </div>
@@ -995,9 +996,9 @@
                                 </ul>
                             </div>
                         </div>
-                    </li>*@
+                    </li>
                     </ul>
-                    <ul class="navigation__extra">
+                    <ul class="navigation__extra">-->
                         @*@if (Session["email"] != null)
                     {
                         if (user.usertype != "VENDOR")
@@ -1027,7 +1028,7 @@
                             <a target="_blank" href="http://vendors.salesboynigeria.com">Sell on Salesboy</a>
                         </li>
                     }*@
-                        <li>
+                        <!--<li>
                             <a href="#">Tract your order</a>
                         </li>
                         <li>
@@ -1061,5 +1062,5 @@
             }
 
         </div>
-    </nav>
+    </nav>-->
 </header> 
