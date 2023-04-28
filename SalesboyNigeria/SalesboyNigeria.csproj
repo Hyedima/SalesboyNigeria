@@ -1260,7 +1260,10 @@
     <Content Include="Views\Home\Order.cshtml" />
     <Content Include="Views\Home\findStores.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
-<<<<<<< HEAD
+	  
+		  
+		  
+		  
     <Content Include="Views\Products\checkoutOrder.cshtml" />
     <Content Include="Views\Vendors\Index.cshtml" />
     <Content Include="Views\Vendors\login.cshtml" />
@@ -1269,9 +1272,10 @@
     <Content Include="Views\Vendors\Verify.cshtml" />
     <Content Include="Views\Vendors\myOrders.cshtml" />
     <Content Include="Views\Vendors\MyPayments.cshtml" />
-=======
+	
+	
+	
     <Content Include="Views\Products\EditProducts.cshtml" />
->>>>>>> c5e557f034919c90f181efefd297448fce83910b
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
