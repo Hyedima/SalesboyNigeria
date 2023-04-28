@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -78,6 +79,7 @@
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
@@ -98,12 +100,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -144,6 +143,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -1112,11 +1112,14 @@
     <Content Include="Content\Images\4c05b61c-0cab-4c11-9559-5b096d7ee54f\photo4.JPG" />
     <Content Include="Content\Images\4c05b61c-0cab-4c11-9559-5b096d7ee54f\photo5.JPG" />
     <Content Include="Content\Images\4c05b61c-0cab-4c11-9559-5b096d7ee54f\photobg.png" />
+    <Content Include="Content\Images\4u.jpg" />
     <Content Include="Content\Images\aa8e0007-613e-42ab-a31a-1441efcb8ae5\photo1.jpg" />
     <Content Include="Content\Images\aa8e0007-613e-42ab-a31a-1441efcb8ae5\photo2.jpg" />
     <Content Include="Content\Images\aa8e0007-613e-42ab-a31a-1441efcb8ae5\photo3.jpg" />
     <Content Include="Content\Images\aa8e0007-613e-42ab-a31a-1441efcb8ae5\photo4.jpg" />
     <Content Include="Content\Images\banner3.jpg" />
+    <Content Include="Content\Images\exclusive.jpg" />
+    <Content Include="Content\Images\hmedix.jpg" />
     <Content Include="Content\Images\login.jpg" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\profile1d6385b5-e597-45a7-89bb-49e9907acb9d\photo1d6385b5-e597-45a7-89bb-49e9907acb9d.png" />
@@ -1124,6 +1127,7 @@
     <Content Include="Content\Images\profile\1d6385b5-e597-45a7-89bb-49e9907acb9d.jpg" />
     <Content Include="Content\Images\profile\1d6385b5-e597-45a7-89bb-49e9907acb9d.png" />
     <Content Include="Content\Images\profile\46c3164c-4c4c-48cc-80cc-59e295e55a72.JPG" />
+    <Content Include="Content\Images\sahad.jpg" />
     <Content Include="Content\Images\salesboy ns.jpg" />
     <Content Include="Content\Images\salesboy sn22.jpg" />
     <Content Include="Content\Images\salesboylog.png" />
@@ -1256,6 +1260,7 @@
     <Content Include="Views\Home\Order.cshtml" />
     <Content Include="Views\Home\findStores.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Products\checkoutOrder.cshtml" />
     <Content Include="Views\Vendors\Index.cshtml" />
     <Content Include="Views\Vendors\login.cshtml" />
@@ -1264,6 +1269,9 @@
     <Content Include="Views\Vendors\Verify.cshtml" />
     <Content Include="Views\Vendors\myOrders.cshtml" />
     <Content Include="Views\Vendors\MyPayments.cshtml" />
+=======
+    <Content Include="Views\Products\EditProducts.cshtml" />
+>>>>>>> c5e557f034919c90f181efefd297448fce83910b
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1287,6 +1295,10 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

@@ -1,0 +1,56 @@
+﻿@model SalesboyNigeria.Models.Product
+@{
+    ViewBag.Title = "EditProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditProducts</h2>
+
+<form action="" method="post">
+    <input type="hidden" name="id" value="@Model.id" />
+
+    <label>Vendor ID</label>
+    <input type="text" name="vendorid" value="@Model.vendorid" />
+
+    <label>Product Name</label>
+    <input type="text" name="productname" value="@Model.productname" />
+
+    <label>Product type </label>
+    <input type="text" name="producttype" value="@Model.producttype" />
+
+    <label>Description</label>
+    <input type="text" name="description" value="@Model.description" />
+
+    <label>Category</label>
+    <input type="text" name="category" value="@Model.category" />
+
+    <label>Tags </label>
+    <input type="text" name="tags" value="@Model.tags" />
+
+    <label>Price</label>
+    <input type="text" name="price" value="@Model.price" />
+
+    <label>Discount</label>
+    <input type="text" name="discount" value="@Model.discount" />
+
+    <label>Status </label>
+    <input type="text" name="status" value="@Model.status" />
+
+    <label>Qty</label>
+    <input type="text" name="qty" value="@Model.qty" />
+
+    <label>Inserdate</label>
+    <input type="text" name="inserdate" value="@Model.inserdate" />
+
+    <label>Modelno </label>
+    <input type="text" name="modelno" value="@Model.modelno" />
+
+    <label>Brandname</label>
+    <input type="text" name="brandname" value="@Model.brandname" />
+
+    <label>Otherfeatures </label>
+    <input type="text" name="otherfeatures" value="@Model.otherfeatures" />
+
+    <button class="btn btn-warning">Submit</button>
+</form>
+   
