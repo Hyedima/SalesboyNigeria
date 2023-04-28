@@ -519,7 +519,22 @@ namespace Salesboy.Controllers
             db.SaveChanges();
             return Json("Succes", JsonRequestBehavior.AllowGet);
         }
-       
+       public ActionResult EditProducts(string id)
+        {
+            return View(db.Products.Find(id));
+        }
+        [HttpPost]
+        public ActionResult EditProducts(string id, string vendorid, string productname, 
+        string producttype, string description, string category, string tags, string price, 
+        string discount, string status, string qty, string inserdate, string modelno, string brandname, string otherfeatures)
+        {
+            var product = db.Products.Find(id);
+            product.vendorid = vendorid;
+            product.productname = productname;
+            product.producttype = producttype;
+            db.SaveChanges();
+            return View("ProductList");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
