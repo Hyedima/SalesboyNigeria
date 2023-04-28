@@ -531,8 +531,8 @@ namespace Salesboy.Controllers
         }
         [HttpPost]
         public ActionResult EditProducts(string id, string userid, string productname, 
-        string producttype, string description, string category, string tags, string price, 
-        string discount, string status, string qty, string inserdate, string modelno, string brandname, string otherfeatures)
+        string producttype, string description, string category, string tags, decimal price, 
+        int discount, string status, int qty, DateTime inserdate, string modelno, string brandname, string otherfeatures)
         {
             var product = db.Products.Find(id);
             product.userid = userid;
@@ -540,7 +540,7 @@ namespace Salesboy.Controllers
             product.producttype = producttype;
             product.description = description;
             product.category = category;
-            product.tages = tags;
+            product.tags = tags;
             product.price = price;
             product.discount = discount;
             product.status = status;
