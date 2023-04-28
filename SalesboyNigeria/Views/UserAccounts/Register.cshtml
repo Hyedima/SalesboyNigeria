@@ -15,15 +15,15 @@
                 </ul>
             </div>
         </div>*@
-    @*<div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
+        @*<div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
 
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>*@
+        </div>*@
     <div class="ps-my-account">
         <div class="container">
             <div class="ps-form--account ps-tab-root">
@@ -58,35 +58,35 @@
                                         </strong>
                                         <hr />
                                         @*<div class="d-flex flex-row align-items-center mb-4">
-                <div class="form-outline flex-fill mb-0">
-                    <label class="form-label" for="form3Example1c">First Name</label>
-                    <input type="text" name="firstname" id="" class="form-control" />
-                </div>
-            </div>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label class="form-label" for="form3Example1c">First Name</label>
+                                                <input type="text" name="firstname" id="" class="form-control" />
+                                            </div>
+                                        </div>
 
-            <div class="d-flex flex-row align-items-center mb-4">
-                <div class="form-outline flex-fill mb-0">
-                    <label class="form-label" for="form3Example1c">Last Name</label>
-                    <input type="text" name="lastname" id="" class="form-control" />
-                </div>
-            </div>
-            <div class="d-flex flex-row align-items-center mb-4">
-                <div class="form-outline flex-fill mb-0">
-                    <label class="form-label" for="form3Example3c">Phone</label>
-                    <input type="text" name="phone" id="" class="form-control" />
-                </div>
-            </div>
-            <div class="d-flex flex-row align-items-center mb-4">
-                <div class="form-outline flex-fill mb-0">
-                    <label class="form-label" for="form3Example3c">State of Residence</label>
-                    <select class="form-control" name="state" required="">
-                        @foreach (var item in db.States.OrderBy(p => p.states).ToList())
-                        {
-                            <option value="@item.states">@item.states</option>
-                        }
-                    </select>
-                </div>
-            </div>*@
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label class="form-label" for="form3Example1c">Last Name</label>
+                                                <input type="text" name="lastname" id="" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label class="form-label" for="form3Example3c">Phone</label>
+                                                <input type="text" name="phone" id="" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label class="form-label" for="form3Example3c">State of Residence</label>
+                                                <select class="form-control" name="state" required="">
+                                                    @foreach (var item in db.States.OrderBy(p => p.states).ToList())
+                                                    {
+                                                        <option value="@item.states">@item.states</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>*@
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="form3Example3c">Your Email</label>
@@ -131,17 +131,17 @@
                             <div class="mt-5 text-center">
                                 <p>
                                     @*Already have an account ? <a href="@Url.Action("Login","Useraccounts")" class="fw-medium text-primary"> Login Here</a>
-        <a href="http://vendors.salesboynigeria.com/Vendors/register" class="fw-medium text-primary"> Register as a Vendor </a>
-         <a href="http://sp.salesboynigeria.com/ServiceProviders/Register" class="fw-medium text-primary"> Register as a Service Provider </a>*@
+                                <a href="http://vendors.salesboynigeria.com/Vendors/register" class="fw-medium text-primary"> Register as a Vendor </a>
+                                 <a href="http://sp.salesboynigeria.com/ServiceProviders/Register" class="fw-medium text-primary"> Register as a Service Provider </a>*@
                                 </p>
                             </div>
-                            @*<p>Connect with:</p>
-        <ul class="ps-list--social">
-            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-        </ul>*@
+                           @*<p>Connect with:</p>
+                                <ul class="ps-list--social">
+                                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                                </ul>*@
                         </div>
                     </div>
                     <div class="ps-tab" id="register">

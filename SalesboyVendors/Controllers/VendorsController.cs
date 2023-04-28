@@ -301,7 +301,7 @@ namespace SalesboyVendors.Controllers
                 db.SaveChanges();
                 TempData["success"] = "true";
                 TempData["message"] = "Profile picture uploaded successfully!!";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Vendors");
             }
             catch (Exception err)
             {
@@ -310,7 +310,7 @@ namespace SalesboyVendors.Controllers
 
                 string userid = Session["userid"].ToString();
                 var user = db.Vendors.FirstOrDefault(p => p.Id == userid);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Vendors");
             }
         }
         public ActionResult updatelocation(string id)
@@ -326,7 +326,10 @@ namespace SalesboyVendors.Controllers
             db.SaveChanges();
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
-
+        public ActionResult myOrders(string id)
+        {
+            return View(db.UserAccounts.Where(p=>p.Id == id));
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

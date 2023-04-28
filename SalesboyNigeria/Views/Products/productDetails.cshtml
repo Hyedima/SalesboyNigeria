@@ -319,7 +319,7 @@
                                 </ul>*@
                             </div>
                             <div class="ps-product__container">
-                                <a class="ps-product__vendor" href="@Url.Action("Vendor","Home")">@item.Vendor.brandname</a>
+                                <a class="ps-product__vendor" href="@Url.Action("Vendor","Home")">@item.UserAccount.brandname</a>
                                 <div class="ps-product__content">
                                     <a class="ps-product__title" href="@Url.Action("productDetails", "Products", new {id = item.id})">@item.productname</a>
                                     @*<div class="ps-product__rating">

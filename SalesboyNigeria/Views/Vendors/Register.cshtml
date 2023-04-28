@@ -5,15 +5,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <div class="ps-page--my-account">
     @*<div class="ps-breadcrumb">
-        <div class="container">
-            <ul class="breadcrumb">
-                <li><a href="@Url.Action("Index","Home")">Home</a></li>
-                <li>My account</li>
-            </ul>
-        </div>
-    </div>*@
+                <div class="container">
+                    <ul class="breadcrumb">
+                        <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                        <li>My account</li>
+                    </ul>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>*@
     <div class="ps-my-account">
         <div class="container">
             <div class="ps-form--account ps-tab-root">
@@ -25,22 +35,26 @@
                     <div class="ps-tab active card" id="sign-in">
                         <div class="ps-post__content">
                             @*<p class="text-center">
-                                <a href="@Url.Action("Register","UserAccounts")" class="fw-medium text-primary badge badge-soft-warning">
-                                    Register as a user/buyer
-                                </a> ||
-                                <a href="@Url.Action("RegisterServiceProvider","UserAccounts")" class="fw-medium text-primary badge badge-soft-warning">
-                                    Register as a Service Provider
-                                </a>
-                            </p>*@
+                            <a href="@Url.Action("Register","UserAccounts")" class="fw-medium text-primary badge badge-soft-warning">
+                                Register as a user/buyer
+                            </a> ||
+                            <a href="@Url.Action("RegisterServiceProvider","UserAccounts")" class="fw-medium text-primary badge badge-soft-warning">
+                                Register as a Service Provider
+                            </a>
+                        </p>*@
                             <center>
                                 <img src="~/Content/Images/logo.png" alt="" height="80">
                             </center>
                             <hr />
 
-                            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up as a vendor</p>
+                            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up as a Vendor</p>
                             <hr />
-                            <form class="mx-1 mx-md-4" method="post" action="@Url.Action("RegisterVendor","UserAccounts")">
+                            <form class="mx-1 mx-md-4" method="post" action="@Url.Action("Register","Vendors")">
                                 @Html.AntiForgeryToken()
+                                <strong class="text-danger">
+                                    @TempData["message"]
+                                </strong>
+                                <hr />
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <div class="form-outline flex-fill mb-0">
                                         <label class="form-label" for="form3Example1c">First Name</label>
@@ -60,7 +74,7 @@
                                         <input type="text" name="phone" id="" class="form-control" />
                                     </div>
                                 </div>
-                                @*<div class="d-flex flex-row align-items-center mb-4">
+                                <div class="d-flex flex-row align-items-center mb-4">
                                     <div class="form-outline flex-fill mb-0">
                                         <label class="form-label" for="form3Example3c">State of Residence</label>
                                         <select class="form-control" name="state" required="">
@@ -71,31 +85,6 @@
                                         </select>
                                     </div>
                                 </div>
-
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <div class="form-outline flex-fill mb-0">
-                                        <label class="form-label" for="form3Example1c">Business Name</label>
-                                        <input type="text" name="businessname" id="" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <div class="form-outline flex-fill mb-0">
-                                        <label class="form-label" for="form3Example1c">Category(Art, Grocery, Electronics, Clothings, Makeup, Mechanics, Fashion Design etc )</label>
-                                        <input type="text" name="category" id="" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <div class="form-outline flex-fill mb-0">
-                                        <label class="form-label" for="form3Example1c">Business Description</label>
-                                        <textarea class="form-control" name="description"></textarea>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <div class="form-outline flex-fill mb-0">
-                                        <label class="form-label" for="form3Example1c">Business Address</label>
-                                        <textarea class="form-control" name="address"></textarea>
-                                    </div>
-                                </div>*@
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <div class="form-outline flex-fill mb-0">
                                         <label class="form-label" for="form3Example3c">Your Email</label>
@@ -105,7 +94,7 @@
 
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <div class="form-outline flex-fill mb-0">
-                                        <label class="form-label" for="form3Example4c">Password</label>
+                                        <label class="form-label" for="">Password</label>
                                         <input type="password" name="password" id="" class="form-control" />
                                     </div>
                                 </div>
@@ -117,30 +106,46 @@
                                     </div>
                                 </div>
 
+
                                 <div class="ps-checkbox">
                                     <input class="form-control" type="checkbox" id="save-next-time" placeholder="" name="accept">
                                     <label for="save-next-time">I agree all statements in <a href="#!">Terms of service</a></label>
                                 </div>
                                 <hr />
-                                <div class="form-group submtit">
-                                    <button type="submit" class="ps-btn ps-btn--fullwidth">Register</button>
+
+                                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                    <button class="ps-btn ps-btn--fullwidth">Register</button>
                                 </div>
+
                             </form>
                         </div>
 
                         <div class="ps-form__footer">
-                            <p>Connect with:</p>
-                            <ul class="ps-list--social">
-                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
+                            <div class="mt-5 text-center">
+                                <p>
+                                    Don't have an account ? <a href="http://vendors.salesboynigeria.com/Vendors/register" class="fw-medium text-primary"> Register as a Vendor </a>
+                                    <a href="http://services.salesboynigeria.com/ServiceProviders/Register" class="fw-medium text-primary"> Register as a Service Provider </a>
+                                </p>
+                            </div>
+                            @*<p>Connect with:</p>
+        <ul class="ps-list--social">
+            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+        </ul>*@
                         </div>
+
                     </div>
-                    
+                    <div class="ps-tab" id="register">
+
+                    </div>
                 </div>
             </div>
+
+            <br />
+            <br />
+            <br />
         </div>
     </div>
 </div>

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<SalesboyNigeria.Models.Payment>
+
+@{
+    ViewBag.Title = "MyPayments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int sn = 0;
+}
+
+<table class="table">
+    <tr>
+        <th>
+            SN
+        </th>
+        <th>Title</th>
+        <th>
+            Payment date
+        </th>
+        <th>
+            Full Name
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Payment type
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Amount(N)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    sn++;
+    <tr>
+        <td>
+            @sn
+        </td>
+        <td>
+            @item.title
+        </td>
+        <td>
+            @item.trnxdate
+        </td>
+        <td>
+            @item.name
+        </td>
+        <td>
+            @item.phone
+        </td>
+        <td>
+            @item.email
+        </td>
+        <td>
+            @item.paymenttype
+        </td>
+        <td>
+            @item.category
+        </td>
+        <td>
+            @item.amount
+        </td>
+        
+    </tr>
+}
+
+</table>

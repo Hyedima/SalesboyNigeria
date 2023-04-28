@@ -21,10 +21,14 @@ namespace SalesboyNigeria.Models
         }
     
         public string id { get; set; }
+        public string firstname { get; set; }
+        public string lastname { get; set; }
+        public string address { get; set; }
         public string batchid { get; set; }
         public string useremail { get; set; }
         public string paymentid { get; set; }
         public Nullable<System.DateTime> orderdate { get; set; }
+        public Nullable<System.DateTime> shipmentdate { get; set; }
         public string IsShipping { get; set; }
         public string shipperid { get; set; }
         public string frieght { get; set; }
@@ -34,19 +38,15 @@ namespace SalesboyNigeria.Models
         public string notes { get; set; }
         public string customeremail { get; set; }
         public string paymentstatus { get; set; }
-        public Nullable<System.DateTime> shipmentdate { get; set; }
         public string shipmentaddress { get; set; }
         public string Country { get; set; }
         public string city { get; set; }
         public string zip { get; set; }
         public string phone { get; set; }
         public string landmark { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public string address { get; set; }
     
+        public virtual UserAccount UserAccount { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShippingPayment> ShippingPayments { get; set; }
-        public virtual UserAccount UserAccount { get; set; }
     }
 }

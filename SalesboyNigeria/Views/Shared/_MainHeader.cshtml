@@ -429,7 +429,7 @@
                                             <a class="ps-product__remove" href="#"><i class="icon-cross"></i></a>
                                             <a href="@Url.Action("","")">@item.Product.productname</a>
                                             <p>
-                                                <strong>Sold by:</strong> @item.Product.Vendor.brandname
+                                                <strong>Sold by:</strong> @item.Product.UserAccount.brandname
                                             </p>
                                             <small>@item.qty X @item.Product.price</small>
                                         </div>
@@ -620,256 +620,316 @@
                     </div>
                 </div>
             </div>
-            <div class="navigation__right">
-                <ul class="menu">
-                    @*<li class="menu-item-has-children">
-            <a href="@Url.Action("Index","Home")">Home</a><span class="sub-toggle"></span>
-            <ul class="sub-menu">
-                <li>
-                    <a href="@Url.Action("","")">Marketplace Full Width</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Auto Parts</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Technology</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Organic</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Marketplace V1</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Marketplace V2</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Marketplace V3</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Marketplace V4</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Electronic</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Furniture</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Kids</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home photo and picture</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("","")">Home Medical</a>
-                </li>
-            </ul>
-        </li>*@
-                    <li class="manu-item-has-children has-mega-menu">
-                        <a href="@Url.Action("Index","Home")">Home</a>
-                    </li>
-                    <li class="manu-item-has-children has-mega-menu">
-                        <a href="@Url.Action("ProductList","Products")">Products</a>
-                    </li>
-                    <li class="manu-item-has-children has-mega-menu">
-                        <a href="@Url.Action("ServiceProviders","Home")">Services</a>
-                    </li>
-                    <li class="manu-item-has-children has-mega-menu">
-                        <a href="@Url.Action("Order","Home")">Order</a>
-                    </li>
-                    <li class="menu-item-has-children has-mega-menu">
-                        <a href="#">More</a>
-                        <span class="sub-toggle"></span>
+            @if (user.usertype == "VENDOR")
+            {
+                //// Vendor top Navigation menu
+                ///
+                <div class="navigation__right">
+                    <ul class="menu">
+                        <li class="manu-item-has-children has-mega-menu">
+                            <a href="@Url.Action("Index","Home")">Home</a>
+                        </li>
+                        <li class="manu-item-has-children has-mega-menu">
+                            <a href="@Url.Action("Products","Products")">Products</a>
+                        </li>
+                        <li class="manu-item-has-children has-mega-menu">
+                            <a href="@Url.Action("myOrders","Vendors", new {id = user.Id})">Orders</a>
+                        </li>
+                        <li class="manu-item-has-children has-mega-menu">
+                            <a href="@Url.Action("myPayments","Vendors", new {id = user.Id})">Payments</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Vendors")">MY SHOP</a>
+                        </li>
+                    </ul>
+                    <ul class="navigation__extra">
+
+                        @*<li>
+                             <a href="#">Manage Orders</a>
+                         </li>
+                        <li>
+                             <div class="ps-dropdown">
+                                 <a href="#">NGN</a>
+                                 <ul class="ps-dropdown-menu">
+                                     <li>
+                                         <a href="#">Us Dollar</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">Euro</a>
+                                     </li>
+                                 </ul>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="ps-dropdown language">
+                                 <a href="#"><img src="~/Content/Home/img/flag/en.png" alt="" />English</a>
+                                 <ul class="ps-dropdown-menu">
+                                     <li>
+                                         <a href="#"><img src="~/Content/Home/img/flag/germany.png" alt="" /> Germany</a>
+                                     </li>
+                                     <li>
+                                         <a href="#"><img src="~/Content/Home/img/flag/fr.png" alt="" /> France</a>
+                                     </li>
+                                 </ul>
+                             </div>
+                         </li>*@
+                    </ul>
+                </div>
+
+            }
+            else
+            {
+                //User  top Navigation menu
+                <div class="navigation__right">
+                    <ul class="menu">
+                        @*<li class="menu-item-has-children">
+                        <a href="@Url.Action("Index","Home")">Home</a><span class="sub-toggle"></span>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="@Url.Action("","")">Marketplace Full Width</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Home Auto Parts</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Home Technology</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Home Organic</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Home Marketplace V1</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Home Marketplace V2</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Home Marketplace V3</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Home Marketplace V4</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Home Electronic</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Home Furniture</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Home Kids</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Home photo and picture</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Home Medical</a>
+                            </li>
+                        </ul>
+                    </li>*@
+                        <li class="manu-item-has-children has-mega-menu">
+                            <a href="@Url.Action("Index","Home")">Home</a>
+                        </li>
+                        <li class="manu-item-has-children has-mega-menu">
+                            <a href="@Url.Action("ProductList","Products")">Products</a>
+                        </li>
+                        <li class="manu-item-has-children has-mega-menu">
+                            <a href="@Url.Action("ServiceProviders","Home")">Services</a>
+                        </li>
+                        <li class="manu-item-has-children has-mega-menu">
+                            <a href="@Url.Action("Order","Home")">Order</a>
+                        </li>
+                        <li class="menu-item-has-children has-mega-menu">
+                            <a href="#">More</a>
+                            <span class="sub-toggle"></span>
+                            <div class="mega-menu">
+                                <div class="mega-menu__column">
+                                    <h4>
+                                        More Pages
+                                        <span class="sub-toggle"></span>
+                                    </h4>
+                                    <ul class="mega-menu__list">
+                                        <li>
+                                            <a target="_blank" href="http://vendors.salesboynigeria.com/Vendors/login">Become a Vendor</a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="http://sp.salesboynigeria.com/ServiceProviders/login">Become a Service Provider</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="mega-menu__column">
+                                    <h4>
+                                        Other Pages
+                                        <span class="sub-toggle"></span>
+                                    </h4>
+                                    <ul class="mega-menu__list">
+                                        <li>
+                                            <a href="@Url.Action("About","Home")">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("","Home")">FAQ</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("TermsandConditions","Home")">Terms & Conditions</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Privacy","Home")">Policy</a>
+                                        </li>
+                                        @*<li>
+                                        <a href="@Url.Action("","")">Blog</a>
+                                    </li>*@
+                                    </ul>
+                                </div>
+                                @*
+                            <div class="mega-menu__column">
+                                <h4>Product Types<span class="sub-toggle"></span></h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("","")">Simple</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Color Swatches</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Images Swatches</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Countdown</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Multi-Vendor</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Instagram</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Affiliate</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">On sale</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Video Featured</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Grouped</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Out Of Stock</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu__column">
+                                <h4>Woo Pages<span class="sub-toggle"></span></h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("","")">Shopping Cart</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Checkout</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Whishlist</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Compare</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Order Tracking</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">My Account</a>
+                                    </li>
+                                </ul>
+                            </div>*@
+                            </div>
+                        </li>
+                        @*<li class="menu-item-has-children has-mega-menu">
+                        <a href="#">Pages</a><span class="sub-toggle"></span>
                         <div class="mega-menu">
                             <div class="mega-menu__column">
-                                <h4>
-                                    More Pages
-                                    <span class="sub-toggle"></span>
-                                </h4>
+                                <h4>Basic Page<span class="sub-toggle"></span></h4>
                                 <ul class="mega-menu__list">
                                     <li>
-                                        <a target="_blank" href="http://vendors.salesboynigeria.com/Vendors/login">Become a Vendor</a>
+                                        <a href="@Url.Action("","")">About Us</a>
                                     </li>
                                     <li>
-                                        <a target="_blank" href="http://sp.salesboynigeria.com/ServiceProviders/login">Become a Service Provider</a>
+                                        <a href="@Url.Action("","")">Contact</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Faqs</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Comming Soon</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">404 Page</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="mega-menu__column">
-                                <h4>
-                                    Other Pages
-                                    <span class="sub-toggle"></span>
-                                </h4>
+                                <h4>Vendor Pages<span class="sub-toggle"></span></h4>
                                 <ul class="mega-menu__list">
                                     <li>
-                                        <a href="@Url.Action("About","Home")">About</a>
+                                        <a href="@Url.Action("","")">Become a Vendor</a>
                                     </li>
                                     <li>
-                                        <a href="@Url.Action("","Home")">FAQ</a>
+                                        <a href="@Url.Action("","")">Vendor Store</a>
                                     </li>
                                     <li>
-                                        <a href="@Url.Action("TermsandConditions","Home")">Terms & Conditions</a>
+                                        <a href="@Url.Action("","")">Vendor Dashboard Free</a>
                                     </li>
                                     <li>
-                                        <a href="@Url.Action("Privacy","Home")">Policy</a>
+                                        <a href="@Url.Action("","")">Vendor Dashboard Pro</a>
                                     </li>
-                                    @*<li>
-                            <a href="@Url.Action("","")">Blog</a>
-                        </li>*@
                                 </ul>
                             </div>
-                            @*
-                <div class="mega-menu__column">
-                    <h4>Product Types<span class="sub-toggle"></span></h4>
-                    <ul class="mega-menu__list">
-                        <li>
-                            <a href="@Url.Action("","")">Simple</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Color Swatches</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Images Swatches</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Countdown</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Multi-Vendor</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Instagram</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Affiliate</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">On sale</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Video Featured</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Grouped</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Out Of Stock</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="mega-menu__column">
-                    <h4>Woo Pages<span class="sub-toggle"></span></h4>
-                    <ul class="mega-menu__list">
-                        <li>
-                            <a href="@Url.Action("","")">Shopping Cart</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Checkout</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Whishlist</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Compare</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Order Tracking</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">My Account</a>
-                        </li>
-                    </ul>
-                </div>*@
                         </div>
                     </li>
-                    @*<li class="menu-item-has-children has-mega-menu">
-            <a href="#">Pages</a><span class="sub-toggle"></span>
-            <div class="mega-menu">
-                <div class="mega-menu__column">
-                    <h4>Basic Page<span class="sub-toggle"></span></h4>
-                    <ul class="mega-menu__list">
-                        <li>
-                            <a href="@Url.Action("","")">About Us</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Contact</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Faqs</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Comming Soon</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">404 Page</a>
-                        </li>
+                    <li class="menu-item-has-children has-mega-menu">
+                        <a href="#">Blogs</a><span class="sub-toggle"></span>
+                        <div class="mega-menu">
+                            <div class="mega-menu__column">
+                                <h4>Blog Layout<span class="sub-toggle"></span></h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("","")">Grid</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Listing</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Small Thumb</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Left Sidebar</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Right Sidebar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu__column">
+                                <h4>Single Blog<span class="sub-toggle"></span></h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 4</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>*@
                     </ul>
-                </div>
-                <div class="mega-menu__column">
-                    <h4>Vendor Pages<span class="sub-toggle"></span></h4>
-                    <ul class="mega-menu__list">
-                        <li>
-                            <a href="@Url.Action("","")">Become a Vendor</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Vendor Store</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Vendor Dashboard Free</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Vendor Dashboard Pro</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-        <li class="menu-item-has-children has-mega-menu">
-            <a href="#">Blogs</a><span class="sub-toggle"></span>
-            <div class="mega-menu">
-                <div class="mega-menu__column">
-                    <h4>Blog Layout<span class="sub-toggle"></span></h4>
-                    <ul class="mega-menu__list">
-                        <li>
-                            <a href="@Url.Action("","")">Grid</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Listing</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Small Thumb</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Left Sidebar</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Right Sidebar</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="mega-menu__column">
-                    <h4>Single Blog<span class="sub-toggle"></span></h4>
-                    <ul class="mega-menu__list">
-                        <li>
-                            <a href="@Url.Action("","")">Single 1</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Single 2</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Single 3</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Single 4</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </li>*@
-                </ul>
-                <ul class="navigation__extra">
-                    @*@if (Session["email"] != null)
+                    <ul class="navigation__extra">
+                        @*@if (Session["email"] != null)
                     {
                         if (user.usertype != "VENDOR")
                         {
@@ -898,37 +958,39 @@
                             <a target="_blank" href="http://vendors.salesboynigeria.com">Sell on Salesboy</a>
                         </li>
                     }*@
-                    <li>
-                        <a href="#">Tract your order</a>
-                    </li>
-                    <li>
-                        <div class="ps-dropdown">
-                            <a href="#">NGN</a>
-                            <ul class="ps-dropdown-menu">
-                                <li>
-                                    <a href="#">Us Dollar</a>
-                                </li>
-                                <li>
-                                    <a href="#">Euro</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="ps-dropdown language">
-                            <a href="#"><img src="~/Content/Home/img/flag/en.png" alt="" />English</a>
-                            <ul class="ps-dropdown-menu">
-                                <li>
-                                    <a href="#"><img src="~/Content/Home/img/flag/germany.png" alt="" /> Germany</a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="~/Content/Home/img/flag/fr.png" alt="" /> France</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+                        <li>
+                            <a href="#">Tract your order</a>
+                        </li>
+                        <li>
+                            <div class="ps-dropdown">
+                                <a href="#">NGN</a>
+                                <ul class="ps-dropdown-menu">
+                                    <li>
+                                        <a href="#">Us Dollar</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Euro</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ps-dropdown language">
+                                <a href="#"><img src="~/Content/Home/img/flag/en.png" alt="" />English</a>
+                                <ul class="ps-dropdown-menu">
+                                    <li>
+                                        <a href="#"><img src="~/Content/Home/img/flag/germany.png" alt="" /> Germany</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><img src="~/Content/Home/img/flag/fr.png" alt="" /> France</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            }
+
         </div>
     </nav>
-</header>
+</header> 

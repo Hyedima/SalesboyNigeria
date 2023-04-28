@@ -1,0 +1,18 @@
+﻿@model SalesboyNigeria.Models.UserAccount
+
+@{
+    ViewBag.Title = "myOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    SalesboyNigeria.Models.salesboyEntities db = new SalesboyNigeria.Models.salesboyEntities();
+    int sn = 0;
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>SN</th>
+        <th>Products</th>
+        <th>Qty</th>
+        <th>Amount(N)</th>
+    </tr>
+    @*@foreach (var item in db.Sales.to)*@
+</table>

@@ -308,7 +308,14 @@ namespace Salesboy.Controllers
                         //    return Redirect(ReturnUrl);
                         //}
                         //return RedirectToAction("myprofile", "UserAccounts");
-                        return RedirectToAction("Index", "Home");
+                        if(User.usertype == "VENDOR")
+                        {
+                            return RedirectToAction("Index", "Vendors", new {id = User.Id});
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
                     else
                     {
@@ -466,6 +473,7 @@ namespace Salesboy.Controllers
                 }
             }
         }
+        
         [HttpPost]
         public JsonResult payment(string id, decimal amountpaid, string trnxid, string paid_by, string pay_email, string pay_phone, string pay_status, string ref_no, string gateway_ref, string currency) //paid, pay_date
         {
@@ -473,7 +481,7 @@ namespace Salesboy.Controllers
             var user = db.UserAccounts.Find(userid);
             user.paymentstatus = "PAID";
             user.paymentdate = DateTime.Now;
-            user.duedate = DateTime.Now.AddDays(365);
+            user.duedate = DateTime.Now; //.AddDays(365);
             user.amountpaid = amountpaid;
 
             db.Payments.Add(new SalesboyNigeria.Models.Payment
@@ -484,10 +492,13 @@ namespace Salesboy.Controllers
                 email = pay_email,
                 phone = pay_phone,
                 status = "PAID",
+                paymenttype = "ONLINE",
+                category = "SALES",
+                title = "Purchase of items", 
                 userid = user.Id,
                 amount = amountpaid,
                 trnxdate = DateTime.Now,
-                notes = "Ref No: " + ref_no + " Gateway_ref: " + gateway_ref + " currency: " + currency,
+                notes = "Sales Payment on "+ DateTime.Now+ ", Ref No: " + ref_no + " Gateway_ref: " + gateway_ref + " currency: " + currency,
                 gatewayref = gateway_ref,
             });
 
@@ -575,6 +586,77 @@ namespace Salesboy.Controllers
                 return View("VerifyEmail", new { id = id });
             }
             return View(db.UserAccounts.Find(id));
+        }
+        public ActionResult RegisterVendor()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterVendor(string firstname, string lastname, string email, string phone, string password, string state) //string state, string agree, string businessname, string category, string description, string address
+        {
+            //SendMail
+            try
+            {
+                int cnt = db.UserAccounts.Where(p => p.Email == email || p.phone == phone).Count();
+
+                string id = Guid.NewGuid().ToString();
+                string newpass = SalesboyNigeria.setup.CryptoEngine.Encrypt(password);
+
+                //check if user exist 
+                if (cnt > 0)
+                {
+                    TempData["success"] = "false";
+                    TempData["message"] = "User already exist, please review the fields and try again.";
+                    return View();
+                }
+                else
+                {
+                    //create user account
+                    db.UserAccounts.Add(new UserAccount
+                    {
+                        Id = id,
+                        firstname = firstname,
+                        lastname = lastname,
+                        Email = email,
+                        phone = phone,
+                        //state = state,
+                        PasswordHash = newpass,
+                        usertype = "VENDOR",
+                        regdate = DateTime.Now,
+                        country = "NIGERIA",
+                        city = state,
+                        active = false,
+                        TwoFactorEnabled = false,
+                        PhoneNumberConfirmed = false,
+                        EmailConfirmed = false,
+                        UserName = email,
+                        AccessFailedCount = 0
+                    });
+                    db.SaveChanges();
+                    //send verification email
+                    // await EmailManager.SendMail(email, firstname + " " + lastname, "Salesboy Nigeria Verifcation Email", "Your registrations was successfull, please click on this lick to continue <a href=''>Click Here</a>");
+                    var apiKey = "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";//Environment.GetEnvironmentVariable("NAME_OF_THE_ENVIRONMENT_VARIABLE_FOR_YOUR_SENDGRID_KEY");
+                    var client = new SendGridClient(apiKey);
+                    var from = new EmailAddress("Salesboynigeria@gmail.com", "Salesboy Nigeria");
+                    var subject = "Registration Success";
+                    var to = new EmailAddress(email, firstname + " " + lastname);
+                    var plainTextContent = "Email Verification";
+                    var htmlContent = "<strong>Your registration was successfull, please click on this link to continue <br /> <a class='btn btn-block btn-primary' href='https://salesboynigeria.com/useraccounts/verifyEmail/" + id + "'>Click Here</a></strong>";//" + id + "
+                    var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+                    var response = await client.SendEmailAsync(msg);
+
+                    TempData["success"] = "true";
+                    TempData["message"] = "Registered Sucessfully.";
+                    return RedirectToAction("Login", "Useraccounts", new { id = id });
+                }
+            }
+            catch (Exception err)
+            {
+                TempData["success"] = "false";
+                TempData["message"] = "Registration Failed, please review the fields and try again." + err;
+                return View();
+            }
         }
         protected override void Dispose(bool disposing)
         {

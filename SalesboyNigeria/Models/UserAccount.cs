@@ -18,9 +18,10 @@ namespace SalesboyNigeria.Models
         public UserAccount()
         {
             this.Carts = new HashSet<Cart>();
-            this.Payments = new HashSet<Payment>();
-            this.Sales = new HashSet<Sale>();
             this.Orders = new HashSet<Order>();
+            this.Payments = new HashSet<Payment>();
+            this.Products = new HashSet<Product>();
+            this.Sales = new HashSet<Sale>();
         }
     
         public string Id { get; set; }
@@ -67,10 +68,12 @@ namespace SalesboyNigeria.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Carts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Payment> Payments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sale> Sales { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Sale> Sales { get; set; }
     }
 }

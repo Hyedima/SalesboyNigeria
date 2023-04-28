@@ -1,4 +1,4 @@
-﻿@model SalesboyNigeria.Models.Payments
+﻿@model SalesboyNigeria.Models.Payment
 @{
     ViewBag.Title = "payment";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -35,7 +35,7 @@
                                     /* Get from elements values */
                                     var values =
                                     {
-                                        id: "@Model.id-@Salesboy.setup.GenerateID.GetID()",
+                                        id: "@Model.id-@SalesboyNigeria.setup.GenerateID.GetID()",
                                         trnxid: data.tx_ref,
                                         amountpaid: data.amount,
                                         trnxid: data.transaction_id,

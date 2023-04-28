@@ -30,6 +30,9 @@ namespace SalesboyNigeria.Models
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<categorysub> categorysubs { get; set; }
+        public virtual DbSet<EasyOrder> EasyOrders { get; set; }
+        public virtual DbSet<EasyOrdersItem_temp> EasyOrdersItem_temp { get; set; }
+        public virtual DbSet<EasyOrdersItem> EasyOrdersItems { get; set; }
         public virtual DbSet<LGA> LGAs { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
@@ -42,9 +45,6 @@ namespace SalesboyNigeria.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
         public virtual DbSet<Vendor> Vendors { get; set; }
-        public virtual DbSet<EasyOrder> EasyOrders { get; set; }
-        public virtual DbSet<EasyOrdersItem_temp> EasyOrdersItem_temp { get; set; }
-        public virtual DbSet<EasyOrdersItem> EasyOrdersItems { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="salesboyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="salesboyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="id" />
@@ -142,7 +142,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="vendorid" Type="varchar" MaxLength="200" />
+          <Property Name="userid" Type="varchar" MaxLength="200" />
           <Property Name="productname" Type="varchar(max)" />
           <Property Name="producttype" Type="varchar" MaxLength="200" />
           <Property Name="description" Type="varchar(max)" />
@@ -492,15 +492,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Product_Vendors">
-          <End Role="Vendors" Type="Self.Vendors" Multiplicity="0..1" />
+        <Association Name="FK_Product_UserAccount">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Vendors">
+            <Principal Role="UserAccount">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Product">
-              <PropertyRef Name="vendorid" />
+              <PropertyRef Name="userid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -618,8 +618,8 @@
             <End Role="UserAccount" EntitySet="UserAccount" />
             <End Role="Payments" EntitySet="Payments" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_Vendors" Association="Self.FK_Product_Vendors">
-            <End Role="Vendors" EntitySet="Vendors" />
+          <AssociationSet Name="FK_Product_UserAccount" Association="Self.FK_Product_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccount" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_sale_AspNetUsers" Association="Self.FK_sale_AspNetUsers">
@@ -635,7 +635,8 @@
             <End Role="ShippingPayments" EntitySet="ShippingPayments" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="salesboyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -674,6 +675,51 @@
           <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="EasyOrder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="loc_long" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="loc_lat" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="location" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="insertdate" Type="DateTime" Precision="3" />
+          <Property Name="insertuser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EasyOrdersItems" Relationship="Self.FK_EasyOrdersItems_EasyOrders" FromRole="EasyOrders" ToRole="EasyOrdersItems" />
+        </EntityType>
+        <EntityType Name="EasyOrdersItem_temp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="orderid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="item" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="insertdate" Type="DateTime" Precision="3" />
+          <Property Name="insertuser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EasyOrdersItem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="orderid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="item" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="insertdate" Type="DateTime" Precision="3" />
+          <Property Name="insertuser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EasyOrder" Relationship="Self.FK_EasyOrdersItems_EasyOrders" FromRole="EasyOrdersItems" ToRole="EasyOrders" />
+        </EntityType>
         <EntityType Name="LGA">
           <Key>
             <PropertyRef Name="lgaid" />
@@ -688,10 +734,14 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="batchid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="useremail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="paymentid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="orderdate" Type="DateTime" Precision="3" />
+          <Property Name="shipmentdate" Type="DateTime" Precision="3" />
           <Property Name="IsShipping" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="shipperid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="frieght" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -701,18 +751,14 @@
           <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="customeremail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="paymentstatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ShippingPayments" Relationship="Self.FK_ShippingPayments_Orders" FromRole="Orders" ToRole="ShippingPayments" />
-          <Property Name="shipmentdate" Type="DateTime" Precision="3" />
           <Property Name="shipmentaddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="city" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="zip" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="landmark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="UserAccount" Relationship="salesboyModel.FK_Orders_UserAccount" FromRole="Order" ToRole="UserAccount" />
-          <Property Name="firstname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="lastname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK_Orders_UserAccount" FromRole="Orders" ToRole="UserAccount" />
+          <NavigationProperty Name="ShippingPayments" Relationship="Self.FK_ShippingPayments_Orders" FromRole="Orders" ToRole="ShippingPayments" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -739,7 +785,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="vendorid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="userid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="productname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="producttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -770,7 +816,7 @@
           <Property Name="otherfeatures" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Carts" Relationship="Self.FK_dbo_cart_dbo_product_productid" FromRole="Product" ToRole="Cart" />
           <NavigationProperty Name="Sales" Relationship="Self.FK_dbo_sale_dbo_product_productid" FromRole="Product" ToRole="Sale" />
-          <NavigationProperty Name="Vendor" Relationship="Self.FK_Product_Vendors" FromRole="Product" ToRole="Vendors" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK_Product_UserAccount" FromRole="Product" ToRole="UserAccount" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -969,9 +1015,10 @@
           <Property Name="bg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Carts" Relationship="Self.FK_cart_AspNetUsers" FromRole="UserAccount" ToRole="Cart" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_UserAccount" FromRole="UserAccount" ToRole="Orders" />
           <NavigationProperty Name="Payments" Relationship="Self.FK_payments_AspNetUsers" FromRole="UserAccount" ToRole="Payments" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_UserAccount" FromRole="UserAccount" ToRole="Product" />
           <NavigationProperty Name="Sales" Relationship="Self.FK_sale_AspNetUsers" FromRole="UserAccount" ToRole="Sale" />
-          <NavigationProperty Name="Orders" Relationship="salesboyModel.FK_Orders_UserAccount" FromRole="UserAccount" ToRole="Order" />
         </EntityType>
         <EntityType Name="Vendor">
           <Key>
@@ -1017,7 +1064,6 @@
           <Property Name="vendortype" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="bg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Vendors" FromRole="Vendors" ToRole="Product" />
         </EntityType>
         <Association Name="FK_cart_AspNetUsers">
           <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
@@ -1043,6 +1089,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EasyOrdersItems_EasyOrders">
+          <End Role="EasyOrders" Type="Self.EasyOrder" Multiplicity="0..1" />
+          <End Role="EasyOrdersItems" Type="Self.EasyOrdersItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EasyOrders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EasyOrdersItems">
+              <PropertyRef Name="orderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LGAs_State">
           <End Role="State" Type="Self.State" Multiplicity="0..1" />
           <End Role="LGAs" Type="Self.LGA" Multiplicity="*" />
@@ -1052,6 +1110,18 @@
             </Principal>
             <Dependent Role="LGAs">
               <PropertyRef Name="stateid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_UserAccount">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="customerid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1091,15 +1161,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Product_Vendors">
-          <End Role="Vendors" Type="Self.Vendor" Multiplicity="0..1" />
+        <Association Name="FK_Product_UserAccount">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Vendors">
+            <Principal Role="UserAccount">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Product">
-              <PropertyRef Name="vendorid" />
+              <PropertyRef Name="userid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1131,6 +1201,9 @@
           <EntitySet Name="Carts" EntityType="Self.Cart" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="categorysubs" EntityType="Self.categorysub" />
+          <EntitySet Name="EasyOrders" EntityType="Self.EasyOrder" />
+          <EntitySet Name="EasyOrdersItem_temp" EntityType="Self.EasyOrdersItem_temp" />
+          <EntitySet Name="EasyOrdersItems" EntityType="Self.EasyOrdersItem" />
           <EntitySet Name="LGAs" EntityType="Self.LGA" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Payments" EntityType="Self.Payment" />
@@ -1151,9 +1224,17 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
+          <AssociationSet Name="FK_EasyOrdersItems_EasyOrders" Association="Self.FK_EasyOrdersItems_EasyOrders">
+            <End Role="EasyOrders" EntitySet="EasyOrders" />
+            <End Role="EasyOrdersItems" EntitySet="EasyOrdersItems" />
+          </AssociationSet>
           <AssociationSet Name="FK_LGAs_State" Association="Self.FK_LGAs_State">
             <End Role="State" EntitySet="States" />
             <End Role="LGAs" EntitySet="LGAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_UserAccount" Association="Self.FK_Orders_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_ShippingPayments_Orders" Association="Self.FK_ShippingPayments_Orders">
             <End Role="Orders" EntitySet="Orders" />
@@ -1167,8 +1248,8 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="Sale" EntitySet="Sales" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_Vendors" Association="Self.FK_Product_Vendors">
-            <End Role="Vendors" EntitySet="Vendors" />
+          <AssociationSet Name="FK_Product_UserAccount" Association="Self.FK_Product_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_sale_AspNetUsers" Association="Self.FK_sale_AspNetUsers">
@@ -1209,17 +1290,6 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <AssociationSet Name="FK_Orders_UserAccount" Association="salesboyModel.FK_Orders_UserAccount">
-            <End Role="UserAccount" EntitySet="UserAccounts" />
-            <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-          <EntitySet Name="EasyOrders" EntityType="salesboyModel.EasyOrder" />
-          <EntitySet Name="EasyOrdersItem_temp" EntityType="salesboyModel.EasyOrdersItem_temp" />
-          <EntitySet Name="EasyOrdersItems" EntityType="salesboyModel.EasyOrdersItem" />
-          <AssociationSet Name="FK_EasyOrdersItems_EasyOrders" Association="salesboyModel.FK_EasyOrdersItems_EasyOrders">
-            <End Role="EasyOrder" EntitySet="EasyOrders" />
-            <End Role="EasyOrdersItem" EntitySet="EasyOrdersItems" />
-          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1232,75 +1302,6 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <Association Name="FK_Orders_UserAccount">
-          <End Type="salesboyModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
-          <End Type="salesboyModel.Order" Role="Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserAccount">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="customerid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="EasyOrder">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="loc_long" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="loc_lat" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="location" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="insertdate" Type="DateTime" Precision="3" />
-          <Property Name="insertuser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EasyOrdersItems" Relationship="salesboyModel.FK_EasyOrdersItems_EasyOrders" FromRole="EasyOrder" ToRole="EasyOrdersItem" />
-        </EntityType>
-        <EntityType Name="EasyOrdersItem_temp">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="orderid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="item" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="amount" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="insertdate" Type="DateTime" Precision="3" />
-          <Property Name="insertuser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="EasyOrdersItem">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="orderid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="item" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="amount" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="insertdate" Type="DateTime" Precision="3" />
-          <Property Name="insertuser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EasyOrder" Relationship="salesboyModel.FK_EasyOrdersItems_EasyOrders" FromRole="EasyOrdersItem" ToRole="EasyOrder" />
-        </EntityType>
-        <Association Name="FK_EasyOrdersItems_EasyOrders">
-          <End Type="salesboyModel.EasyOrder" Role="EasyOrder" Multiplicity="0..1" />
-          <End Type="salesboyModel.EasyOrdersItem" Role="EasyOrdersItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EasyOrder">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="EasyOrdersItem">
-              <PropertyRef Name="orderid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1343,6 +1344,52 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EasyOrders">
+            <EntityTypeMapping TypeName="salesboyModel.EasyOrder">
+              <MappingFragment StoreEntitySet="EasyOrders">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="loc_long" ColumnName="loc_long" />
+                <ScalarProperty Name="loc_lat" ColumnName="loc_lat" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+                <ScalarProperty Name="insertuser" ColumnName="insertuser" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EasyOrdersItem_temp">
+            <EntityTypeMapping TypeName="salesboyModel.EasyOrdersItem_temp">
+              <MappingFragment StoreEntitySet="EasyOrdersItem_temp">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="item" ColumnName="item" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+                <ScalarProperty Name="insertuser" ColumnName="insertuser" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EasyOrdersItems">
+            <EntityTypeMapping TypeName="salesboyModel.EasyOrdersItem">
+              <MappingFragment StoreEntitySet="EasyOrdersItems">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="item" ColumnName="item" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+                <ScalarProperty Name="insertuser" ColumnName="insertuser" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="LGAs">
             <EntityTypeMapping TypeName="salesboyModel.LGA">
               <MappingFragment StoreEntitySet="LGAs">
@@ -1355,21 +1402,15 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="salesboyModel.Order">
               <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="lastname" ColumnName="lastname" />
-                <ScalarProperty Name="firstname" ColumnName="firstname" />
-                <ScalarProperty Name="landmark" ColumnName="landmark" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="zip" ColumnName="zip" />
-                <ScalarProperty Name="city" ColumnName="city" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="shipmentaddress" ColumnName="shipmentaddress" />
-                <ScalarProperty Name="shipmentdate" ColumnName="shipmentdate" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="batchid" ColumnName="batchid" />
                 <ScalarProperty Name="useremail" ColumnName="useremail" />
                 <ScalarProperty Name="paymentid" ColumnName="paymentid" />
                 <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+                <ScalarProperty Name="shipmentdate" ColumnName="shipmentdate" />
                 <ScalarProperty Name="IsShipping" ColumnName="IsShipping" />
                 <ScalarProperty Name="shipperid" ColumnName="shipperid" />
                 <ScalarProperty Name="frieght" ColumnName="frieght" />
@@ -1379,6 +1420,12 @@
                 <ScalarProperty Name="notes" ColumnName="notes" />
                 <ScalarProperty Name="customeremail" ColumnName="customeremail" />
                 <ScalarProperty Name="paymentstatus" ColumnName="paymentstatus" />
+                <ScalarProperty Name="shipmentaddress" ColumnName="shipmentaddress" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="landmark" ColumnName="landmark" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1406,7 +1453,7 @@
             <EntityTypeMapping TypeName="salesboyModel.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="vendorid" ColumnName="vendorid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="productname" ColumnName="productname" />
                 <ScalarProperty Name="producttype" ColumnName="producttype" />
                 <ScalarProperty Name="description" ColumnName="description" />
@@ -1706,52 +1753,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="salesboyModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="salesboyModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="EasyOrders">
-            <EntityTypeMapping TypeName="salesboyModel.EasyOrder">
-              <MappingFragment StoreEntitySet="EasyOrders">
-                <ScalarProperty Name="notes" ColumnName="notes" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="insertuser" ColumnName="insertuser" />
-                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
-                <ScalarProperty Name="location" ColumnName="location" />
-                <ScalarProperty Name="loc_lat" ColumnName="loc_lat" />
-                <ScalarProperty Name="loc_long" ColumnName="loc_long" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EasyOrdersItem_temp">
-            <EntityTypeMapping TypeName="salesboyModel.EasyOrdersItem_temp">
-              <MappingFragment StoreEntitySet="EasyOrdersItem_temp">
-                <ScalarProperty Name="notes" ColumnName="notes" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="insertuser" ColumnName="insertuser" />
-                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="item" ColumnName="item" />
-                <ScalarProperty Name="orderid" ColumnName="orderid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EasyOrdersItems">
-            <EntityTypeMapping TypeName="salesboyModel.EasyOrdersItem">
-              <MappingFragment StoreEntitySet="EasyOrdersItems">
-                <ScalarProperty Name="notes" ColumnName="notes" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="insertuser" ColumnName="insertuser" />
-                <ScalarProperty Name="insertdate" ColumnName="insertdate" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="item" ColumnName="item" />
-                <ScalarProperty Name="orderid" ColumnName="orderid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

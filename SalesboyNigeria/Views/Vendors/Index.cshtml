@@ -1,159 +1,587 @@
-﻿@model IEnumerable<SalesboyNigeria.Models.Vendor>
+﻿@*@model IEnumerable<SalesboyNigeria.Models.UserAccount>*@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.useremail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.brandname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.about)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.country)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.city)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.logo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tags)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.insertdate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.notes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.long)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.amountpaid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.paymentdate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.duedate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.paymentstatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.vendortype)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.bg)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserAccount.firstname)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.useremail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.brandname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.about)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.country)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.city)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.logo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tags)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.insertdate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.notes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.long)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.amountpaid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.paymentdate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.duedate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.paymentstatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.vendortype)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.bg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserAccount.firstname)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
+@{
+    ViewBag.Title = "VendorDashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    SalesboyNigeria.Models.salesboyEntities db = new SalesboyNigeria.Models.salesboyEntities();
+    string userid = Session["userid"] as string;
+    var user = db.UserAccounts.Find(userid);
+    int sn = 0;
 }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-</table>
+<div class="container">
+    <hr />
+    @if (user.paymentstatus == "PAID")
+    {
+        <!-- start row -->
+        <div class="row">
+            <div class="col-md-12 col-xl-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="profile-widgets py-3">
+                            <div class="text-center">
+                                <div class="">
+                                    <img src="@user.photo" alt="" class="avatar-lg mx-auto img-thumbnail rounded-circle">
+                                    <div class="online-circle">
+                                        <i class="fas fa-circle text-success"></i>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3 ">
+                                    <a href="#" class="text-dark fw-medium font-size-16">
+                                        @user.firstname @user.lastname
+                                    </a>
+                                    <p class="text-body mt-1 mb-1">
+                                        @user.usertype
+                                    </p>
+                                    <a href="#" class="btn btn-lg btn-outline-warning" data-toggle="modal" data-target="#myModal">Change Picture</a>
+                                    <a href="" class="btn btn-lg btn-outline-warning">Edit Profile</a>
+                                </div>
+
+                                <div class="row mt-4 border border-start-0 border-end-0 p-3">
+                                    <div class="col-md-6">
+                                        <h6 class="text-muted">
+                                            Followers
+                                        </h6>
+                                        <h5 class="mb-0">9,025</h5>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <h6 class="text-muted">
+                                            Following
+                                        </h6>
+                                        <h5 class="mb-0">11,025</h5>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+
+                                    <ul class="list-inline social-source-list">
+                                        <li class="list-inline-item">
+                                            <div class="avatar-xs">
+                                                <span class="avatar-title rounded-circle">
+                                                    <i class="mdi mdi-facebook"></i>
+                                                </span>
+                                            </div>
+                                        </li>
+
+                                        <li class="list-inline-item">
+                                            <div class="avatar-xs">
+                                                <span class="avatar-title rounded-circle bg-info">
+                                                    <i class="mdi mdi-twitter"></i>
+                                                </span>
+                                            </div>
+                                        </li>
+
+                                        <li class="list-inline-item">
+                                            <div class="avatar-xs">
+                                                <span class="avatar-title rounded-circle bg-danger">
+                                                    <i class="mdi mdi-google-plus"></i>
+                                                </span>
+                                            </div>
+                                        </li>
+
+                                        <li class="list-inline-item">
+                                            <div class="avatar-xs">
+                                                <span class="avatar-title rounded-circle bg-pink">
+                                                    <i class="mdi mdi-instagram"></i>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Personal Information</h5>
+
+                        <p class="card-title-desc">
+
+                        </p>
+
+                        <div class="mt-3">
+                            <p class="font-size-12 text-muted mb-1">Email Address</p>
+                            <h6 class="">
+                                @user.Email
+                            </h6>
+                        </div>
+
+                        <div class="mt-3">
+                            <p class="font-size-12 text-muted mb-1">Phone number</p>
+                            <h6 class="">@user.phone</h6>
+                        </div>
+
+                        <div class="mt-3">
+                            <p class="font-size-12 text-muted mb-1">Office Address</p>
+                            <h6 class="">
+                                @user.address
+                            </h6>
+                        </div>
+                        <div class="mt-3">
+                            <p class="font-size-12 text-muted mb-1">Office Address</p>
+
+                            @if (string.IsNullOrEmpty(user.longi) || string.IsNullOrEmpty(user.lat))
+                            {
+                                <center>
+                                    <button type="button" onclick="getLocation()" class="btn btn-lg btn-primary">
+                                        Update Location
+                                    </button>
+                                    @*<h1 id="demo" onclick="getLocation()">Testing </h1>*@
+                                    <script>
+                                //var x = document.getElementById("demo");
+                                function getLocation() {
+                                    if (navigator.geolocation) {
+                                        navigator.geolocation.getCurrentPosition(showPosition);
+                                    } else {
+                                        //x.innerHTML = "Geolocation is not supported by this browser.";
+                                        alert("Geolocation is not supported by this browser.");
+                                    }
+                                }
+
+                                function showPosition(position) {
+                                    //x.innerHTML = "Latitude: " + position.coords.latitude +  "<br>Longitude: " + position.coords.longitude;
+                                     var values =
+                                    {
+                                        id: "@user.Id",
+                                        longi: position.coords.longitude,
+                                        lat: position.coords.latitude
+                                    };
+
+                                        $.ajax({
+                                            url: "@Url.Action("updatelocation", "Vendors")",
+                                            type: "post",
+                                            data: values,
+                                            success: function (response) {
+                                                // You will get response from your PHP page (what you echo or print)
+                                                //alert(response.responseText);
+                                                console.log(response);
+                                                window.location.replace("@Url.Action("index", "Home")");
+                                            },
+                                            error: function(jqXHR, textStatus, errorThrown) {
+                                                console.log(textStatus, errorThrown);
+                                            }
+                                        });
+                                }
+                                    </script>
+                                </center>
+                            }
+                            else
+                            {
+                                <h6>
+                                    Longitude:  @user.longi <br />
+                                    Latitude:   @user.lat
+                                </h6>
+                            }
+
+
+                            @*<script>
+                                    //var x = document.getElementById("demo");
+                                    function getLocation() {
+                                        if (navigator.geolocation) {
+                                            navigator.geolocation.getCurrentPosition(showPosition);
+                                        } else {
+                                            x.innerHTML = "Geolocation is not supported by this browser.";
+                                        }
+                                    }
+
+                                    function showPosition(position) {
+                                        //x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+                                        console.log("Latitude: " + position.coords.latitude +  "<br>Longitude: " + position.coords.longitude);
+
+                                            var values =
+                                            {
+                                                id: "@user.Id",
+                                                longi: position.coords.longitude,
+                                                lat: position.coords.latitude
+                                            };
+
+                                                $.ajax({
+                                                    url: "@Url.Action("updatelocation", "Vendors")",
+                                                    type: "post",
+                                                    data: values,
+                                                    success: function (response) {
+                                                        // You will get response from your PHP page (what you echo or print)
+                                                        //alert(response.responseText);
+                                                        console.log(response);
+                                                        window.location.replace("@Url.Action("index", "Home")");
+                                                    },
+                                                    error: function(jqXHR, textStatus, errorThrown) {
+                                                        console.log(textStatus, errorThrown);
+                                                    }
+                                                });
+                                }
+
+                                </script>*@
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-2">My Top Skills</h5>
+                            <p class="text-muted">Suspendisse mattis rutrum orci eu pellentesque. </p>
+                            <ul class="list-unstyled list-inline language-skill mb-0">
+                                <li class="list-inline-item badge bg-primary"><span>java</span></li>
+                                <li class="list-inline-item badge bg-primary"><span>Javascript</span></li>
+                                <li class="list-inline-item badge bg-primary"><span>laravel</span></li>
+                                <li class="list-inline-item badge bg-primary"><span>HTML5</span></li>
+                                <li class="list-inline-item badge bg-primary"><span>android</span></li>
+                                <li class="list-inline-item badge bg-primary"><span>zengo</span></li>
+                                <li class="list-inline-item badge bg-primary"><span>python</span></li>
+                                <li class="list-inline-item badge bg-primary"><span>react</span></li>
+                                <li class="list-inline-item badge bg-primary"><span>php</span></li>
+                            </ul>
+                        </div>
+                    </div>*@
+            </div>
+
+            <div class="col-md-12 col-xl-9">
+                <div class="row">
+                    <div class="col-md-12 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <p class="mb-2">Products</p>
+                                        <h4 class="mb-0">524</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="text-end">
+                                            <div>
+                                                2.06 % <i class="mdi mdi-arrow-up text-success ml-1"></i>
+                                            </div>
+                                            <div class="progress progress-sm mt-3">
+                                                <div class="progress-bar" role="progressbar" style="width: 62%" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <p class="mb-2">Transactions</p>
+                                        <h4 class="mb-0">5,362</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="text-end">
+                                            <div>
+                                                3.12 % <i class="mdi mdi-arrow-up text-success ms-1"></i>
+                                            </div>
+                                            <div class="progress progress-sm mt-3">
+                                                <div class="progress-bar bg-warning" role="progressbar"
+                                                     style="width: 78%" aria-valuenow="78" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <p class="mb-2">Total Revenue</p>
+                                        <h4 class="mb-0">N6,245</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="text-end">
+                                            <div>
+                                                2.12 % <i class="mdi mdi-arrow-up text-success ml-1"></i>
+                                            </div>
+                                            <div class="progress progress-sm mt-3">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                     style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+
+                <div class="">
+                    <div class="row my-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-4">Products</h4>
+                                    <div class="table-responsive">
+                                        <a href="@Url.Action("newProduct","Products")" class="btn btn-lg btn-warning mb-5">Add new product</a>
+                                        <table class="table table-striped table-center-0">
+                                            <tr>
+                                                <th>
+                                                    SN
+                                                </th>
+                                                <th>
+                                                    Name
+                                                </th>
+                                                <th>
+                                                    Type
+                                                </th>
+                                                <th>
+                                                    Category
+                                                </th>
+                                                <th>
+                                                    Price
+                                                </th>
+                                                <th>
+                                                    Discount
+                                                </th>
+                                                <th>
+                                                    Qty
+                                                </th>
+                                                <th>
+                                                    Model No
+                                                </th>
+                                                <th>
+                                                    Brand Name
+                                                </th>
+                                                <th>
+                                                    Reg. Date
+                                                </th>
+                                            </tr>
+
+                                            @foreach (var item in db.Products.Where(p => p.userid == user.Id).ToList())
+                                            {
+                                                sn++;
+                                                <tr>
+                                                    <td>
+                                                        @sn
+                                                    </td>
+                                                    <td>
+                                                        @item.productname
+                                                    </td>
+                                                    <td>
+                                                        @item.producttype
+                                                    </td>
+                                                    <td>
+                                                        @item.category
+                                                    </td>
+                                                    <td>
+                                                        @item.price
+                                                    </td>
+                                                    <td>
+                                                        @item.discount
+                                                    </td>
+                                                    <td>
+                                                        @item.qty
+                                                    </td>
+                                                    <td>
+                                                        @item.modelno
+                                                    </td>
+                                                    <td>
+                                                        @item.brandname
+                                                    </td>
+                                                    <td>
+                                                        @item.inserdate
+                                                    </td>
+                                                    @*<td>
+                                                            @Html.ActionLink("Edit", "EditproductDetails", new { id = item.id }) |
+                                                            @Html.ActionLink("Details", "productDetails", new { id = item.id }) |
+                                                            @Html.ActionLink("Photo", "productPicture", new { id = item.id })
+                                                        </td>*@
+                                                </tr>
+                                            }
+                                        </table>
+                                    </div>
+                                    <div class="mt-3">
+                                        <ul class="pagination pagination-rounded justify-content-center mb-0">
+                                            <li class="page-item">
+                                                <a class="page-link" href="#">Previous</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end row -->
+        <!-- sample modal content -->
+        <div id="myModal" class="modal fade" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title mt-0" id="myModalLabel">
+                            Modal Heading
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form action="@Url.Action("ProfilePicture","Vendors")" method="post" enctype="multipart/form-data">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="name" value="@user.Id" />
+                                    <input type="hidden" name="id" value="@user.Id" />
+                                    <label>Select Photo</label>
+                                    <input type="file" name="file" required="" />
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                            Upload
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+    }
+    else
+    {
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="form-text text-center">
+                                Payment / Subscription
+                            </h1>
+                            <h4 class="text-center card-header text-center text-muted">Please make payment to access your dashboard </h4>
+                            <div class="row m-3">
+                                <div class="col-lg-6 mb-3 mt-3">
+                                    <div class="card text-center">
+                                        <div class="card-header display-4"><span>&#8358;</span>20,000</div>
+                                        <div class="card-body mt-5">
+                                            @*<h5 class="card-title">Special title treatment</h5>*@
+                                            <p class="card-text">
+                                                Gets you to upload <br />
+                                                share and sell for <br />
+                                                a whole year with <br />
+                                                ease at your convenience!!!<br />
+                                            </p>
+                                        </div>
+                                        <div class="m-5">
+                                            <a href="#" class="btn btn-lg btn-outline-warning P-5" onclick="makePayment(20000)">Pay Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 mb-3 mt-3">
+                                    <div class="card text-center">
+                                        <div class="card-header display-4"><span>&#8358;</span>10,000</div>
+                                        <div class="card-body mt-5">
+                                            @*<h5 class="card-title">Special title treatment</h5>*@
+                                            <p class="card-text">
+                                                Stand a chance to regular <br />
+                                                adverts of you goods and services <br />
+                                                while you sell at your comfort !!! <br />
+                                                +Salesboy full package and lots more <br />
+                                            </p>
+                                        </div>
+                                        <div class="m-5">
+                                            <a href="#" class="btn btn-lg btn-outline-warning P-5" onclick="makePayment(100)">Pay Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                     function makePayment(amount) {
+                        FlutterwaveCheckout({
+                            public_key: "FLWPUBK_TEST-8d049f5bf0756776e6392f6cfd90b024-X", //"FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X", //
+                            tx_ref: "@Guid.NewGuid().ToString()",
+                            amount: amount,
+                            currency: "NGN",
+                                country: "NG",
+                            payment_options: " ",
+                            //redirect_url: "@Url.Action("PaymentRedirect", "Vendors", new { id = user.Id})", // specified redirect URL
+                               // "http://localhost:3474/Admissions/AdmissionStatus",
+                            customer: {
+                                    email: "@user.Email",
+                                phone_number: "@user.phone",
+                                name: "@user.firstname @user.lastname",
+                                },
+                                callback: function (data) { // specified callback function
+                                        console.log(data);
+                                        /* Get from elements  values */
+                                        var values =
+                                        {
+                                        id: "@user.Id-@SalesboyNigeria.setup.GenerateID.GetID()",
+                                        trnxid: data.tx_ref,
+                                        amountpaid: data.amount,
+                                        trnxid: data.transaction_id,
+                                        paid_by: data.customer.name,
+                                        pay_email: data.customer.email,
+                                        pay_phone: data.customer.phone_number,
+                                        pay_status: data.status,
+                                        ref_no: data.tx_ref,
+                                        gateway_ref: data.flw_ref,
+                                        currency: data.currency
+                                    }; //$(this).serialize();
+
+                                     $.ajax({
+                                    url: "@Url.Action("VendorsPayment", "Vendors")",
+                                            type: "post",
+                                            data: values ,
+                                            success: function (response) {
+                                            // You will get response from your PHP page (what you echo or print)
+                                            //alert(response.responseText);
+                                                console.log(response);
+                                                window.location = "@Url.Action("Index", "Vendors", new { id = user.Id})";
+                                        },
+                                            error: function(jqXHR, textStatus, errorThrown) {
+                                                console.log(textStatus, errorThrown);
+                                            window.location = "@Url.Action("Index", "Vendors", new { id = user.Id})";
+                                        }
+                                    });
+                                },
+                                customizations: {
+                                title: "Salesboy Nigeria Payment",
+                                    description: "Fee Payment",
+                                    logo: "https://salesboynigeria.com/Content/Images/logo.png",
+                                },
+                            });
+                        }
+                            </script>
+                            <script src="https://checkout.flutterwave.com/v3.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <hr />
+</div>

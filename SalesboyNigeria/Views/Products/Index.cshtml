@@ -90,13 +90,13 @@
             @Html.DisplayNameFor(model => model.modelno)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.brabdname)
+            @Html.DisplayNameFor(model => model.brandname)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.otherfeatures)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Vendor.userid)
+            @Html.DisplayNameFor(model => model.UserAccount.Id)
         </th>
         <th></th>
     </tr>
@@ -182,13 +182,13 @@
             @Html.DisplayFor(modelItem => item.modelno)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.brabdname)
+            @Html.DisplayFor(modelItem => item.brandname)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.otherfeatures)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Vendor.userid)
+            @Html.DisplayFor(modelItem => item.userid)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

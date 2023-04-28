@@ -146,7 +146,7 @@ namespace Salesboy.Controllers
                 db.Products.Add(new Product
                 {
                     id = Guid.NewGuid().ToString(),
-                    vendorid = user.Id,
+                    userid = user.Id,
                     productname = productname,
                     producttype = producttype,
                     description = description,
@@ -162,13 +162,13 @@ namespace Salesboy.Controllers
                 });
                 db.SaveChanges();
                 TempData["success"] = "true";
-                TempData["message"] = "Profile picture uploaded successfully!!";
+                TempData["message"] = "Product added successfully!!";
                 return View();
             }
             catch (Exception err)
             {
                 TempData["success"] = "false";
-                TempData["message"] = "picture upload failed!!, please try again. " + err;
+                TempData["message"] = "failed!!, please try again. " + err;
                 return View();
             }
         }
@@ -279,7 +279,7 @@ namespace Salesboy.Controllers
         {
             string userid = Session["userid"].ToString();
             var user = db.UserAccounts.Find(userid);
-            return View(db.Products.Where(p => p.vendorid == user.Id).ToList());
+            return View(db.Products.Where(p => p.userid == user.Id).ToList());
         }
         public ActionResult ProductList()
         {
@@ -311,6 +311,7 @@ namespace Salesboy.Controllers
                 notes = "Ref No: " + ref_no + " Gateway_ref: " + gateway_ref + " currency: " + currency,
                 gatewayref = gateway_ref,
             });
+
             //Remove items from cart
             foreach(var item in db.Carts.Where(p=>p.useremail == user.Email).ToList())
             {

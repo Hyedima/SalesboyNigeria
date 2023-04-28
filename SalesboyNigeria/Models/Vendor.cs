@@ -14,12 +14,6 @@ namespace SalesboyNigeria.Models
     
     public partial class Vendor
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Vendor()
-        {
-            this.Products = new HashSet<Product>();
-        }
-    
         public string Id { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
@@ -60,8 +54,5 @@ namespace SalesboyNigeria.Models
         public string vendortype { get; set; }
         public string bg { get; set; }
         public string photo { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products { get; set; }
     }
 }

@@ -161,6 +161,7 @@
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\UserAccountsController.cs" />
+    <Compile Include="Controllers\VendorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1231,11 +1232,6 @@
     <Content Include="Views\UserAccounts\ResetPassword.cshtml" />
     <Content Include="Views\UserAccounts\Verify.cshtml" />
     <Content Include="Views\Products\VerifyEmail.cshtml" />
-    <Content Include="Views\Vendors\Create.cshtml" />
-    <Content Include="Views\Vendors\Delete.cshtml" />
-    <Content Include="Views\Vendors\Details.cshtml" />
-    <Content Include="Views\Vendors\Edit.cshtml" />
-    <Content Include="Views\Vendors\Index.cshtml" />
     <Content Include="Views\Home\ServiceProvider.cshtml" />
     <Content Include="Views\Home\ServiceProviders.cshtml" />
     <Content Include="Views\Home\testHome.cshtml" />
@@ -1261,6 +1257,13 @@
     <Content Include="Views\Home\findStores.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
     <Content Include="Views\Products\checkoutOrder.cshtml" />
+    <Content Include="Views\Vendors\Index.cshtml" />
+    <Content Include="Views\Vendors\login.cshtml" />
+    <Content Include="Views\Vendors\Register.cshtml" />
+    <Content Include="Views\Vendors\updatelocation.cshtml" />
+    <Content Include="Views\Vendors\Verify.cshtml" />
+    <Content Include="Views\Vendors\myOrders.cshtml" />
+    <Content Include="Views\Vendors\MyPayments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
