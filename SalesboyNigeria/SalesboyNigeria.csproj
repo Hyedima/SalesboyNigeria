@@ -1260,10 +1260,6 @@
     <Content Include="Views\Home\Order.cshtml" />
     <Content Include="Views\Home\findStores.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
-	  
-		  
-		  
-		  
     <Content Include="Views\Products\checkoutOrder.cshtml" />
     <Content Include="Views\Vendors\Index.cshtml" />
     <Content Include="Views\Vendors\login.cshtml" />
@@ -1272,9 +1268,6 @@
     <Content Include="Views\Vendors\Verify.cshtml" />
     <Content Include="Views\Vendors\myOrders.cshtml" />
     <Content Include="Views\Vendors\MyPayments.cshtml" />
-	
-	
-	
     <Content Include="Views\Products\EditProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
