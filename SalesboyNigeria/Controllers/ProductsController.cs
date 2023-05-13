@@ -275,6 +275,11 @@ namespace Salesboy.Controllers
         {
             return View(db.Products.Find(id));
         }
+        [HttpPost]
+        public ActionResult EditproductDetails(string id, string i )
+        {
+            return View(db.Products.Find(id));
+        }
         public ActionResult products()
         {
             string userid = Session["userid"].ToString();

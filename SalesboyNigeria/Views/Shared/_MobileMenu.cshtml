@@ -28,27 +28,54 @@
     <div class="navigation__content">
         <div class="ps-cart--mobile">
             <div class="ps-cart__content">
-                <div class="ps-product--cart-mobile">
-                    <div class="ps-product__thumbnail">
-                        <a href="#"><img src="~/Content/Home/img/products/clothing/7.jpg" alt=""></a>
+                @{
+                    decimal total = 0;
+                }
+                @foreach (var item in db.Carts.Where(p => p.useremail == email).ToList())
+                {
+                    total += Convert.ToDecimal(item.qty * item.Product.price);
+                    <div class="ps-product--cart-mobile">
+                        <div class="ps-product__thumbnail">
+                            <a href="@Url.Action("productDetails", "Products", new {id = item.id})"><img src="@item.Product.photo1" alt="" /></a>
+                        </div>
+                        <div class="ps-product__content">
+                            <a class="ps-product__remove" href="#"><i onclick="deleteItem('@item.id')" class="icon-cross"></i></a>
+                            <a href="@Url.Action("productDetails", "Products", new {id = item.id})">@item.Product.productname</a>
+                            <p>
+                                <strong>Sold by:</strong> @item.Product.UserAccount.brandname
+                            </p>
+                            <small>@item.qty X @item.Product.price</small>
+                        </div>
                     </div>
-                    <div class="ps-product__content">
-                        <a class="ps-product__remove" href="#"><i class="icon-cross"></i></a>
-                        <a href="@Url.Action("","")">MVMTH Classical Leather Watch In Black</a>
-                        <p>
-                            <strong>Sold by:</strong> YOUNG SHOP
-                        </p>
-                        <small>1 x N59.99</small>
-                    </div>
-                </div>
+                }
+
+                @*<div class="ps-product--cart-mobile">
+                        <div class="ps-product__thumbnail">
+                            <a href="#"><img src="~/Content/Home/img/products/clothing/7.jpg" alt=""></a>
+                        </div>
+                        <div class="ps-product__content">
+                            <a class="ps-product__remove" href="#"><i class="icon-cross"></i></a>
+                            <a href="@Url.Action("","")">MVMTH Classical Leather Watch In Black</a>
+                            <p>
+                                <strong>Sold by:</strong> YOUNG SHOP
+                            </p>
+                            <small>1 x N59.99</small>
+                        </div>
+                    </div>*@
+
             </div>
             <div class="ps-cart__footer">
                 <h3>
                     Sub Total:
-                    <strong>N59.99</strong>
+                    <strong>N @total</strong>
                 </h3>
-                <figure><a class="ps-btn" href="@Url.Action("","")">View Cart</a><a class="ps-btn" href="@Url.Action("","")">Checkout</a></figure>
+                <figure><a class="ps-btn" href="@Url.Action("Checkout","Products")">View Cart</a><a class="ps-btn" href="@Url.Action("Checkout","Products")">Checkout</a></figure>
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
         </div>
     </div>
 </div>
@@ -235,25 +262,26 @@
                             @*<a href="@Url.Action("Logout","Useraccounts")"> Logout</a>*@
                         </strong>
                         @*<div class="ps-block--user-header">
-                        <div class="ps-block__left">
-                            <img class="img img-circle img-responsive" src="@user.photo" height="30" width="30" />
-                        </div>
-                        <div class="ps-block__right">
+                                <div class="ps-block__left">
+                                    <img class="img img-circle img-responsive" src="@user.photo" height="30" width="30" />
+                                </div>
+                                <div class="ps-block__right">
 
-                        </div>
-                    </div>*@
+                                </div>
+                            </div>*@
                     }
                 </center>
                 @*<a href="@Url.Action("Index","Home")">Home</a>*@
             </li>
 
-            <li>d
+            <li>
+                d
                 <a href="@Url.Action("Index","Vendors")">HOME</a>
             </li>
             @*<li class="manu-item-has-children has-mega-menu">
 
-            <a href="@Url.Action("Index","Home")">Home</a>
-        </li>*@
+                    <a href="@Url.Action("Index","Home")">Home</a>
+                </li>*@
             <li class="manu-item-has-children has-mega-menu">
                 <a href="@Url.Action("Products","Products")">Products</a>
             </li>
@@ -273,484 +301,507 @@
                 <a href="@Url.Action("Logout","Useraccounts")">Sign Out</a>
             </li>
             @*<li class="menu-item-has-children">
-                <a href="@Url.Action("","")">
-                    Home
-                    <span class="fa fa-home float-right"></span>
-                </a>
-               <ul class="sub-menu">
-            <li>
-                <a href="@Url.Action("","")">Marketplace Full Width</a>
-            </li>
-            <li>
-                <a href="@Url.Action("","")">Home Auto Parts</a>
-            </li>
-            <li>
-                <a href="@Url.Action("","")">Home Technology</a>
-            </li>
-            <li>
-                <a href="@Url.Action("","")">Home Organic</a>
-            </li>
-            <li>
-                <a href="@Url.Action("","")">Home Marketplace V1</a>
-            </li>
-            <li>
-                <a href="@Url.Action("","")">Home Marketplace V2</a>
-            </li>
-            <li>
-                <a href="@Url.Action("","")">Home Marketplace V3</a>
-            </li>
-            <li>
-                <a href="@Url.Action("","")">Home Marketplace V4</a>
-            </li>
-            <li>
-                <a href="@Url.Action("","")">Home Electronic</a>
-            </li>
-            <li>
-                <a href="@Url.Action("","")">Home Furniture</a>
-            </li>
-            <li>
-                <a href="@Url.Action("","")">Home Kids</a>
-            </li>
-            <li>
-                <a href="@Url.Action("","")">Home photo and picture</a>
-            </li>
-            <li>
-                <a href="@Url.Action("","")">Home Medical</a>
-            </li>
-        </ul>
-        </li>
-            <li class="menu-item-has-children has-mega-menu">
-                <a href="@Url.Action("","")">
-                    Shop
-                    <span class="fa fa-shopping-cart float-right"></span>
-                </a>
-                <div class="mega-menu">
-            <div class="mega-menu__column">
-                <h4>
-                    Catalog Pages
-                    <span class="sub-toggle"></span>
-                </h4>
-                <ul class="mega-menu__list">
+                        <a href="@Url.Action("","")">
+                            Home
+                            <span class="fa fa-home float-right"></span>
+                        </a>
+                       <ul class="sub-menu">
                     <li>
-                        <a href="@Url.Action("","")">Shop Default</a>
+                        <a href="@Url.Action("","")">Marketplace Full Width</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("","")">Shop Fullwidth</a>
+                        <a href="@Url.Action("","")">Home Auto Parts</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("","")">Shop Categories</a>
+                        <a href="@Url.Action("","")">Home Technology</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("","")">Shop Sidebar</a>
+                        <a href="@Url.Action("","")">Home Organic</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("","")">Shop Without Banner</a>
+                        <a href="@Url.Action("","")">Home Marketplace V1</a>
                     </li>
-                    <li>cf
-                        <a href="@Url.Action("","")">Shop Carousel</a>
+                    <li>
+                        <a href="@Url.Action("","")">Home Marketplace V2</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("","")">Home Marketplace V3</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("","")">Home Marketplace V4</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("","")">Home Electronic</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("","")">Home Furniture</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("","")">Home Kids</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("","")">Home photo and picture</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("","")">Home Medical</a>
                     </li>
                 </ul>
-            </div>
-            <div class="mega-menu__column">
-                    <h4>
-                        Product Layout
-                        <span class="sub-toggle"></span>
-                    </h4>
-                    <ul class="mega-menu__list">
-                        <li>
-                            <a href="@Url.Action("","")">Default</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Extended</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Full Content</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Boxed</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Sidebar</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Fullwidth</a>
-                        </li>
-                    </ul>
+                </li>
+                    <li class="menu-item-has-children has-mega-menu">
+                        <a href="@Url.Action("","")">
+                            Shop
+                            <span class="fa fa-shopping-cart float-right"></span>
+                        </a>
+                        <div class="mega-menu">
+                    <div class="mega-menu__column">
+                        <h4>
+                            Catalog Pages
+                            <span class="sub-toggle"></span>
+                        </h4>
+                        <ul class="mega-menu__list">
+                            <li>
+                                <a href="@Url.Action("","")">Shop Default</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Shop Fullwidth</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Shop Categories</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Shop Sidebar</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Shop Without Banner</a>
+                            </li>
+                            <li>cf
+                                <a href="@Url.Action("","")">Shop Carousel</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mega-menu__column">
+                            <h4>
+                                Product Layout
+                                <span class="sub-toggle"></span>
+                            </h4>
+                            <ul class="mega-menu__list">
+                                <li>
+                                    <a href="@Url.Action("","")">Default</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Extended</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Full Content</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Boxed</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Sidebar</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Fullwidth</a>
+                                </li>
+                            </ul>
+                        </div>
+                    <div class="mega-menu__column">
+                        <h4>
+                            Product Types
+                            <span class="sub-toggle"></span>
+                        </h4>
+                        <ul class="mega-menu__list">
+                            <li>
+                                <a href="@Url.Action("","")">Simple</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Color Swatches</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Images Swatches</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Countdown</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Multi-Vendor</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Instagram</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Affiliate</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">On sale</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Video Featured</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Grouped</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Out Of Stock</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mega-menu__column">
+                            <h4>
+                                Woo Pages
+                                <span class="sub-toggle"></span>
+                            </h4>
+                            <ul class="mega-menu__list">
+                                <li>
+                                    <a href="@Url.Action("","")">Shopping Cart</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Checkout</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Whishlist</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Compare</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Order Tracking</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">My Account</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="menu-item-has-children has-mega-menu">
+                    <a href="#">Pages</a>
+                   <div class="mega-menu">
+                    <div class="mega-menu__column">
+                        <h4>
+                            Basic Page
+                            <span class="sub-toggle"></span>
+                        </h4>
+                        <ul class="mega-menu__list">
+                            <li>
+                                <a href="@Url.Action("","")">About Us</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Contact</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Faqs</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Comming Soon</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">404 Page</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mega-menu__column">
+                        <h4>
+                            Vendor Pages
+                            <span class="sub-toggle"></span>
+                        </h4>
+                        <ul class="mega-menu__list">
+                            <li>
+                                <a href="@Url.Action("RegisterVendor","Useraccounts")">Become a Vendor</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Vendor Store</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Vendor Dashboard Free</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("","")">Vendor Dashboard Pro</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            <div class="mega-menu__column">
-                <h4>
-                    Product Types
+                </li>
+                    @*<li class="menu-item-has-children has-mega-menu">
+                    <a href="#">Blogs</a>
                     <span class="sub-toggle"></span>
-                </h4>
-                <ul class="mega-menu__list">
-                    <li>
-                        <a href="@Url.Action("","")">Simple</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Color Swatches</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Images Swatches</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Countdown</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Multi-Vendor</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Instagram</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Affiliate</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">On sale</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Video Featured</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Grouped</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Out Of Stock</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="mega-menu__column">
-                    <h4>
-                        Woo Pages
-                        <span class="sub-toggle"></span>
-                    </h4>
-                    <ul class="mega-menu__list">
-                        <li>
-                            <a href="@Url.Action("","")">Shopping Cart</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Checkout</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Whishlist</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Compare</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Order Tracking</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">My Account</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="menu-item-has-children has-mega-menu">
-            <a href="#">Pages</a>
-           <div class="mega-menu">
-            <div class="mega-menu__column">
-                <h4>
-                    Basic Page
-                    <span class="sub-toggle"></span>
-                </h4>
-                <ul class="mega-menu__list">
-                    <li>
-                        <a href="@Url.Action("","")">About Us</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Contact</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Faqs</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Comming Soon</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">404 Page</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="mega-menu__column">
-                <h4>
-                    Vendor Pages
-                    <span class="sub-toggle"></span>
-                </h4>
-                <ul class="mega-menu__list">
-                    <li>
-                        <a href="@Url.Action("RegisterVendor","Useraccounts")">Become a Vendor</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Vendor Store</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Vendor Dashboard Free</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("","")">Vendor Dashboard Pro</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        </li>
-            @*<li class="menu-item-has-children has-mega-menu">
-            <a href="#">Blogs</a>
-            <span class="sub-toggle"></span>
-            <div class="mega-menu">
+                    <div class="mega-menu">
+                        <div class="mega-menu__column">
+                            <h4>
+                                Blog Layout
+                                <span class="sub-toggle"></span>
+                            </h4>
+                            <ul class="mega-menu__list">
+                                <li>
+                                    <a href="@Url.Action("","")">Grid</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Listing</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Small Thumb</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Left Sidebar</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Right Sidebar</a>
+                                </li>
+                            </ul>
+                        </div>
                 <div class="mega-menu__column">
-                    <h4>
-                        Blog Layout
-                        <span class="sub-toggle"></span>
-                    </h4>
-                    <ul class="mega-menu__list">
-                        <li>
-                            <a href="@Url.Action("","")">Grid</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Listing</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Small Thumb</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Left Sidebar</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Right Sidebar</a>
-                        </li>
-                    </ul>
-                </div>
-        <div class="mega-menu__column">
-                    <h4>
-                        Single Blog
-                        <span class="sub-toggle"></span>
-                    </h4>
-                    <ul class="mega-menu__list">
-                        <li>
-                            <a href="@Url.Action("","")">Single 1</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Single 2</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Single 3</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("","")">Single 4</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            </li>
+                            <h4>
+                                Single Blog
+                                <span class="sub-toggle"></span>
+                            </h4>
+                            <ul class="mega-menu__list">
+                                <li>
+                                    <a href="@Url.Action("","")">Single 1</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Single 2</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Single 3</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("","")">Single 4</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    </li>
 
-            <li class="menu-item-has-children has-mega-menu">
-                <a href="@Url.Action("ProductList","Products")">
-                    Products
-                    <span class="fa fa-shopping-bag float-right"></span>
-                </a>
+                    <li class="menu-item-has-children has-mega-menu">
+                        <a href="@Url.Action("ProductList","Products")">
+                            Products
+                            <span class="fa fa-shopping-bag float-right"></span>
+                        </a>
 
-                <div class="mega-menu">
+                        <div class="mega-menu">
+                            <div class="mega-menu__column">
+                                <h4>
+                                    Blog Layout
+                                    <span class="sub-toggle"></span>
+                                </h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("","")">Grid</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Listing</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Small Thumb</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Left Sidebar</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Right Sidebar</a>
+                                    </li>
+                                </ul>
+                            </div>
                     <div class="mega-menu__column">
-                        <h4>
-                            Blog Layout
-                            <span class="sub-toggle"></span>
-                        </h4>
-                        <ul class="mega-menu__list">
-                            <li>
-                                <a href="@Url.Action("","")">Grid</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Listing</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Small Thumb</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Left Sidebar</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Right Sidebar</a>
-                            </li>
-                        </ul>
-                    </div>
-            <div class="mega-menu__column">
-                        <h4>
-                            Single Blog
-                            <span class="sub-toggle"></span>
-                        </h4>
-                        <ul class="mega-menu__list">
-                            <li>
-                                <a href="@Url.Action("","")">Single 1</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Single 2</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Single 3</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Single 4</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
+                                <h4>
+                                    Single Blog
+                                    <span class="sub-toggle"></span>
+                                </h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 4</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
 
-            <li class="menu-item-has-children has-mega-menu">
-                <a href="@Url.Action("Index","Home")">
-                    Services
-                    <span class="fa fa-server float-right"></span>
-                </a>
-                <div class="mega-menu">
+                    <li class="menu-item-has-children has-mega-menu">
+                        <a href="@Url.Action("Index","Home")">
+                            Services
+                            <span class="fa fa-server float-right"></span>
+                        </a>
+                        <div class="mega-menu">
+                            <div class="mega-menu__column">
+                                <h4>
+                                    Blog Layout
+                                    <span class="sub-toggle"></span>
+                                </h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("","")">Grid</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Listing</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Small Thumb</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Left Sidebar</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Right Sidebar</a>
+                                    </li>
+                                </ul>
+                            </div>
                     <div class="mega-menu__column">
-                        <h4>
-                            Blog Layout
-                            <span class="sub-toggle"></span>
-                        </h4>
-                        <ul class="mega-menu__list">
-                            <li>
-                                <a href="@Url.Action("","")">Grid</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Listing</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Small Thumb</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Left Sidebar</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Right Sidebar</a>
-                            </li>
-                        </ul>
-                    </div>
-            <div class="mega-menu__column">
-                        <h4>
-                            Single Blog
-                            <span class="sub-toggle"></span>
-                        </h4>
-                        <ul class="mega-menu__list">
-                            <li>
-                                <a href="@Url.Action("","")">Single 1</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Single 2</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Single 3</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Single 4</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
+                                <h4>
+                                    Single Blog
+                                    <span class="sub-toggle"></span>
+                                </h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 4</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
 
-            <li class="menu-item-has-children has-mega-menu">
-                <a href="@Url.Action("Checkout","Products")">
-                    Order
-                    <span class="fa fa-phone float-right"></span>
-                </a>
-                <div class="mega-menu">
+                    <li class="menu-item-has-children has-mega-menu">
+                        <a href="@Url.Action("Checkout","Products")">
+                            Order
+                            <span class="fa fa-phone float-right"></span>
+                        </a>
+                        <div class="mega-menu">
+                            <div class="mega-menu__column">
+                                <h4>
+                                    Blog Layout
+                                    <span class="sub-toggle"></span>
+                                </h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("","")">Grid</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Listing</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Small Thumb</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Left Sidebar</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Right Sidebar</a>
+                                    </li>
+                                </ul>
+                            </div>
                     <div class="mega-menu__column">
-                        <h4>
-                            Blog Layout
-                            <span class="sub-toggle"></span>
-                        </h4>
-                        <ul class="mega-menu__list">
-                            <li>
-                                <a href="@Url.Action("","")">Grid</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Listing</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Small Thumb</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Left Sidebar</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Right Sidebar</a>
-                            </li>
-                        </ul>
-                    </div>
-            <div class="mega-menu__column">
-                        <h4>
-                            Single Blog
-                            <span class="sub-toggle"></span>
-                        </h4>
-                        <ul class="mega-menu__list">
-                            <li>
-                                <a href="@Url.Action("","")">Single 1</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Single 2</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Single 3</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Single 4</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
+                                <h4>
+                                    Single Blog
+                                    <span class="sub-toggle"></span>
+                                </h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 4</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
 
-            <li class="menu-item-has-children has-mega-menu">
-                <a href="@Url.Action("myprofile","Useraccounts")">
-                    My Profile
-                    <span class="fa fa-user float-right"></span>
-                </a>
-                <div class="mega-menu">
+                    <li class="menu-item-has-children has-mega-menu">
+                        <a href="@Url.Action("myprofile","Useraccounts")">
+                            My Profile
+                            <span class="fa fa-user float-right"></span>
+                        </a>
+                        <div class="mega-menu">
+                            <div class="mega-menu__column">
+                                <h4>
+                                    Blog Layout
+                                    <span class="sub-toggle"></span>
+                                </h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("","")">Grid</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Listing</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Small Thumb</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Left Sidebar</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Right Sidebar</a>
+                                    </li>
+                                </ul>
+                            </div>
                     <div class="mega-menu__column">
-                        <h4>
-                            Blog Layout
-                            <span class="sub-toggle"></span>
-                        </h4>
-                        <ul class="mega-menu__list">
-                            <li>
-                                <a href="@Url.Action("","")">Grid</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Listing</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Small Thumb</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Left Sidebar</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Right Sidebar</a>
-                            </li>
-                        </ul>
-                    </div>
-            <div class="mega-menu__column">
-                        <h4>
-                            Single Blog
-                            <span class="sub-toggle"></span>
-                        </h4>
-                        <ul class="mega-menu__list">
-                            <li>
-                                <a href="@Url.Action("","")">Single 1</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Single 2</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Single 3</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("","")">Single 4</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>*@
-            </li>
+                                <h4>
+                                    Single Blog
+                                    <span class="sub-toggle"></span>
+                                </h4>
+                                <ul class="mega-menu__list">
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("","")">Single 4</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>*@
         </ul>
     </div>
 </div>
+
+<script type="text/javascript">
+            function deleteItem(id) {
+                var values = {
+                    id: id
+                };
+
+                $.ajax({
+                    url: "@Url.Action("deletecart","products")",
+                    type: "post",
+                    data: values ,
+                    success: function (response) {
+                        //alert(response.responseText);
+                        console.log(response);
+                        window.location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    }
+                });
+            }
+
+</script>
