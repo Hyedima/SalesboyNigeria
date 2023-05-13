@@ -276,9 +276,35 @@ namespace Salesboy.Controllers
             return View(db.Products.Find(id));
         }
         [HttpPost]
-        public ActionResult EditproductDetails(string id, string i )
+        public ActionResult EditproductDetails(string id, string productname, string producttype, string description, string modelno, string brandname, string productcategory, string price, string qty, string discount)
         {
-            return View(db.Products.Find(id));
+            try
+            {
+                var product = db.Products.Find(id);
+                product.productname = productname;
+                product.producttype = producttype;
+                product.description = description;
+                product.modelno = modelno;
+                product.description = description;
+                product.brandname = brandname;
+                product.category = productcategory;
+                product.price = Convert.ToDecimal(price);
+                product.discount = Convert.ToInt32(discount);
+                product.qty = Convert.ToInt32(qty);
+                db.SaveChanges();
+
+                TempData["success"] = "true";
+                TempData["message"] = "Product edited successfully!!";
+                return View(product);
+            }
+            catch (Exception err)
+            {
+                var product = db.Products.Find(id);
+
+                TempData["success"] = "false";
+                TempData["message"] = "failed!!, please try again. " + err;
+                return View(product);
+            }
         }
         public ActionResult products()
         {
