@@ -32,7 +32,100 @@
                 <form class="ps-form--checkout" action="@Url.Action("Order","Products")" method="post">
                     <div class="ps-form__content">
                         <div class="row">
-                            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="ps-block--checkout-order">
+                                    <div class="ps-block__content">
+                                        @*<figure>
+                        <figcaption><strong>Product</strong><strong>Total</strong></figcaption>
+                    </figure>*@
+
+                                        <figure class="ps-block__items">
+                                            <table class="table table-striped">
+                                                <tr>
+                                                    <th>
+                                                        SN
+                                                    </th>
+                                                    <th>
+                                                        Item
+                                                    </th>
+                                                    <th>
+                                                        Qty/Unit Price
+                                                    </th>
+                                                    <th>
+                                                        Amount(N)
+                                                    </th>
+                                                    <th></th>
+                                                </tr>
+                                                @foreach (var item in db.Carts.Where(p => p.useremail == email).ToList())
+                                                {
+                                                    int amt = Convert.ToInt32(item.Product.price * item.qty);
+                                                    total += amt; //adds to the total sum
+                                                    sn++;
+                                                    <tr>
+                                                        <td>
+                                                            @sn
+                                                        </td>
+                                                        <td>
+                                                            <img src="@item.Product.photo1" width="50px" height="50px" alt="product Image" />
+                                                            <strong>@item.Product.productname</strong>
+                                                        </td>
+                                                        <td>
+                                                            @item.qty * @item.Product.price
+                                                        </td>
+                                                        <td>
+                                                            <strong>N @amt</strong>
+                                                        </td>
+                                                        <td>
+                                                            <span class="text-danger btn" onclick="deleteItem('@item.id')">X</span>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                <tr>
+                                                    <th colspan="3">TOTAL (N)</th>
+                                                    <th>
+                                                        <strong>N @total</strong>
+                                                    </th>
+                                                    <th></th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="5">
+                                                        <center>
+                                                            <figure><a class="ps-btn" href="#" onclick="makePayment()">Pay With Flutterwave</a></figure>
+                                                        </center>
+                                                    </th>
+                                                </tr>
+                                            </table>
+
+                                        </figure>
+                                        <figure class="ps-block__shipping">
+                                            <figure>@*<a class="ps-btn" href="#" onclick="makePayment()">Pay With Flutterwave</a>*@</figure>
+                                            @*<h3>Shipping</h3>
+                        <p>Calculated at next step</p>
+                        <input type="text" name="amount" value="@total" />
+
+                        <button class="ps-btn">
+                            Checkout
+                        </button>
+
+                            <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
+                            <div>
+                                Your order is ₦3,400
+                            </div>
+                            <input type="hidden" name="public_key" value="FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X" />
+                            <input type="hidden" name="customer[email]" value="@user.Email" />
+                            <input type="hidden" name="customer[name]" value="@user.firstname @user.lastname" />
+                            <input type="hidden" name="tx_ref" value="_SALESB_@Guid.NewGuid().ToString()" />
+                            <input type="hidden" name="amount" value="500" />
+                            <input type="hidden" name="currency" value="NGN" />
+                            <input type="hidden" name="meta[token]" value="54" />
+                            <input type="hidden" name="redirect_url" value="https://salesboynigeria.com/products/Checkout/" />
+                            <button type="submit" id="start-payment-button">Pay Now</button>
+                        </form>*@
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
                                 <div class="ps-form__billing-info">
                                     <h3 class="ps-form__heading">Checkout Information</h3>
                                     <div class="form-group">
@@ -42,14 +135,14 @@
                                     <div class="form-group">
                                         <label>Phone number</label>
                                         <input class="form-control" type="text" readonly="" placeholder="" value="@Model.phone" name="phone">
-                                    </div>
+                                    </div>-->
                                     @*<div class="form-group">
-                                            <div class="ps-checkbox">
-                                                <input class="form-control" type="checkbox" id="keep-update" placeholder="">
-                                                <label for="keep-update">Keep me up to date on news and exclusive offers?</label>
-                                            </div>
-                                        </div>*@
-                                    <h3 class="ps-form__heading">Shipping Address</h3>
+                    <div class="ps-checkbox">
+                        <input class="form-control" type="checkbox" id="keep-update" placeholder="">
+                        <label for="keep-update">Keep me up to date on news and exclusive offers?</label>
+                    </div>
+                </div>*@
+                                    <!--<h3 class="ps-form__heading">Shipping Address</h3>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
@@ -86,22 +179,22 @@
                                                 <label>Postal Code</label>
                                                 <input class="form-control" type="text" placeholder="" value="@Model.zip" name="zip">
                                             </div>
-                                        </div>
+                                        </div>-->
                                         @*<div class="col-sm-12">
-                                            <div class="form-group">
-                                                <button class="ps-btn" type="submit">Submit</button>
-                                            </div>
-                                        </div>*@
-                                    </div>
+                        <div class="form-group">
+                            <button class="ps-btn" type="submit">Submit</button>
+                        </div>
+                    </div>*@
+                                    <!--</div>-->
                                     @*<div class="form-group">
-                                            <div class="ps-checkbox">
-                                                <input class="form-control" type="checkbox" id="save-next-time" placeholder="" name="accept">
-                                                <label for="save-next-time">Keep me up to date on news and exclusive offers?</label>
-                                            </div>
-                                        </div>*@
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                    <div class="ps-checkbox">
+                        <input class="form-control" type="checkbox" id="save-next-time" placeholder="" name="accept">
+                        <label for="save-next-time">Keep me up to date on news and exclusive offers?</label>
+                    </div>
+                </div>*@
+                                <!--</div>
+                            </div>-->
+                            <!--<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                                 <div class="ps-block--checkout-order">
                                     <div class="ps-block__content">
                                         <figure>
@@ -111,7 +204,7 @@
                                             @foreach (var item in db.Carts.Where(p => p.useremail == email).ToList())
                                             {
                                                 int amt = Convert.ToInt32(item.Product.price * item.qty);
-                                                total += amt; //adds to the total sum
+                                                //total += amt; //adds to the total sum
                                                 <div>
                                                     <strong>@item.Product.productname</strong>
                                                     <span>@item.qty</span>
@@ -124,33 +217,33 @@
                                             <figcaption><strong>Subtotal</strong><strong>N @total</strong></figcaption>
                                         </figure>
                                         <figure class="ps-block__shipping">
-                                            <figure><a class="ps-btn" href="#" onclick="makePayment()">Pay With Flutterwave</a></figure>
+                                            <figure><a class="ps-btn" href="#" onclick="makePayment()">Pay With Flutterwave</a></figure>-->
                                             @*<h3>Shipping</h3>
-                                                <p>Calculated at next step</p>
-                                                <input type="text" name="amount" value="@total" />
+                        <p>Calculated at next step</p>
+                        <input type="text" name="amount" value="@total" />
 
-                                                <button class="ps-btn">
-                                                    Checkout
-                                                </button>
+                        <button class="ps-btn">
+                            Checkout
+                        </button>
 
-                                                    <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
-                                                    <div>
-                                                        Your order is ₦3,400
-                                                    </div>
-                                                    <input type="hidden" name="public_key" value="FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X" />
-                                                    <input type="hidden" name="customer[email]" value="@user.Email" />
-                                                    <input type="hidden" name="customer[name]" value="@user.firstname @user.lastname" />
-                                                    <input type="hidden" name="tx_ref" value="_SALESB_@Guid.NewGuid().ToString()" />
-                                                    <input type="hidden" name="amount" value="500" />
-                                                    <input type="hidden" name="currency" value="NGN" />
-                                                    <input type="hidden" name="meta[token]" value="54" />
-                                                    <input type="hidden" name="redirect_url" value="https://salesboynigeria.com/products/Checkout/" />
-                                                    <button type="submit" id="start-payment-button">Pay Now</button>
-                                                </form>*@
-                                        </figure>
+                            <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
+                            <div>
+                                Your order is ₦3,400
+                            </div>
+                            <input type="hidden" name="public_key" value="FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X" />
+                            <input type="hidden" name="customer[email]" value="@user.Email" />
+                            <input type="hidden" name="customer[name]" value="@user.firstname @user.lastname" />
+                            <input type="hidden" name="tx_ref" value="_SALESB_@Guid.NewGuid().ToString()" />
+                            <input type="hidden" name="amount" value="500" />
+                            <input type="hidden" name="currency" value="NGN" />
+                            <input type="hidden" name="meta[token]" value="54" />
+                            <input type="hidden" name="redirect_url" value="https://salesboynigeria.com/products/Checkout/" />
+                            <button type="submit" id="start-payment-button">Pay Now</button>
+                        </form>*@
+                                        <!--</figure>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </form>
@@ -165,10 +258,10 @@
                      function makePayment(){
                         FlutterwaveCheckout({
                             public_key:
-                            "FLWPUBK_TEST-8d049f5bf0756776e6392f6cfd90b024-X",
-                            //"FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X",
+                            //"FLWPUBK_TEST-8d049f5bf0756776e6392f6cfd90b024-X",
+                            "FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X",
                             tx_ref: "@Guid.NewGuid().ToString()",
-                            amount:  300, //@total,
+                            amount:  @total,
                             currency: "NGN",
                                 country: "NG",
                             //payment_options: " ",

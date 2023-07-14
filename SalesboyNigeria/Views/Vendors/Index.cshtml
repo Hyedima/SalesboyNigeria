@@ -495,7 +495,7 @@
                                             </p>
                                         </div>
                                         <div class="m-5">
-                                            <a href="#" class="btn btn-lg btn-outline-warning P-5" onclick="makePayment(20000)">Pay Now</a>
+                                            <a href="#" class="btn btn-lg btn-outline-warning P-5" onclick="makePayment(2000000)">Pay Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -513,7 +513,7 @@
                                             </p>
                                         </div>
                                         <div class="m-5">
-                                            <a href="#" class="btn btn-lg btn-outline-warning P-5" onclick="makePayment(100)">Pay Now</a>
+                                            <a href="#" class="btn btn-lg btn-outline-warning P-5" onclick="makePayment(1000000)">Pay Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -521,7 +521,7 @@
                             <script>
                      function makePayment(amount) {
                         FlutterwaveCheckout({
-                            public_key: "FLWPUBK_TEST-8d049f5bf0756776e6392f6cfd90b024-X", //"FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X", //
+                            public_key: "FLWPUBK-c5e118f90e3526be42f41806ae39c63c-X", //"FLWPUBK_TEST-8d049f5bf0756776e6392f6cfd90b024-X", //
                             tx_ref: "@Guid.NewGuid().ToString()",
                             amount: amount,
                             currency: "NGN",
