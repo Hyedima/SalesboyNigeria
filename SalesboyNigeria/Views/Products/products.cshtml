@@ -7,99 +7,108 @@
     string email = Session["email"].ToString();
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-title">
-                    <h2>My Products</h2>
-                </div>
-                <div class="card-body">
-                    @if (Model.Where(p => p.UserAccount.Email == email).ToList().Count() <= 20)
-                    {
-                        <p>
-                            @Html.ActionLink("Create New", "newProduct")
-                        </p>
-                    }
-                    <table class="table table-striped">
-                        <tr>
-                            <th>
-                                SN
-                            </th>
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Type
-                            </th>
-                            <th>
-                                Category
-                            </th>
-                            <th>
-                                Price
-                            </th>
-                            <th>
-                                Discount
-                            </th>
-                            <th>
-                                Qty
-                            </th>
-                            <th>
-                                Model No
-                            </th>
-                            <th>
-                                Brand Name
-                            </th>
-                            <th>
-                                Reg. Date
-                            </th>
-                            <th></th>
-                        </tr>
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"> My Products </h4>
 
-                        @foreach (var item in Model)
-                        {
-                            sn++;
-                            <tr>
-                                <td>
-                                    @sn
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.productname)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.producttype)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.category)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.price)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.discount)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.qty)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.modelno)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.brandname)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.inserdate)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "EditproductDetails", new { id = item.id }) |
-                                    @Html.ActionLink("Details", "productDetails", new { id = item.id }) |
-                                    @Html.ActionLink("Photo", "productPicture", new { id = item.id })
-                                </td>
-                            </tr>
-                        }
-                    </table>
-                </div>
+                @if (Model.Where(p => p.UserAccount.Email == email).ToList().Count() <= 20)
+                {
+                    <p>
+                        <a href="@Url.Action("newProduct","Products")" class="btn btn-success">Create New  </a>
+                    </p>
+                }
+                <table id="datatable-buttons"
+                       class="table table-striped table-bordered dt-responsive nowrap"
+                       style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+
+                    <tr>
+                        <th>
+                            SN
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Type
+                        </th>
+                        <th>
+                            Category
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Discount
+                        </th>
+                        <th>
+                            Qty
+                        </th>
+                        <th>
+                            Model No
+                        </th>
+                        <th>
+                            Brand Name
+                        </th>
+                        <th>
+                            Reg. Date
+                        </th>
+                        <th>Action</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        sn++;
+                        <tr>
+                            <td>
+                                @sn
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.productname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.producttype)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.category)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.discount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.qty)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.modelno)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.brandname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.inserdate)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "EditproductDetails", new { id = item.id }) |
+                                @Html.ActionLink("Details", "productDetails", new { id = item.id }) |
+                                @Html.ActionLink("Photo", "productPicture", new { id = item.id })
+                            </td>
+                        </tr>
+                    }
+                </table>
             </div>
         </div>
     </div>
+    <div class="col-1"></div>
 </div>
+
+<br />
+<br />
+<br />
