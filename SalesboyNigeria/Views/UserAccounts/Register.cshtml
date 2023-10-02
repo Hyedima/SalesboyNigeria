@@ -3,6 +3,7 @@
     ViewBag.Title = "Register";
     SalesboyNigeria.Models.salesboyEntities db = new SalesboyNigeria.Models.salesboyEntities();
     Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = null;
 }
 
 
@@ -15,7 +16,7 @@
                 </ul>
             </div>
         </div>*@
-        @*<div class="row">
+    @*<div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
@@ -48,7 +49,7 @@
                             <hr />
 
                             <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up as a customer</p>
-                            
+
                             <div class="">
                                 <div class="">
                                     <form class="mx-1 mx-md-4" method="post" action="@Url.Action("Register","Useraccounts")">
@@ -58,35 +59,35 @@
                                         </strong>
                                         <hr />
                                         @*<div class="d-flex flex-row align-items-center mb-4">
-                                            <div class="form-outline flex-fill mb-0">
-                                                <label class="form-label" for="form3Example1c">First Name</label>
-                                                <input type="text" name="firstname" id="" class="form-control" />
+                                                <div class="form-outline flex-fill mb-0">
+                                                    <label class="form-label" for="form3Example1c">First Name</label>
+                                                    <input type="text" name="firstname" id="" class="form-control" />
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <div class="form-outline flex-fill mb-0">
-                                                <label class="form-label" for="form3Example1c">Last Name</label>
-                                                <input type="text" name="lastname" id="" class="form-control" />
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <div class="form-outline flex-fill mb-0">
+                                                    <label class="form-label" for="form3Example1c">Last Name</label>
+                                                    <input type="text" name="lastname" id="" class="form-control" />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <div class="form-outline flex-fill mb-0">
-                                                <label class="form-label" for="form3Example3c">Phone</label>
-                                                <input type="text" name="phone" id="" class="form-control" />
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <div class="form-outline flex-fill mb-0">
+                                                    <label class="form-label" for="form3Example3c">Phone</label>
+                                                    <input type="text" name="phone" id="" class="form-control" />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <div class="form-outline flex-fill mb-0">
-                                                <label class="form-label" for="form3Example3c">State of Residence</label>
-                                                <select class="form-control" name="state" required="">
-                                                    @foreach (var item in db.States.OrderBy(p => p.states).ToList())
-                                                    {
-                                                        <option value="@item.states">@item.states</option>
-                                                    }
-                                                </select>
-                                            </div>
-                                        </div>*@
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <div class="form-outline flex-fill mb-0">
+                                                    <label class="form-label" for="form3Example3c">State of Residence</label>
+                                                    <select class="form-control" name="state" required="">
+                                                        @foreach (var item in db.States.OrderBy(p => p.states).ToList())
+                                                        {
+                                                            <option value="@item.states">@item.states</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>*@
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="form3Example3c">Your Email</label>
@@ -124,18 +125,18 @@
                                     </form>
                                 </div>
                             </div>
-                            
+
                         </div>
 
                         <div class="ps-form__footer">
                             <div class="mt-5 text-center">
                                 <p>
                                     @*Already have an account ? <a href="@Url.Action("Login","Useraccounts")" class="fw-medium text-primary"> Login Here</a>
-                                <a href="http://vendors.salesboynigeria.com/Vendors/register" class="fw-medium text-primary"> Register as a Vendor </a>
-                                 <a href="http://sp.salesboynigeria.com/ServiceProviders/Register" class="fw-medium text-primary"> Register as a Service Provider </a>*@
+                                        <a href="http://vendors.salesboynigeria.com/Vendors/register" class="fw-medium text-primary"> Register as a Vendor </a>
+                                         <a href="http://sp.salesboynigeria.com/ServiceProviders/Register" class="fw-medium text-primary"> Register as a Service Provider </a>*@
                                 </p>
                             </div>
-                           @*<p>Connect with:</p>
+                            @*<p>Connect with:</p>
                                 <ul class="ps-list--social">
                                     <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                     <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -259,3 +260,135 @@
         </div>
     </div>
 </div>
+
+
+
+@{
+    ViewBag.Title = "login";
+    //SalesboyNigeria.Models.salesboyEntities db = new SalesboyNigeria.Models.salesboyEntities();
+    Layout = null;
+}
+
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Login | Salesboys</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Qovex" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/Content/Qovex/assets/images/favicon.ico">
+
+    <!-- Bootstrap Css -->
+    <link href="~/Content/Qovex/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="~/Content/Qovex/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="~/Content/Qovex/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    @*<div class="home-btn d-none d-sm-block">
+            <a href="index.html" class="text-dark"><i class="fas fa-home h2"></i></a>
+        </div>*@
+    <div class="account-pages my-5 pt-sm-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card overflow-hidden">
+                        <div class="bg-login text-center">
+                            <div class="bg-login-overlay"></div>
+                            <div class="position-relative">
+                                <h5 class="text-white font-size-20">Welcome Back !</h5>
+                                <p class="text-white-50 mb-0">Sign up as a customer.</p>
+                                <a href="@Url.Action("login", "useraccounts")" class="logo logo-admin mt-4">
+                                    <img src="~/Content/Qovex/assets/images/logo-sm-dark.png" alt="" height="70">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body pt-5">
+                            <div class="p-2">
+                                <form class="form-horizontal" action="@Url.Action("Register","Useraccounts")" method="post">
+                                    <strong class="text-danger">
+                                        @TempData["message"]
+                                    </strong>
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" for="form3Example3c">Your Email</label>
+                                            <input type="email" name="email" id="" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" for="">Password</label>
+                                            <input type="password" name="password" id="" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" for="form3Example4cd">Repeat your password</label>
+                                            <input type="password" name="cpassword" id="" class="form-control" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="ps-checkbox">
+                                        <input class="form-control" type="checkbox" id="save-next-time" placeholder="" name="accept">
+                                        <label for="save-next-time">I agree all statements in <a href="#!">Terms of service</a></label>
+                                    </div>
+
+                                    <div class="mt-3">
+                                        <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">
+                                            Log
+                                            In
+                                        </button>
+                                    </div>
+
+                                    <div class="mt-4 text-center">
+                                        <a href="@Url.Action("ResetPassword","Useraccounts")" class="text-muted">
+                                            <i class="mdi mdi-lock me-1"></i> Forgot your password?
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <p>
+                            Don't have an account ? <a href="@Url.Action("Register", "UserAccounts")" class="fw-medium text-primary"> Signup now </a>
+                        </p>
+                        <p>
+                            OR
+                        </p>
+                        <p>
+                            Register to <a href="@Url.Action("RegisterVendor", "UserAccounts")" class="fw-medium text-primary"> Become a Vendor </a>
+                        </p>
+                        <p>
+                            ©
+                            <script>document.write(new Date().getFullYear())</script> Qovex. Crafted with <i class="mdi mdi-heart text-danger"></i> by CodeIcon Technology
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT -->
+    <script src="~/Content/Qovex/assets/libs/jquery/jquery.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/node-waves/waves.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+    <script src="~/Content/Qovex/assets/js/app.js"></script>
+</body>
+</html> 
