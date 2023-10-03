@@ -7,12 +7,23 @@
     int sn = 0;
 }
 
-<table class="table table-bordered">
-    <tr>
-        <th>SN</th>
-        <th>Products</th>
-        <th>Qty</th>
-        <th>Amount(N)</th>
-    </tr>
-    @*@foreach (var item in db.Sales.to)*@
-</table>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+
+            <table id="datatable-buttons"
+                   class="table table-striped table-bordered dt-responsive nowrap"
+                   style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Products</th>
+                        <th>Qty</th>
+                        <th>Amount(N)</th>
+                    </tr>
+                    @*@foreach (var item in db.Sales.to)*@
+            </table>
+
+        </div>
+    </div>
+</div>
