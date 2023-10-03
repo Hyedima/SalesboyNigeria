@@ -12,7 +12,7 @@ namespace SalesboyNigeria.Controllers
     {
         private Models.salesboyEntities db = new Models.salesboyEntities();
         
-        [CheckAuthentication]
+        //[CheckAuthentication]
         public ActionResult Index()
         {
             return View();

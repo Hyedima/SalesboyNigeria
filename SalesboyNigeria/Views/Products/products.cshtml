@@ -17,7 +17,7 @@
             <div class="card-body">
                 <h4 class="card-title"> My Products </h4>
 
-                @if (Model.Where(p => p.UserAccount.Email == email).ToList().Count() <= 20)
+                @if (Model.Where(p => p.UserAccount.Email == email).ToList().Count() <= 40)
                 {
                     <p>
                         <a href="@Url.Action("newProduct","Products")" class="btn btn-success">Create New  </a>

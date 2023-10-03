@@ -32,25 +32,23 @@
     </div>
 </div>
 
-<div class="container">
+<div class="ps-container">
     <div class="row">
-        <div class="col-md-12">
+        @*<div class="col-md-12">
             <hr />
             <strong>
                 Products
             </strong>
             <hr />
-        </div>
+        </div>*@
         @foreach (var item in db.Products.ToList())
         {
-            <div class="col-md-3 col-xs-3 col-sm-3 col-6 col-lg-3 col-xl-3 ">
+            <div class="col-md-2 col-xs-3 col-sm-3 col-6 col-lg-2 col-xl-2 ">
                 <hr />
                 <div class="card">
                     <div class="card-body">
                         <a href="@Url.Action("productDetails", "Products", new {id = item.id})"><img src="@item.photo1" alt="" class="btn img-fluid img-responsive"  style="height:20vh;width:100%;" /> </a>
-
-
-                        <div class="ps-product ps-product--inner">
+                           <div class="ps-product ps-product--inner">
                             <div class="ps-product__thumbnail">
                                 <div class="ps-product__badge">-16%</div>
                                 <ul class="ps-product__actions">
@@ -219,6 +217,7 @@
                                     <p class="ps-product__price sale">
                                         N @item.price--> @*<del></del><small>18% off</small>*@
                                         <!--</p>
+
                                                         <button class="btn btn-warning btn-lg" onclick="Addcart('@item.id', '@item.productname', '@Session["email"]','', '@item.price', '1')" title="">add cart<i class="icon-bag2 p-2"></i></button>
                                                     </div>
                                                 </div>

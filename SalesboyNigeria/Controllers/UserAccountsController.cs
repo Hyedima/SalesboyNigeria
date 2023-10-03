@@ -310,7 +310,8 @@ namespace Salesboy.Controllers
                         //return RedirectToAction("myprofile", "UserAccounts");
                         if(User.usertype == "VENDOR")
                         {
-                            return RedirectToAction("Index", "Vendors", new {id = User.Id});
+                            //return RedirectToAction("Index", "Vendors", new {id = User.Id});
+                            return RedirectToAction("Index", "Home");
                         }
                         else
                         {
