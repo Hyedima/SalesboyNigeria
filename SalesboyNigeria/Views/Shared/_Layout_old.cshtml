@@ -1,0 +1,211 @@
+﻿@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>*@
+
+<!-- headers-->
+<!DOCTYPE html>
+<html lang="en">
+@{
+    SalesboyNigeria.Models.salesboyEntities db = new SalesboyNigeria.Models.salesboyEntities();
+    string email = "";
+    if (Session["email"] != null)
+    {
+        email = Session["email"].ToString();
+    }
+    var user = db.UserAccounts.FirstOrDefault(p => p.Email == email);
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="E-commerce Platform">
+    <meta name="description" content="E-commerce Platform, Salesboy Nigeria">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/Images/logo.png">
+    <title>Salesboy Nigeria</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/Home/plugins/font-awesome/css/font-awesome.min.css">
+    @*<link rel="stylesheet" href="fonts/Linearicons/Linearicons/Font/demo-files/demo.css">*@
+    <link href="~/Content/Home/fonts/Linearicons/Linearicons/Font/demo-files/demo.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/Home/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/Home/plugins/owl-carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/Home/plugins/owl-carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Content/Home/plugins/slick/slick/slick.css">
+    <link rel="stylesheet" href="~/Content/Home/plugins/nouislider/nouislider.min.css">
+    <link rel="stylesheet" href="~/Content/Home/plugins/lightGallery-master/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="~/Content/Home/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+    <link rel="stylesheet" href="~/Content/Home/plugins/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="~/Content/Home/css/style.css">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <!--Main Header-->
+</head>
+
+<body>
+    @if (Session["email"] != null)
+    {
+
+    }
+
+    <!--Main Header-->
+    @Html.Partial("~/Views/Shared/_MainHeader.cshtml")
+    <!--Mobile Header-->
+    @Html.Partial("~/Views/Shared/_MobileHeader.cshtml")
+
+    <div id="homepage-1">
+        @if (TempData["success"] != null)
+        {
+            if (TempData["success"].ToString() == "true")
+            {
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Success! </strong> @TempData["message"]
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Error! </strong> @TempData["message"]
+                </div>
+            }
+        }
+        @RenderBody()
+    </div>
+
+    @if (Session["email"] != null)
+    {
+    }
+    @Html.Partial("~/Views/Shared/_footer.cshtml")
+
+
+
+    @*<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>*@
+    <script src="~/Content/Home/plugins/jquery.min.js"></script>
+    <script src="~/Content/Home/plugins/nouislider/nouislider.min.js"></script>
+    <script src="~/Content/Home/plugins/popper.min.js"></script>
+    <script src="~/Content/Home/plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/Content/Home/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/Home/plugins/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Content/Home/plugins/masonry.pkgd.min.js"></script>
+    <script src="~/Content/Home/plugins/isotope.pkgd.min.js"></script>
+    <script src="~/Content/Home/plugins/jquery.matchHeight-min.js"></script>
+    <script src="~/Content/Home/plugins/slick/slick/slick.min.js"></script>
+    <script src="~/Content/Home/plugins/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
+    <script src="~/Content/Home/plugins/slick-animation.min.js"></script>
+    <script src="~/Content/Home/plugins/lightGallery-master/dist/js/lightgallery-all.min.js"></script>
+    <script src="~/Content/Home/plugins/sticky-sidebar/dist/sticky-sidebar.min.js"></script>
+    <script src="~/Content/Home/plugins/select2/dist/js/select2.full.min.js"></script>
+    <script src="~/Content/Home/plugins/gmap3.min.js"></script>
+    <!-- custom scripts-->
+    <script src="~/Content/Home/js/main.js"></script>
+    <script>
+        //Cart
+        /* Get from elements values */
+        function Addcart(productid, productname, email, ip, price, qty) {
+            let ClientDetails = {};
+            $.getJSON('https://api.db-ip.com/v2/free/self', function (data) {
+                console.log(JSON.stringify(data, null, 2));
+                ClientDetails = JSON.stringify(data, null, 2);
+            });
+            console.log(ClientDetails.ipAddress);
+              var values =
+              {
+                  productid: productid,
+                  productname: productname,
+                  email: email,
+                  ip: ClientDetails.ipAddress,
+                  price: price,
+                  qty: qty
+              }; //$(this).serialize();
+
+            $.ajax({
+                url: "@Url.Action("AddCart","Products")",
+                type: "post",
+                data: values,
+                success: function (response) {
+                    // You will get response from your PHP page (what you echo or print)
+                    //console.log(response.responseText);
+                    //console.log(response);
+                    document.getElementById("cart").innerHTML = response;
+                    document.getElementById("mcart").innerHTML = response;
+                    //window.location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        }
+
+    </script>
+
+    <!--Summer Notes-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <script>
+        $('#summernote').summernote({
+            placeholder: '',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</body>
+<!-- Mirrored from nouthemes.net/html/martfury/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Aug 2022 13:13:16 GMT -->
+</html>
