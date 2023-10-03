@@ -2,199 +2,120 @@
 @{
     ViewBag.Title = "login";
     SalesboyNigeria.Models.salesboyEntities db = new SalesboyNigeria.Models.salesboyEntities();
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
-<div class="ps-page--my-account">
-    @*<div class="ps-breadcrumb">
-            <div class="container">
-                <ul class="breadcrumb">
-                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
-                    <li>My account</li>
-                </ul>
-            </div>
+
+ 
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Login | Salesboys</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Qovex" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/Content/Qovex/assets/images/favicon.ico">
+
+    <!-- Bootstrap Css -->
+    <link href="~/Content/Qovex/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="~/Content/Qovex/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="~/Content/Qovex/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    @*<div class="home-btn d-none d-sm-block">
+            <a href="index.html" class="text-dark"><i class="fas fa-home h2"></i></a>
         </div>*@
-    <div class="ps-my-account">
+    <div class="account-pages my-5 pt-sm-5">
         <div class="container">
-            <div class="ps-form--account ps-tab-root">
-                @*<ul class="ps-tab-list">
-                        <li class="active"><a href="#sign-in">Login</a></li>
-                        <li><a href="#register">Register</a></li>
-                    </ul>*@
-                <div class="ps-tabs">
-                    <div class="ps-tab active" id="sign-in">
-                        <form action="" method="post">
-                            <div class="ps-form__content">
-                                <center>
-                                    <img src="~/Content/Images/logo.png" height="150" width="100" />
-                                </center>
-                                <div class="mt-1 text-center">
-
-
-                                </div>
-                                <h5 class="mt-5">Login to buy goods and services</h5>
-                                <strong class="text-danger text-center">
-                                    @TempData["message"]
-                                </strong>
-                                <div class="form-group">
-                                    <input class="form-control" type="email" required="" name="email" placeholder="Username or email address">
-                                </div>
-                                <div class="form-group form-forgot">
-                                    <input class="form-control" type="password" name="password" placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <div class="ps-checkbox">
-                                        <input class="form-control" type="checkbox" id="remember-me" name="remember-me" />
-                                        <label for="remember-me">Rememeber me</label> || <a href="#">Forgot password? </a>
-                                    </div>
-                                </div>
-                                <div class="form-group submtit">
-                                    <button class="ps-btn ps-btn--fullwidth">Login</button>
-                                </div>
-
-                                @*<div class="mt-5 text-center">
-                                    <p>
-                                        OR
-                                    </p>
-                                </div>
-
-                                <div class="form-group submtit">
-                                    <a href="https://vendors.salesboynigeria.com/Vendors/Login" class="ps-btn ps-btn--fullwidth">Login as a vendor</a>
-                                </div>
-
-                                <div class="form-group submtit">
-                                    <a href="https://services.salesboynigeria.com/Vendors/Login" class="ps-btn ps-btn--fullwidth">Login as a Service Provider</a>
-                                </div>*@
-                                <center>
-                                    <p>
-                                        Don't have an account ? <a href="@Url.Action("Register", "UserAccounts")" class="fw-medium text-primary"> Signup now </a>
-                                    </p>
-                                    <p>
-                                        OR
-                                    </p>
-                                    <p>
-                                        Register to <a href="@Url.Action("RegisterVendor", "UserAccounts")" class="fw-medium text-primary"> Become a Vendor </a>
-                                    </p>
-                                </center>
-                               
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card overflow-hidden">
+                        <div class="bg-login text-center">
+                            <div class="bg-login-overlay"></div>
+                            <div class="position-relative">
+                                <h5 class="text-white font-size-20">Welcome Back !</h5>
+                                <p class="text-white-50 mb-0">Login to buy goods and services.</p>
+                                <a href="@Url.Action("login", "useraccounts")" class="logo logo-admin mt-4">
+                                    <img src="~/Content/Qovex/assets/images/logo-sm-dark.png" alt="" height="70">
+                                </a>
                             </div>
-                        </form>
+                        </div>
+                        <div class="card-body pt-5">
+                            <div class="p-2">
+                                <form class="form-horizontal" action="@Url.Action("Login","Useraccounts")" method="post">
+                                    <strong class="text-danger text-center">
+                                        @TempData["message"]
+                                    </strong>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="username">Username</label>
+                                        <input class="form-control" type="email" required="" name="email" placeholder="Username or email address">
+                                    </div>
 
-                        <div class="ps-form__footer">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="userpassword">Password</label>
+                                        <input class="form-control" type="password" name="password" placeholder="Password">
+                                    </div>
 
-                            @*<div class="mt-5 text-center">
-                    <p>
-                       <a href="http://vendors.salesboynigeria.com/Vendors/register" class="fw-medium text-primary"> Become a Vendor </a> ||
-                        <a href="http://sp.salesboynigeria.com/ServiceProviders/Register" class="fw-medium text-primary"> Become a Service Provider </a>
-                    </p>
-                </div>*@
-                            @*<p>Connect with:</p>
-                <ul class="ps-list--social">
-                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                </ul>*@
+                                    @*<div class="form-check">
+            <input type="checkbox" class="form-check-input" id="customControlInline">
+            <label class="form-check-label" for="customControlInline">
+                Remember
+                me
+            </label>
+        </div>*@
+
+                                    <div class="mt-3">
+                                        <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">
+                                            Log
+                                            In
+                                        </button>
+                                    </div>
+
+                                    <div class="mt-4 text-center">
+                                        <a href="@Url.Action("ResetPassword","Useraccounts")" class="text-muted">
+                                            <i class="mdi mdi-lock me-1"></i> Forgot your password?
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+
                         </div>
                     </div>
-                    @*<div class="ps-tab" id="register">
-            <form class="mx-1 mx-md-4" method="post" action="@Url.Action("Register","Useraccounts")">
-                @Html.AntiForgeryToken()
-                <strong class="text-danger">
-                    @TempData["message"]
-                </strong>
-                <hr />
-                <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="form3Example1c">First Name</label>
-                        <input type="text" name="firstname" id="" class="form-control" />
+                    <div class="mt-5 text-center">
+                        <p>
+                            Don't have an account ? <a href="@Url.Action("Register", "UserAccounts")" class="fw-medium text-primary"> Signup now </a>
+                        </p>
+                        <p>
+                            OR
+                        </p>
+                          <p>
+                                        Register to <a href="@Url.Action("RegisterVendor", "UserAccounts")" class="fw-medium text-primary"> Become a Vendor </a>
+                                    </p>
+                        <p>
+                            ©
+                            <script>document.write(new Date().getFullYear())</script> Qovex. Crafted with <i class="mdi mdi-heart text-danger"></i> by CodeIcon Technology
+                        </p>
                     </div>
-                </div>
 
-                <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="form3Example1c">Last Name</label>
-                        <input type="text" name="lastname" id="" class="form-control" />
-                    </div>
-                </div>
-                <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="form3Example3c">Phone</label>
-                        <input type="text" name="phone" id="" class="form-control" />
-                    </div>
-                </div>
-                <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="form3Example3c">State of Residence</label>
-                        <select class="form-control" name="state" required="">
-                            @foreach (var item in db.States.OrderBy(p => p.states).ToList())
-                            {
-                                <option value="@item.states">@item.states</option>
-                            }
-                        </select>
-                    </div>
-                </div>
-                <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="form3Example3c">Your Email</label>
-                        <input type="email" name="email" id="" class="form-control" />
-                    </div>
-                </div>
-
-                <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="">Password</label>
-                        <input type="password" name="password" id="" class="form-control" />
-                    </div>
-                </div>
-
-                <div class="d-flex flex-row align-items-center mb-4">
-                    <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="form3Example4cd">Repeat your password</label>
-                        <input type="password" name="cpassword" id="" class="form-control" />
-                    </div>
-                </div>
-
-                <div class="form-check d-flex justify-content-center mb-5">
-                    <input class="form-check-input me-2" type="checkbox" value="" name="agree" id="form2Example3c" />
-                    <label class="form-check-label" for="form2Example3">
-                        I agree all statements in <a href="#!">Terms of service</a>
-                    </label>
-                </div>
-
-                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button class="ps-btn ps-btn--fullwidth">Register</button>
-                </div>
-
-            </form>
-            <div class="ps-form__footer">
-                <p>Connect with:</p>
-                <ul class="ps-list--social">
-                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                </ul>
-            </div>
-        </div>*@
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-@*<div class="mt-5 text-center">
-        <p>
-            Don't have an account ? <a href="@Url.Action("Register", "UserAccounts")" class="fw-medium text-primary"> Signup now </a>
-        </p>
-        <p>
-            ©
-            <script>document.write(new Date().getFullYear())</script> Salesboy Nigeria <i class="mdi mdi-heart text-danger"></i> by Codeicon Technologies
-        </p>
-    </div>*@
+    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT -->
+    <script src="~/Content/Qovex/assets/libs/jquery/jquery.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/node-waves/waves.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+    <script src="~/Content/Qovex/assets/js/app.js"></script>
+</body>
+</html> 
