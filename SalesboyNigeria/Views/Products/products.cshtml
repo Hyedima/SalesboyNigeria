@@ -20,88 +20,90 @@
                         <a href="@Url.Action("newProduct","Products")" class="btn btn-success">Create New  </a>
                     </p>
                 }
-                <table id="datatable-buttons"
-                       class="table table-striped table-bordered dt-responsive nowrap"
-                       style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>
-                                SN
-                            </th>
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Type
-                            </th>
-                            <th>
-                                Category
-                            </th>
-                            <th>
-                                Price
-                            </th>
-                            <th>
-                                Discount
-                            </th>
-                            <th>
-                                Qty
-                            </th>
-                            <th>
-                                Model No
-                            </th>
-                            <th>
-                                Brand Name
-                            </th>
-                            <th>
-                                Reg. Date
-                            </th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+                <div class="table-rep-plugin">
+                    <div class="table-responsive mb-0" data-pattern="priority-columns">
+                        <table id="tech-companies-1" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        SN
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Type
+                                    </th>
+                                    <th>
+                                        Category
+                                    </th>
+                                    <th>
+                                        Price
+                                    </th>
+                                    <th>
+                                        Discount
+                                    </th>
+                                    <th>
+                                        Qty
+                                    </th>
+                                    <th>
+                                        Model No
+                                    </th>
+                                    <th>
+                                        Brand Name
+                                    </th>
+                                    <th>
+                                        Reg. Date
+                                    </th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
 
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            sn++;
-                            <tr>
-                                <td>
-                                    @sn
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.productname)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.producttype)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.category)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.price)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.discount)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.qty)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.modelno)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.brandname)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.inserdate)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "EditproductDetails", new { id = item.id }) |
-                                    @Html.ActionLink("Details", "productDetails", new { id = item.id }) |
-                                    @Html.ActionLink("Photo", "productPicture", new { id = item.id })
-                                </td>
-                            </tr>
-                        }
-                </table>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    sn++;
+                                    <tr>
+                                        <td>
+                                            @sn
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.productname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.producttype)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.category)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.price)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.discount)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.qty)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.modelno)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.brandname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.inserdate)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "EditproductDetails", new { id = item.id }) |
+                                            @Html.ActionLink("Details", "productDetails", new { id = item.id }) |
+                                            @Html.ActionLink("Photo", "productPicture", new { id = item.id })
+                                        </td>
+                                    </tr>
+                                }
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
