@@ -12,47 +12,56 @@
                 <div class="card-header">
                     All Users
                 </div>
-                <table class="table table-striped">
-                    <tr>
-                        <th>SN</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Business Name</th>
-                        <th>City</th>
-                        <th>Address</th>
-                        <th>User Type</th>
-                    </tr>
-                    @foreach (var item in Model.OrderByDescending(p => p.insertdate).ToList())
-                    {
-                        sn++;
-                        <tr>
-                            <td>@sn</td>
-                            <td>
-                                @item.firstname
-                                @item.lastname
-                            </td>
-                            <td>
-                                @item.Email
-                            </td>
-                            <td>
-                                @item.phone
-                            </td>
-                            <td>
-                                @item.brandname
-                            </td>
-                            <td>
-                                @item.city
-                            </td>
-                            <td>
-                                @item.address
-                            </td>
-                            <td>
-                                @item.usertype
-                            </td>
-                        </tr>
-                    }
-                </table>
+                <div class="table-rep-plugin">
+                    <div class="table-responsive mb-0" data-pattern="priority-columns">
+                        <table id="tech-companies-1" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Business Name</th>
+                                    <th>City</th>
+                                    <th>Address</th>
+                                    <th>User Type</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model.OrderByDescending(p => p.insertdate).ToList())
+                                {
+                                    sn++;
+                                    <tr>
+                                        <td>@sn</td>
+                                        <td>
+                                            @item.firstname
+                                            @item.lastname
+                                        </td>
+                                        <td>
+                                            @item.Email
+                                        </td>
+                                        <td>
+                                            @item.phone
+                                        </td>
+                                        <td>
+                                            @item.brandname
+                                        </td>
+                                        <td>
+                                            @item.city
+                                        </td>
+                                        <td>
+                                            @item.address
+                                        </td>
+                                        <td>
+                                            @item.usertype
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

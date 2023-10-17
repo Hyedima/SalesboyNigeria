@@ -13,54 +13,63 @@
                 <div class="card-header">
                     All Sales
                 </div>
-                <table class="table table-striped table-responsive table-condensed">
-                    <tr>
-                        <th>SN</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Product Name</th>
-                        <th>Qty</th>
-                        <th>Unit Price(N)</th>
-                        <th>Amount Paid(N)</th>
-                        <th>Date</th>
-                    </tr>
-                    @foreach (var item in Model.OrderByDescending(p => p.insertdate).ToList())
-                    {
-                        sn++;
-                        <tr>
-                            <td>@sn</td>
-                            <td>
-                                @item.UserAccount.firstname
-                                @item.UserAccount.lastname
-                            </td>
-                            <td>
-                                @item.UserAccount.Email
-                            </td>
-                            <td>
-                                @item.UserAccount.phone
-                            </td>
-                            <td>
-                                @item.productname
-                            </td>
-                            <td>
-                                @item.qty
-                            </td>
-                            <td>
-                                @item.unitprice
-                            </td>
-                            <td>
-                                @{ 
-                                    var ttl = item.qty * item.unitprice;
+                <div class="table-rep-plugin">
+                    <div class="table-responsive mb-0" data-pattern="priority-columns">
+                        <table id="tech-companies-1" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Product Name</th>
+                                    <th>Qty</th>
+                                    <th>Unit Price(N)</th>
+                                    <th>Amount Paid(N)</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model.OrderByDescending(p => p.insertdate).ToList())
+                                {
+                                    sn++;
+                                    <tr>
+                                        <td>@sn</td>
+                                        <td>
+                                            @item.UserAccount.firstname
+                                            @item.UserAccount.lastname
+                                        </td>
+                                        <td>
+                                            @item.UserAccount.Email
+                                        </td>
+                                        <td>
+                                            @item.UserAccount.phone
+                                        </td>
+                                        <td>
+                                            @item.productname
+                                        </td>
+                                        <td>
+                                            @item.qty
+                                        </td>
+                                        <td>
+                                            @item.unitprice
+                                        </td>
+                                        <td>
+                                            @{
+                                                var ttl = item.qty * item.unitprice;
+                                            }
+                                            @ttl
+                                        </td>
+                                        <td>
+                                            @item.insertdate
+                                        </td>
+                                    </tr>
                                 }
-                                @ttl
-                            </td>
-                            <td>
-                                @item.insertdate
-                            </td>
-                        </tr>
-                    }
-                </table>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
