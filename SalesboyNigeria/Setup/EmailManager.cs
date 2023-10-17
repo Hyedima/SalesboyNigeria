@@ -47,14 +47,20 @@ namespace SalesboyNigeria.setup
         //    var response = await client.SendEmailAsync(msg);
         //    //Console.WriteLine(response.Body.ToString());
         //}
-        public static async Task SendMail(string To_Mail, string To_Name,string subject,  string body )
+        public async Task SendMail(string To_Mail, string To_Name, string body) //string subject,
         {
-            var apiKey = "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";//Environment.GetEnvironmentVariable("NAME_OF_THE_ENVIRONMENT_VARIABLE_FOR_YOUR_SENDGRID_KEY");
+            var apiKey = "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";
+            //password: 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
+
+            //"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";
+            //"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";
+            //Environment.GetEnvironmentVariable("NAME_OF_THE_ENVIRONMENT_VARIABLE_FOR_YOUR_SENDGRID_KEY");
+
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("Codeicontechnologies@gmail.com", "Example User");
-            //var subject = "Sending with SendGrid is Fun";
-            var to = new EmailAddress(To_Mail, To_Name);
-            var plainTextContent = body;
+            var subject = "Sending with SendGrid is Fun";
+            var to = new EmailAddress("hyedimawaha@gmail.com", "name names");
+            var plainTextContent = "Test email";
             var htmlContent = "<strong>Salesboy Nigeria</strong>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);

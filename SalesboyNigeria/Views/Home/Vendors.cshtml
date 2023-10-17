@@ -1,75 +1,57 @@
-﻿
+﻿@model IEnumerable<SalesboyNigeria.Models.UserAccount>
+
 @{
     ViewBag.Title = "Vendors";
-    Layout = "~/Views/Shared/_Layout.cshtml";//"~/Views/Shared/_AdminLayout.cshtml";
-    Salesboy.Models.salesboyEntities db = new Salesboy.Models.salesboyEntities();
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //SalesboyNigeria.Models.salesboyEntities db = new SalesboyNigeria.Models.salesboyEntities();
+    int sn = 0;
 }
-<style>
-
-    .card {
-        background: #fff;
-        box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
-        border: 1;
-        border-radius: 1rem;
-    }
-</style>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <center>
-                <h1>Vendors</h1>
-            </center>
-        </div>
-        @foreach (var item in db.UserAccounts.ToList())
-        {
-        <div class="row">
-            <div class="col-md-12" style="box-shadow:inset 10px;">
-               
-                <hr />
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <img src="@item.photo" class="img img-responsive img-thumbnail" />
-                            </div>
-                            <div class="col-md-10">
-                                <strong>
-                                    @item.firstname @item.lastname
-                                </strong> <br />
-                                <hr />
-                                <p>
-                                    @item.Email
-                                </p>
-                                <p>
-                                    @item.phone
-                                </p>
-                                <hr />
-                                <strong>
-                                    @item.brandname
-                                </strong>
-                                <p>
-                                    @item.state
-                                </p>
-                                <p>
-                                    @item.address
-                                </p>
-                                <p>
-                                    @item.about
-                                </p>
-                                <hr />
-                                    <div class="checkout-right-basket">
-                                        <a href="@Url.Action("Vendor","Home", new {id = item.Id})" class="btn yellow">View Details</a>
-                                    </div>
-                                <hr />
-                            </div>
-                        </div>
-                    </div>
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12 col-xs-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-header">
+                    Vendors
                 </div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>SN</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Business Name</th>
+                        <th>City</th>
+                        <th>Address</th>
+                    </tr>
+                    @foreach(var item in Model.OrderByDescending(p => p.insertdate).ToList())
+            {
+                        sn++;
+                <tr>
+                    <td>@sn</td>
+                    <td>
+                        @item.firstname
+                        @item.lastname
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+                    <td>
+                        @item.phone
+                    </td>
+                    <td>
+                        @item.brandname
+                    </td>
+                    <td>
+                        @item.city
+                    </td>
+                    <td>
+                        @item.address
+                    </td>
+                </tr>
+            }
+                </table>
             </div>
         </div>
-        }
     </div>
 </div>
-
 

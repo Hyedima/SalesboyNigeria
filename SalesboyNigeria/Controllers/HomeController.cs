@@ -70,6 +70,25 @@ namespace SalesboyNigeria.Controllers
         {
             return View();
         }
-
+        public ActionResult Vendors()
+        {
+            return View(db.UserAccounts.Where(p => p.usertype == "VENDOR").ToList());
+        }
+        public ActionResult Users()
+        {
+            return View(db.UserAccounts.Where(p => p.usertype == "USER").ToList());
+        }
+        public ActionResult allUsers()
+        {
+            return View(db.UserAccounts.ToList());
+        }
+        public ActionResult Transactions() 
+        {
+            return View(db.Sales.ToList());
+        }
+        public ActionResult Orders()
+        {
+            return View(db.Orders.ToList());
+        }
     }
 }

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SalesboyNigeria.Models.UserAccount>
+
+@{
+    ViewBag.Title = "allUsers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int sn = 0;
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12 col-xs-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-header">
+                    All Users
+                </div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>SN</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Business Name</th>
+                        <th>City</th>
+                        <th>Address</th>
+                        <th>User Type</th>
+                    </tr>
+                    @foreach (var item in Model.OrderByDescending(p => p.insertdate).ToList())
+                    {
+                        sn++;
+                        <tr>
+                            <td>@sn</td>
+                            <td>
+                                @item.firstname
+                                @item.lastname
+                            </td>
+                            <td>
+                                @item.Email
+                            </td>
+                            <td>
+                                @item.phone
+                            </td>
+                            <td>
+                                @item.brandname
+                            </td>
+                            <td>
+                                @item.city
+                            </td>
+                            <td>
+                                @item.address
+                            </td>
+                            <td>
+                                @item.usertype
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -17,6 +17,7 @@ using System.IO;
 using SalesboyNigeria;
 using System.Web.Helpers;
 using System.Configuration;
+using SalesboyNigeria.setup;
 
 namespace Salesboy.Controllers
 {
@@ -270,7 +271,7 @@ namespace Salesboy.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(string email, string password, string ReturnUrl)
+        public async Task<ActionResult> Login(string email, string password, string ReturnUrl)
         {
             try
             {
@@ -296,6 +297,9 @@ namespace Salesboy.Controllers
                         Session["usertype"] = User.usertype;
                         //Session["branchid"] = User.branchid;
 
+                        //send email login notification
+                        EmailManager sendMail = new EmailManager();
+                        await sendMail.SendMail(email, User.firstname + " " + User.lastname,  "<h1>Login successfully</h1>");
                         TempData["success"] = "true";
                         TempData["message"] = "Logged in Successfully.";
                         //
@@ -349,7 +353,7 @@ namespace Salesboy.Controllers
             //Set the Expiry date.
             loginCookie.Expires = DateTime.Now.AddDays(-1);
             //Add the Cookie to Browser.
-            Response.Cookies.Add(loginCookie);
+            Response.Cookies.Remove(loginCookie.Name);
 
             Session.Abandon();
             return RedirectToAction("Login");
@@ -659,6 +663,8 @@ namespace Salesboy.Controllers
                 return View();
             }
         }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

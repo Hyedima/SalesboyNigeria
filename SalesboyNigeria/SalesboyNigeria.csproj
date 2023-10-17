@@ -160,6 +160,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\UserAccountsController.cs" />
     <Compile Include="Controllers\VendorsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -241,14 +242,14 @@
       <DependentUpon>SalesboyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Setup\AdmissionAuthentication.cs" />
-    <Compile Include="Setup\Audit.cs" />
-    <Compile Include="Setup\CheckAuthentication.cs" />
-    <Compile Include="Setup\CryptoEngine.cs" />
-    <Compile Include="Setup\EmailManager.cs" />
-    <Compile Include="Setup\GenerateAge.cs" />
-    <Compile Include="Setup\GenerateID.cs" />
-    <Compile Include="Setup\SMS.cs" />
+    <Compile Include="setup\AdmissionAuthentication.cs" />
+    <Compile Include="setup\Audit.cs" />
+    <Compile Include="setup\CheckAuthentication.cs" />
+    <Compile Include="setup\CryptoEngine.cs" />
+    <Compile Include="setup\EmailManager.cs" />
+    <Compile Include="setup\GenerateAge.cs" />
+    <Compile Include="setup\GenerateID.cs" />
+    <Compile Include="setup\SMS.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\admin\apple-touch-icon.html" />
@@ -2324,9 +2325,14 @@
     <Content Include="Views\Products\EditProducts.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_leftbar.cshtml" />
+    <Content Include="Views\Home\Users.cshtml" />
+    <Content Include="Views\Home\allUsers.cshtml" />
+    <Content Include="Views\Home\Transactions.cshtml" />
+    <Content Include="Views\Home\Orders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Sales\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

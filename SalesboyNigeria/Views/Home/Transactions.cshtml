@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SalesboyNigeria.Models.Sale>
+
+@{
+    ViewBag.Title = "Transactions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int sn = 0;
+}
+
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12 col-xs-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-header">
+                    All Sales
+                </div>
+                <table class="table table-striped table-responsive table-condensed">
+                    <tr>
+                        <th>SN</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Product Name</th>
+                        <th>Qty</th>
+                        <th>Unit Price(N)</th>
+                        <th>Amount Paid(N)</th>
+                        <th>Date</th>
+                    </tr>
+                    @foreach (var item in Model.OrderByDescending(p => p.insertdate).ToList())
+                    {
+                        sn++;
+                        <tr>
+                            <td>@sn</td>
+                            <td>
+                                @item.UserAccount.firstname
+                                @item.UserAccount.lastname
+                            </td>
+                            <td>
+                                @item.UserAccount.Email
+                            </td>
+                            <td>
+                                @item.UserAccount.phone
+                            </td>
+                            <td>
+                                @item.productname
+                            </td>
+                            <td>
+                                @item.qty
+                            </td>
+                            <td>
+                                @item.unitprice
+                            </td>
+                            <td>
+                                @{ 
+                                    var ttl = item.qty * item.unitprice;
+                                }
+                                @ttl
+                            </td>
+                            <td>
+                                @item.insertdate
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
